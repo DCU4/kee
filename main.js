@@ -11,7 +11,7 @@ var scale =document.querySelector('.scale');
 
     function sketchpad_touchStart() {
         getTouchPos();
-        drawDot(ctx,touchX,touchY,slider.value);
+        drawLine(ctx,touchX,touchY,slider.value);
 
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
@@ -22,7 +22,7 @@ var scale =document.querySelector('.scale');
         getTouchPos(e);
 
         // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawDot(ctx,touchX,touchY,slider.value); 
+        drawLine(ctx,touchX,touchY,slider.value); 
 
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -214,7 +214,7 @@ function init() {
         //scale on click
         // scale.addEventListener('click', scaleDown);
         // if(scaleDown){
-            
+
         // }
     }
 

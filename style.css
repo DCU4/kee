@@ -26,3 +26,16 @@ canvas {
     -ms-user-select: none;
     user-select: none;
 }
+
+@media (max-width: 720px ){
+	body {
+		width:100%;
+	}
+
+	#sketchpad {
+		width:100%;
+	}
+	#face {
+		width:100%;
+	}
+}
