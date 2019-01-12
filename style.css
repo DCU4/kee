@@ -1,0 +1,21 @@
+.canvases {
+    position: relative;
+}
+canvas {
+    position: absolute;
+}
+
+#sketchpad {
+    top: 0;
+    z-index: 99999;
+}
+
+#face {
+    top: 0;
+    z-index: 99;
+}
+.inputs {
+    position: absolute;
+    bottom: 40%;
+}
+
