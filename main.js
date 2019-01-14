@@ -1,10 +1,28 @@
+
+
+
+
+// MAIN DRAWING
+
 // Define some variables to keep track of the mouse status
 var mouseX,mouseY,mouseDown=0;
 var slider = document.getElementById("myRange");
+console.log(slider);
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
 
 var scale =document.querySelector('.scale');
+
+
+// var clearBtn = document.getElementById('clear-canvas');
+// console.log(clearBtn);
+
+// clearBtn.addEventListener('click', function(){
+//     this.classList.add('press-down');
+// });
+
+
+
 
 // Define some variables to keep track of the touch position
     var touchX,touchY;

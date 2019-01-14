@@ -8,20 +8,34 @@
             <title>Kee</title>
 
     </head>
+
     <body onload="init()">
+
+
         <div class="kee">
-            <div class="canvases">
-                    <canvas id="sketchpad" width="400" height="400"></canvas>
-                    <canvas id="face" width="400" height="400"></canvas>
+           
+            <div class="container">
+                <canvas id="sketchpad" width="400" height="400"></canvas>
+                <canvas id="face" width="400" height="400"></canvas>
             </div>
 
             <div class="inputs">
-                    <input type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    <input type="range" min="1" max="25" value="10" class="slider" id="myRange">
+
+
+                    
                     <input type="color" id="colorPick">
+
+                    <button id="clear-canvas" class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+                        Clear Canvas
+                        
+                    </button>
                     <!-- <button class="scale">Scale Down</button> -->
             </div>
         </div>
+
+
         <script type="text/javascript" src="main.js"></script>
     </body>
+
 </html>
