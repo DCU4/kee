@@ -46,7 +46,7 @@ canvas {
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin: 0 25%;
+    margin: -40px 25%;
 }
 
 input {
