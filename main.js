@@ -128,48 +128,30 @@ function getMousePos(e) {
 
 // DRAW ___________________________
     
-// var h1=myColor.value,  l1=myLight.value;
-// console.log(myColor.value);
-
-
+// Color display
 myColor.addEventListener('input',function(e) {
-    colorDisplay.style.background = '#000';
     var displayColor = "hsl("+myColor.value+",100%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
-    console.log(myLight.value)
-    console.log(displayColor);
 
+});
+
+myLight.addEventListener('input', function(f){
+    var displayColor = "hsl("+myColor.value+",100%,"+myLight.value+"%)";
+    colorDisplay.style.background = displayColor;
 });
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
-    // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
-    // r=110; g=200; b=220; a=255;
-
-
-    
-    
     
     // lineColor = "hsl(200,100%,50%)";
-    
     
     // // Select a fill style
     var h=myColor.value,  l=myLight.value;
     lineColor = "hsl("+h+",100%,"+l+"%)";
-    console.log(myColor.value);
     ctx.strokeStyle = lineColor;
 
-    colorDisplay.style.background = lineColor;
 
-    myColor.addEventListener('oninput',function() {
-        colorDisplay.style.background = lineColor;
-        console.log(colorDisplay);
-    });
-
-    console.log(colorDisplay.style.backgroundColor);
-    // ctx.fillStyle = '#00ff00';
-    console.log(ctx.fillStyle);
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
@@ -178,7 +160,6 @@ function drawLine(ctx,x,y,size) {
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
-
     
         // Draw a filled line
         ctx.beginPath();
@@ -270,15 +251,15 @@ function init() {
     if (ctx || faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(200, 200, 180, 0, Math.PI*2, true);
+        faceCtx.arc(180, 180, 150, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.stroke();
         faceCtx.beginPath();
-        faceCtx.arc(275, 150, 10, 0, Math.PI*2, true);
+        faceCtx.arc(255, 150, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         faceCtx.beginPath();
-        faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
+        faceCtx.arc(105, 150, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         //scale on click
