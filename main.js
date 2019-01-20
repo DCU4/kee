@@ -14,6 +14,9 @@ var lastX,lastY=-1;
 var scale =document.querySelector('.scale');
 
 
+var myColor = document.getElementById("myColor");
+    var myLight = document.getElementById("myLight");
+
 // var clearBtn = document.getElementById('clear-canvas');
 // console.log(clearBtn);
 
@@ -23,28 +26,44 @@ var scale =document.querySelector('.scale');
 
 
 
+// TOUCH ___________________________
+
 
 // Define some variables to keep track of the touch position
-    var touchX,touchY;
+    var touchX,touchY,touchDown;
 
     function sketchpad_touchStart() {
+        touchDown = 1;
         getTouchPos();
-        drawLine(ctx,touchX,touchY,slider.value);
-
+        if(touchDown == 1){
+            drawLine(ctx,touchX,touchY,slider.value);
+        }
+        
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
+    }
+
+    // Stop the line being drawn when touching to separate points
+    function sketchpad_touchStop() {
+        touchDown= 0;
+        // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
+        lastX=-1;
+        lastY=-1;
     }
 
     function sketchpad_touchMove(e) { 
         // Update the touch co-ordinates
         getTouchPos(e);
-
-        // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
-        drawLine(ctx,touchX,touchY,slider.value); 
-
+        if(touchDown == 1){
+            console.log('1');
+            // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
+            drawLine(ctx,touchX,touchY,slider.value); 
+        }
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
+        
     }
+    
 
     // Get the touch position relative to the top-left of the canvas
     // When we get the raw values of pageX and pageY below, they take into account the scrolling on the page
@@ -69,7 +88,6 @@ var scale =document.querySelector('.scale');
 function sketchpad_mouseDown() {
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,slider.value );
-    console.log(color.value);
 }
 
 function sketchpad_mouseUp() {
@@ -86,7 +104,10 @@ function sketchpad_mouseMove(e) {
 
     // Draw a pixel if the mouse button is currently being pressed
     if (mouseDown==1) {
+        console.log('1');
         drawLine(ctx,mouseX,mouseY,slider.value);
+    } else {
+        console.log('no');
     }
 }
 
@@ -105,28 +126,6 @@ function getMousePos(e) {
     }
 }
 
-
-
-
-// function scaleDown(){
-//     faceCtx.scale(.5,.5);
-//     faceCtx.beginPath();
-//     faceCtx.arc(200, 200, 180, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.stroke();
-//     faceCtx.beginPath();
-//     faceCtx.arc(275, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-//     faceCtx.beginPath();
-//     faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-    
-// }
-
-
-
 // DRAW ___________________________
 
 // Draws a dot at a specific position on the supplied canvas name
@@ -135,9 +134,17 @@ function drawLine(ctx,x,y,size) {
     // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
     r=0; g=0; b=0; a=255;
 
-    // Select a fill style
+
+    
+    
+    h=myColor.value; s=0; l=myLight.value;
+    console.log(h, l);
+    lineColor = "hsl("+h+","+s+","+l+")";
+    console.log(lineColor);
+    // // Select a fill style
     // ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
-    ctx.fillStyle = color.value;
+    // ctx.fillStyle = color.value;
+    ctx.fillStyle = lineColor;
 
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
@@ -148,20 +155,22 @@ function drawLine(ctx,x,y,size) {
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
 
-    // Draw a filled line
-    ctx.beginPath();
+    
+        // Draw a filled line
+        ctx.beginPath();
 
-    // First, move to the old (previous) position
-    ctx.moveTo(lastX,lastY);
+        // First, move to the old (previous) position
+        ctx.moveTo(lastX,lastY);
 
-    // Now draw a line to the current touch/pointer position
-    ctx.lineTo(x,y);
+        // Now draw a line to the current touch/pointer position
+        ctx.lineTo(x,y);
 
-    // Set the line thickness and draw the line
-    ctx.lineWidth = size;
-    ctx.stroke();
+        // Set the line thickness and draw the line
+        ctx.lineWidth = size;
+        ctx.stroke();
 
-    ctx.closePath();
+        ctx.closePath();
+    
 
     // Update the last position to reference the current position
     lastX=x;
@@ -182,6 +191,24 @@ function drawLine(ctx,x,y,size) {
 //     faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
 //     faceCtx.closePath();
 //     faceCtx.fill();
+// }
+
+
+// function scaleDown(){
+//     faceCtx.scale(.5,.5);
+//     faceCtx.beginPath();
+//     faceCtx.arc(200, 200, 180, 0, Math.PI*2, true);
+//     faceCtx.closePath();
+//     faceCtx.stroke();
+//     faceCtx.beginPath();
+//     faceCtx.arc(275, 150, 10, 0, Math.PI*2, true);
+//     faceCtx.closePath();
+//     faceCtx.fill();
+//     faceCtx.beginPath();
+//     faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
+//     faceCtx.closePath();
+//     faceCtx.fill();
+    
 // }
 
 // Clear the canvas context using the canvas width and height
@@ -213,6 +240,7 @@ function init() {
         // touch events 
         canvas.addEventListener('touchstart', sketchpad_touchStart, false);
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
+        canvas.addEventListener('touchend', sketchpad_touchStop, false);
         
     }
     if (ctx || faceCtx){
