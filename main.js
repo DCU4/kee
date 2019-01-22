@@ -28,7 +28,7 @@ var container = document.querySelector('.container');
         if(touchDown == 1){
             drawLine(ctx,touchX,touchY,slider.value);
         }
-        
+
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
     }
@@ -41,19 +41,19 @@ var container = document.querySelector('.container');
         lastY=-1;
     }
 
-    function sketchpad_touchMove(e) { 
+    function sketchpad_touchMove(e) {
         // Update the touch co-ordinates
         getTouchPos(e);
 
         // because you actually do need to track this...
         if(touchDown == 1){
-            drawLine(ctx,touchX,touchY,slider.value); 
+            drawLine(ctx,touchX,touchY,slider.value);
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
-        
+
     }
-    
+
 
     // Get the touch position relative to the top-left of the canvas
     // When we get the raw values of pageX and pageY below, they take into account the scrolling on the page
@@ -95,7 +95,7 @@ function sketchpad_mouseMove(e) {
     if (mouseDown==1) {
         console.log('1');
         drawLine(ctx,mouseX,mouseY,slider.value);
-    } 
+    }
 }
 // Get the current mouse position relative to the top-left of the canvas
 function getMousePos(e) {
@@ -114,7 +114,7 @@ function getMousePos(e) {
 
 
 // DRAW ___________________________
-    
+
 // Color display
 myColor.addEventListener('input',function(e) {
     var displayColor = "hsl("+myColor.value+",100%,"+myLight.value+"%)";
@@ -131,7 +131,7 @@ myLight.addEventListener('input', function(f){
 // Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
     // lineColor = "hsl(200,100%,50%)";
-    
+
     // Select a fill style
     var h=myColor.value,  l=myLight.value;
     lineColor = "hsl("+h+",100%,"+l+"%)";
@@ -146,7 +146,7 @@ function drawLine(ctx,x,y,size) {
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
-    
+
         // Draw a filled line
         ctx.beginPath();
 
@@ -161,7 +161,7 @@ function drawLine(ctx,x,y,size) {
         ctx.stroke();
 
         ctx.closePath();
-    
+
 
     // Update the last position to reference the current position
     lastX=x;
@@ -196,7 +196,7 @@ function resizeCanvas() {
     // face.height = (window.innerHeight);
     // canvas.width = window.innerWidth;
     // canvas.height = (window.innerHeight);
-    
+
 
     // // Make it visually fill the positioned parent
     // canvas.style.width ='100%';
@@ -205,7 +205,7 @@ function resizeCanvas() {
     // canvas.width  = container.offsetWidth;
     // canvas.height = container.offsetHeight;
 
-    
+
 
 }
 
@@ -220,9 +220,9 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-        
+
         canvas.width = window.innerWidth;
-        canvas.height = (window.innerHeight/2);
+        canvas.height = (window.innerHeight);
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
@@ -230,7 +230,7 @@ function init() {
     if (face.getContext){
         faceCtx = face.getContext('2d');
         face.width = window.innerWidth;
-        face.height = (window.innerHeight/2);
+        face.height = (window.innerHeight);
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
@@ -241,12 +241,12 @@ function init() {
         canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
         window.addEventListener('mouseup', sketchpad_mouseUp, false);
 
-        // touch events 
+        // touch events
         canvas.addEventListener('touchstart', sketchpad_touchStart, false);
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
-        
-        
+
+
     }
     if (faceCtx){
         //face, obviously
@@ -262,7 +262,7 @@ function init() {
         faceCtx.arc(125, 170, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
-        
+
         //scale on click
         // scale.addEventListener('click', scaleDown);
         // if(scaleDown){
