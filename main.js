@@ -1,23 +1,12 @@
-
-
-
-
-// MAIN DRAWING
-
-// Define some variables to keep track of the mouse status
 var mouseX,mouseY,mouseDown=0;
 var slider = document.getElementById("myRange");
-console.log(slider);
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
-
 var scale =document.querySelector('.scale');
-
-
 var myColor = document.getElementById("myColor");
-    var myLight = document.getElementById("myLight");
-
+var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
+var container = document.querySelector('.container');
 
 // var clearBtn = document.getElementById('clear-canvas');
 // console.log(clearBtn);
@@ -29,7 +18,6 @@ var colorDisplay = document.getElementById("colorDisplay");
 
 
 // TOUCH ___________________________
-
 
 // Define some variables to keep track of the touch position
     var touchX,touchY,touchDown;
@@ -56,9 +44,9 @@ var colorDisplay = document.getElementById("colorDisplay");
     function sketchpad_touchMove(e) { 
         // Update the touch co-ordinates
         getTouchPos(e);
+
+        // because you actually do need to track this...
         if(touchDown == 1){
-            console.log('1');
-            // During a touchmove event, unlike a mousemove event, we don't need to check if the touch is engaged, since there will always be contact with the screen by definition.
             drawLine(ctx,touchX,touchY,slider.value); 
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
@@ -84,9 +72,8 @@ var colorDisplay = document.getElementById("colorDisplay");
         }
     }
 
+
 // MOUSE ___________________________
-
-
 function sketchpad_mouseDown() {
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,slider.value );
@@ -143,10 +130,9 @@ myLight.addEventListener('input', function(f){
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
-    
     // lineColor = "hsl(200,100%,50%)";
     
-    // // Select a fill style
+    // Select a fill style
     var h=myColor.value,  l=myLight.value;
     lineColor = "hsl("+h+",100%,"+l+"%)";
     ctx.strokeStyle = lineColor;
@@ -199,26 +185,27 @@ function drawLine(ctx,x,y,size) {
 // }
 
 
-// function scaleDown(){
-//     faceCtx.scale(.5,.5);
-//     faceCtx.beginPath();
-//     faceCtx.arc(200, 200, 180, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.stroke();
-//     faceCtx.beginPath();
-//     faceCtx.arc(275, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-//     faceCtx.beginPath();
-//     faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-    
-// }
 
 // Clear the canvas context using the canvas width and height
 function clearCanvas(canvas,ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function resizeCanvas() {
+    face.width = window.innerWidth;
+    face.height = (window.innerHeight/2);
+    canvas.width = window.innerWidth;
+    canvas.height = (window.innerHeight/2);
+
+    // // Make it visually fill the positioned parent
+    // canvas.style.width ='100%';
+    // canvas.style.height='100%';
+    // ...then set the internal size to match
+    // canvas.width  = container.offsetWidth;
+    // canvas.height = container.offsetHeight;
+
+    
+
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
@@ -232,9 +219,17 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
+
+        window.addEventListener('resize', resizeCanvas, false);
+        window.addEventListener('orientationchange', resizeCanvas, false);
+        resizeCanvas();
     }
     if (face.getContext){
         faceCtx = face.getContext('2d');
+
+        window.addEventListener('resize', resizeCanvas, false);
+        window.addEventListener('orientationchange', resizeCanvas, false);
+        resizeCanvas();
     }
         // Check that we have a valid context to draw on/with before adding event handlers
     if (ctx) {
@@ -247,19 +242,20 @@ function init() {
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
         
+        
     }
-    if (ctx || faceCtx){
+    if (faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(180, 180, 150, 0, Math.PI*2, true);
+        faceCtx.arc(200, 200, 150, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.stroke();
         faceCtx.beginPath();
-        faceCtx.arc(255, 150, 10, 0, Math.PI*2, true);
+        faceCtx.arc(275, 170, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         faceCtx.beginPath();
-        faceCtx.arc(105, 150, 10, 0, Math.PI*2, true);
+        faceCtx.arc(125, 170, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         //scale on click
@@ -267,6 +263,18 @@ function init() {
         // if(scaleDown){
 
         // }
+
+    //     // Copy canvas as image data
+    // var imgData = faceCtx.getImageData(0,0, face.width, face.height);
+
+    // // Resize original face
+    // face.width = window.innerWidth;
+    // face.height = window.innerHeight;
+
+    // // Copy back to resized canvas
+    // faceCtx.putImageData(imgData, 0, 0);
+    // }
+
     }
 
 }
