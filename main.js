@@ -137,7 +137,7 @@ function drawLine(ctx,x,y,size) {
     lineColor = "hsl("+h+",100%,"+l+"%)";
     ctx.strokeStyle = lineColor;
 
-
+    console.log('main');
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
@@ -192,10 +192,11 @@ function clearCanvas(canvas,ctx) {
 }
 
 function resizeCanvas() {
-    face.width = window.innerWidth;
-    face.height = (window.innerHeight/2);
-    canvas.width = window.innerWidth;
-    canvas.height = (window.innerHeight/2);
+    // face.width = window.innerWidth;
+    // face.height = (window.innerHeight);
+    // canvas.width = window.innerWidth;
+    // canvas.height = (window.innerHeight);
+    
 
     // // Make it visually fill the positioned parent
     // canvas.style.width ='100%';
@@ -219,17 +220,20 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-
-        window.addEventListener('resize', resizeCanvas, false);
-        window.addEventListener('orientationchange', resizeCanvas, false);
-        resizeCanvas();
+        
+        canvas.width = window.innerWidth;
+        canvas.height = (window.innerHeight/2);
+        // window.addEventListener('resize', resizeCanvas, false);
+        // window.addEventListener('orientationchange', resizeCanvas, false);
+        // resizeCanvas();
     }
     if (face.getContext){
         faceCtx = face.getContext('2d');
-
-        window.addEventListener('resize', resizeCanvas, false);
-        window.addEventListener('orientationchange', resizeCanvas, false);
-        resizeCanvas();
+        face.width = window.innerWidth;
+        face.height = (window.innerHeight/2);
+        // window.addEventListener('resize', resizeCanvas, false);
+        // window.addEventListener('orientationchange', resizeCanvas, false);
+        // resizeCanvas();
     }
         // Check that we have a valid context to draw on/with before adding event handlers
     if (ctx) {
@@ -258,6 +262,7 @@ function init() {
         faceCtx.arc(125, 170, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
+        
         //scale on click
         // scale.addEventListener('click', scaleDown);
         // if(scaleDown){
