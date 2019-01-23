@@ -7,6 +7,7 @@ var myColor = document.getElementById("myColor");
 var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
 var container = document.querySelector('.container');
+var mySaturation = document.getElementById('mySaturation');
 
 // var clearBtn = document.getElementById('clear-canvas');
 // console.log(clearBtn);
@@ -117,13 +118,18 @@ function getMousePos(e) {
 
 // Color display
 myColor.addEventListener('input',function(e) {
-    var displayColor = "hsl("+myColor.value+",100%,"+myLight.value+"%)";
+    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
 
 });
 
 myLight.addEventListener('input', function(f){
-    var displayColor = "hsl("+myColor.value+",100%,"+myLight.value+"%)";
+    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+    colorDisplay.style.background = displayColor;
+});
+
+mySaturation.addEventListener('input', function(g){
+    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
 });
 
@@ -133,8 +139,8 @@ function drawLine(ctx,x,y,size) {
     // lineColor = "hsl(200,100%,50%)";
 
     // Select a fill style
-    var h=myColor.value,  l=myLight.value;
-    lineColor = "hsl("+h+",100%,"+l+"%)";
+    var h=myColor.value,  l=myLight.value, s=mySaturation.value;
+    lineColor = "hsl("+h+","+s+"%,"+l+"%)";
     ctx.strokeStyle = lineColor;
 
     console.log('main');
