@@ -222,7 +222,7 @@ function init() {
         ctx = canvas.getContext('2d');
         
         canvas.width = window.innerWidth;
-        canvas.height = (window.innerHeight/2);
+        canvas.height = window.innerWidth;
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
@@ -230,7 +230,7 @@ function init() {
     if (face.getContext){
         faceCtx = face.getContext('2d');
         face.width = window.innerWidth;
-        face.height = (window.innerHeight/2);
+        face.height = window.innerWidth;
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
