@@ -6,7 +6,7 @@ var scale =document.querySelector('.scale');
 var myColor = document.getElementById("myColor");
 var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
-var container = document.querySelector('.container');
+var container = document.getElementById('container');
 var mySaturation = document.getElementById('mySaturation');
 
 // var clearBtn = document.getElementById('clear-canvas');
@@ -117,6 +117,7 @@ function getMousePos(e) {
 // DRAW ___________________________
 
 // Color display
+
 myColor.addEventListener('input',function(e) {
     var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
@@ -142,8 +143,8 @@ function drawLine(ctx,x,y,size) {
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     lineColor = "hsl("+h+","+s+"%,"+l+"%)";
     ctx.strokeStyle = lineColor;
-
-    console.log('main');
+    colorDisplay.style.background = lineColor;
+    console.log(lineColor);
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
@@ -226,9 +227,12 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-
+        
+        
+        container.style.height = window.innerWidth + 60 + "px";
         canvas.width = window.innerWidth;
         canvas.height = (window.innerWidth);
+        
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
@@ -257,15 +261,15 @@ function init() {
     if (faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(200, 200, 150, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/2, window.innerWidth/2, window.innerWidth/2.25, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.stroke();
         faceCtx.beginPath();
-        faceCtx.arc(275, 170, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/1.5, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         faceCtx.beginPath();
-        faceCtx.arc(125, 170, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/3, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
 
