@@ -1,5 +1,5 @@
 var mouseX,mouseY,mouseDown=0;
-var slider = document.getElementById("myRange");
+var mySize = document.getElementById("mySize");
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
 var scale =document.querySelector('.scale');
@@ -27,7 +27,7 @@ var mySaturation = document.getElementById('mySaturation');
         touchDown = 1;
         getTouchPos();
         if(touchDown == 1){
-            drawLine(ctx,touchX,touchY,slider.value);
+            drawLine(ctx,touchX,touchY,mySize.value);
         }
 
         // Prevents an additional mousedown event being triggered
@@ -48,7 +48,7 @@ var mySaturation = document.getElementById('mySaturation');
 
         // because you actually do need to track this...
         if(touchDown == 1){
-            drawLine(ctx,touchX,touchY,slider.value);
+            drawLine(ctx,touchX,touchY,mySize.value);
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -77,7 +77,7 @@ var mySaturation = document.getElementById('mySaturation');
 // MOUSE ___________________________
 function sketchpad_mouseDown() {
     mouseDown=1;
-    drawLine(ctx,mouseX,mouseY,slider.value );
+    drawLine(ctx,mouseX,mouseY,mySize.value );
 }
 
 function sketchpad_mouseUp() {
@@ -95,7 +95,7 @@ function sketchpad_mouseMove(e) {
     // Draw a pixel if the mouse button is currently being pressed
     if (mouseDown==1) {
         console.log('1');
-        drawLine(ctx,mouseX,mouseY,slider.value);
+        drawLine(ctx,mouseX,mouseY,mySize.value);
     }
 }
 // Get the current mouse position relative to the top-left of the canvas
@@ -132,6 +132,11 @@ myLight.addEventListener('input', function(f){
 mySaturation.addEventListener('input', function(g){
     var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
+});
+
+mySize.addEventListener('input', function(h){
+    colorDisplay.style.height = mySize.value + "px";
+    colorDisplay.style.width = mySize.value + "px";
 });
 
 // Draws a dot at a specific position on the supplied canvas name
