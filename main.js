@@ -135,8 +135,8 @@ mySaturation.addEventListener('input', function(g){
 });
 
 mySize.addEventListener('input', function(h){
-    colorDisplay.style.height = mySize.value + "px";
-    colorDisplay.style.width = mySize.value + "px";
+    colorDisplay.style.height = (mySize.value *2)+ "px";
+    colorDisplay.style.width = (mySize.value *2)+ "px";
 });
 
 // Draws a dot at a specific position on the supplied canvas name
@@ -232,12 +232,12 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-        
-        
+
+
         container.style.height = window.innerWidth + 60 + "px";
         canvas.width = window.innerWidth;
         canvas.height = (window.innerWidth);
-        
+
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
