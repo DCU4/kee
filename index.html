@@ -4,7 +4,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta charset="utf-8">
             <link rel="stylesheet" type="text/css" href="css/style.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700" rel="stylesheet">
             <title>Kee</title>
 
     </head>
@@ -23,16 +23,22 @@
                 <div id="displayBox">
                         <div id="colorDisplay"></div>
                 </div>
-                    
-                    <p>Size</p>
-                    <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
-                    <p>Color</p>
-                    <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
-                    <p>Sat.</p>
-                    <input type="range" min="0" max="100" value="50" class="slider" id="mySaturation">
-                    <p>Shade</p>
-                    <input type="range" min="0" max="100" value="50" class="slider" id="myLight">
-
+                    <div class="input-container">
+                        <span>Size</span>
+                        <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
+                    </div>
+                    <div class="input-container">
+                        <p>Color</p>
+                        <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
+                    </div>
+                    <div class="input-container">
+                        <p>Sat.</p>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="mySaturation">
+                    </div>
+                    <div class="input-container">
+                        <p>Shade</p>
+                        <input type="range" min="0" max="100" value="50" class="slider" id="myLight">
+                    </div>
                     <button id="clear-canvas" class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
                         Clear Canvas
 

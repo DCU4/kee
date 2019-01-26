@@ -1,5 +1,5 @@
 var mouseX,mouseY,mouseDown=0;
-var mySize = document.getElementById("mySize");
+// var mySize = document.getElementById("mySize");
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
 var scale =document.querySelector('.scale');
@@ -134,10 +134,10 @@ mySaturation.addEventListener('input', function(g){
     colorDisplay.style.background = displayColor;
 });
 
-mySize.addEventListener('input', function(h){
-    colorDisplay.style.height = (mySize.value *2)+ "px";
-    colorDisplay.style.width = (mySize.value *2)+ "px";
-});
+// mySize.addEventListener('input', function(h){
+//     colorDisplay.style.height = (mySize.value *2)+ "px";
+//     colorDisplay.style.width = (mySize.value *2)+ "px";
+// });
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
@@ -234,7 +234,7 @@ function init() {
         ctx = canvas.getContext('2d');
 
 
-        container.style.height = window.innerWidth + 60 + "px";
+        container.style.height = window.innerWidth + 20 + "px";
         canvas.width = window.innerWidth;
         canvas.height = (window.innerWidth);
 
