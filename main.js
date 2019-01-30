@@ -117,7 +117,7 @@ function getMousePos(e) {
 // DRAW ___________________________
 
 // Color display
-
+colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
 myColor.addEventListener('input',function(e) {
     var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
@@ -235,8 +235,9 @@ function init() {
 
 
         container.style.height = window.innerWidth + 20 + "px";
-        canvas.width = window.innerWidth;
-        canvas.height = (window.innerWidth);
+        canvas.width = (window.innerWidth -20);
+        console.log(canvas.width);
+        canvas.height = (window.innerWidth -20);
 
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
@@ -244,8 +245,8 @@ function init() {
     }
     if (face.getContext){
         faceCtx = face.getContext('2d');
-        face.width = window.innerWidth;
-        face.height = (window.innerWidth);
+        face.width = (window.innerWidth - 20);
+        face.height = (window.innerWidth - 20);
         // window.addEventListener('resize', resizeCanvas, false);
         // window.addEventListener('orientationchange', resizeCanvas, false);
         // resizeCanvas();
@@ -266,15 +267,16 @@ function init() {
     if (faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/2, window.innerWidth/2, window.innerWidth/2.25, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/2.13, window.innerWidth/2.13, window.innerWidth/2.5, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.stroke();
+        //eyes
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/1.5, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/3, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
 
