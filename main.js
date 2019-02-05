@@ -8,8 +8,7 @@ var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
 var container = document.getElementById('container');
 var mySaturation = document.getElementById('mySaturation');
-// var points = [];
-// var pointsData;
+var points = [];
 
 // TOUCH ___________________________
 
@@ -138,32 +137,12 @@ mySaturation.addEventListener('input', function(g){
 
 
 
-// var cStep = -1;
-var points = [];
-// function cPush() {
-//     cStep++;
-//     if (cStep < points.length) { points.length = cStep; }
-//     points.push(document.getElementById('sketchpad').toDataURL());
-//     console.log(points);
-// }
 
 function cUndo(canvas,ctx) {
-    // if (points.length > 0) {
-    //     var undoPoints = points.pop();
-    //     console.log(undoPoints);
-    //     // ctx.clearRect(undoPoints.x, undoPoints.y, canvas.width, canvas.height);
-    // }
     canvas = document.getElementById('sketchpad');
 
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-        // cStep--;
-        // var canvasPic = new Image();
-        // canvasPic.src = points[cStep];
-
-
-        //get image data
-        // var pointsData=ctx.createImageData(points);
 
         points.pop();
         console.log(points);
@@ -172,18 +151,11 @@ function cUndo(canvas,ctx) {
         //redraw canvas with old data
         for( var i = 0; points.length > i; i++){
             console.log(points[i]);
-            console.log(points[i].width);
-            ctx.putImageData(points[i], 50,50,-4,-1, canvas.width, canvas.height);
+            ctx.putImageData(points[i], 0,0,0,0, canvas.width, canvas.height);
         }
-        // points.pop();
-        
-
-        
     }
-
-
-    
 }
+
 function drawLine(ctx,x,y,size) {
     // lineColor = "hsl(200,100%,50%)";
     // cPush()
@@ -220,19 +192,11 @@ function drawLine(ctx,x,y,size) {
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
-    // pointsData=ctx.getImageData(ctx.x,ctx.y,ctx.lineWidth,ctx.lineWidth);
-    points.push(ctx.getImageData(x,y,ctx.lineWidth,ctx.lineWidth));
-    // console.log(pointsData);
-    console.log(points);
-    // points.push({
-    //     x: x,
-    //     y: y,
-    //     size: size,
-    //     color: lineColor,
-    //     mode: "draw"
-    // });
 
-    // console.log(points);
+    //get image data
+    points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
+
+    console.log(points);
 
 }
 
@@ -266,7 +230,7 @@ function init() {
         resizeCanvas(face,canvas);
         window.addEventListener('resize', resizeCanvas, false);
         window.addEventListener('orientationchange', resizeCanvas, false);
-        
+
     }
     if (face.getContext){
         faceCtx = face.getContext('2d');
@@ -274,7 +238,7 @@ function init() {
         resizeCanvas(face,canvas);
         window.addEventListener('resize', resizeCanvas, false);
         window.addEventListener('orientationchange', resizeCanvas, false);
-        
+
     }
 
     // Check that we have a valid context to draw on/with before adding event handlers
@@ -306,7 +270,7 @@ function init() {
         faceCtx.closePath();
         faceCtx.fill();
 
-        
+
     }
 
 }
