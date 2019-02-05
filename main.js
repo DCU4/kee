@@ -8,15 +8,8 @@ var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
 var container = document.getElementById('container');
 var mySaturation = document.getElementById('mySaturation');
-
-// var clearBtn = document.getElementById('clear-canvas');
-// console.log(clearBtn);
-
-// clearBtn.addEventListener('click', function(){
-//     this.classList.add('press-down');
-// });
-
-
+// var points = [];
+// var pointsData;
 
 // TOUCH ___________________________
 
@@ -141,15 +134,64 @@ mySaturation.addEventListener('input', function(g){
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
+
+
+
+
+// var cStep = -1;
+var points = [];
+// function cPush() {
+//     cStep++;
+//     if (cStep < points.length) { points.length = cStep; }
+//     points.push(document.getElementById('sketchpad').toDataURL());
+//     console.log(points);
+// }
+
+function cUndo(canvas,ctx) {
+    // if (points.length > 0) {
+    //     var undoPoints = points.pop();
+    //     console.log(undoPoints);
+    //     // ctx.clearRect(undoPoints.x, undoPoints.y, canvas.width, canvas.height);
+    // }
+    canvas = document.getElementById('sketchpad');
+
+    if (canvas.getContext){
+        ctx = canvas.getContext('2d');
+        // cStep--;
+        // var canvasPic = new Image();
+        // canvasPic.src = points[cStep];
+
+
+        //get image data
+        // var pointsData=ctx.createImageData(points);
+
+        points.pop();
+        console.log(points);
+        //clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //redraw canvas with old data
+        for( var i = 0; points.length > i; i++){
+            console.log(points[i]);
+            console.log(points[i].width);
+            ctx.putImageData(points[i], 50,50,-4,-1, canvas.width, canvas.height);
+        }
+        // points.pop();
+        
+
+        
+    }
+
+
+    
+}
 function drawLine(ctx,x,y,size) {
     // lineColor = "hsl(200,100%,50%)";
-
+    // cPush()
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     lineColor = "hsl("+h+","+s+"%,"+l+"%)";
     ctx.strokeStyle = lineColor;
     colorDisplay.style.background = lineColor;
-    console.log(lineColor);
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
@@ -159,66 +201,54 @@ function drawLine(ctx,x,y,size) {
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
 
-        // Draw a filled line
-        ctx.beginPath();
+    // Draw a filled line
+    ctx.beginPath();
 
-        // First, move to the old (previous) position
-        ctx.moveTo(lastX,lastY);
+    // First, move to the old (previous) position
+    ctx.moveTo(lastX,lastY);
 
-        // Now draw a line to the current touch/pointer position
-        ctx.lineTo(x,y);
+    // Now draw a line to the current touch/pointer position
+    ctx.lineTo(x,y);
 
-        // Set the line thickness and draw the line
-        ctx.lineWidth = size;
-        ctx.stroke();
+    // Set the line thickness and draw the line
+    ctx.lineWidth = size;
+    ctx.stroke();
 
-        ctx.closePath();
+    ctx.closePath();
 
 
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
+    // pointsData=ctx.getImageData(ctx.x,ctx.y,ctx.lineWidth,ctx.lineWidth);
+    points.push(ctx.getImageData(x,y,ctx.lineWidth,ctx.lineWidth));
+    // console.log(pointsData);
+    console.log(points);
+    // points.push({
+    //     x: x,
+    //     y: y,
+    //     size: size,
+    //     color: lineColor,
+    //     mode: "draw"
+    // });
+
+    // console.log(points);
+
 }
-
-// function face(){
-//     //face, obviously
-//     faceCtx.beginPath();
-//     faceCtx.arc(200, 200, 180, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.stroke();
-//     faceCtx.beginPath();
-//     faceCtx.arc(275, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-//     faceCtx.beginPath();
-//     faceCtx.arc(125, 150, 10, 0, Math.PI*2, true);
-//     faceCtx.closePath();
-//     faceCtx.fill();
-// }
-
-
 
 // Clear the canvas context using the canvas width and height
 function clearCanvas(canvas,ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function resizeCanvas() {
-    // face.width = window.innerWidth;
-    // face.height = (window.innerHeight);
-    // canvas.width = window.innerWidth;
-    // canvas.height = (window.innerHeight);
+function resizeCanvas(face,canvas){
+    face.width = (window.innerWidth - 20);
+    face.height = (window.innerWidth - 20);
 
-
-    // // Make it visually fill the positioned parent
-    // canvas.style.width ='100%';
-    // canvas.style.height='100%';
-    // ...then set the internal size to match
-    // canvas.width  = container.offsetWidth;
-    // canvas.height = container.offsetHeight;
-
-
-
+    container.style.height = window.innerWidth + 20 + "px";
+    canvas.width = (window.innerWidth -20);
+    console.log(canvas.width);
+    canvas.height = (window.innerWidth -20);
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
@@ -232,26 +262,22 @@ function init() {
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
-
-
-        container.style.height = window.innerWidth + 20 + "px";
-        canvas.width = (window.innerWidth -20);
-        console.log(canvas.width);
-        canvas.height = (window.innerWidth -20);
-
-        // window.addEventListener('resize', resizeCanvas, false);
-        // window.addEventListener('orientationchange', resizeCanvas, false);
-        // resizeCanvas();
+        // resize canvas on change of screen width
+        resizeCanvas(face,canvas);
+        window.addEventListener('resize', resizeCanvas, false);
+        window.addEventListener('orientationchange', resizeCanvas, false);
+        
     }
     if (face.getContext){
         faceCtx = face.getContext('2d');
-        face.width = (window.innerWidth - 20);
-        face.height = (window.innerWidth - 20);
-        // window.addEventListener('resize', resizeCanvas, false);
-        // window.addEventListener('orientationchange', resizeCanvas, false);
-        // resizeCanvas();
+        // resize face on change of screen width
+        resizeCanvas(face,canvas);
+        window.addEventListener('resize', resizeCanvas, false);
+        window.addEventListener('orientationchange', resizeCanvas, false);
+        
     }
-        // Check that we have a valid context to draw on/with before adding event handlers
+
+    // Check that we have a valid context to draw on/with before adding event handlers
     if (ctx) {
         canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
         canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
@@ -261,7 +287,7 @@ function init() {
         canvas.addEventListener('touchstart', sketchpad_touchStart, false);
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
-
+        // resizeCanvas(face,canvas);
 
     }
     if (faceCtx){
@@ -280,23 +306,7 @@ function init() {
         faceCtx.closePath();
         faceCtx.fill();
 
-        //scale on click
-        // scale.addEventListener('click', scaleDown);
-        // if(scaleDown){
-
-        // }
-
-    //     // Copy canvas as image data
-    // var imgData = faceCtx.getImageData(0,0, face.width, face.height);
-
-    // // Resize original face
-    // face.width = window.innerWidth;
-    // face.height = window.innerHeight;
-
-    // // Copy back to resized canvas
-    // faceCtx.putImageData(imgData, 0, 0);
-    // }
-
+        
     }
 
 }
