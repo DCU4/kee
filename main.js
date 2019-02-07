@@ -78,6 +78,8 @@ function sketchpad_mouseDown() {
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,mySize.value );
     
+    points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
+    console.log(points);
 }
 
 function sketchpad_mouseUp() {
@@ -87,7 +89,7 @@ function sketchpad_mouseUp() {
     lastX=-1;
     lastY=-1;
 
-
+    
 }
 
 function sketchpad_mouseMove(e) {
@@ -98,12 +100,7 @@ function sketchpad_mouseMove(e) {
     if (mouseDown==1) {
         console.log('1');
         drawLine(ctx,mouseX,mouseY,mySize.value);
-
-        //if mouse is down, getImageData as one array
-
-    } else {
-        //get separate arrays?
-    }
+    } 
 }
 // Get the current mouse position relative to the top-left of the canvas
 function getMousePos(e) {
