@@ -1,4 +1,4 @@
-var mouseX,mouseY,mouseDown=0;
+
 // var mySize = document.getElementById("mySize");
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
@@ -20,8 +20,9 @@ var points = [];
         getTouchPos();
         if(touchDown == 1){
             drawLine(ctx,touchX,touchY,mySize.value);
+            
         }
-
+        
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
     }
@@ -32,6 +33,10 @@ var points = [];
         // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
         lastX=-1;
         lastY=-1;
+
+        // get image data!
+        points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
+        console.log(points);
     }
 
     function sketchpad_touchMove(e) {
@@ -41,6 +46,7 @@ var points = [];
         // because you actually do need to track this...
         if(touchDown == 1){
             drawLine(ctx,touchX,touchY,mySize.value);
+            
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -67,9 +73,11 @@ var points = [];
 
 
 // MOUSE ___________________________
+var mouseX,mouseY,mouseDown=0;
 function sketchpad_mouseDown() {
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,mySize.value );
+    
 }
 
 function sketchpad_mouseUp() {
@@ -78,6 +86,8 @@ function sketchpad_mouseUp() {
     // Reset lastX and lastY to -1 to indicate that they are now invalid, since we have lifted the "pen"
     lastX=-1;
     lastY=-1;
+
+
 }
 
 function sketchpad_mouseMove(e) {
@@ -88,6 +98,11 @@ function sketchpad_mouseMove(e) {
     if (mouseDown==1) {
         console.log('1');
         drawLine(ctx,mouseX,mouseY,mySize.value);
+
+        //if mouse is down, getImageData as one array
+
+    } else {
+        //get separate arrays?
     }
 }
 // Get the current mouse position relative to the top-left of the canvas
@@ -194,9 +209,10 @@ function drawLine(ctx,x,y,size) {
     lastY=y;
 
     //get image data
-    points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
-
-    console.log(points);
+    
+    // points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
+    // console.log(points);
+    
 
 }
 
