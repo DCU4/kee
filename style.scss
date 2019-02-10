@@ -1,149 +1,162 @@
-*{
-	margin:0;
-	padding:0;
-	box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,body {
-	/*overflow: hidden;*/
-  background: #ddd;
-  font-family:  'Noto Sans KR', sans-serif;
+html,
+body {
+    /*overflow: hidden;*/
+    background: #ddd;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .kee {
     -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      height:600px;
-      position: relative;
-
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    height: 100%;
+    nav {
       display: flex;
-      flex-direction: column;
-      align-content: space-between;
       justify-content: space-between;
-      height: 100%;
-
-
-  .container {
-      position: relative;
-      width: 100%;
-      margin: 0 auto;
-      // height: 420px;
-      canvas {
-          position: absolute;
-      }
-      #sketchpad {
-        top: 3%;
-        left:3%;
-        z-index: 99999;
-    }
-  
-    #face {
-        top: 3%;
-        left:3%;
-        z-index: 99;
-        background: #fff;
-        box-shadow: 0px 0px .1px .1px #444;
-    }
-  }
-  
-  .inputs {
-      display: flex;
-      flex-direction: column;
-      // width: 80%;
-      // margin: 0px auto;
-      padding: 20px;
       margin: 0px 3%;
-      background: white;
-      box-shadow: 0px 0px .1px .1px #444;
-      .input-container {
+      .menu {
+        width: 150px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 10px;
-        input {
-          margin: 10px 0;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-evenly;
+        .menu-line {
+          width: 40px;
+          height: 2px;
+          background-color:#000;
+          color:#000;
         }
-    
+      }
+      .save {
+        width: 100px;
+        border: 1px solid black;
+        padding: 7px;
+      }
     }
-  }
+    .container {
+        position: relative;
+        width: 100%;
+        margin: 0 auto; // height: 420px;
+        canvas {
+            position: absolute;
+        }
+        #sketchpad {
+            top: 3%;
+            left: 3%;
+            z-index: 99999;
+        }
+        #face {
+            top: 3%;
+            left: 3%;
+            z-index: 99;
+            background: #fff;
+            // box-shadow: 0px 0px .1px .1px #444;
+        }
+    }
+    .inputs {
+        display: flex;
+        flex-direction: column; // width: 80%;
+        // margin: 0px auto;
+        padding: 0 20px;
+        margin: 0px 3%;
+        #displayBox {
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+            #colorDisplay {
+                width: 40px;
+                height: 40px;
+                border: 1px solid black;
+                border-radius: 50%
+            }
+            .divider {
+                width: 1px;
+                height: 40px;
+                background-color:#000;
+                margin: 0 30px;
+            }
+            .undo {
+                width: 30px;
+                height: 50px;
+                background-image: url('../imgs/Undo-black_x1.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                border:none;
+                position: relative;
 
-  /*slider*/
-
-  input[type=range] {
-    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-    width: 75%; /* Specific width is required for Firefox. */
-    background: transparent; /* Otherwise white in Chrome */
-  }
-
-  // input[type=range]:focus {
-  //   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-  // }
-
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #888;
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    background: #888;
-    cursor: pointer;
-    margin-top: -8px;
-
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    width: 80%;
-    height: 10px;
-    cursor: pointer;
-    background: #ccc;
-    // border-radius: 2px 0px 0px 200px; 
-    border: 1px solid #999;
-
-
-    // border-color: transparent black;
-    // border-style: hidden;
-    // border-width: 2px 200px 2px 0px;
-    // height: 0px;
-    // width: 0px;
-  }
-  input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #000;
-  }
-
-
-  .clear-canvas {
-    border:1px solid black;
-    padding:10px;
-    margin-top: 10px;
-    box-shadow: 1px 1px 1px black;
-    outline:none;
-  }
-
-  .press-down {
-    box-shadow: 0 0 0 transparent;
-
-  }
-
-  #displayBox {
-    padding-bottom:30px; 
-  }
-  #colorDisplay {
-    width: 40px;
-    height:40px;
-    margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 50%
-  }
-
-
-  @media (max-width: 720px ){
-    /*body {
+            }
+        }
+        .clear-canvas {
+            border: 1px solid black;
+            padding: 7px;
+            margin-top: 10px;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            input {
+                margin: 10px 0;
+            }
+        }
+    }
+    /*slider*/
+    input[type=range] {
+        -webkit-appearance: none;
+        /* Hides the slider so that custom slider can be made */
+        width: 75%;
+        /* Specific width is required for Firefox. */
+        background: transparent;
+        /* Otherwise white in Chrome */
+    } // input[type=range]:focus {
+    //   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+    // }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        border: 1px solid #000;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: #fff;
+        cursor: pointer;
+        margin-top: -10px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 80%;
+        height: 1px;
+        cursor: pointer;
+        background: #ccc; // border-radius: 2px 0px 0px 200px; 
+        border: 1px solid #999; // border-color: transparent black;
+        // border-style: hidden;
+        // border-width: 2px 200px 2px 0px;
+        // height: 0px;
+        // width: 0px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #000;
+    }
+    @media (max-width: 720px) {
+        /*body {
       width:100%;
     }
 
@@ -153,6 +166,5 @@ html,body {
     #face {
       width:100%;
     }*/
-  }
-
+    }
 }

@@ -3,7 +3,8 @@
   padding: 0;
   box-sizing: border-box; }
 
-html, body {
+html,
+body {
   /*overflow: hidden;*/
   background: #ddd;
   font-family: 'Noto Sans KR', sans-serif; }
@@ -22,6 +23,25 @@ html, body {
   justify-content: space-between;
   height: 100%;
   /*slider*/ }
+  .kee nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 3%; }
+    .kee nav .menu {
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: space-evenly; }
+      .kee nav .menu .menu-line {
+        width: 40px;
+        height: 2px;
+        background-color: #000;
+        color: #000; }
+    .kee nav .save {
+      width: 100px;
+      border: 1px solid black;
+      padding: 7px; }
   .kee .container {
     position: relative;
     width: 100%;
@@ -36,15 +56,39 @@ html, body {
       top: 3%;
       left: 3%;
       z-index: 99;
-      background: #fff;
-      box-shadow: 0px 0px .1px .1px #444; }
+      background: #fff; }
   .kee .inputs {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    margin: 0px 3%;
-    background: white;
-    box-shadow: 0px 0px .1px .1px #444; }
+    padding: 0 20px;
+    margin: 0px 3%; }
+    .kee .inputs #displayBox {
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .kee .inputs #displayBox #colorDisplay {
+        width: 40px;
+        height: 40px;
+        border: 1px solid black;
+        border-radius: 50%; }
+      .kee .inputs #displayBox .divider {
+        width: 1px;
+        height: 40px;
+        background-color: #000;
+        margin: 0 30px; }
+      .kee .inputs #displayBox .undo {
+        width: 30px;
+        height: 50px;
+        background-image: url("../imgs/Undo-black_x1.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        position: relative; }
+    .kee .inputs .clear-canvas {
+      border: 1px solid black;
+      padding: 7px;
+      margin-top: 10px; }
     .kee .inputs .input-container {
       display: flex;
       align-items: center;
@@ -63,37 +107,21 @@ html, body {
     -webkit-appearance: none; }
   .kee input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    border: 1px solid #888;
-    height: 24px;
-    width: 24px;
+    border: 1px solid #000;
+    height: 20px;
+    width: 20px;
     border-radius: 50%;
-    background: #888;
+    background: #fff;
     cursor: pointer;
-    margin-top: -8px; }
+    margin-top: -10px; }
   .kee input[type=range]::-webkit-slider-runnable-track {
     width: 80%;
-    height: 10px;
+    height: 1px;
     cursor: pointer;
     background: #ccc;
     border: 1px solid #999; }
   .kee input[type=range]:focus::-webkit-slider-runnable-track {
     background: #000; }
-  .kee .clear-canvas {
-    border: 1px solid black;
-    padding: 10px;
-    margin-top: 10px;
-    box-shadow: 1px 1px 1px black;
-    outline: none; }
-  .kee .press-down {
-    box-shadow: 0 0 0 transparent; }
-  .kee #displayBox {
-    padding-bottom: 30px; }
-  .kee #colorDisplay {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 50%; }
   @media (max-width: 720px) {
     .kee {
       /*body {
