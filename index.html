@@ -13,6 +13,13 @@
 
 
         <div class="kee">
+            <nav>
+                <div class="menu">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </div>
+                <button id="saveBtn" class="save">Save Drawing</button>
+            </nav>
 
             <div id="container" class="container">
                 <canvas id="sketchpad"></canvas>
@@ -21,32 +28,33 @@
 
             <div class="inputs">
                 <div id="displayBox">
-                        <div id="colorDisplay"></div>
+                    <div id="colorDisplay"></div>
+                    <span class="divider"></span>
+                    <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
-                    <div class="input-container">
-                        <span>Size</span>
-                        <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
-                    </div>
-                    <div class="input-container">
-                        <p>Color</p>
-                        <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
-                    </div>
-                    <div class="input-container">
-                        <p>Sat.</p>
-                        <input type="range" min="0" max="100" value="50" class="slider" id="mySaturation">
-                    </div>
-                    <div class="input-container">
-                        <p>Shade</p>
-                        <input type="range" min="0" max="100" value="50" class="slider" id="myLight">
-                    </div>
-                    <button id="undo" class="clear-canvas" type="submit" value="Undo" onclick="cUndo();">
-                        Undo
-
-                    </button>
-                    <button id="clear-canvas" class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
-                        Clear Canvas
-
-                    </button>
+                
+                
+                <div class="input-container">
+                    <p>Color</p>
+                    <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
+                </div>
+                <div class="input-container">
+                    <p>Sat.</p>
+                    <input type="range" min="0" max="100" value="50" class="slider" id="mySaturation">
+                </div>
+                <div class="input-container">
+                    <p>Shade</p>
+                    <input type="range" min="0" max="100" value="50" class="slider" id="myLight">
+                </div>
+                <div class="input-container">
+                    <span>Size</span>
+                    <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
+                </div>
+                
+                <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+                    Clear Canvas
+                </button>
+                
 
                     <!-- <button class="scale">Scale Down</button> -->
             </div>
