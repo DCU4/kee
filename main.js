@@ -222,7 +222,7 @@ function resizeCanvas(face,canvas){
     face.width = (window.innerWidth - 20);
     face.height = (window.innerWidth - 20);
 
-    container.style.height = window.innerWidth + 20 + "px";
+    container.style.height = window.innerWidth + "px";
     canvas.width = (window.innerWidth -20);
     console.log(canvas.width);
     canvas.height = (window.innerWidth -20);
@@ -270,7 +270,8 @@ function init() {
     if (faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/2.13, window.innerWidth/2.13, window.innerWidth/2.5, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2, window.innerWidth/2.5, 0, Math.PI*2, true);
+        console.log(window.innerWidth);
         faceCtx.closePath();
         faceCtx.stroke();
         //eyes
