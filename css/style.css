@@ -26,7 +26,7 @@ body {
   .kee nav {
     display: flex;
     justify-content: space-between;
-    margin: 0px 3%; }
+    margin: 10px 3% 0; }
     .kee nav .menu {
       width: 150px;
       display: flex;

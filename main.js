@@ -220,12 +220,12 @@ function clearCanvas(canvas,ctx) {
 
 function resizeCanvas(face,canvas){
     face.width = (window.innerWidth - 20);
-    face.height = (window.innerWidth - 20);
+    face.height = (window.innerWidth - 40);
 
     container.style.height = window.innerWidth + "px";
     canvas.width = (window.innerWidth -20);
     console.log(canvas.width);
-    canvas.height = (window.innerWidth -20);
+    canvas.height = (window.innerWidth -40);
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
@@ -270,17 +270,17 @@ function init() {
     if (faceCtx){
         //face, obviously
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2, window.innerWidth/2.5, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
         console.log(window.innerWidth);
         faceCtx.closePath();
         faceCtx.stroke();
         //eyes
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.5, 10, 0, Math.PI*2, true);
+        faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
         faceCtx.closePath();
         faceCtx.fill();
 
