@@ -121,23 +121,24 @@ function getMousePos(e) {
 // DRAW ___________________________
 
 // Color display
-colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-myColor.addEventListener('input',function(e) {
-    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-    colorDisplay.style.background = displayColor;
+if(colorDisplay){
+    colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+    myColor.addEventListener('input',function(e) {
+        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+        colorDisplay.style.background = displayColor;
 
-});
+    });
 
-myLight.addEventListener('input', function(f){
-    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-    colorDisplay.style.background = displayColor;
-});
+    myLight.addEventListener('input', function(f){
+        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+        colorDisplay.style.background = displayColor;
+    });
 
-mySaturation.addEventListener('input', function(g){
-    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-    colorDisplay.style.background = displayColor;
-});
-
+    mySaturation.addEventListener('input', function(g){
+        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+        colorDisplay.style.background = displayColor;
+    });
+}
 // mySize.addEventListener('input', function(h){
 //     colorDisplay.style.height = (mySize.value *2)+ "px";
 //     colorDisplay.style.width = (mySize.value *2)+ "px";
@@ -226,46 +227,27 @@ function resizeCanvas(face,canvas){
 
 //save drawing
 
-function saveDrawing(canvasScaled,ctxScaled,faceScaled,faceCtxScaled,canvas,ctx,face,faceCtx) {
-    
-
-    
-
-    if (canvas.getContext && face.getContext){
-        ctx = canvas.getContext('2d');
-        faceCtx = face.getContext('2d');
-
+function saveDrawing(canvas,ctx,face,faceCtx) {
         // get image data of face and canvas into array
         saved.push(ctx.getImageData(0,0,canvas.width, canvas.height));
-        saved.push(faceCtx.getImageData(0,0,canvas.width, canvas.height));
+        // saved.push(faceCtx.getImageData(0,0,face.width, face.height));
         // ctx.getImageData(0,0,canvas.width, canvas.height);
         // faceCtx.getImageData(0,0,face.width, face.height);
-        console.log(ctx);
+        console.log(saved);
 
-        //Scale image
-        ctx.scale(.5,.5);
-        faceCtx.scale(.5,.5);
-        console.log(ctx);
+}
 
-        
-        
-        // console.log(saved);
+function savedInit() {
 
-        // //scale down
-        
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // //put imagedata
-        // for( var i = 0; saved.length > i; i++){
-        //     console.log(saved[i]);
-        //     ctx.putImageData(saved[i], 0,0,0,0, canvas.width, canvas.height);
-        // }
-    }
-
-
-if (canvasScaled.getContext && faceScaled.getContext){
-    ctxScaled = canvasScaled.getContext('2d');
-    faceCtxScaled = faceScaled.getContext('2d');
+    //for scaled versions
+    canvasScaled = document.getElementById('sketchpadScaled');
+    faceScaled = document.getElementById('faceScaled');
+    console.log('savedInit');
+    console.log(saved);
+    
+    if (canvasScaled.getContext && faceScaled.getContext){
+        ctxScaled = canvasScaled.getContext('2d');
+        faceCtxScaled = faceScaled.getContext('2d');
 
         var imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
         var faceData = face.getImageData(0,0,canvas.width, canvas.height);
@@ -274,16 +256,29 @@ if (canvasScaled.getContext && faceScaled.getContext){
         faceCtxScaled.width = faceData.width;
         faceCtxScaled.height = faceData.height;
 
-        ctxScaled.getContext("2d").putImageData(imageData, 0, 0);
 
+        for( var i = 0; saved.length > i; i++){
+            console.log(saved[i]);
+            ctxScaled.putImageData(saved[i], 0,0,0,0, canvas.width, canvas.height);
+        }
+
+
+
+
+        //Scale image
+        ctx.scale(.5,.5);
+        faceCtx.scale(.5,.5);
+        console.log(ctx);
+
+
+
+        // from stackoverflow lol
         context.scale(1.5, 1.5);
         context.drawImage(newCanvas, 0, 0);
     }
 }
 
-save.addEventListener('click', function(){
-    saveDrawing(canvas,ctx);
-});
+
 
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
@@ -292,9 +287,7 @@ function init() {
     canvas = document.getElementById('sketchpad');
     face = document.getElementById('face');
 
-    //for scaled versions
-    canvasScaled = document.getElementById('sketchpadScaled');
-    faceScaled = document.getElementById('faceScaled');
+
 
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
@@ -314,12 +307,12 @@ function init() {
 
     }
 
-    if(canvasScaled.getContext){
-        ctxScaled = canvasScaled.getContext('2d');
-    }
-    if(faceScaled.getContext){
-        faceCtxScaled = faceScaled.getContext('2d');
-    }
+    // if(canvasScaled.getContext){
+    //     ctxScaled = canvasScaled.getContext('2d');
+    // }
+    // if(faceScaled.getContext){
+    //     faceCtxScaled = faceScaled.getContext('2d');
+    // }
 
     // Check that we have a valid context to draw on/with before adding event handlers
     if (ctx) {
@@ -353,5 +346,9 @@ function init() {
 
 
     }
+
+    save.addEventListener('click', function(){
+        saveDrawing(canvas,ctx);
+    });
 
 }
