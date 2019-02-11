@@ -8,7 +8,9 @@ var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
 var container = document.getElementById('container');
 var mySaturation = document.getElementById('mySaturation');
+var save = document.getElementById('saveBtn');
 var points = [];
+var saved = [];
 
 // TOUCH ___________________________
 
@@ -77,9 +79,7 @@ var mouseX,mouseY,mouseDown=0;
 function sketchpad_mouseDown() {
     mouseDown=1;
     drawLine(ctx,mouseX,mouseY,mySize.value );
-    
     points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
-    console.log(points);
 }
 
 function sketchpad_mouseUp() {
@@ -147,9 +147,6 @@ mySaturation.addEventListener('input', function(g){
 // Parameters are: A canvas context, the x position, the y position
 
 
-
-
-
 function cUndo(canvas,ctx) {
     canvas = document.getElementById('sketchpad');
 
@@ -197,9 +194,8 @@ function drawLine(ctx,x,y,size) {
     // Set the line thickness and draw the line
     ctx.lineWidth = size;
     ctx.stroke();
-
+    
     ctx.closePath();
-
 
     // Update the last position to reference the current position
     lastX=x;
@@ -228,13 +224,77 @@ function resizeCanvas(face,canvas){
     canvas.height = (window.innerWidth -40);
 }
 
+//save drawing
+
+function saveDrawing(canvasScaled,ctxScaled,faceScaled,faceCtxScaled,canvas,ctx,face,faceCtx) {
+    
+
+    
+
+    if (canvas.getContext && face.getContext){
+        ctx = canvas.getContext('2d');
+        faceCtx = face.getContext('2d');
+
+        // get image data of face and canvas into array
+        saved.push(ctx.getImageData(0,0,canvas.width, canvas.height));
+        saved.push(faceCtx.getImageData(0,0,canvas.width, canvas.height));
+        // ctx.getImageData(0,0,canvas.width, canvas.height);
+        // faceCtx.getImageData(0,0,face.width, face.height);
+        console.log(ctx);
+
+        //Scale image
+        ctx.scale(.5,.5);
+        faceCtx.scale(.5,.5);
+        console.log(ctx);
+
+        
+        
+        // console.log(saved);
+
+        // //scale down
+        
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // //put imagedata
+        // for( var i = 0; saved.length > i; i++){
+        //     console.log(saved[i]);
+        //     ctx.putImageData(saved[i], 0,0,0,0, canvas.width, canvas.height);
+        // }
+    }
+
+
+if (canvasScaled.getContext && faceScaled.getContext){
+    ctxScaled = canvasScaled.getContext('2d');
+    faceCtxScaled = faceScaled.getContext('2d');
+
+        var imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
+        var faceData = face.getImageData(0,0,canvas.width, canvas.height);
+        ctxScaled.width = imageData.width;
+        ctxScaled.height = imageData.height;
+        faceCtxScaled.width = faceData.width;
+        faceCtxScaled.height = faceData.height;
+
+        ctxScaled.getContext("2d").putImageData(imageData, 0, 0);
+
+        context.scale(1.5, 1.5);
+        context.drawImage(newCanvas, 0, 0);
+    }
+}
+
+save.addEventListener('click', function(){
+    saveDrawing(canvas,ctx);
+});
+
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
 
-        // Get the specific canvas element from the HTML document
+    // Get the specific canvas element from the HTML document
     canvas = document.getElementById('sketchpad');
     face = document.getElementById('face');
 
+    //for scaled versions
+    canvasScaled = document.getElementById('sketchpadScaled');
+    faceScaled = document.getElementById('faceScaled');
 
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas
     if (canvas.getContext){
@@ -252,6 +312,13 @@ function init() {
         window.addEventListener('resize', resizeCanvas, false);
         window.addEventListener('orientationchange', resizeCanvas, false);
 
+    }
+
+    if(canvasScaled.getContext){
+        ctxScaled = canvasScaled.getContext('2d');
+    }
+    if(faceScaled.getContext){
+        faceCtxScaled = faceScaled.getContext('2d');
     }
 
     // Check that we have a valid context to draw on/with before adding event handlers
