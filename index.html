@@ -14,9 +14,9 @@
 
         <div class="kee">
             <nav>
-                <div class="menu">
-                    <a href="saved.html">saved<span class="menu-line"></span></a>
-                    <span class="menu-line"></span>
+                <div id="menu" class="menu">
+                    <span id="menu-line-1" class="menu-line"></span>
+                    <span id="menu-line-2" class="menu-line"></span>
                 </div>
                 <button id="saveBtn" class="save">Save Drawing</button>
             </nav>
@@ -32,8 +32,8 @@
                     <span class="divider"></span>
                     <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
-                
-                
+
+
                 <div class="input-container">
                     <p>Color</p>
                     <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
@@ -50,11 +50,11 @@
                     <span>Size</span>
                     <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
                 </div>
-                
+
                 <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
                     Clear Canvas
                 </button>
-                
+
 
                     <!-- <button class="scale">Scale Down</button> -->
             </div>

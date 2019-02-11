@@ -1,4 +1,3 @@
-
 // var mySize = document.getElementById("mySize");
 var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
@@ -11,6 +10,16 @@ var mySaturation = document.getElementById('mySaturation');
 var save = document.getElementById('saveBtn');
 var points = [];
 var saved = [];
+var menu = document.getElementById('menu');
+var menuLine1 = document.getElementById('menu-line-1');
+var menuLine2 = document.getElementById('menu-line-2');
+
+menu.addEventListener('click', function(){
+    menuLine1.classList.add('line-1-x');
+    menuLine2.classList.add('line-2-x');
+});
+
+
 
 // TOUCH ___________________________
 
@@ -22,9 +31,9 @@ var saved = [];
         getTouchPos();
         if(touchDown == 1){
             drawLine(ctx,touchX,touchY,mySize.value);
-            
+
         }
-        
+
         // Prevents an additional mousedown event being triggered
         event.preventDefault();
     }
@@ -48,7 +57,7 @@ var saved = [];
         // because you actually do need to track this...
         if(touchDown == 1){
             drawLine(ctx,touchX,touchY,mySize.value);
-            
+
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
         event.preventDefault();
@@ -89,7 +98,7 @@ function sketchpad_mouseUp() {
     lastX=-1;
     lastY=-1;
 
-    
+
 }
 
 function sketchpad_mouseMove(e) {
@@ -100,7 +109,7 @@ function sketchpad_mouseMove(e) {
     if (mouseDown==1) {
         console.log('1');
         drawLine(ctx,mouseX,mouseY,mySize.value);
-    } 
+    }
 }
 // Get the current mouse position relative to the top-left of the canvas
 function getMousePos(e) {
@@ -195,7 +204,7 @@ function drawLine(ctx,x,y,size) {
     // Set the line thickness and draw the line
     ctx.lineWidth = size;
     ctx.stroke();
-    
+
     ctx.closePath();
 
     // Update the last position to reference the current position
@@ -203,10 +212,10 @@ function drawLine(ctx,x,y,size) {
     lastY=y;
 
     //get image data
-    
+
     // points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
     // console.log(points);
-    
+
 
 }
 
@@ -244,7 +253,7 @@ function savedInit() {
     faceScaled = document.getElementById('faceScaled');
     console.log('savedInit');
     console.log(saved);
-    
+
     if (canvasScaled.getContext && faceScaled.getContext){
         ctxScaled = canvasScaled.getContext('2d');
         faceCtxScaled = faceScaled.getContext('2d');

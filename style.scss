@@ -35,11 +35,21 @@ body {
         align-content: center;
         justify-content: space-evenly;
         .menu-line {
-          width: 40px;
-          height: 2px;
-          background-color:#000;
-          color:#000;
+            width: 40px;
+            height: 2px;
+            background-color:#000;
+            color:#000;
+            transform: none;
+            transition: transform 1s;
+            &.line-1-x {
+
+                transform: rotate(45deg);
+            }
+            &.line-2-x {
+                transform: rotate(-45deg);
+            }
         }
+
       }
       .save {
         width: 100px;
@@ -145,7 +155,7 @@ body {
         width: 80%;
         height: 1px;
         cursor: pointer;
-        background: #ccc; // border-radius: 2px 0px 0px 200px; 
+        background: #ccc; // border-radius: 2px 0px 0px 200px;
         border: 1px solid #999; // border-color: transparent black;
         // border-style: hidden;
         // border-width: 2px 200px 2px 0px;
