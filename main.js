@@ -226,16 +226,6 @@ function clearCanvas(canvas,ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function resizeCanvas(face,canvas){
-    face.width = (window.innerWidth - 20);
-    face.height = (window.innerWidth - 40);
-
-    container.style.height = window.innerWidth + "px";
-    canvas.width = (window.innerWidth -20);
-    console.log(canvas.width);
-    canvas.height = (window.innerWidth -40);
-}
-
 //save drawing
 
 function saveDrawing(canvas,ctx,face,faceCtx) {
@@ -274,8 +264,6 @@ function savedInit() {
         }
 
 
-
-
         //Scale image
         ctx.scale(.5,.5);
         faceCtx.scale(.5,.5);
@@ -290,6 +278,15 @@ function savedInit() {
 }
 
 
+function resizeCanvas(face,canvas){
+    face.width = (window.innerWidth - 20);
+    face.height = (window.innerWidth - 40);
+
+    container.style.height = window.innerWidth + "px";
+    canvas.width = (window.innerWidth -20);
+    console.log(canvas.width);
+    canvas.height = (window.innerWidth -40);
+}
 
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
@@ -332,8 +329,8 @@ function init() {
         window.addEventListener('mouseup', sketchpad_mouseUp, false);
 
         // touch events
-        canvas.addEventListener('touchstart', sketchpad_touchStart, false);
-        canvas.addEventListener('touchmove', sketchpad_touchMove, false);
+        canvas.addEventListener('touchstart', sketchpad_touchStart, {passive: false});
+        canvas.addEventListener('touchmove', sketchpad_touchMove, {passive: false});
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
         // resizeCanvas(face,canvas);
 
