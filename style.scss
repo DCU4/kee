@@ -74,6 +74,14 @@ body {
         position: absolute;
         width: 0;
         opacity:0;
+        transition: all .5s;
+        .menu-items {
+            list-style-type: none;
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
         &.menu-list-open{
             animation: fade-in-right ease .5s forwards;
             z-index: 99999;
@@ -82,7 +90,7 @@ body {
             bottom:0;
             left:0;
             right:0;
-            background: rgba(255,255,255,.8);
+            background-color: rgba(255,255,255,.8);
         }
         &.menu-list-close {
             animation: fade-out-left ease .5s forwards;
@@ -92,7 +100,7 @@ body {
             bottom:0;
             left:0;
             right:0;
-            background: none;
+            background-color: rgba(255,255,255,0);
         }
     }
       .save {
