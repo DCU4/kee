@@ -10,13 +10,24 @@ var mySaturation = document.getElementById('mySaturation');
 var save = document.getElementById('saveBtn');
 var points = [];
 var saved = [];
-var menu = document.getElementById('menu');
+var menuBtn = document.getElementById('menu');
 var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
+var menu = document.getElementById('menu-list');
 
-menu.addEventListener('click', function(){
+menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
     menuLine2.classList.toggle('line-2-x');
+
+    // menu.classList.toggle('menu-list-open');
+    if(menu.classList.contains('menu-list-open')) {
+        menu.classList.remove('menu-list-open');
+        menu.classList.add('menu-list-close');
+
+    } else {
+        menu.classList.add('menu-list-open');
+        menu.classList.remove('menu-list-close');
+    }
 });
 
 

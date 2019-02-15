@@ -4,6 +4,26 @@
     box-sizing: border-box;
 }
 
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes fade-out-left {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+}
 html,
 body {
     /*overflow: hidden;*/
@@ -34,22 +54,47 @@ body {
         flex-direction: column;
         align-content: center;
         justify-content: space-evenly;
+        position: relative;
         .menu-line {
             width: 40px;
             height: 2px;
             background-color:#000;
             color:#000;
             transform: none;
-            transition: transform .5s;
+            transition: transform .3s;
             &.line-1-x {
-                transform: rotate(45deg) translate(6px,4px);
+                transform: rotate(45deg) translate(3px, 2px);
             }
             &.line-2-x {
-                transform: rotate(-45deg) translate(2px, -2px);
+                transform: rotate(-45deg) translate(4px, -6px);
             }
         }
-
       }
+      .menu-list {
+        position: absolute;
+        width: 0;
+        opacity:0;
+        &.menu-list-open{
+            animation: fade-in-right ease .5s forwards;
+            z-index: 99999;
+            width:100%;
+            top:50px;
+            bottom:0;
+            left:0;
+            right:0;
+            background: rgba(255,255,255,.8);
+        }
+        &.menu-list-close {
+            animation: fade-out-left ease .5s forwards;
+            z-index: 99999;
+            width:100%;
+            top:50px;
+            bottom:0;
+            left:0;
+            right:0;
+            background: none;
+        }
+    }
       .save {
         width: 100px;
         border: 1px solid black;
