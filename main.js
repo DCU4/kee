@@ -187,8 +187,6 @@ function cUndo(canvas,ctx) {
 }
 
 function drawLine(ctx,x,y,size) {
-    // lineColor = "hsl(200,100%,50%)";
-    // cPush()
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     lineColor = "hsl("+h+","+s+"%,"+l+"%)";
@@ -221,13 +219,6 @@ function drawLine(ctx,x,y,size) {
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
-
-    //get image data
-
-    // points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
-    // console.log(points);
-
-
 }
 
 // Clear the canvas context using the canvas width and height
