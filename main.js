@@ -15,8 +15,8 @@ var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 
 menu.addEventListener('click', function(){
-    menuLine1.classList.add('line-1-x');
-    menuLine2.classList.add('line-2-x');
+    menuLine1.classList.toggle('line-1-x');
+    menuLine2.classList.toggle('line-2-x');
 });
 
 

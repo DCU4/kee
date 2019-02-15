@@ -39,11 +39,11 @@ body {
         background-color: #000;
         color: #000;
         transform: none;
-        transition: transform 1s; }
+        transition: transform .5s; }
         .kee nav .menu .menu-line.line-1-x {
-          transform: rotate(45deg); }
+          transform: rotate(45deg) translate(6px, 4px); }
         .kee nav .menu .menu-line.line-2-x {
-          transform: rotate(-45deg); }
+          transform: rotate(-45deg) translate(2px, -2px); }
     .kee nav .save {
       width: 100px;
       border: 1px solid black;
