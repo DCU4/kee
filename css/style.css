@@ -48,8 +48,39 @@ body {
       display: flex;
       flex-direction: column;
       align-content: center;
-      justify-content: space-evenly;
-      position: relative; }
+      justify-content: space-evenly; }
+      .kee nav .menu .menu-list {
+        position: absolute;
+        width: 0;
+        opacity: 0;
+        padding: 50px 10px;
+        transition: all .5s; }
+        .kee nav .menu .menu-list .menu-items {
+          list-style-type: none;
+          text-align: center;
+          font-size: 20px;
+          padding-bottom: 10px; }
+          .kee nav .menu .menu-list .menu-items a {
+            color: #000;
+            text-decoration: none; }
+        .kee nav .menu .menu-list.menu-list-open {
+          animation: fade-in-right ease .5s forwards;
+          z-index: 99999;
+          width: 100%;
+          top: 0px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.8); }
+        .kee nav .menu .menu-list.menu-list-close {
+          animation: fade-out-left ease .5s forwards;
+          z-index: 99999;
+          width: 0%;
+          top: 0px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0); }
       .kee nav .menu .menu-line {
         width: 40px;
         height: 2px;
@@ -61,34 +92,6 @@ body {
           transform: rotate(45deg) translate(3px, 2px); }
         .kee nav .menu .menu-line.line-2-x {
           transform: rotate(-45deg) translate(4px, -6px); }
-    .kee nav .menu-list {
-      position: absolute;
-      width: 0;
-      opacity: 0;
-      transition: all .5s; }
-      .kee nav .menu-list .menu-items {
-        list-style-type: none; }
-        .kee nav .menu-list .menu-items a {
-          color: #000;
-          text-decoration: none; }
-      .kee nav .menu-list.menu-list-open {
-        animation: fade-in-right ease .5s forwards;
-        z-index: 99999;
-        width: 100%;
-        top: 50px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0.8); }
-      .kee nav .menu-list.menu-list-close {
-        animation: fade-out-left ease .5s forwards;
-        z-index: 99999;
-        width: 100%;
-        top: 50px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0); }
     .kee nav .save {
       width: 100px;
       border: 1px solid black;
