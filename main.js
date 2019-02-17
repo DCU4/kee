@@ -15,6 +15,8 @@ var menuBtn = document.getElementById('menu');
 var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
+var saveColorBtn = document.getElementById('saveColor');
+var savedColorDisplay = document.getElementById('savedColorDisplay');
 // var undoBtn = document.getElementById('undo');
 
 
@@ -198,6 +200,23 @@ function cUndo(canvas,ctx) {
     }
 }
 // undoBtn.addEventListener('touchstart', preventZoom); 
+
+
+
+function saveColor() {
+    savedColorDisplay.style.background = colorDisplay.style.background;
+}
+
+function useSavedColor(ctx){
+    // colorDisplay.style.background = savedColorDisplay.style.background;
+    ctx.strokeStyle = savedColorDisplay.style.background;
+    console.log(ctx.strokeStyle);
+    console.log(savedColorDisplay.style.background);
+
+}
+saveColorBtn.addEventListener('click',saveColor);
+savedColorDisplay.addEventListener('click',useSavedColor);
+
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
@@ -211,6 +230,8 @@ function drawLine(ctx,x,y,size) {
         lastX=x;
         lastY=y;
     }
+
+    // useSavedColor(ctx);
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
@@ -233,6 +254,8 @@ function drawLine(ctx,x,y,size) {
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
+
+    
 }
 
 // Clear the canvas context using the canvas width and height
@@ -316,7 +339,7 @@ function resizeCanvas(face,canvas){
     face.width = (window.innerWidth - 20);
     face.height = (window.innerWidth - 40);
 
-    container.style.height = window.innerWidth + "px";
+    container.style.height = window.innerWidth - 25 + "px";
     canvas.width = (window.innerWidth -20);
     console.log(canvas.width);
     canvas.height = (window.innerWidth -40);

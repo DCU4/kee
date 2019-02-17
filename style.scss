@@ -166,6 +166,11 @@ body {
             justify-content: center;
             align-items: center;
 
+            .save-color {
+                margin-right: 20px;
+                font-size: 40px;
+            }
+
             .color-display {
                 width: 40px;
                 height: 40px;
@@ -191,13 +196,6 @@ body {
 
             }
         }
-
-        .clear-canvas {
-            border: 1px solid black;
-            padding: 7px;
-            margin-top: 10px;
-        }
-
         .input-container {
             display: flex;
             align-items: center;
@@ -208,6 +206,33 @@ body {
                 margin: 10px 0;
             }
         }
+        .change-saved-colors-container {
+            display: flex;
+            align-content: center;
+            .change-colors-container {
+                width: 50%;
+                
+            }
+            .saved-colors-container {
+                width: 50%;
+                border: 1px solid black;
+                .saved-color-display{
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid black;
+                    border-radius: 50%
+                }
+            }
+
+        }
+
+        .clear-canvas {
+            border: 1px solid black;
+            padding: 7px;
+            margin-top: 10px;
+        }
+
+      
     }
 
     /*slider*/
