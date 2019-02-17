@@ -15,6 +15,7 @@ var menuBtn = document.getElementById('menu');
 var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
+var undoBtn = document.getElementById('undo');
 
 menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
@@ -166,7 +167,18 @@ if(colorDisplay){
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
-
+function preventZoom(e) {
+    var t2 = e.timeStamp;
+    var t1 = e.currentTarget.dataset.lastTouch || t2;
+    var dt = t2 - t1;
+    var fingers = e.touches.length;
+    e.currentTarget.dataset.lastTouch = t2;
+  
+    if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+  
+    e.preventDefault();
+    e.target.click();
+  }
 
 function cUndo(canvas,ctx) {
     canvas = document.getElementById('sketchpad');
@@ -185,6 +197,7 @@ function cUndo(canvas,ctx) {
         }
     }
 }
+undoBtn.addEventListener('touchstart', preventZoom); 
 
 function drawLine(ctx,x,y,size) {
     // Select a fill style
