@@ -165,8 +165,6 @@ if(colorDisplay){
 //     colorDisplay.style.width = (mySize.value *2)+ "px";
 // });
 
-// Draws a dot at a specific position on the supplied canvas name
-// Parameters are: A canvas context, the x position, the y position
 function preventZoom(e) {
     var t2 = e.timeStamp;
     var t1 = e.currentTarget.dataset.lastTouch || t2;
@@ -198,7 +196,8 @@ function cUndo(canvas,ctx) {
     }
 }
 undoBtn.addEventListener('touchstart', preventZoom); 
-
+// Draws a dot at a specific position on the supplied canvas name
+// Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
@@ -294,11 +293,9 @@ function savedInit() {
         var myFace = new Image();
         console.log(myFace);
         // ctxScaled.scale(.5,.5);
-
-        myImage.onload = function(){
-            ctxScaled.drawImage(myImage, 0, 0, canvasScaled.width, canvasScaled.height);
-            faceCtxScaled.drawImage(myFace, 0, 0, faceScaled.width, faceScaled.height);
-        };
+        ctxScaled.drawImage(myImage, 0, 0, canvasScaled.width, canvasScaled.height);
+        faceCtxScaled.drawImage(myFace, 0, 0, faceScaled.width, faceScaled.height);
+        
         // ctxScaled.drawImage(myImage, 0, 0);
         myImage.src = data;
         myFace.src = faceData;
