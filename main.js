@@ -15,7 +15,7 @@ var menuBtn = document.getElementById('menu');
 var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
-var undoBtn = document.getElementById('undo');
+// var undoBtn = document.getElementById('undo');
 
 menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
@@ -195,7 +195,7 @@ function cUndo(canvas,ctx) {
         }
     }
 }
-undoBtn.addEventListener('touchstart', preventZoom); 
+// undoBtn.addEventListener('touchstart', preventZoom); 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
 function drawLine(ctx,x,y,size) {
@@ -293,9 +293,10 @@ function savedInit() {
         var myFace = new Image();
         console.log(myFace);
         // ctxScaled.scale(.5,.5);
-        ctxScaled.drawImage(myImage, 0, 0, canvasScaled.width, canvasScaled.height);
-        faceCtxScaled.drawImage(myFace, 0, 0, faceScaled.width, faceScaled.height);
-        
+        myImage.onload = function(){
+            ctxScaled.drawImage(myImage, 0, 0, canvasScaled.width, canvasScaled.height);
+            faceCtxScaled.drawImage(myFace, 0, 0, faceScaled.width, faceScaled.height);
+        };
         // ctxScaled.drawImage(myImage, 0, 0);
         myImage.src = data;
         myFace.src = faceData;
