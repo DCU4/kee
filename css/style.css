@@ -122,7 +122,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center; }
-      .kee .inputs #displayBox #colorDisplay, .saved .inputs #displayBox #colorDisplay {
+      .kee .inputs #displayBox .color-display, .saved .inputs #displayBox .color-display {
         width: 40px;
         height: 40px;
         border: 1px solid black;

@@ -17,6 +17,8 @@ var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
 // var undoBtn = document.getElementById('undo');
 
+
+
 menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
     menuLine2.classList.toggle('line-2-x');
@@ -278,6 +280,11 @@ function savedInit() {
     var faceData = sessionStorage.getItem('faceSrc');
     console.log(faceData);
     // console.log(data);
+
+    var mySavedImg = document.getElementById('mySavedImg');
+    var mySavedFace = document.getElementById('mySavedFace');
+    mySavedImg.src = data;
+    mySavedFace.src = faceData;
     
 
     if (canvasScaled.getContext && faceScaled.getContext){
