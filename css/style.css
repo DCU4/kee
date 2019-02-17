@@ -25,7 +25,7 @@ body {
   background: #ddd;
   font-family: 'Noto Sans KR', sans-serif; }
 
-.kee {
+.kee, .saved {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -39,31 +39,31 @@ body {
   justify-content: space-between;
   height: 100%;
   /*slider*/ }
-  .kee nav {
+  .kee nav, .saved nav {
     display: flex;
     justify-content: space-between;
     margin: 10px 3% 0; }
-    .kee nav .menu {
+    .kee nav .menu, .saved nav .menu {
       width: 150px;
       display: flex;
       flex-direction: column;
       align-content: center;
       justify-content: space-evenly; }
-      .kee nav .menu .menu-list {
+      .kee nav .menu .menu-list, .saved nav .menu .menu-list {
         position: absolute;
         width: 0;
         opacity: 0;
         padding: 50px 10px;
         transition: all .5s; }
-        .kee nav .menu .menu-list .menu-items {
+        .kee nav .menu .menu-list .menu-items, .saved nav .menu .menu-list .menu-items {
           list-style-type: none;
           text-align: center;
           font-size: 20px;
           padding-bottom: 10px; }
-          .kee nav .menu .menu-list .menu-items a {
+          .kee nav .menu .menu-list .menu-items a, .saved nav .menu .menu-list .menu-items a {
             color: #000;
             text-decoration: none; }
-        .kee nav .menu .menu-list.menu-list-open {
+        .kee nav .menu .menu-list.menu-list-open, .saved nav .menu .menu-list.menu-list-open {
           animation: fade-in-right ease .5s forwards;
           z-index: 99999;
           width: 100%;
@@ -72,7 +72,7 @@ body {
           left: 0;
           right: 0;
           background-color: rgba(255, 255, 255, 0.8); }
-        .kee nav .menu .menu-list.menu-list-close {
+        .kee nav .menu .menu-list.menu-list-close, .saved nav .menu .menu-list.menu-list-close {
           animation: fade-out-left ease .5s forwards;
           z-index: 99999;
           width: 0%;
@@ -81,57 +81,58 @@ body {
           left: 0;
           right: 0;
           background-color: rgba(255, 255, 255, 0); }
-      .kee nav .menu .menu-line {
+      .kee nav .menu .menu-line, .saved nav .menu .menu-line {
         width: 40px;
         height: 2px;
+        margin: 5px 0;
         background-color: #000;
         color: #000;
         transform: none;
         transition: transform .3s; }
-        .kee nav .menu .menu-line.line-1-x {
+        .kee nav .menu .menu-line.line-1-x, .saved nav .menu .menu-line.line-1-x {
           transform: rotate(45deg) translate(3px, 2px); }
-        .kee nav .menu .menu-line.line-2-x {
+        .kee nav .menu .menu-line.line-2-x, .saved nav .menu .menu-line.line-2-x {
           transform: rotate(-45deg) translate(4px, -6px); }
-    .kee nav .save {
+    .kee nav .save, .saved nav .save {
       width: 100px;
       border: 1px solid black;
       padding: 7px; }
-  .kee .container {
+  .kee .container, .saved .container {
     position: relative;
     width: 100%;
     margin: 0 auto; }
-    .kee .container canvas {
+    .kee .container canvas, .saved .container canvas {
       position: absolute; }
-    .kee .container #sketchpad {
+    .kee .container #sketchpad, .saved .container #sketchpad {
       top: 3%;
       left: 3%;
       z-index: 999; }
-    .kee .container #face {
+    .kee .container #face, .saved .container #face {
       top: 3%;
       left: 3%;
       z-index: 99;
       background: #fff; }
-  .kee .inputs {
+  .kee .inputs, .saved .inputs {
     display: flex;
     flex-direction: column;
     padding: 0 20px;
     margin: 0px 3%; }
-    .kee .inputs #displayBox {
+    .kee .inputs #displayBox, .saved .inputs #displayBox {
       padding-bottom: 20px;
       display: flex;
       justify-content: center;
       align-items: center; }
-      .kee .inputs #displayBox #colorDisplay {
+      .kee .inputs #displayBox #colorDisplay, .saved .inputs #displayBox #colorDisplay {
         width: 40px;
         height: 40px;
         border: 1px solid black;
         border-radius: 50%; }
-      .kee .inputs #displayBox .divider {
+      .kee .inputs #displayBox .divider, .saved .inputs #displayBox .divider {
         width: 1px;
         height: 40px;
         background-color: #000;
         margin: 0 30px; }
-      .kee .inputs #displayBox .undo {
+      .kee .inputs #displayBox .undo, .saved .inputs #displayBox .undo {
         width: 31px;
         height: 50px;
         background-image: url("../imgs/Undo-black_x1.png");
@@ -139,27 +140,27 @@ body {
         background-position: center;
         border: none;
         position: relative; }
-    .kee .inputs .clear-canvas {
+    .kee .inputs .clear-canvas, .saved .inputs .clear-canvas {
       border: 1px solid black;
       padding: 7px;
       margin-top: 10px; }
-    .kee .inputs .input-container {
+    .kee .inputs .input-container, .saved .inputs .input-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 10px; }
-      .kee .inputs .input-container input {
+      .kee .inputs .input-container input, .saved .inputs .input-container input {
         margin: 10px 0; }
-  .kee input[type=range] {
+  .kee input[type=range], .saved input[type=range] {
     -webkit-appearance: none;
     /* Hides the slider so that custom slider can be made */
     width: 75%;
     /* Specific width is required for Firefox. */
     background: transparent;
     /* Otherwise white in Chrome */ }
-  .kee input[type=range]::-webkit-slider-thumb {
+  .kee input[type=range]::-webkit-slider-thumb, .saved input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none; }
-  .kee input[type=range]::-webkit-slider-thumb {
+  .kee input[type=range]::-webkit-slider-thumb, .saved input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: 1px solid #000;
     height: 20px;
@@ -168,16 +169,16 @@ body {
     background: #fff;
     cursor: pointer;
     margin-top: -10px; }
-  .kee input[type=range]::-webkit-slider-runnable-track {
+  .kee input[type=range]::-webkit-slider-runnable-track, .saved input[type=range]::-webkit-slider-runnable-track {
     width: 80%;
     height: 1px;
     cursor: pointer;
     background: #ccc;
     border: 1px solid #999; }
-  .kee input[type=range]:focus::-webkit-slider-runnable-track {
+  .kee input[type=range]:focus::-webkit-slider-runnable-track, .saved input[type=range]:focus::-webkit-slider-runnable-track {
     background: #000; }
   @media (max-width: 720px) {
-    .kee {
+    .kee, .saved {
       /*body {
       width:100%;
     }

@@ -35,7 +35,7 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.kee {
+.kee, .saved {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -106,6 +106,7 @@ body {
             .menu-line {
                 width: 40px;
                 height: 2px;
+                margin: 5px 0;
                 background-color: #000;
                 color: #000;
                 transform: none;
