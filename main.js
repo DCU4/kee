@@ -232,7 +232,7 @@ function saveDrawing(canvas,face) {
 
         // var cavnasData = canvas.toDataURL();
         saved.push(canvas.toDataURL());
-        savedFace.push(face.toDataURL());
+        savedFace.push(face.toDataURL('image/png',1));
 
         // console.log(saved);
         console.log(savedFace);
