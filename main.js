@@ -10,6 +10,7 @@ var mySaturation = document.getElementById('mySaturation');
 var save = document.getElementById('saveBtn');
 var points = [];
 var saved = [];
+var savedFace = [];
 var menuBtn = document.getElementById('menu');
 var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
@@ -118,7 +119,6 @@ function sketchpad_mouseMove(e) {
 
     // Draw a pixel if the mouse button is currently being pressed
     if (mouseDown==1) {
-        console.log('1');
         drawLine(ctx,mouseX,mouseY,mySize.value);
     }
 }
@@ -180,7 +180,7 @@ function cUndo(canvas,ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         //redraw canvas with old data
         for( var i = 0; points.length > i; i++){
-            console.log(points[i]);
+            // console.log(points[i]);
             ctx.putImageData(points[i], 0,0,0,0, canvas.width, canvas.height);
         }
     }
@@ -228,13 +228,31 @@ function clearCanvas(canvas,ctx) {
 
 //save drawing
 
-function saveDrawing(canvas,ctx,face,faceCtx) {
-        // get image data of face and canvas into array
-        saved.push(ctx.getImageData(0,0,canvas.width, canvas.height));
-        // saved.push(faceCtx.getImageData(0,0,face.width, face.height));
-        // ctx.getImageData(0,0,canvas.width, canvas.height);
-        // faceCtx.getImageData(0,0,face.width, face.height);
+function saveDrawing(canvas,face) {
+
+        // var cavnasData = canvas.toDataURL();
+        saved.push(canvas.toDataURL());
+        savedFace.push(face.toDataURL());
+
+        // console.log(saved);
+        console.log(savedFace);
+        //if saved is less than one, push, else, shift!!
+
+        if(saved.length > 1){
+            saved.shift();
+        } 
         console.log(saved);
+        // Save data to sessionStorage
+        sessionStorage.setItem('src', saved[0]);
+        sessionStorage.setItem('faceSrc',savedFace[0]);
+        console.log(sessionStorage);
+        // Get saved data from sessionStorage
+        
+        // Remove saved data from sessionStorage
+        // sessionStorage.removeItem('key');
+
+        // Remove all saved data from sessionStorage
+        // sessionStorage.clear();
 
 }
 
@@ -243,37 +261,35 @@ function savedInit() {
     //for scaled versions
     canvasScaled = document.getElementById('sketchpadScaled');
     faceScaled = document.getElementById('faceScaled');
-    console.log('savedInit');
-    console.log(saved);
+
+    var data = sessionStorage.getItem('src');
+    var faceData = sessionStorage.getItem('faceSrc');
+    console.log(faceData);
+    // console.log(data);
+    
 
     if (canvasScaled.getContext && faceScaled.getContext){
         ctxScaled = canvasScaled.getContext('2d');
         faceCtxScaled = faceScaled.getContext('2d');
+        canvasScaled.width = 100;
+        canvasScaled.height = 100;
+        faceScaled.width = 100;
+        faceScaled.height = 100;
+        container.style.height = 300 + 'px';
 
-        var imageData = ctx.getImageData(0,0,canvas.width, canvas.height);
-        var faceData = face.getImageData(0,0,canvas.width, canvas.height);
-        ctxScaled.width = imageData.width;
-        ctxScaled.height = imageData.height;
-        faceCtxScaled.width = faceData.width;
-        faceCtxScaled.height = faceData.height;
+        var myImage = new Image();
+        var myFace = new Image();
+        console.log(myFace);
+        // ctxScaled.scale(.5,.5);
 
+        myImage.onload = function(){
+            ctxScaled.drawImage(myImage, 0, 0, canvasScaled.width, canvasScaled.height);
+            faceCtxScaled.drawImage(myFace, 0, 0, faceScaled.width, faceScaled.height);
+        };
+        // ctxScaled.drawImage(myImage, 0, 0);
+        myImage.src = data;
+        myFace.src = faceData;
 
-        for( var i = 0; saved.length > i; i++){
-            console.log(saved[i]);
-            ctxScaled.putImageData(saved[i], 0,0,0,0, canvas.width, canvas.height);
-        }
-
-
-        //Scale image
-        ctx.scale(.5,.5);
-        faceCtx.scale(.5,.5);
-        console.log(ctx);
-
-
-
-        // from stackoverflow lol
-        context.scale(1.5, 1.5);
-        context.drawImage(newCanvas, 0, 0);
     }
 }
 
@@ -329,8 +345,8 @@ function init() {
         window.addEventListener('mouseup', sketchpad_mouseUp, false);
 
         // touch events
-        canvas.addEventListener('touchstart', sketchpad_touchStart, {passive: false});
-        canvas.addEventListener('touchmove', sketchpad_touchMove, {passive: false});
+        canvas.addEventListener('touchstart', sketchpad_touchStart, false);
+        canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
         // resizeCanvas(face,canvas);
 
@@ -356,7 +372,7 @@ function init() {
     }
 
     save.addEventListener('click', function(){
-        saveDrawing(canvas,ctx);
+        saveDrawing(canvas,face);
     });
 
 }
