@@ -210,12 +210,16 @@ body {
             display: flex;
             align-content: center;
             .change-colors-container {
-                width: 50%;
+                width: 75%;
                 
             }
             .saved-colors-container {
-                width: 50%;
-                border: 1px solid black;
+                width: 35%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-evenly;
+                font-size: 12px;
                 .saved-color-display{
                     width: 40px;
                     height: 40px;
