@@ -144,24 +144,27 @@ function getMousePos(e) {
 
 
 // DRAW ___________________________
+var savedColor = 0;
 
-// Color display
 if(colorDisplay){
     colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     myColor.addEventListener('input',function(e) {
         var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
         colorDisplay.style.background = displayColor;
+        savedColor = 0;
 
     });
 
     myLight.addEventListener('input', function(f){
         var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
         colorDisplay.style.background = displayColor;
+        savedColor = 0;
     });
 
     mySaturation.addEventListener('input', function(g){
         var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
         colorDisplay.style.background = displayColor;
+        savedColor = 0;
     });
 }
 // mySize.addEventListener('input', function(h){
@@ -175,12 +178,12 @@ function preventZoom(e) {
     var dt = t2 - t1;
     var fingers = e.touches.length;
     e.currentTarget.dataset.lastTouch = t2;
-  
+
     if (!dt || dt > 500 || fingers > 1) return; // not double-tap
-  
+
     e.preventDefault();
     e.target.click();
-  }
+}
 
 function cUndo(canvas,ctx) {
     canvas = document.getElementById('sketchpad');
@@ -206,16 +209,13 @@ function cUndo(canvas,ctx) {
 function saveColor() {
     savedColorDisplay.style.background = colorDisplay.style.background;
 }
+saveColorBtn.addEventListener('click', saveColor);
 
-function useSavedColor(ctx){
-    // colorDisplay.style.background = savedColorDisplay.style.background;
-    ctx.strokeStyle = savedColorDisplay.style.background;
-    console.log(ctx.strokeStyle);
-    console.log(savedColorDisplay.style.background);
-
+function useSavedColor(){
+    savedColor = 1;
+    colorDisplay.style.background = savedColorDisplay.style.background;
 }
-saveColorBtn.addEventListener('click',saveColor);
-savedColorDisplay.addEventListener('click',useSavedColor);
+savedColorDisplay.addEventListener('click', useSavedColor);
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
@@ -223,15 +223,20 @@ function drawLine(ctx,x,y,size) {
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     lineColor = "hsl("+h+","+s+"%,"+l+"%)";
-    ctx.strokeStyle = lineColor;
-    colorDisplay.style.background = lineColor;
+
+    //checks whether its a saved color
+    if (savedColor===1){
+        ctx.strokeStyle = savedColorDisplay.style.background;
+    } else {
+        ctx.strokeStyle = lineColor;
+        colorDisplay.style.background = lineColor;
+    }   
+    
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
         lastY=y;
     }
-
-    // useSavedColor(ctx);
 
     // Set the line "cap" style to round, so lines at different angles can join into each other
     ctx.lineCap = "round";
@@ -254,7 +259,6 @@ function drawLine(ctx,x,y,size) {
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
-
     
 }
 
@@ -264,7 +268,6 @@ function clearCanvas(canvas,ctx) {
 }
 
 //save drawing
-
 function saveDrawing(canvas,face) {
 
         // var cavnasData = canvas.toDataURL();
