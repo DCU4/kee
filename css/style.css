@@ -143,30 +143,43 @@ body {
         background-position: center;
         border: none;
         position: relative; }
-    .kee .inputs .input-container, .saved .inputs .input-container {
+    .kee .inputs .slider-wrap .slider, .saved .inputs .slider-wrap .slider {
+      width: 300px;
+      height: 100px;
+      overflow-x: scroll;
+      overflow-y: hidden; }
+      .kee .inputs .slider-wrap .slider .change-saved-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container {
+        display: flex;
+        align-content: center;
+        width: 200%; }
+        .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
+          height: 100px; }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 10px; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
+              margin: 10px 0; }
+        .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: space-evenly;
+          font-size: 12px;
+          height: 100px; }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display, .saved .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #fff;
+            border-radius: 50%; }
+    .kee .inputs .size-input-container, .saved .inputs .size-input-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 10px; }
-      .kee .inputs .input-container input, .saved .inputs .input-container input {
+      .kee .inputs .size-input-container input, .saved .inputs .size-input-container input {
         margin: 10px 0; }
-    .kee .inputs .change-saved-colors-container, .saved .inputs .change-saved-colors-container {
-      display: flex;
-      align-content: center; }
-      .kee .inputs .change-saved-colors-container .change-colors-container, .saved .inputs .change-saved-colors-container .change-colors-container {
-        width: 75%; }
-      .kee .inputs .change-saved-colors-container .saved-colors-container, .saved .inputs .change-saved-colors-container .saved-colors-container {
-        width: 35%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: space-evenly;
-        font-size: 12px; }
-        .kee .inputs .change-saved-colors-container .saved-colors-container .saved-color-display, .saved .inputs .change-saved-colors-container .saved-colors-container .saved-color-display {
-          width: 40px;
-          height: 40px;
-          border: 1px solid black;
-          border-radius: 50%; }
     .kee .inputs .clear-canvas, .saved .inputs .clear-canvas {
       border: 1px solid black;
       padding: 7px;

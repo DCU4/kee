@@ -196,7 +196,54 @@ body {
 
             }
         }
-        .input-container {
+
+        .slider-wrap{
+            // width:auto;
+            
+            .slider{
+                width: 300px;
+                height: 100px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                .change-saved-colors-container {
+                    display: flex;
+                    align-content: center;
+                    width: 200%;
+                    .change-colors-container {
+                        // width: 300px;
+                        height: 100px;
+                        .input-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-bottom: 10px;
+                
+                            input {
+                                margin: 10px 0;
+                            }
+                        }
+                    }
+                    .saved-colors-container {
+                        // width: 35%;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+                        font-size: 12px;
+                        // width: 300px;
+                        height: 100px;
+                        .saved-color-display{
+                            width: 40px;
+                            height: 40px;
+                            border: 3px solid #fff;
+                            border-radius: 50%
+                        }
+                    }
+                }
+            }
+        }
+
+        .size-input-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -206,29 +253,7 @@ body {
                 margin: 10px 0;
             }
         }
-        .change-saved-colors-container {
-            display: flex;
-            align-content: center;
-            .change-colors-container {
-                width: 75%;
-                
-            }
-            .saved-colors-container {
-                width: 35%;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                justify-content: space-evenly;
-                font-size: 12px;
-                .saved-color-display{
-                    width: 40px;
-                    height: 40px;
-                    border: 1px solid black;
-                    border-radius: 50%
-                }
-            }
-
-        }
+        
 
         .clear-canvas {
             border: 1px solid black;
@@ -236,7 +261,6 @@ body {
             margin-top: 10px;
         }
 
-      
     }
 
     /*slider*/

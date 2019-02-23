@@ -17,8 +17,10 @@ var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
 var saveColorBtn = document.getElementById('saveColor');
 var savedColorDisplay = document.getElementById('savedColorDisplay');
+// var savedColorDisplay = document.getElementsByClassName('saved-color-display')
 // var undoBtn = document.getElementById('undo');
-
+var savedColorContainer = document.getElementById('savedColorsContainer');
+var changeColorContainer = document.getElementById('changeColorsContainer');
 
 
 menuBtn.addEventListener('click', function(){
@@ -344,7 +346,6 @@ function resizeCanvas(face,canvas){
 
     container.style.height = window.innerWidth - 25 + "px";
     canvas.width = (window.innerWidth -20);
-    console.log(canvas.width);
     canvas.height = (window.innerWidth -40);
 }
 
@@ -355,6 +356,10 @@ function init() {
     canvas = document.getElementById('sketchpad');
     face = document.getElementById('face');
 
+    // styling for slider
+    savedColorContainer.style.width = window.innerWidth -20+"px";
+    console.log(savedColorContainer.style.width);
+    changeColorContainer.style.width = window.innerWidth -20+"px";
 
 
         // If the browser supports the canvas tag, get the 2d drawing context for this canvas

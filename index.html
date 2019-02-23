@@ -44,30 +44,39 @@
                     <span class="divider"></span>
                     <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
-
-                <div class="change-saved-colors-container">
-                    <div class="change-colors-container">
-                        <div class="input-container">
-                            <p>Color</p>
-                            <input type="range" min="0" max="360" value="0" class="slider" id="myColor">
-                        </div>
-                        <div class="input-container">
-                            <p>Sat.</p>
-                            <input type="range" min="0" max="100" value="50" class="slider" id="mySaturation">
-                        </div>
-                        <div class="input-container">
-                            <p>Shade</p>
-                            <input type="range" min="0" max="100" value="50" class="slider" id="myLight">
+                <div class="slider-wrap">
+                    <div class="slider" id="slider">
+                        <div class="change-saved-colors-container">
+                            <!-- Item one -->
+                            <div class="change-colors-container" id="changeColorsContainer">
+                                <div class="input-container">
+                                    <p>Color</p>
+                                    <input type="range" min="0" max="360" value="0"  id="myColor">
+                                </div>
+                                <div class="input-container">
+                                    <p>Sat.</p>
+                                    <input type="range" min="0" max="100" value="50"  id="mySaturation">
+                                </div>
+                                <div class="input-container">
+                                    <p>Shade</p>
+                                    <input type="range" min="0" max="100" value="50"  id="myLight">
+                                </div>
+                            </div>
+                            <!-- item two -->
+                            <div class="saved-colors-container" id="savedColorsContainer">
+                                Saved Color
+                                <div id="savedColorDisplay" class="saved-color-display"></div>
+                                <!-- <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div> -->
+                            </div>
                         </div>
                     </div>
-                    <div class="saved-colors-container">
-                        Saved Color
-                        <div id="savedColorDisplay" class="saved-color-display"></div>
-                    </div>
-                    
                 </div>
                 
-                <div class="input-container">
+                
+                
+                <div class="size-input-container">
                     <span>Size</span>
                     <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
                 </div>
