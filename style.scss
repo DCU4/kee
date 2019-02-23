@@ -155,8 +155,8 @@ body {
 
     .inputs {
         display: flex;
-        flex-direction: column; // width: 80%;
-        // margin: 0px auto;
+        flex-direction: column; 
+        align-items: center;
         padding: 0 20px;
         margin: 0px 3%;
 
@@ -196,9 +196,22 @@ body {
 
             }
         }
+        .which-container-wrapper {
+            display: flex;
+            margin: 0 10px;
+            .which-container {
+                width: 15px;
+                height:15px;
+                background: white;
+                margin: 0 5px;
+                border-radius: 50%;
+            }
+        }
 
         .slider-wrap{
-            // width:auto;
+            display:flex;
+            flex-direction: column;
+            align-content: center;
             
             .slider{
                 width: 300px;
@@ -248,6 +261,7 @@ body {
             align-items: center;
             justify-content: space-between;
             padding-bottom: 10px;
+            width: 300px;
 
             input {
                 margin: 10px 0;
