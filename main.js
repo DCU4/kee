@@ -18,63 +18,14 @@ var menu = document.getElementById('menu-list');
 var saveColorBtn = document.getElementById('saveColor');
 var savedColorDisplay = document.getElementById('savedColorDisplay');
 // var savedColorDisplay = document.getElementsByClassName('saved-color-display')
-// var undoBtn = document.getElementById('undo');
+var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
 var changeContainer = document.getElementById('changeContainer');
 var savedContainer = document.getElementById('savedContainer');
 var slider = document.getElementById('slider');
 var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
-
-var position = changeColorContainer.getBoundingClientRect();
-console.log(changeColorContainer.clientWidth)
-console.log(position);
-var isInViewport = function (elem) {
-    // console.log('test1');
-    // console.log(elem);
-    var bounding = elem.getBoundingClientRect();
-    console.log(bounding);
-    return (
-        // // numbers are the slider position
-        // bounding.top >= bounding.top &&
-        // bounding.left == bounding.left &&
-        // bounding.bottom <= bounding.bottom &&
-        // bounding.right == bounding.right
-
-        bounding.top >= bounding.top &&
-        bounding.left >= 300 &&
-        bounding.bottom <= bounding.bottom &&
-        bounding.right <= 700
-    );
-};
-
-slider.addEventListener('touchstart', function (event){
-    if (!isInViewport(savedColorContainer)) {       
-        // lock in place somehow?
-        changeSavedColorsContainer.classList.remove('animate');
-        console.log(isInViewport(savedColorContainer));
-        // console.log('test2');
-    } else {
-        // add class for movement?
-        changeSavedColorsContainer.classList.add('animate');
-        console.log(isInViewport(savedColorContainer));
-    }
-}, false);
-
-slider.addEventListener('touchend', function (){
-
-    if (!isInViewport(savedColorContainer)) {
-        //add the class to the position icon
-        changeContainer.classList.add('this-container');
-        savedContainer.classList.remove('this-container');
-
-    } else {
-        changeContainer.classList.remove('this-container');
-        savedContainer.classList.add('this-container');
-    }
-    
-}, false);
-
+// var inputs = document.querySelectorAll('input');
 
 menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
@@ -90,7 +41,6 @@ menuBtn.addEventListener('click', function(){
         menu.classList.remove('menu-list-close');
     }
 });
-
 
 
 // TOUCH ___________________________
@@ -200,28 +150,53 @@ function getMousePos(e) {
 
 // DRAW ___________________________
 var savedColor = 0;
+colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
 
-if(colorDisplay){
-    colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-    myColor.addEventListener('input',function(e) {
-        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-        colorDisplay.style.background = displayColor;
-        savedColor = 0;
+var isInViewport = function (elem) {
+    var bounding = elem.getBoundingClientRect();
+    return (
+        // numbers are the slider position, might need to change this
+        bounding.top >= bounding.top &&
+        bounding.left >= 300 &&
+        bounding.bottom <= bounding.bottom &&
+        bounding.right <= 700
+    );
+};
 
-    });
-
-    myLight.addEventListener('input', function(f){
-        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-        colorDisplay.style.background = displayColor;
-        savedColor = 0;
-    });
-
-    mySaturation.addEventListener('input', function(g){
-        var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-        colorDisplay.style.background = displayColor;
-        savedColor = 0;
-    });
+function animateSlider (a){
+    //check if container is in the view port and if the target is a color change slider
+    if (isInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {       
+        changeSavedColorsContainer.classList.add('animate');
+    } else {
+        changeSavedColorsContainer.classList.remove('animate');
+    }
+        
 }
+
+function stopSlider(b){
+    if (isInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation)) {
+        changeContainer.classList.remove('this-container');
+        savedContainer.classList.add('this-container');
+    } else {
+        changeContainer.classList.add('this-container');
+        savedContainer.classList.remove('this-container');
+    }
+}
+
+
+function changeColor(c) {
+    var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
+    colorDisplay.style.background = displayColor;
+    savedColor = 0;
+}
+
+    myColor.addEventListener('input',changeColor,true);
+    myLight.addEventListener('input', changeColor,true);
+    mySaturation.addEventListener('input', changeColor,true);
+
+    slider.addEventListener('touchmove', animateSlider, false);
+    slider.addEventListener('touchend', stopSlider, false); 
+
 // mySize.addEventListener('input', function(h){
 //     colorDisplay.style.height = (mySize.value *2)+ "px";
 //     colorDisplay.style.width = (mySize.value *2)+ "px";
@@ -239,6 +214,7 @@ function preventZoom(e) {
     e.preventDefault();
     e.target.click();
 }
+undoBtn.addEventListener('touchstart', preventZoom); 
 
 function cUndo(canvas,ctx) {
     canvas = document.getElementById('sketchpad');
@@ -257,9 +233,6 @@ function cUndo(canvas,ctx) {
         }
     }
 }
-// undoBtn.addEventListener('touchstart', preventZoom); 
-
-
 
 function saveColor() {
     savedColorDisplay.style.background = colorDisplay.style.background;
