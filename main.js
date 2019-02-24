@@ -152,7 +152,7 @@ function getMousePos(e) {
 var savedColor = 0;
 colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
 
-var isInViewport = function (elem) {
+var isNotInViewport = function (elem) {
     var bounding = elem.getBoundingClientRect();
     return (
         // numbers are the slider position, might need to change this
@@ -165,7 +165,7 @@ var isInViewport = function (elem) {
 
 function animateSlider (a){
     //check if container is in the view port and if the target is a color change slider
-    if (isInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {       
+    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {       
         changeSavedColorsContainer.classList.add('animate');
     } else {
         changeSavedColorsContainer.classList.remove('animate');
@@ -174,7 +174,7 @@ function animateSlider (a){
 }
 
 function stopSlider(b){
-    if (isInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation)) {
+    if (isNotInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation)) {
         changeContainer.classList.remove('this-container');
         savedContainer.classList.add('this-container');
     } else {
