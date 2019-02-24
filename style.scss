@@ -31,7 +31,7 @@
 html,
 body {
     /*overflow: hidden;*/
-    background: #ddd;
+    background: #F5F5F5;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -162,6 +162,7 @@ body {
 
         #displayBox {
             padding-bottom: 20px;
+            padding-right:60px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -169,19 +170,26 @@ body {
             .save-color {
                 margin-right: 20px;
                 font-size: 40px;
+                width: 31px;
+                height: 50px;
+                background-image: url('../imgs/round-highlight_off-24px.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                border: none;
+                position: relative;
+                transform: rotate(45deg);
             }
 
             .color-display {
                 width: 40px;
                 height: 40px;
-                border: 1px solid #fff;
                 border-radius: 50%
             }
 
             .divider {
-                width: 1px;
+                width: 2px;
                 height: 40px;
-                background-color: #000;
+                background-color: #B4B4B4;
                 margin: 0 30px;
             }
 
@@ -200,13 +208,13 @@ body {
             display: flex;
             margin: 0 10px;
             .which-container {
-                width: 15px;
-                height:15px;
-                background: #fff;
+                width: 11px;
+                height:11px;
+                background: #D1D1D1;
                 margin: 0 5px;
                 border-radius: 50%;
                 &.this-container {
-                    background:#444;
+                    background:#5F5F5F;
                 }
             }
         }
@@ -218,7 +226,7 @@ body {
             
             .slider{
                 width: 300px;
-                height: 100px;
+                height: 119px;
                 overflow-x: hidden;
                 overflow-y: hidden;
                 
@@ -227,20 +235,41 @@ body {
                     align-content: center;
                     width: 200%;
 
-                    transform: translateX(0);
+                    transform: translateX(0) ;
                     transition: transform .5s ease-out .2s;
                     &.animate {
-                        transform: translateX(-50%);
+                        transform: translateX(-50%) ;
+                        
                     }
                     .change-colors-container {
                         // width: 300px;
-                        height: 100px;
+                        height: 150px;
                         .input-container {
                             display: flex;
                             align-items: center;
                             justify-content: space-between;
                             padding-bottom: 10px;
-                
+                            .icon {
+                                width: 36px;
+                                height: 30px;
+                                background-repeat: no-repeat;
+                                background-position: center;
+                                
+
+                                &.color-icon {
+                                    background-image: url('../imgs/color_x1.png');
+                                }
+                                &.saturation-icon {
+                                    background-image: url('../imgs/saturation_x1.png');
+                                }
+                                &.shade-icon {
+                                    background-image: url('../imgs/shade_x1.png');
+                                }
+                                &.size-icon {
+                                    background-image: url('../imgs/shade_x1.png');
+                                }
+
+                            }
                             input {
                                 margin: 10px 0;
                             }
@@ -251,10 +280,12 @@ body {
                         display: flex;
                         align-items: center;
                         flex-direction: column;
-                        justify-content: space-evenly;
                         font-size: 12px;
                         // width: 300px;
-                        height: 100px;
+                        height: 150px;
+                        p {
+                            margin: 20px 0;
+                        }
                         .saved-color-display{
                             width: 40px;
                             height: 40px;
