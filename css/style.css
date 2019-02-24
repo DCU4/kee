@@ -129,7 +129,7 @@ body {
       .kee .inputs #displayBox .color-display, .saved .inputs #displayBox .color-display {
         width: 40px;
         height: 40px;
-        border: 1px solid black;
+        border: 1px solid #fff;
         border-radius: 50%; }
       .kee .inputs #displayBox .divider, .saved .inputs #displayBox .divider {
         width: 1px;
@@ -150,9 +150,11 @@ body {
       .kee .inputs .which-container-wrapper .which-container, .saved .inputs .which-container-wrapper .which-container {
         width: 15px;
         height: 15px;
-        background: white;
+        background: #fff;
         margin: 0 5px;
         border-radius: 50%; }
+        .kee .inputs .which-container-wrapper .which-container.this-container, .saved .inputs .which-container-wrapper .which-container.this-container {
+          background: #444; }
     .kee .inputs .slider-wrap, .saved .inputs .slider-wrap {
       display: flex;
       flex-direction: column;
@@ -160,12 +162,16 @@ body {
       .kee .inputs .slider-wrap .slider, .saved .inputs .slider-wrap .slider {
         width: 300px;
         height: 100px;
-        overflow-x: scroll;
+        overflow-x: hidden;
         overflow-y: hidden; }
         .kee .inputs .slider-wrap .slider .change-saved-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container {
           display: flex;
           align-content: center;
-          width: 200%; }
+          width: 200%;
+          transform: translateX(0);
+          transition: transform .5s ease-out .2s; }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate, .saved .inputs .slider-wrap .slider .change-saved-colors-container.animate {
+            transform: translateX(-50%); }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
             height: 100px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {

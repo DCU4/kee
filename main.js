@@ -21,6 +21,45 @@ var savedColorDisplay = document.getElementById('savedColorDisplay');
 // var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
+var changeContainer = document.getElementById('changeContainer');
+var savedContainer = document.getElementById('savedContainer');
+var slider = document.getElementById('slider');
+var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
+
+
+var isInViewport = function (elem) {
+    var bounding = elem.getBoundingClientRect();
+    return (
+        bounding.top >= 519 &&
+        bounding.left >= 355.5 &&
+        bounding.bottom <= 619 &&
+        bounding.right <= 655.5
+    );
+};
+
+slider.addEventListener('touchstart', function (event){
+    if (isInViewport(savedColorContainer)) {       
+        // add class for movement?
+        changeSavedColorsContainer.classList.add('animate');
+    } else {
+        // lock in place somehow?
+        changeSavedColorsContainer.classList.remove('animate');
+    }
+}, false);
+
+slider.addEventListener('touchend', function (){
+
+    if (!isInViewport(savedColorContainer)) {
+        //add the class to the position icon
+        changeContainer.classList.add('this-container');
+        savedContainer.classList.remove('this-container');
+
+    } else {
+        changeContainer.classList.remove('this-container');
+        savedContainer.classList.add('this-container');
+    }
+    
+}, false);
 
 
 menuBtn.addEventListener('click', function(){

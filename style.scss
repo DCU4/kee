@@ -174,7 +174,7 @@ body {
             .color-display {
                 width: 40px;
                 height: 40px;
-                border: 1px solid black;
+                border: 1px solid #fff;
                 border-radius: 50%
             }
 
@@ -202,9 +202,12 @@ body {
             .which-container {
                 width: 15px;
                 height:15px;
-                background: white;
+                background: #fff;
                 margin: 0 5px;
                 border-radius: 50%;
+                &.this-container {
+                    background:#444;
+                }
             }
         }
 
@@ -216,12 +219,19 @@ body {
             .slider{
                 width: 300px;
                 height: 100px;
-                overflow-x: scroll;
+                overflow-x: hidden;
                 overflow-y: hidden;
+                
                 .change-saved-colors-container {
                     display: flex;
                     align-content: center;
                     width: 200%;
+
+                    transform: translateX(0);
+                    transition: transform .5s ease-out .2s;
+                    &.animate {
+                        transform: translateX(-50%);
+                    }
                     .change-colors-container {
                         // width: 300px;
                         height: 100px;
