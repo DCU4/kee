@@ -190,12 +190,12 @@ function changeColor(c) {
     savedColor = 0;
 }
 
-    myColor.addEventListener('input',changeColor,true);
-    myLight.addEventListener('input', changeColor,true);
-    mySaturation.addEventListener('input', changeColor,true);
+myColor.addEventListener('input',changeColor,true);
+myLight.addEventListener('input', changeColor,true);
+mySaturation.addEventListener('input', changeColor,true);
 
-    slider.addEventListener('touchmove', animateSlider, false);
-    slider.addEventListener('touchend', stopSlider, false); 
+slider.addEventListener('touchmove', animateSlider, false);
+slider.addEventListener('touchend', stopSlider, false);
 
 // mySize.addEventListener('input', function(h){
 //     colorDisplay.style.height = (mySize.value *2)+ "px";
@@ -242,6 +242,7 @@ saveColorBtn.addEventListener('click', saveColor);
 function useSavedColor(){
     savedColor = 1;
     colorDisplay.style.background = savedColorDisplay.style.background;
+    animateSlider();
 }
 savedColorDisplay.addEventListener('click', useSavedColor);
 
