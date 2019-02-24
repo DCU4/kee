@@ -26,24 +26,38 @@ var savedContainer = document.getElementById('savedContainer');
 var slider = document.getElementById('slider');
 var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
 
-
+var position = changeColorContainer.getBoundingClientRect();
+console.log(changeColorContainer.clientWidth)
+console.log(position);
 var isInViewport = function (elem) {
+    // console.log('test1');
+    // console.log(elem);
     var bounding = elem.getBoundingClientRect();
+    console.log(bounding);
     return (
-        bounding.top >= 519 &&
-        bounding.left >= 355.5 &&
-        bounding.bottom <= 619 &&
-        bounding.right <= 655.5
+        // // numbers are the slider position
+        // bounding.top >= bounding.top &&
+        // bounding.left == bounding.left &&
+        // bounding.bottom <= bounding.bottom &&
+        // bounding.right == bounding.right
+
+        bounding.top >= bounding.top &&
+        bounding.left >= 300 &&
+        bounding.bottom <= bounding.bottom &&
+        bounding.right <= 700
     );
 };
 
 slider.addEventListener('touchstart', function (event){
-    if (isInViewport(savedColorContainer)) {       
-        // add class for movement?
-        changeSavedColorsContainer.classList.add('animate');
-    } else {
+    if (!isInViewport(savedColorContainer)) {       
         // lock in place somehow?
         changeSavedColorsContainer.classList.remove('animate');
+        console.log(isInViewport(savedColorContainer));
+        // console.log('test2');
+    } else {
+        // add class for movement?
+        changeSavedColorsContainer.classList.add('animate');
+        console.log(isInViewport(savedColorContainer));
     }
 }, false);
 
