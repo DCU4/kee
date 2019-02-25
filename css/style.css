@@ -53,13 +53,14 @@ body {
         position: absolute;
         width: 0;
         opacity: 0;
-        padding: 50px 10px;
+        padding: 50px 100px;
         transition: all .5s; }
         .kee nav .menu .menu-list .menu-items, .saved nav .menu .menu-list .menu-items {
           list-style-type: none;
-          text-align: center;
           font-size: 20px;
-          padding-bottom: 10px; }
+          padding-bottom: 21px;
+          font-weight: bold;
+          line-height: 30px; }
           .kee nav .menu .menu-list .menu-items a, .saved nav .menu .menu-list .menu-items a {
             color: #000;
             text-decoration: none; }
@@ -92,7 +93,7 @@ body {
         .kee nav .menu .menu-line.line-1-x, .saved nav .menu .menu-line.line-1-x {
           transform: rotate(45deg) translate(3px, 2px); }
         .kee nav .menu .menu-line.line-2-x, .saved nav .menu .menu-line.line-2-x {
-          transform: rotate(-45deg) translate(4px, -6px); }
+          transform: rotate(-45deg) translate(4px, -7px); }
     .kee nav .save, .saved nav .save {
       width: 100px;
       border: 1px solid black;

@@ -65,14 +65,16 @@ body {
                 position: absolute;
                 width: 0;
                 opacity: 0;
-                padding: 50px 10px;
+                padding: 50px 100px;
                 transition: all .5s;
 
                 .menu-items {
                     list-style-type: none;
-                    text-align: center;
                     font-size: 20px;
-                    padding-bottom: 10px;
+                    padding-bottom: 21px;
+                    font-weight: bold;
+                    line-height: 30px;
+
 
                     a {
                         color: #000;
@@ -117,7 +119,7 @@ body {
                 }
 
                 &.line-2-x {
-                    transform: rotate(-45deg) translate(4px, -6px);
+                    transform: rotate(-45deg) translate(4px, -7px);
                 }
             }
         }
