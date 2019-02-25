@@ -1,3 +1,7 @@
+@import 'partials/base';
+@import 'partials/global';
+@import 'partials/components';
+
 * {
     margin: 0;
     padding: 0;
@@ -31,8 +35,8 @@
 html,
 body {
     /*overflow: hidden;*/
-    background: #F5F5F5;
-    font-family: 'Noto Sans KR', sans-serif;
+    background: $light-gray;
+    font-family: $font;
 }
 
 .kee, .saved {
@@ -70,7 +74,7 @@ body {
 
                 .menu-items {
                     list-style-type: none;
-                    font-size: 20px;
+                    font-size: $font-h3;
                     padding-bottom: 21px;
                     font-weight: bold;
                     line-height: 30px;
@@ -142,13 +146,13 @@ body {
 
         #sketchpad {
             top: 3%;
-            left: 3%;
+            left: 2.5%;
             z-index: 999;
         }
 
         #face {
             top: 3%;
-            left: 3%;
+            left: 2.5%;
             z-index: 99;
             background: #fff;
             // box-shadow: 0px 0px .1px .1px #444;
@@ -171,12 +175,10 @@ body {
 
             .save-color {
                 margin-right: 20px;
-                font-size: 40px;
                 width: 31px;
                 height: 50px;
                 background-image: url('../imgs/round-highlight_off-24px.svg');
-                background-repeat: no-repeat;
-                background-position: center;
+                @extend %icon;
                 border: none;
                 position: relative;
                 transform: rotate(45deg);
@@ -191,16 +193,15 @@ body {
             .divider {
                 width: 2px;
                 height: 40px;
-                background-color: #B4B4B4;
+                background-color: $dark-gray;
                 margin: 0 30px;
             }
 
             .undo {
+                @extend %icon;
                 width: 31px;
                 height: 50px;
                 background-image: url('../imgs/Undo-black_x1.png');
-                background-repeat: no-repeat;
-                background-position: center;
                 border: none;
                 position: relative;
 
@@ -210,8 +211,9 @@ body {
             display: flex;
             margin: 0 10px;
             .which-container {
-                width: 11px;
-                height:11px;
+                // width: 11px;
+                // height:11px;
+                @include square(11px);
                 background: #D1D1D1;
                 margin: 0 5px;
                 border-radius: 50%;
@@ -254,8 +256,7 @@ body {
                             .icon {
                                 width: 36px;
                                 height: 30px;
-                                background-repeat: no-repeat;
-                                background-position: center;
+                                @extend %icon;
                                 
 
                                 &.color-icon {
@@ -282,7 +283,7 @@ body {
                         display: flex;
                         align-items: center;
                         flex-direction: column;
-                        font-size: 12px;
+                        font-size: $font-p;
                         // width: 300px;
                         height: 150px;
                         p {
@@ -292,7 +293,7 @@ body {
                             width: 40px;
                             height: 40px;
                             border: 3px solid #fff;
-                            border-radius: 50%
+                            border-radius: 50%;
                         }
                     }
                 }
@@ -320,60 +321,4 @@ body {
 
     }
 
-    /*slider*/
-    input[type=range] {
-        -webkit-appearance: none;
-        /* Hides the slider so that custom slider can be made */
-        width: 75%;
-        /* Specific width is required for Firefox. */
-        background: transparent;
-        /* Otherwise white in Chrome */
-    }
-
-    // input[type=range]:focus {
-    //   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-    // }
-    input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border: 1px solid #000;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background: #fff;
-        cursor: pointer;
-        margin-top: -10px;
-    }
-
-    input[type=range]::-webkit-slider-runnable-track {
-        width: 80%;
-        height: 1px;
-        cursor: pointer;
-        background: #ccc; // border-radius: 2px 0px 0px 200px;
-        border: 1px solid #999; // border-color: transparent black;
-        // border-style: hidden;
-        // border-width: 2px 200px 2px 0px;
-        // height: 0px;
-        // width: 0px;
-    }
-
-    input[type=range]:focus::-webkit-slider-runnable-track {
-        background: #000;
-    }
-
-    @media (max-width: 720px) {
-        /*body {
-      width:100%;
-    }
-
-    #sketchpad {
-      width:100%;
-    }
-    #face {
-      width:100%;
-    }*/
-    }
 }

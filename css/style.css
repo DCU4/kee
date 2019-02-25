@@ -1,3 +1,39 @@
+.kee .inputs #displayBox .save-color, .saved .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .saved .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+  background-repeat: no-repeat;
+  background-position: center; }
+
+/*slider*/
+input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 75%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */ }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  margin-top: -10px; }
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 80%;
+  height: 1px;
+  cursor: pointer;
+  background: #ccc;
+  border: 1px solid #999; }
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #000; }
+
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +59,7 @@ html,
 body {
   /*overflow: hidden;*/
   background: #F5F5F5;
-  font-family: 'Noto Sans KR', sans-serif; }
+  font-family: "Noto Sans KR", sans-serif; }
 
 .kee, .saved {
   -webkit-touch-callout: none;
@@ -37,8 +73,7 @@ body {
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  height: 100%;
-  /*slider*/ }
+  height: 100%; }
   .kee nav, .saved nav {
     display: flex;
     justify-content: space-between;
@@ -106,11 +141,11 @@ body {
       position: absolute; }
     .kee .container #sketchpad, .saved .container #sketchpad {
       top: 3%;
-      left: 3%;
+      left: 2.5%;
       z-index: 999; }
     .kee .container #face, .saved .container #face {
       top: 3%;
-      left: 3%;
+      left: 2.5%;
       z-index: 99;
       background: #fff; }
   .kee .inputs, .saved .inputs {
@@ -127,12 +162,9 @@ body {
       align-items: center; }
       .kee .inputs #displayBox .save-color, .saved .inputs #displayBox .save-color {
         margin-right: 20px;
-        font-size: 40px;
         width: 31px;
         height: 50px;
         background-image: url("../imgs/round-highlight_off-24px.svg");
-        background-repeat: no-repeat;
-        background-position: center;
         border: none;
         position: relative;
         transform: rotate(45deg); }
@@ -149,8 +181,6 @@ body {
         width: 31px;
         height: 50px;
         background-image: url("../imgs/Undo-black_x1.png");
-        background-repeat: no-repeat;
-        background-position: center;
         border: none;
         position: relative; }
     .kee .inputs .which-container-wrapper, .saved .inputs .which-container-wrapper {
@@ -190,9 +220,7 @@ body {
               padding-bottom: 10px; }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
                 width: 36px;
-                height: 30px;
-                background-repeat: no-repeat;
-                background-position: center; }
+                height: 30px; }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
                   background-image: url("../imgs/color_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
@@ -228,41 +256,3 @@ body {
       border: 1px solid black;
       padding: 7px;
       margin-top: 10px; }
-  .kee input[type=range], .saved input[type=range] {
-    -webkit-appearance: none;
-    /* Hides the slider so that custom slider can be made */
-    width: 75%;
-    /* Specific width is required for Firefox. */
-    background: transparent;
-    /* Otherwise white in Chrome */ }
-  .kee input[type=range]::-webkit-slider-thumb, .saved input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; }
-  .kee input[type=range]::-webkit-slider-thumb, .saved input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: 1px solid #000;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    margin-top: -10px; }
-  .kee input[type=range]::-webkit-slider-runnable-track, .saved input[type=range]::-webkit-slider-runnable-track {
-    width: 80%;
-    height: 1px;
-    cursor: pointer;
-    background: #ccc;
-    border: 1px solid #999; }
-  .kee input[type=range]:focus::-webkit-slider-runnable-track, .saved input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #000; }
-  @media (max-width: 720px) {
-    .kee, .saved {
-      /*body {
-      width:100%;
-    }
-
-    #sketchpad {
-      width:100%;
-    }
-    #face {
-      width:100%;
-    }*/ } }
