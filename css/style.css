@@ -148,6 +148,11 @@ body {
   /*overflow: hidden;*/
   background: #F5F5F5;
   font-family: "Noto Sans KR", sans-serif; }
+  @media (min-width: 720px) {
+    html,
+    body {
+      width: 400px;
+      margin: 0 auto; } }
 
 .kee {
   -webkit-touch-callout: none;
@@ -198,7 +203,7 @@ body {
           background-color: rgba(255, 255, 255, 0.8); }
         .kee nav .menu .menu-list.menu-list-close {
           animation: fade-out-left ease .5s forwards;
-          z-index: 99999;
+          z-index: 0;
           width: 0%;
           top: 0px;
           bottom: 0;
