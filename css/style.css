@@ -1,4 +1,4 @@
-.kee .inputs #displayBox .save-color, .saved .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .saved .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+.kee .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -34,6 +34,94 @@ input[type=range]::-webkit-slider-runnable-track {
 input[type=range]:focus::-webkit-slider-runnable-track {
   background: #000; }
 
+.saved {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%; }
+  .saved nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 3% 0; }
+    .saved nav .menu {
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: space-evenly; }
+      .saved nav .menu .menu-list {
+        position: absolute;
+        width: 0;
+        opacity: 0;
+        padding: 50px 100px;
+        transition: all .5s; }
+        .saved nav .menu .menu-list .menu-items {
+          list-style-type: none;
+          font-size: 20px;
+          padding-bottom: 21px;
+          font-weight: bold;
+          line-height: 30px; }
+          .saved nav .menu .menu-list .menu-items a {
+            color: #000;
+            text-decoration: none; }
+        .saved nav .menu .menu-list.menu-list-open {
+          animation: fade-in-right ease .5s forwards;
+          z-index: 99999;
+          width: 100%;
+          top: 0px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.8); }
+        .saved nav .menu .menu-list.menu-list-close {
+          animation: fade-out-left ease .5s forwards;
+          z-index: 99999;
+          width: 0%;
+          top: 0px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0); }
+      .saved nav .menu .menu-line {
+        width: 40px;
+        height: 2px;
+        margin: 5px 0;
+        background-color: #000;
+        color: #000;
+        transform: none;
+        transition: transform .3s; }
+        .saved nav .menu .menu-line.line-1-x {
+          transform: rotate(45deg) translate(3px, 2px); }
+        .saved nav .menu .menu-line.line-2-x {
+          transform: rotate(-45deg) translate(4px, -7px); }
+    .saved nav .save {
+      width: 100px;
+      border: 1px solid black;
+      padding: 7px; }
+  .saved .container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; }
+    .saved .container canvas {
+      position: absolute; }
+    .saved .container #sketchpad {
+      top: 3%;
+      left: 2.5%;
+      z-index: 999; }
+    .saved .container #face {
+      top: 3%;
+      left: 2.5%;
+      z-index: 99;
+      background: #fff; }
+
 * {
   margin: 0;
   padding: 0;
@@ -61,7 +149,7 @@ body {
   background: #F5F5F5;
   font-family: "Noto Sans KR", sans-serif; }
 
-.kee, .saved {
+.kee {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -74,32 +162,32 @@ body {
   align-content: space-between;
   justify-content: space-between;
   height: 100%; }
-  .kee nav, .saved nav {
+  .kee nav {
     display: flex;
     justify-content: space-between;
     margin: 10px 3% 0; }
-    .kee nav .menu, .saved nav .menu {
+    .kee nav .menu {
       width: 150px;
       display: flex;
       flex-direction: column;
       align-content: center;
       justify-content: space-evenly; }
-      .kee nav .menu .menu-list, .saved nav .menu .menu-list {
+      .kee nav .menu .menu-list {
         position: absolute;
         width: 0;
         opacity: 0;
         padding: 50px 100px;
         transition: all .5s; }
-        .kee nav .menu .menu-list .menu-items, .saved nav .menu .menu-list .menu-items {
+        .kee nav .menu .menu-list .menu-items {
           list-style-type: none;
           font-size: 20px;
           padding-bottom: 21px;
           font-weight: bold;
           line-height: 30px; }
-          .kee nav .menu .menu-list .menu-items a, .saved nav .menu .menu-list .menu-items a {
+          .kee nav .menu .menu-list .menu-items a {
             color: #000;
             text-decoration: none; }
-        .kee nav .menu .menu-list.menu-list-open, .saved nav .menu .menu-list.menu-list-open {
+        .kee nav .menu .menu-list.menu-list-open {
           animation: fade-in-right ease .5s forwards;
           z-index: 99999;
           width: 100%;
@@ -108,7 +196,7 @@ body {
           left: 0;
           right: 0;
           background-color: rgba(255, 255, 255, 0.8); }
-        .kee nav .menu .menu-list.menu-list-close, .saved nav .menu .menu-list.menu-list-close {
+        .kee nav .menu .menu-list.menu-list-close {
           animation: fade-out-left ease .5s forwards;
           z-index: 99999;
           width: 0%;
@@ -117,7 +205,7 @@ body {
           left: 0;
           right: 0;
           background-color: rgba(255, 255, 255, 0); }
-      .kee nav .menu .menu-line, .saved nav .menu .menu-line {
+      .kee nav .menu .menu-line {
         width: 40px;
         height: 2px;
         margin: 5px 0;
@@ -125,42 +213,42 @@ body {
         color: #000;
         transform: none;
         transition: transform .3s; }
-        .kee nav .menu .menu-line.line-1-x, .saved nav .menu .menu-line.line-1-x {
+        .kee nav .menu .menu-line.line-1-x {
           transform: rotate(45deg) translate(3px, 2px); }
-        .kee nav .menu .menu-line.line-2-x, .saved nav .menu .menu-line.line-2-x {
+        .kee nav .menu .menu-line.line-2-x {
           transform: rotate(-45deg) translate(4px, -7px); }
-    .kee nav .save, .saved nav .save {
+    .kee nav .save {
       width: 100px;
       border: 1px solid black;
       padding: 7px; }
-  .kee .container, .saved .container {
+  .kee .container {
     position: relative;
     width: 100%;
     margin: 0 auto; }
-    .kee .container canvas, .saved .container canvas {
+    .kee .container canvas {
       position: absolute; }
-    .kee .container #sketchpad, .saved .container #sketchpad {
+    .kee .container #sketchpad {
       top: 3%;
       left: 2.5%;
       z-index: 999; }
-    .kee .container #face, .saved .container #face {
+    .kee .container #face {
       top: 3%;
       left: 2.5%;
       z-index: 99;
       background: #fff; }
-  .kee .inputs, .saved .inputs {
+  .kee .inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
     margin: 0px 3%; }
-    .kee .inputs #displayBox, .saved .inputs #displayBox {
+    .kee .inputs #displayBox {
       padding-bottom: 20px;
       padding-right: 60px;
       display: flex;
       justify-content: center;
       align-items: center; }
-      .kee .inputs #displayBox .save-color, .saved .inputs #displayBox .save-color {
+      .kee .inputs #displayBox .save-color {
         margin-right: 20px;
         width: 31px;
         height: 50px;
@@ -168,91 +256,91 @@ body {
         border: none;
         position: relative;
         transform: rotate(45deg); }
-      .kee .inputs #displayBox .color-display, .saved .inputs #displayBox .color-display {
+      .kee .inputs #displayBox .color-display {
         width: 40px;
         height: 40px;
         border-radius: 50%; }
-      .kee .inputs #displayBox .divider, .saved .inputs #displayBox .divider {
+      .kee .inputs #displayBox .divider {
         width: 2px;
         height: 40px;
         background-color: #B4B4B4;
         margin: 0 30px; }
-      .kee .inputs #displayBox .undo, .saved .inputs #displayBox .undo {
+      .kee .inputs #displayBox .undo {
         width: 31px;
         height: 50px;
         background-image: url("../imgs/Undo-black_x1.png");
         border: none;
         position: relative; }
-    .kee .inputs .which-container-wrapper, .saved .inputs .which-container-wrapper {
+    .kee .inputs .which-container-wrapper {
       display: flex;
       margin: 0 10px; }
-      .kee .inputs .which-container-wrapper .which-container, .saved .inputs .which-container-wrapper .which-container {
+      .kee .inputs .which-container-wrapper .which-container {
         width: 11px;
         height: 11px;
         background: #D1D1D1;
         margin: 0 5px;
         border-radius: 50%; }
-        .kee .inputs .which-container-wrapper .which-container.this-container, .saved .inputs .which-container-wrapper .which-container.this-container {
+        .kee .inputs .which-container-wrapper .which-container.this-container {
           background: #5F5F5F; }
-    .kee .inputs .slider-wrap, .saved .inputs .slider-wrap {
+    .kee .inputs .slider-wrap {
       display: flex;
       flex-direction: column;
       align-content: center; }
-      .kee .inputs .slider-wrap .slider, .saved .inputs .slider-wrap .slider {
+      .kee .inputs .slider-wrap .slider {
         width: 300px;
         height: 119px;
         overflow-x: hidden;
         overflow-y: hidden; }
-        .kee .inputs .slider-wrap .slider .change-saved-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container {
+        .kee .inputs .slider-wrap .slider .change-saved-colors-container {
           display: flex;
           align-content: center;
           width: 200%;
           transform: translateX(0);
           transition: transform .5s ease-out .2s; }
-          .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate, .saved .inputs .slider-wrap .slider .change-saved-colors-container.animate {
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate {
             transform: translateX(-50%); }
-          .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
             height: 150px; }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
               display: flex;
               align-items: center;
               justify-content: space-between;
               padding-bottom: 10px; }
-              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
                 width: 36px;
                 height: 30px; }
-                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
                   background-image: url("../imgs/color_x1.png"); }
-                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
                   background-image: url("../imgs/saturation_x1.png"); }
-                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
                   background-image: url("../imgs/shade_x1.png"); }
-                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
                   background-image: url("../imgs/shade_x1.png"); }
-              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input, .saved .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
                 margin: 10px 0; }
-          .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container, .saved .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
             display: flex;
             align-items: center;
             flex-direction: column;
             font-size: 12px;
             height: 150px; }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p, .saved .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
               margin: 20px 0; }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display, .saved .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
               width: 40px;
               height: 40px;
               border: 3px solid #fff;
               border-radius: 50%; }
-    .kee .inputs .size-input-container, .saved .inputs .size-input-container {
+    .kee .inputs .size-input-container {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 10px;
       width: 300px; }
-      .kee .inputs .size-input-container input, .saved .inputs .size-input-container input {
+      .kee .inputs .size-input-container input {
         margin: 10px 0; }
-    .kee .inputs .clear-canvas, .saved .inputs .clear-canvas {
+    .kee .inputs .clear-canvas {
       border: 1px solid black;
       padding: 7px;
       margin-top: 10px; }
