@@ -37,6 +37,11 @@ body {
     /*overflow: hidden;*/
     background: $light-gray;
     font-family: $font;
+
+    @media(min-width:720px){
+        width: 400px;
+        margin: 0 auto;
+    }
 }
 
 .kee {
@@ -99,7 +104,7 @@ body {
 
                 &.menu-list-close {
                     animation: fade-out-left ease .5s forwards;
-                    z-index: 99999;
+                    z-index: 0;
                     width: 0%;
                     top: 0px;
                     bottom: 0;
@@ -161,10 +166,11 @@ body {
 
     .inputs {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         align-items: center;
         padding: 0 20px;
         margin: 0px 3%;
+
 
         #displayBox {
             padding-bottom: 20px;
@@ -228,12 +234,13 @@ body {
             flex-direction: column;
             align-content: center;
             height: 150px;
+
             .slider{
                 width: 300px;
                 height: 150px;
                 overflow-x: hidden;
                 overflow-y: hidden;
-                
+
                 .change-saved-colors-container {
                     display: flex;
                     align-content: center;
@@ -243,7 +250,7 @@ body {
                     transition: transform .5s ease-out .2s;
                     &.animate {
                         transform: translateX(-50%) ;
-                        
+
                     }
                     .change-colors-container {
                         // width: 300px;
@@ -257,7 +264,7 @@ body {
                                 width: 36px;
                                 height: 30px;
                                 @extend %icon;
-                                
+
 
                                 &.color-icon {
                                     background-image: url('../imgs/color_x1.png');
@@ -311,7 +318,7 @@ body {
                 margin: 10px 0;
             }
         }
-        
+
 
         .clear-canvas {
             border: 1px solid black;

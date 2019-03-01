@@ -164,12 +164,12 @@ var isNotInViewport = function (elem) {
 
 function animateSlider (a){
     //check if container is in the view port and if the target is a color change slider
-    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {       
+    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {
         changeSavedColorsContainer.classList.add('animate');
     } else {
         changeSavedColorsContainer.classList.remove('animate');
     }
-        
+
 }
 
 function stopSlider(b){
@@ -213,7 +213,7 @@ function preventZoom(e) {
     e.preventDefault();
     e.target.click();
 }
-undoBtn.addEventListener('touchstart', preventZoom); 
+undoBtn.addEventListener('touchstart', preventZoom);
 
 function cUndo(canvas,ctx) {
     canvas = document.getElementById('sketchpad');
@@ -252,7 +252,7 @@ function useSavedColor(){
     savedColor = 1;
     animateSlider();
     colorDisplay.style.background = this.style.background;
-    }
+}
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
@@ -267,8 +267,8 @@ function drawLine(ctx,x,y,size) {
     } else {
         ctx.strokeStyle = lineColor;
         colorDisplay.style.background = lineColor;
-    }   
-    
+    }
+
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
         lastX=x;
@@ -296,7 +296,7 @@ function drawLine(ctx,x,y,size) {
     // Update the last position to reference the current position
     lastX=x;
     lastY=y;
-    
+
 }
 
 // Clear the canvas context using the canvas width and height
@@ -317,14 +317,14 @@ function saveDrawing(canvas,face) {
 
         if(saved.length > 1){
             saved.shift();
-        } 
+        }
         console.log(saved);
         // Save data to sessionStorage
         sessionStorage.setItem('src', saved[0]);
         sessionStorage.setItem('faceSrc',savedFace[0]);
         console.log(sessionStorage);
         // Get saved data from sessionStorage
-        
+
         // Remove saved data from sessionStorage
         // sessionStorage.removeItem('key');
 
@@ -348,7 +348,7 @@ function savedInit() {
     var mySavedFace = document.getElementById('mySavedFace');
     mySavedImg.src = data;
     mySavedFace.src = faceData;
-    
+
 
     if (canvasScaled.getContext && faceScaled.getContext){
         ctxScaled = canvasScaled.getContext('2d');
@@ -376,12 +376,22 @@ function savedInit() {
 
 
 function resizeCanvas(face,canvas){
-    face.width = (window.innerWidth - 20);
-    face.height = (window.innerWidth - 40);
 
-    container.style.height = window.innerWidth - 25 + "px";
-    canvas.width = (window.innerWidth -20);
-    canvas.height = (window.innerWidth -40);
+    if (window.innerWidth < 720){
+        face.width = (window.innerWidth - 20);
+        face.height = (window.innerWidth - 40);
+
+        container.style.height = window.innerWidth - 25 + "px";
+        canvas.width = (window.innerWidth -20);
+        canvas.height = (window.innerWidth -40);
+    } else {
+        face.width = (400 - 20);
+        face.height = (400 - 40);
+
+        container.style.height = 400 - 25 + "px";
+        canvas.width = (400 -20);
+        canvas.height = (400 -40);
+    }
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
@@ -437,21 +447,37 @@ function init() {
     }
     if (faceCtx){
         //face, obviously
+        if (window.innerWidth < 720){
+            faceCtx.beginPath();
+            faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
+            console.log(window.innerWidth);
+            faceCtx.closePath();
+            faceCtx.stroke();
+            //eyes
+            faceCtx.beginPath();
+            faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+            faceCtx.closePath();
+            faceCtx.fill();
+            faceCtx.beginPath();
+            faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+            faceCtx.closePath();
+            faceCtx.fill();
+    } else {
         faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
-        console.log(window.innerWidth);
-        faceCtx.closePath();
-        faceCtx.stroke();
-        //eyes
-        faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-        faceCtx.closePath();
-        faceCtx.fill();
-        faceCtx.beginPath();
-        faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-        faceCtx.closePath();
-        faceCtx.fill();
-
+            faceCtx.arc(400/2.12, 400/2.25, 400/2.5, 0, Math.PI*2, true);
+            console.log(400);
+            faceCtx.closePath();
+            faceCtx.stroke();
+            //eyes
+            faceCtx.beginPath();
+            faceCtx.arc(400/1.6, 400/2.75, 10, 0, Math.PI*2, true);
+            faceCtx.closePath();
+            faceCtx.fill();
+            faceCtx.beginPath();
+            faceCtx.arc(400/3.1, 400/2.75, 10, 0, Math.PI*2, true);
+            faceCtx.closePath();
+            faceCtx.fill();
+    }
 
     }
 
