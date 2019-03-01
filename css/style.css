@@ -285,10 +285,11 @@ body {
     .kee .inputs .slider-wrap {
       display: flex;
       flex-direction: column;
-      align-content: center; }
+      align-content: center;
+      height: 150px; }
       .kee .inputs .slider-wrap .slider {
         width: 300px;
-        height: 119px;
+        height: 150px;
         overflow-x: hidden;
         overflow-y: hidden; }
         .kee .inputs .slider-wrap .slider .change-saved-colors-container {
@@ -321,8 +322,9 @@ body {
                 margin: 10px 0; }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
             display: flex;
-            align-items: center;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-evenly;
             font-size: 12px;
             height: 150px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
@@ -330,6 +332,7 @@ body {
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
               width: 40px;
               height: 40px;
+              margin: 0 10px;
               border: 3px solid #fff;
               border-radius: 50%; }
     .kee .inputs .size-input-container {

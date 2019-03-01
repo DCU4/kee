@@ -227,10 +227,10 @@ body {
             display:flex;
             flex-direction: column;
             align-content: center;
-            
+            height: 150px;
             .slider{
                 width: 300px;
-                height: 119px;
+                height: 150px;
                 overflow-x: hidden;
                 overflow-y: hidden;
                 
@@ -279,12 +279,11 @@ body {
                         }
                     }
                     .saved-colors-container {
-                        // width: 35%;
                         display: flex;
-                        align-items: center;
-                        flex-direction: column;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        align-content: space-evenly;
                         font-size: $font-p;
-                        // width: 300px;
                         height: 150px;
                         p {
                             margin: 20px 0;
@@ -292,6 +291,7 @@ body {
                         .saved-color-display{
                             width: 40px;
                             height: 40px;
+                            margin:0 10px;
                             border: 3px solid #fff;
                             border-radius: 50%;
                         }
