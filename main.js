@@ -16,8 +16,7 @@ var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
 var saveColorBtn = document.getElementById('saveColor');
-var savedColorDisplay = document.getElementById('savedColorDisplay');
-// var savedColorDisplay = document.getElementsByClassName('saved-color-display')
+var savedColorDisplay = document.getElementsByClassName('saved-color-display');
 var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
@@ -234,17 +233,26 @@ function cUndo(canvas,ctx) {
     }
 }
 
-function saveColor() {
-    savedColorDisplay.style.background = colorDisplay.style.background;
-}
+var savedColors = [];
+    function saveColor() {
+        savedColors.push(colorDisplay.style.background);
+        for(var j=0; j < savedColorDisplay.length; j++){
+            for(var i=0; i < savedColors.length; i++){
+                if(j==i){
+                    savedColorDisplay[j].style.background = savedColors[i];
+                }
+                savedColorDisplay[i].addEventListener('click', useSavedColor);
+            }
+        }
+    }
+
 saveColorBtn.addEventListener('click', saveColor);
 
 function useSavedColor(){
     savedColor = 1;
-    colorDisplay.style.background = savedColorDisplay.style.background;
     animateSlider();
-}
-savedColorDisplay.addEventListener('click', useSavedColor);
+    colorDisplay.style.background = this.style.background;
+    }
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
@@ -255,7 +263,7 @@ function drawLine(ctx,x,y,size) {
 
     //checks whether its a saved color
     if (savedColor===1){
-        ctx.strokeStyle = savedColorDisplay.style.background;
+        ctx.strokeStyle = colorDisplay.style.background;
     } else {
         ctx.strokeStyle = lineColor;
         colorDisplay.style.background = lineColor;
