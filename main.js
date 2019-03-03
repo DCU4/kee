@@ -150,7 +150,7 @@ function getMousePos(e) {
 // DRAW ___________________________
 var savedColor = 0;
 colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
-
+var sizeInputContainer = document.getElementById('sizeInputContainer');
 var isNotInViewport = function (elem) {
     var bounding = elem.getBoundingClientRect();
     return (
@@ -188,18 +188,19 @@ function changeColor(c) {
     colorDisplay.style.background = displayColor;
     savedColor = 0;
 }
-
+var sizeValue = document.getElementById('sizeValue');
 myColor.addEventListener('input',changeColor,true);
 myLight.addEventListener('input', changeColor,true);
 mySaturation.addEventListener('input', changeColor,true);
 
+sizeValue.innerHTML = (mySize.value/2);
+mySize.addEventListener('input',function(){
+    sizeValue.innerHTML = (mySize.value/2);
+});
+
 slider.addEventListener('touchmove', animateSlider, false);
 slider.addEventListener('touchend', stopSlider, false);
 
-// mySize.addEventListener('input', function(h){
-//     colorDisplay.style.height = (mySize.value *2)+ "px";
-//     colorDisplay.style.width = (mySize.value *2)+ "px";
-// });
 
 function preventZoom(e) {
     var t2 = e.timeStamp;
@@ -353,10 +354,24 @@ function savedInit() {
     if (canvasScaled.getContext && faceScaled.getContext){
         ctxScaled = canvasScaled.getContext('2d');
         faceCtxScaled = faceScaled.getContext('2d');
-        canvasScaled.width = 100;
-        canvasScaled.height = 100;
-        faceScaled.width = 100;
-        faceScaled.height = 100;
+        // 380x360
+        // 190x180
+        // 95x90
+        // 1/4 size
+        // canvasScaled.width = 95;
+        // canvasScaled.height = 90;
+        // faceScaled.width = 95;
+        // faceScaled.height = 90;
+        // 1/3 size
+        // canvasScaled.width = 126;
+        // canvasScaled.height = 120;
+        // faceScaled.width = 126;
+        // faceScaled.height = 120;
+        // 380*2.5
+        canvasScaled.width = 152;
+        canvasScaled.height = 144;
+        faceScaled.width = 152;
+        faceScaled.height = 144;
         container.style.height = 300 + 'px';
 
         var myImage = new Image();
