@@ -122,6 +122,99 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       z-index: 99;
       background: #fff; }
 
+.page {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%;
+  margin: 15px 5% 0; }
+  .page .message {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 10px; }
+    .page .message h1 {
+      padding-bottom: 50px; }
+    .page .message p {
+      padding-bottom: 25px; }
+  .page button {
+    background-color: #000;
+    width: 150px;
+    height: 35px;
+    border-radius: 21px;
+    margin: 0 auto; }
+    .page button a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: lighter;
+      text-decoration: none;
+      font-weight: 300; }
+
+nav {
+  display: flex;
+  justify-content: space-between; }
+  nav .menu {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly; }
+    nav .menu .menu-list {
+      position: absolute;
+      width: 0;
+      opacity: 0;
+      padding: 50px 100px;
+      transition: all .5s; }
+      nav .menu .menu-list .menu-items {
+        list-style-type: none;
+        font-size: 20px;
+        padding-bottom: 21px;
+        font-weight: bold;
+        line-height: 30px; }
+        nav .menu .menu-list .menu-items a {
+          color: #000;
+          text-decoration: none; }
+      nav .menu .menu-list.menu-list-open {
+        animation: fade-in-right ease .5s forwards;
+        z-index: 99999;
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.8); }
+      nav .menu .menu-list.menu-list-close {
+        animation: fade-out-left ease .5s forwards;
+        z-index: 99999;
+        width: 0%;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0); }
+    nav .menu .menu-line {
+      width: 40px;
+      height: 2px;
+      margin: 5px 0;
+      background-color: #000;
+      color: #000;
+      transform: none;
+      transition: transform .3s; }
+      nav .menu .menu-line.line-1-x {
+        transform: rotate(45deg) translate(3px, 2px); }
+      nav .menu .menu-line.line-2-x {
+        transform: rotate(-45deg) translate(4px, -7px); }
+  nav .save {
+    width: 100px;
+    border: 1px solid black;
+    padding: 7px; }
+
 * {
   margin: 0;
   padding: 0;
@@ -160,72 +253,13 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  height: 600px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  height: 100%; }
-  .kee nav {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 3% 0; }
-    .kee nav .menu {
-      width: 150px;
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: space-evenly; }
-      .kee nav .menu .menu-list {
-        position: absolute;
-        width: 0;
-        opacity: 0;
-        padding: 50px 100px;
-        transition: all .5s; }
-        .kee nav .menu .menu-list .menu-items {
-          list-style-type: none;
-          font-size: 20px;
-          padding-bottom: 21px;
-          font-weight: bold;
-          line-height: 30px; }
-          .kee nav .menu .menu-list .menu-items a {
-            color: #000;
-            text-decoration: none; }
-        .kee nav .menu .menu-list.menu-list-open {
-          animation: fade-in-right ease .5s forwards;
-          z-index: 99999;
-          width: 100%;
-          top: 0px;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: rgba(255, 255, 255, 0.8); }
-        .kee nav .menu .menu-list.menu-list-close {
-          animation: fade-out-left ease .5s forwards;
-          z-index: 0;
-          width: 0%;
-          top: 0px;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: rgba(255, 255, 255, 0); }
-      .kee nav .menu .menu-line {
-        width: 40px;
-        height: 2px;
-        margin: 5px 0;
-        background-color: #000;
-        color: #000;
-        transform: none;
-        transition: transform .3s; }
-        .kee nav .menu .menu-line.line-1-x {
-          transform: rotate(45deg) translate(3px, 2px); }
-        .kee nav .menu .menu-line.line-2-x {
-          transform: rotate(-45deg) translate(4px, -7px); }
-    .kee nav .save {
-      width: 100px;
-      border: 1px solid black;
-      padding: 7px; }
+  height: 100%;
+  margin: 15px 5% 0; }
   .kee .container {
     position: relative;
     width: 100%;
@@ -234,11 +268,9 @@ body {
       position: absolute; }
     .kee .container #sketchpad {
       top: 3%;
-      left: 2.5%;
       z-index: 999; }
     .kee .container #face {
       top: 3%;
-      left: 2.5%;
       z-index: 99;
       background: #fff; }
   .kee .inputs {

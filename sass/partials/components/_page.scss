@@ -1,0 +1,43 @@
+
+.page {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    // height: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    height: 100%;
+    margin: 15px 5% 0;
+
+    .message {
+        display: flex;
+        flex-direction: column;
+        padding: 50px 10px;
+        h1 {
+            padding-bottom: 50px;
+        }
+        p {
+            padding-bottom: 25px;
+        }
+    }
+    button {
+        background-color: #000;
+        width: 150px;
+        height: 35px;
+        border-radius: 21px;
+        margin: 0 auto;
+
+        a {
+            color: #fff;
+            font-size: $font-p;
+            font-weight: lighter;
+            text-decoration: none;
+            font-weight: 300;
+        }
+    }
+}
