@@ -56,8 +56,11 @@ body {
     align-content: space-between;
     justify-content: space-between;
     height: 100%;
-    margin: 15px 5% 0;
+    // margin: 15px 5% 0;
     // width:100%;
+    &.menu-open {
+        opacity: 0.1;
+    }
     .container {
         position: relative;
         width: 100%;
@@ -78,7 +81,7 @@ body {
             // left: 2.5%;
             z-index: 99;
             background: #fff;
-            // box-shadow: 0px 0px .1px .1px #444;
+            box-shadow: 0px 3px 7px 0.1px $dark-gray;
         }
     }
 
@@ -86,16 +89,15 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 20px;
-        margin: 0px 3%;
-
 
         #displayBox {
-            padding-bottom: 20px;
-            padding-right:60px;
+            padding: 10px 60px 10px 0;
             display: flex;
             justify-content: center;
             align-items: center;
+            width:100%;
+            background: #fff;
+            box-shadow: 0px 2px 6px 0.1px $dark-gray;
 
             .save-color {
                 margin-right: 20px;
@@ -131,31 +133,33 @@ body {
 
             }
         }
-        .which-container-wrapper {
-            display: flex;
-            margin: 0 10px;
-            .which-container {
-                // width: 11px;
-                // height:11px;
-                @include square(11px);
-                background: #D1D1D1;
-                margin: 0 5px;
-                border-radius: 50%;
-                &.this-container {
-                    background:#5F5F5F;
-                }
-            }
-        }
+        
 
         .slider-wrap{
             display:flex;
             flex-direction: column;
-            align-content: center;
-            height: 150px;
+            align-items: center;
+            height: 175px;
+            padding-top: 15px;
+            .which-container-wrapper {
+                display: flex;
+                margin: 3px 10px;
+                .which-container {
+                    // width: 11px;
+                    // height:11px;
+                    @include square(11px);
+                    background: #D1D1D1;
+                    margin: 0 5px;
+                    border-radius: 50%;
+                    &.this-container {
+                        background:#5F5F5F;
+                    }
+                }
+            }
 
             .slider{
                 width: 300px;
-                height: 150px;
+                height: 175px;
                 overflow-x: hidden;
                 overflow-y: hidden;
 
@@ -163,7 +167,6 @@ body {
                     display: flex;
                     align-content: center;
                     width: 200%;
-
                     transform: translateX(0) ;
                     transition: transform .5s ease-out .2s;
                     &.animate {
@@ -172,7 +175,7 @@ body {
                     }
                     .change-colors-container {
                         // width: 300px;
-                        height: 150px;
+                        height: 175px;
                         .input-container {
                             display: flex;
                             align-items: center;
@@ -182,7 +185,6 @@ body {
                                 width: 36px;
                                 height: 30px;
                                 @extend %icon;
-
 
                                 &.color-icon {
                                     background-image: url('../imgs/color_x1.png');
@@ -198,25 +200,29 @@ body {
                                 }
 
                             }
+                            p {
+                                margin: 0 7px;
+                            }
                             input {
                                 margin: 10px 0;
                             }
                         }
+                        
                     }
                     .saved-colors-container {
                         display: flex;
                         flex-wrap: wrap;
                         justify-content: space-between;
-                        align-content: space-evenly;
+                        align-content: center;
                         font-size: $font-p;
-                        height: 150px;
+                        height: 175px;
                         p {
                             margin: 20px 0;
                         }
                         .saved-color-display{
                             width: 40px;
                             height: 40px;
-                            margin:0 10px;
+                            margin: 10px;
                             border: 3px solid #fff;
                             border-radius: 50%;
                         }
@@ -224,20 +230,6 @@ body {
                 }
             }
         }
-
-        .size-input-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 10px;
-            width: 300px;
-
-            input {
-                margin: 10px 0;
-            }
-        }
-
-
         .clear-canvas {
             border: 1px solid black;
             padding: 7px;

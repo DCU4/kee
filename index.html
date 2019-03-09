@@ -4,7 +4,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta charset="utf-8">
             <link rel="stylesheet" type="text/css" href="css/style.css">
-            <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,400,700" rel="stylesheet">
             <title>Kee</title>
 
     </head>
@@ -42,12 +42,13 @@
                     <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
 
-                <div class="which-container-wrapper">
-                        <div id="changeContainer" class="which-container this-container"></div>
-                        <div id="savedContainer" class="which-container"></div>
-                </div>
+                
                 
                 <div class="slider-wrap">
+                    <div class="which-container-wrapper">
+                            <div id="changeContainer" class="which-container this-container"></div>
+                            <div id="savedContainer" class="which-container"></div>
+                    </div>
                     
                     <div class="slider" id="slider">
                         <div class="change-saved-colors-container" id="changeSavedColorsContainer">
@@ -65,6 +66,10 @@
                                     <div class="shade-icon icon"></div>
                                     <input type="range" min="0" max="100" value="50"  id="myLight">
                                 </div>
+                                <div id="sizeInputContainer" class="input-container">
+                                        <p id="sizeValue"></p>
+                                        <input type="range" min="1" max="25" value="12" step="1"  id="mySize">
+                                    </div>
                             </div>
                             <!-- item two -->
                             <div class="saved-colors-container" id="savedColorsContainer">
@@ -86,10 +91,7 @@
                 
                 
                 
-                <div id="sizeInputContainer" class="size-input-container">
-                    <p id="sizeValue"></p>
-                    <input type="range" min="1" max="25" value="12" step="1" class="slider" id="mySize">
-                </div>
+                
 
                 <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
                     Clear Canvas

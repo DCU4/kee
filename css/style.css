@@ -47,79 +47,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   align-content: space-between;
   justify-content: space-between;
   height: 100%; }
-  .saved nav {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 3% 0; }
-    .saved nav .menu {
-      width: 150px;
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: space-evenly; }
-      .saved nav .menu .menu-list {
-        position: absolute;
-        width: 0;
-        opacity: 0;
-        padding: 50px 100px;
-        transition: all .5s; }
-        .saved nav .menu .menu-list .menu-items {
-          list-style-type: none;
-          font-size: 20px;
-          padding-bottom: 21px;
-          font-weight: bold;
-          line-height: 30px; }
-          .saved nav .menu .menu-list .menu-items a {
-            color: #000;
-            text-decoration: none; }
-        .saved nav .menu .menu-list.menu-list-open {
-          animation: fade-in-right ease .5s forwards;
-          z-index: 99999;
-          width: 100%;
-          top: 0px;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: rgba(255, 255, 255, 0.8); }
-        .saved nav .menu .menu-list.menu-list-close {
-          animation: fade-out-left ease .5s forwards;
-          z-index: 99999;
-          width: 0%;
-          top: 0px;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background-color: rgba(255, 255, 255, 0); }
-      .saved nav .menu .menu-line {
-        width: 40px;
-        height: 2px;
-        margin: 5px 0;
-        background-color: #000;
-        color: #000;
-        transform: none;
-        transition: transform .3s; }
-        .saved nav .menu .menu-line.line-1-x {
-          transform: rotate(45deg) translate(3px, 2px); }
-        .saved nav .menu .menu-line.line-2-x {
-          transform: rotate(-45deg) translate(4px, -7px); }
-    .saved nav .save {
-      width: 100px;
-      border: 1px solid black;
-      padding: 7px; }
+  .saved.menu-open {
+    opacity: 0.1; }
   .saved .container {
     position: relative;
     width: 100%;
     margin: 0 auto; }
     .saved .container canvas {
       position: absolute; }
-    .saved .container #sketchpad {
-      top: 3%;
-      left: 2.5%;
-      z-index: 999; }
-    .saved .container #face {
-      top: 3%;
-      left: 2.5%;
-      z-index: 99;
+    .saved .container #sketchpadScaled {
       background: #fff; }
 
 .page {
@@ -133,12 +69,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  height: 100%;
-  margin: 15px 5% 0; }
+  height: 100%; }
+  .page.menu-open {
+    opacity: 0.1; }
   .page .message {
     display: flex;
     flex-direction: column;
-    padding: 50px 10px; }
+    padding: 50px 35px; }
     .page .message h1 {
       padding-bottom: 50px; }
     .page .message p {
@@ -158,7 +95,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 nav {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin: 10px 3% 0; }
   nav .menu {
     width: 150px;
     display: flex;
@@ -188,7 +126,7 @@ nav {
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(255, 255, 255, 0.8); }
+        background-color: rgba(255, 255, 255, 0.9); }
       nav .menu .menu-list.menu-list-close {
         animation: fade-out-left ease .5s forwards;
         z-index: 99999;
@@ -207,13 +145,15 @@ nav {
       transform: none;
       transition: transform .3s; }
       nav .menu .menu-line.line-1-x {
-        transform: rotate(45deg) translate(3px, 2px); }
+        transform: rotate(45deg) translate(3px, 4px); }
       nav .menu .menu-line.line-2-x {
         transform: rotate(-45deg) translate(4px, -7px); }
   nav .save {
-    width: 100px;
-    border: 1px solid black;
-    padding: 7px; }
+    background-color: #000;
+    color: #fff;
+    padding: 7px 27px;
+    font-size: 12px;
+    font-weight: 300; }
 
 * {
   margin: 0;
@@ -258,8 +198,9 @@ body {
   flex-direction: column;
   align-content: space-between;
   justify-content: space-between;
-  height: 100%;
-  margin: 15px 5% 0; }
+  height: 100%; }
+  .kee.menu-open {
+    opacity: 0.1; }
   .kee .container {
     position: relative;
     width: 100%;
@@ -272,19 +213,20 @@ body {
     .kee .container #face {
       top: 3%;
       z-index: 99;
-      background: #fff; }
+      background: #fff;
+      box-shadow: 0px 3px 7px 0.1px #B4B4B4; }
   .kee .inputs {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 0 20px;
-    margin: 0px 3%; }
+    align-items: center; }
     .kee .inputs #displayBox {
-      padding-bottom: 20px;
-      padding-right: 60px;
+      padding: 10px 60px 10px 0;
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0px 2px 6px 0.1px #B4B4B4; }
       .kee .inputs #displayBox .save-color {
         margin-right: 20px;
         width: 31px;
@@ -308,25 +250,26 @@ body {
         background-image: url("../imgs/Undo-black_x1.png");
         border: none;
         position: relative; }
-    .kee .inputs .which-container-wrapper {
-      display: flex;
-      margin: 0 10px; }
-      .kee .inputs .which-container-wrapper .which-container {
-        width: 11px;
-        height: 11px;
-        background: #D1D1D1;
-        margin: 0 5px;
-        border-radius: 50%; }
-        .kee .inputs .which-container-wrapper .which-container.this-container {
-          background: #5F5F5F; }
     .kee .inputs .slider-wrap {
       display: flex;
       flex-direction: column;
-      align-content: center;
-      height: 150px; }
+      align-items: center;
+      height: 175px;
+      padding-top: 15px; }
+      .kee .inputs .slider-wrap .which-container-wrapper {
+        display: flex;
+        margin: 3px 10px; }
+        .kee .inputs .slider-wrap .which-container-wrapper .which-container {
+          width: 11px;
+          height: 11px;
+          background: #D1D1D1;
+          margin: 0 5px;
+          border-radius: 50%; }
+          .kee .inputs .slider-wrap .which-container-wrapper .which-container.this-container {
+            background: #5F5F5F; }
       .kee .inputs .slider-wrap .slider {
         width: 300px;
-        height: 150px;
+        height: 175px;
         overflow-x: hidden;
         overflow-y: hidden; }
         .kee .inputs .slider-wrap .slider .change-saved-colors-container {
@@ -338,7 +281,7 @@ body {
           .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate {
             transform: translateX(-50%); }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
-            height: 150px; }
+            height: 175px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
               display: flex;
               align-items: center;
@@ -355,31 +298,25 @@ body {
                   background-image: url("../imgs/shade_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
                   background-image: url("../imgs/shade_x1.png"); }
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container p {
+                margin: 0 7px; }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
                 margin: 10px 0; }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-content: space-evenly;
+            align-content: center;
             font-size: 12px;
-            height: 150px; }
+            height: 175px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
               margin: 20px 0; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
               width: 40px;
               height: 40px;
-              margin: 0 10px;
+              margin: 10px;
               border: 3px solid #fff;
               border-radius: 50%; }
-    .kee .inputs .size-input-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 10px;
-      width: 300px; }
-      .kee .inputs .size-input-container input {
-        margin: 10px 0; }
     .kee .inputs .clear-canvas {
       border: 1px solid black;
       padding: 7px;

@@ -164,7 +164,7 @@ var isNotInViewport = function (elem) {
 
 function animateSlider (a){
     //check if container is in the view port and if the target is a color change slider
-    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation)) {
+    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation) && !(a.target == mySize)) {
         changeSavedColorsContainer.classList.add('animate');
     } else {
         changeSavedColorsContainer.classList.remove('animate');
@@ -173,7 +173,7 @@ function animateSlider (a){
 }
 
 function stopSlider(b){
-    if (isNotInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation)) {
+    if (isNotInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation) && !(a.target == mySize)) {
         changeContainer.classList.remove('this-container');
         savedContainer.classList.add('this-container');
     } else {
@@ -358,20 +358,20 @@ function savedInit() {
         // 190x180
         // 95x90
         // 1/4 size
-        // canvasScaled.width = 95;
-        // canvasScaled.height = 90;
-        // faceScaled.width = 95;
-        // faceScaled.height = 90;
+        canvasScaled.width = 95;
+        canvasScaled.height = 90;
+        faceScaled.width = 95;
+        faceScaled.height = 90;
         // 1/3 size
         // canvasScaled.width = 126;
         // canvasScaled.height = 120;
         // faceScaled.width = 126;
         // faceScaled.height = 120;
         // 380*2.5
-        canvasScaled.width = 152;
-        canvasScaled.height = 144;
-        faceScaled.width = 152;
-        faceScaled.height = 144;
+        // canvasScaled.width = 152;
+        // canvasScaled.height = 144;
+        // faceScaled.width = 152;
+        // faceScaled.height = 144;
         container.style.height = 300 + 'px';
 
         var myImage = new Image();
@@ -393,11 +393,11 @@ function savedInit() {
 function resizeCanvas(face,canvas){
 
     if (window.innerWidth < 720){
-        face.width = (window.innerWidth - 20);
+        face.width = (window.innerWidth );
         face.height = (window.innerWidth - 40);
 
-        container.style.height = window.innerWidth - 25 + "px";
-        canvas.width = (window.innerWidth -20);
+        container.style.height = window.innerWidth - 15 + "px";
+        canvas.width = (window.innerWidth );
         canvas.height = (window.innerWidth -40);
     } else {
         face.width = (400 - 20);
