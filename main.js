@@ -354,24 +354,11 @@ function savedInit() {
     if (canvasScaled.getContext && faceScaled.getContext){
         ctxScaled = canvasScaled.getContext('2d');
         faceCtxScaled = faceScaled.getContext('2d');
-        // 380x360
-        // 190x180
-        // 95x90
-        // 1/4 size
-        canvasScaled.width = 95;
-        canvasScaled.height = 90;
-        faceScaled.width = 95;
-        faceScaled.height = 90;
-        // 1/3 size
-        // canvasScaled.width = 126;
-        // canvasScaled.height = 120;
-        // faceScaled.width = 126;
-        // faceScaled.height = 120;
-        // 380*2.5
-        // canvasScaled.width = 152;
-        // canvasScaled.height = 144;
-        // faceScaled.width = 152;
-        // faceScaled.height = 144;
+
+        canvasScaled.width = (window.innerWidth/4 );
+        canvasScaled.height = ((window.innerWidth-40)/4);
+        faceScaled.width = (window.innerWidth/4 );
+        faceScaled.height = ((window.innerWidth-40)/4);
         container.style.height = 300 + 'px';
 
         var myImage = new Image();
