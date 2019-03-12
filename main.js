@@ -306,33 +306,47 @@ function clearCanvas(canvas,ctx) {
 }
 
 //save drawing
-function saveDrawing(canvas,face) {
+function saveDrawing(canvas) {
 
-        // var cavnasData = canvas.toDataURL();
-        saved.push(canvas.toDataURL());
-        savedFace.push(face.toDataURL('image/png',1));
+    // var cavnasData = canvas.toDataURL();
+    saved.push(canvas.toDataURL());
+    // savedFace.push(face.toDataURL('image/png',1));
 
-        // console.log(saved);
-        console.log(savedFace);
-        //if saved is less than one, push, else, shift!!
+    // console.log(saved);
+    console.log(savedFace);
+    //if saved is less than one, push, else, shift!!
 
-        if(saved.length > 1){
-            saved.shift();
-        }
-        console.log(saved);
-        // Save data to sessionStorage
-        sessionStorage.setItem('src', saved[0]);
-        sessionStorage.setItem('faceSrc',savedFace[0]);
-        console.log(sessionStorage);
-        // Get saved data from sessionStorage
+    if(saved.length > 1){
+        saved.shift();
+    }
+    console.log(saved);
+    // Save data to sessionStorage for testing purposes
+    sessionStorage.setItem('src', saved[0]);
+    // sessionStorage.setItem('faceSrc',savedFace[0]);
+    console.log(sessionStorage);
+    // Get saved data from sessionStorage
 
-        // Remove saved data from sessionStorage
-        // sessionStorage.removeItem('key');
 
-        // Remove all saved data from sessionStorage
-        // sessionStorage.clear();
+    // const url = '/saved';
+    // //holy shit this works
+    // var savedEncoded = encodeURIComponent(saved[0]);
+    // let data = 'kee[image]='+savedEncoded+'&kee[description]=hello';
+
+    // fetch(url, {
+    //     method: "POST",
+    //     body: data,
+    //     headers: {
+    //         "Content-Type": "application/x-www-form-urlencoded",
+    //     }
+
+    // }).then(res => res.text())
+    // // .then(res => res.json())
+    // .then(response => console.log('Success:', JSON.stringify(response)))
+    // .catch(error => console.error('Error:', error));
 
 }
+
+
 
 function savedInit() {
 
@@ -377,19 +391,13 @@ function savedInit() {
 }
 
 
-function resizeCanvas(face,canvas){
+function resizeCanvas(canvas){
 
     if (window.innerWidth < 720){
-        face.width = (window.innerWidth );
-        face.height = (window.innerWidth - 40);
-
         container.style.height = window.innerWidth - 15 + "px";
         canvas.width = (window.innerWidth );
         canvas.height = (window.innerWidth -40);
     } else {
-        face.width = (400 - 20);
-        face.height = (400 - 40);
-
         container.style.height = 400 - 25 + "px";
         canvas.width = (400 -20);
         canvas.height = (400 -40);
@@ -401,7 +409,6 @@ function init() {
 
     // Get the specific canvas element from the HTML document
     canvas = document.getElementById('sketchpad');
-    face = document.getElementById('face');
 
     // styling for slider
     savedColorContainer.style.width = window.innerWidth -20+"px";
@@ -413,26 +420,12 @@ function init() {
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
         // resize canvas on change of screen width
-        resizeCanvas(face,canvas);
+        resizeCanvas(canvas);
+        // resizeCanvas(face,canvas);
         window.addEventListener('resize', resizeCanvas, false);
         window.addEventListener('orientationchange', resizeCanvas, false);
 
     }
-    if (face.getContext){
-        faceCtx = face.getContext('2d');
-        // resize face on change of screen width
-        resizeCanvas(face,canvas);
-        window.addEventListener('resize', resizeCanvas, false);
-        window.addEventListener('orientationchange', resizeCanvas, false);
-
-    }
-
-    // if(canvasScaled.getContext){
-    //     ctxScaled = canvasScaled.getContext('2d');
-    // }
-    // if(faceScaled.getContext){
-    //     faceCtxScaled = faceScaled.getContext('2d');
-    // }
 
     // Check that we have a valid context to draw on/with before adding event handlers
     if (ctx) {
@@ -444,47 +437,27 @@ function init() {
         canvas.addEventListener('touchstart', sketchpad_touchStart, false);
         canvas.addEventListener('touchmove', sketchpad_touchMove, false);
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
-        // resizeCanvas(face,canvas);
 
-    }
-    if (faceCtx){
-        //face, obviously
-        if (window.innerWidth < 720){
-            faceCtx.beginPath();
-            faceCtx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
-            console.log(window.innerWidth);
-            faceCtx.closePath();
-            faceCtx.stroke();
-            //eyes
-            faceCtx.beginPath();
-            faceCtx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-            faceCtx.closePath();
-            faceCtx.fill();
-            faceCtx.beginPath();
-            faceCtx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-            faceCtx.closePath();
-            faceCtx.fill();
-    } else {
-        faceCtx.beginPath();
-            faceCtx.arc(400/2.12, 400/2.25, 400/2.5, 0, Math.PI*2, true);
-            console.log(400);
-            faceCtx.closePath();
-            faceCtx.stroke();
-            //eyes
-            faceCtx.beginPath();
-            faceCtx.arc(400/1.6, 400/2.75, 10, 0, Math.PI*2, true);
-            faceCtx.closePath();
-            faceCtx.fill();
-            faceCtx.beginPath();
-            faceCtx.arc(400/3.1, 400/2.75, 10, 0, Math.PI*2, true);
-            faceCtx.closePath();
-            faceCtx.fill();
-    }
+        //FACE
+        ctx.beginPath();
+        ctx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
+        console.log(window.innerWidth);
+        ctx.closePath();
+        ctx.stroke();
+        //eyes
+        ctx.beginPath();
+        ctx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+        ctx.closePath();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+        ctx.closePath();
+        ctx.fill();
 
     }
 
     save.addEventListener('click', function(){
-        saveDrawing(canvas,face);
+        saveDrawing(canvas);
     });
 
 }
