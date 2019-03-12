@@ -439,21 +439,37 @@ function init() {
         canvas.addEventListener('touchend', sketchpad_touchStop, false);
 
         //FACE
-        ctx.beginPath();
-        ctx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
-        console.log(window.innerWidth);
-        ctx.closePath();
-        ctx.stroke();
-        //eyes
-        ctx.beginPath();
-        ctx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-        ctx.closePath();
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
-        ctx.closePath();
-        ctx.fill();
-
+        if (window.innerWidth < 720){
+            ctx.beginPath();
+            ctx.arc(window.innerWidth/2.12, window.innerWidth/2.25, window.innerWidth/2.5, 0, Math.PI*2, true);
+            console.log(window.innerWidth);
+            ctx.closePath();
+            ctx.stroke();
+            //eyes
+            ctx.beginPath();
+            ctx.arc(window.innerWidth/1.6, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+        } else {
+            ctx.beginPath();
+            ctx.arc(400/2.12, 400/2.25, 400/2.5, 0, Math.PI*2, true);
+            console.log(400);
+            ctx.closePath();
+            ctx.stroke();
+            //eyes
+            ctx.beginPath();
+            ctx.arc(400/1.6, 400/2.75, 10, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(400/3.1, 400/2.75, 10, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+        }
     }
 
     save.addEventListener('click', function(){
