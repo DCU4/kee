@@ -222,10 +222,14 @@ function cUndo(canvas,ctx) {
     if (canvas.getContext){
         ctx = canvas.getContext('2d');
 
-        points.pop();
-        console.log(points);
-        //clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // first set of points is the face, we dont want to undo that!
+        if (points.length > 1){
+            points.pop();
+            console.log(points);
+            console.log(points.length);
+            //clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
         //redraw canvas with old data
         for( var i = 0; points.length > i; i++){
             // console.log(points[i]);
@@ -235,17 +239,17 @@ function cUndo(canvas,ctx) {
 }
 
 var savedColors = [];
-    function saveColor() {
-        savedColors.push(colorDisplay.style.background);
-        for(var j=0; j < savedColorDisplay.length; j++){
-            for(var i=0; i < savedColors.length; i++){
-                if(j==i){
-                    savedColorDisplay[j].style.background = savedColors[i];
-                }
-                savedColorDisplay[i].addEventListener('click', useSavedColor);
+function saveColor() {
+    savedColors.push(colorDisplay.style.background);
+    for(var j=0; j < savedColorDisplay.length; j++){
+        for(var i=0; i < savedColors.length; i++){
+            if(j==i){
+                savedColorDisplay[j].style.background = savedColors[i];
             }
+            savedColorDisplay[i].addEventListener('click', useSavedColor);
         }
     }
+}
 
 saveColorBtn.addEventListener('click', saveColor);
 
@@ -454,6 +458,7 @@ function init() {
             ctx.arc(window.innerWidth/3.1, window.innerWidth/2.75, 10, 0, Math.PI*2, true);
             ctx.closePath();
             ctx.fill();
+            points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
         } else {
             ctx.beginPath();
             ctx.arc(400/2.12, 400/2.25, 400/2.5, 0, Math.PI*2, true);
@@ -469,6 +474,7 @@ function init() {
             ctx.arc(400/3.1, 400/2.75, 10, 0, Math.PI*2, true);
             ctx.closePath();
             ctx.fill();
+            points.push(ctx.getImageData(0,0,canvas.width, canvas.height));
         }
     }
 
