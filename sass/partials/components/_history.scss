@@ -14,7 +14,16 @@
     &.menu-open {
         opacity: 0.1;
     }
+    .kee-container {
+        display: flex;
+        overflow-x:scroll;
+        padding-top: 20px;
 
+        img {
+            height: 100%;
+            width: 33.3%;
+        }
+    }
     .container {
         position: relative;
         width: 100%;
