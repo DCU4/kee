@@ -1,0 +1,333 @@
+.kee .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+  background-repeat: no-repeat;
+  background-position: center; }
+
+/*slider*/
+input[type=range] {
+  -webkit-appearance: none;
+  /* Hides the slider so that custom slider can be made */
+  width: 75%;
+  /* Specific width is required for Firefox. */
+  background: transparent;
+  /* Otherwise white in Chrome */ }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; }
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  margin-top: -10px; }
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 80%;
+  height: 1px;
+  cursor: pointer;
+  background: #ccc;
+  border: 1px solid #999; }
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #000; }
+
+.saved {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%; }
+  .saved.menu-open {
+    opacity: 0.1; }
+  .saved .kee-container {
+    display: flex;
+    overflow-x: scroll;
+    padding-top: 20px; }
+    .saved .kee-container img {
+      height: 100%;
+      width: 33.3%; }
+  .saved .container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; }
+    .saved .container canvas {
+      position: absolute; }
+    .saved .container #sketchpadScaled {
+      background: #fff; }
+
+.page {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%; }
+  .page.menu-open {
+    opacity: 0.1; }
+  .page .message {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 35px; }
+    .page .message h1 {
+      padding-bottom: 50px; }
+    .page .message p {
+      padding-bottom: 25px; }
+  .page button {
+    background-color: #000;
+    width: 150px;
+    height: 35px;
+    border-radius: 21px;
+    margin: 0 auto; }
+    .page button a {
+      color: #fff;
+      font-size: 12px;
+      font-weight: lighter;
+      text-decoration: none;
+      font-weight: 300; }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 3% 0; }
+  nav .menu {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly; }
+    nav .menu .menu-list {
+      position: absolute;
+      width: 0;
+      opacity: 0;
+      padding: 50px 100px;
+      transition: all .5s; }
+      nav .menu .menu-list .menu-items {
+        list-style-type: none;
+        font-size: 20px;
+        padding-bottom: 21px;
+        font-weight: bold;
+        line-height: 30px; }
+        nav .menu .menu-list .menu-items a {
+          color: #000;
+          text-decoration: none; }
+      nav .menu .menu-list.menu-list-open {
+        animation: fade-in-right ease .5s forwards;
+        z-index: 99999;
+        width: 100%;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.9); }
+      nav .menu .menu-list.menu-list-close {
+        animation: fade-out-left ease .5s forwards;
+        z-index: 99999;
+        width: 0%;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0); }
+    nav .menu .menu-line {
+      width: 40px;
+      height: 2px;
+      margin: 5px 0;
+      background-color: #000;
+      color: #000;
+      transform: none;
+      transition: transform .3s; }
+      nav .menu .menu-line.line-1-x {
+        transform: rotate(45deg) translate(3px, 4px); }
+      nav .menu .menu-line.line-2-x {
+        transform: rotate(-45deg) translate(4px, -7px); }
+  nav .save {
+    background-color: #000;
+    color: #fff;
+    padding: 7px 27px;
+    font-size: 12px;
+    font-weight: 300;
+    border: 1px solid #000; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-15px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes fade-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0); }
+  to {
+    opacity: 0;
+    transform: translateX(-15px); } }
+
+html,
+body {
+  /*overflow: hidden;*/
+  background: #F5F5F5;
+  font-family: "Noto Sans KR", sans-serif; }
+  @media (min-width: 720px) {
+    html,
+    body {
+      width: 400px;
+      margin: 0 auto; } }
+
+.kee {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  height: 100%; }
+  .kee.menu-open {
+    opacity: 0.1; }
+  .kee .container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; }
+    .kee .container canvas {
+      position: absolute; }
+    .kee .container #sketchpad {
+      top: 3%;
+      z-index: 999;
+      background: #fff;
+      box-shadow: 0px 3px 7px 0.1px #B4B4B4; }
+    .kee .container #face {
+      top: 3%;
+      z-index: 99;
+      background: #fff;
+      box-shadow: 0px 3px 7px 0.1px #B4B4B4; }
+  .kee .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .kee .inputs #displayBox {
+      padding: 10px 60px 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0px 2px 6px 0.1px #B4B4B4; }
+      .kee .inputs #displayBox .save-color {
+        margin-right: 20px;
+        width: 31px;
+        height: 50px;
+        background-image: url("../../imgs/round-highlight_off-24px.svg");
+        border: none;
+        position: relative;
+        transform: rotate(45deg); }
+      .kee .inputs #displayBox .color-display {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%; }
+      .kee .inputs #displayBox .divider {
+        width: 2px;
+        height: 40px;
+        background-color: #B4B4B4;
+        margin: 0 30px; }
+      .kee .inputs #displayBox .undo {
+        width: 31px;
+        height: 50px;
+        background-image: url("../../imgs/Undo-black_x1.png");
+        border: none;
+        position: relative; }
+    .kee .inputs .slider-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 175px;
+      padding-top: 15px; }
+      .kee .inputs .slider-wrap .which-container-wrapper {
+        display: flex;
+        margin: 3px 10px; }
+        .kee .inputs .slider-wrap .which-container-wrapper .which-container {
+          width: 11px;
+          height: 11px;
+          background: #D1D1D1;
+          margin: 0 5px;
+          border-radius: 50%; }
+          .kee .inputs .slider-wrap .which-container-wrapper .which-container.this-container {
+            background: #5F5F5F; }
+      .kee .inputs .slider-wrap .slider {
+        width: 300px;
+        height: 175px;
+        overflow-x: hidden;
+        overflow-y: hidden; }
+        .kee .inputs .slider-wrap .slider .change-saved-colors-container {
+          display: flex;
+          align-content: center;
+          width: 200%;
+          transform: translateX(0);
+          transition: transform .5s ease-out .2s; }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate {
+            transform: translateX(-50%); }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container {
+            height: 175px; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding-bottom: 10px; }
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+                width: 36px;
+                height: 30px; }
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
+                  background-image: url("../../imgs/color_x1.png"); }
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
+                  background-image: url("../../imgs/saturation_x1.png"); }
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
+                  background-image: url("../../imgs/shade_x1.png"); }
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
+                  background-image: url("../../imgs/shade_x1.png"); }
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container p {
+                margin: 0 7px; }
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
+                margin: 10px 0; }
+          .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: center;
+            font-size: 12px;
+            height: 175px; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
+              margin: 20px 0; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
+              width: 40px;
+              height: 40px;
+              margin: 10px;
+              border: 3px solid #fff;
+              border-radius: 50%; }
+    .kee .inputs .clear-canvas {
+      border: 1px solid black;
+      padding: 7px;
+      margin-top: 10px; }
