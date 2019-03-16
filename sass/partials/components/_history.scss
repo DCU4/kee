@@ -16,7 +16,8 @@
     }
     .kee-container {
         display: flex;
-        overflow-x:scroll;
+        flex-wrap: wrap;
+        // overflow-x:scroll;
         padding-top: 20px;
 
         img {
