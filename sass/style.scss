@@ -105,7 +105,7 @@ body {
                 margin-right: 20px;
                 width: 31px;
                 height: 50px;
-                background-image: url('../../imgs/round-highlight_off-24px.svg');
+                background-image: url('../imgs/round-highlight_off-24px.svg');
                 @extend %icon;
                 border: none;
                 position: relative;
@@ -129,7 +129,7 @@ body {
                 @extend %icon;
                 width: 31px;
                 height: 50px;
-                background-image: url('../../imgs/Undo-black_x1.png');
+                background-image: url('../imgs/Undo-black_x1.png');
                 border: none;
                 position: relative;
 
@@ -189,16 +189,16 @@ body {
                                 @extend %icon;
 
                                 &.color-icon {
-                                    background-image: url('../../imgs/color_x1.png');
+                                    background-image: url('../imgs/color_x1.png');
                                 }
                                 &.saturation-icon {
-                                    background-image: url('../../imgs/saturation_x1.png');
+                                    background-image: url('../imgs/saturation_x1.png');
                                 }
                                 &.shade-icon {
-                                    background-image: url('../../imgs/shade_x1.png');
+                                    background-image: url('../imgs/shade_x1.png');
                                 }
                                 &.size-icon {
-                                    background-image: url('../../imgs/shade_x1.png');
+                                    background-image: url('../imgs/shade_x1.png');
                                 }
 
                             }

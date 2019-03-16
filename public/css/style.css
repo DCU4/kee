@@ -241,7 +241,7 @@ body {
         margin-right: 20px;
         width: 31px;
         height: 50px;
-        background-image: url("../../imgs/round-highlight_off-24px.svg");
+        background-image: url("../imgs/round-highlight_off-24px.svg");
         border: none;
         position: relative;
         transform: rotate(45deg); }
@@ -257,7 +257,7 @@ body {
       .kee .inputs #displayBox .undo {
         width: 31px;
         height: 50px;
-        background-image: url("../../imgs/Undo-black_x1.png");
+        background-image: url("../imgs/Undo-black_x1.png");
         border: none;
         position: relative; }
     .kee .inputs .slider-wrap {
@@ -301,13 +301,13 @@ body {
                 width: 36px;
                 height: 30px; }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
-                  background-image: url("../../imgs/color_x1.png"); }
+                  background-image: url("../imgs/color_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
-                  background-image: url("../../imgs/saturation_x1.png"); }
+                  background-image: url("../imgs/saturation_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
-                  background-image: url("../../imgs/shade_x1.png"); }
+                  background-image: url("../imgs/shade_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
-                  background-image: url("../../imgs/shade_x1.png"); }
+                  background-image: url("../imgs/shade_x1.png"); }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container p {
                 margin: 0 7px; }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
