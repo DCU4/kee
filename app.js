@@ -5,7 +5,8 @@ var express = require("express"),
     // cors = require('cors');
 
 
-mongoose.connect('mongodb://localhost:27017/kee',{ useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/kee',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -33,6 +34,25 @@ var Kee = mongoose.model('Kee', keeSchema);
 //     }
 // });
 
+// // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
+// var db;
+
+// // Connect to the database before starting the application server.
+// mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test", function (err, client) {
+//     if (err) {
+//         console.log(err);
+//         process.exit(1);
+//     }
+
+//     // Save database object from the callback for reuse.
+//     db = client.db();
+//     console.log("Database connection ready");
+//     // Initialize the app.
+//     var server = app.listen(process.env.PORT || 8080, function () {
+//         var port = server.address().port;
+//         console.log("App now running on port", port);
+//     });
+// });
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -78,6 +98,9 @@ app.post('/addkee', function(req, res, next){
 });
 
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log('Server started');
 });
+// app.listen(process.env.PORT, process.env.IP, function(){
+//     console.log('Server started');
+// });
