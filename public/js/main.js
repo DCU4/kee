@@ -326,23 +326,23 @@ function saveDrawing(canvas) {
     // Get saved data from sessionStorage
 
 
-    // var url = '/saved';
-    // //holy shit this works
-    // var savedEncoded = encodeURIComponent(saved[0]);
-    // var data = 'kee[image]='+savedEncoded;
+    var url = '/addkee';
+    //holy shit this works
+    var savedEncoded = encodeURIComponent(saved[0]);
+    var data = 'kee[image]='+savedEncoded;
     // let data = 'kee[image]='+savedEncoded+'&kee[description]=hello';
 
-    // fetch(url, {
-    //     method: "POST",
-    //     body: data,
-    //     headers: {
-    //         "Content-Type": "application/x-www-form-urlencoded",
-    //     }
+    fetch(url, {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
 
-    // })
-    // .then(res => res.json())
-    // .then(response => console.log('Success:', JSON.stringify(response)))
-    // .catch(error => console.error('Error:', error));
+    })
+    .then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+    .catch(error => console.error('Error:', error));
 
 }
 
