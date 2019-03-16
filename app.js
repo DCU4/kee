@@ -75,6 +75,7 @@ app.get('/saved', function(req, res, next){
            console.log(err);
        } else {
            res.render('saved',{kees: allKees});
+           console.log(allKees);
        }
    });
     
