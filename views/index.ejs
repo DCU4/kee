@@ -1,0 +1,85 @@
+<% include partials/header %>
+<!--<form action="/saved" method="POST">-->
+<!--    <input id="saveBtn" type="submit" class="save" name="kee[image]">-->
+<!--</form>-->
+    
+    <div id="saveBtn" class="save">Save Drawing</div>
+
+
+
+</nav>
+
+            <div id="container" class="container">
+                <canvas id="sketchpad"></canvas>
+            </div>
+
+            <div class="inputs">
+                <div id="displayBox">
+                    <div id="saveColor" class="save-color"></div>
+                    <div id="colorDisplay" class="color-display"></div>
+                    <span class="divider"></span>
+                    <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
+                </div>
+
+                
+                
+                <div class="slider-wrap">
+                    <div class="which-container-wrapper">
+                            <div id="changeContainer" class="which-container this-container"></div>
+                            <div id="savedContainer" class="which-container"></div>
+                    </div>
+                    
+                    <div class="slider" id="slider">
+                        <div class="change-saved-colors-container" id="changeSavedColorsContainer">
+                            <!-- Item one -->
+                            <div class="change-colors-container" id="changeColorsContainer">
+                                <div class="input-container">
+                                    <div class="color-icon icon"></div>
+                                    <input type="range" min="0" max="360" value="0"  id="myColor">
+                                </div>
+                                <div class="input-container">
+                                    <div class="saturation-icon icon"></div>
+                                    <input type="range" min="0" max="100" value="50"  id="mySaturation">
+                                </div>
+                                <div class="input-container">
+                                    <div class="shade-icon icon"></div>
+                                    <input type="range" min="0" max="100" value="50"  id="myLight">
+                                </div>
+                                <div id="sizeInputContainer" class="input-container">
+                                        <p id="sizeValue"></p>
+                                        <input type="range" min="1" max="25" value="12" step="1"  id="mySize">
+                                    </div>
+                            </div>
+                            <!-- item two -->
+                            <div class="saved-colors-container" id="savedColorsContainer">
+                                <!-- <div id="savedColorDisplay" class="saved-color-display"></div> -->
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                                <div class="saved-color-display"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+
+                <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+                    Clear Canvas
+                </button>
+
+
+                    <!-- <button class="scale">Scale Down</button> -->
+            </div>
+        </div>
+
+
+<% include partials/footer %>
