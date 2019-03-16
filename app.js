@@ -1,15 +1,15 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require('mongoose'),
-    cors = require('cors');
+    mongoose = require('mongoose');
+    // cors = require('cors');
 
 
 mongoose.connect('mongodb://localhost:27017/kee',{ useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-app.use(cors());
+// app.use(cors());
 
 var keeSchema = new mongoose.Schema({
     image: String,
