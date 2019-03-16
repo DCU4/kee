@@ -90,7 +90,7 @@ app.post('/addkee', function(req, res, next){
             //later this should be front end error message
             console.log(err);
         } else {
-            res.redirect('/saved');
+            // res.redirect('/saved');
             console.log(newlyCreated);
             // console.log(req.body._id);
         }
