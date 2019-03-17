@@ -5,8 +5,8 @@ var express = require("express"),
     // cors = require('cors');
 
 
-mongoose.connect('mongodb://localhost:3000/kee',{ useNewUrlParser: true });
-// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:3000/kee',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
