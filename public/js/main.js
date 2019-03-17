@@ -326,7 +326,7 @@ function saveDrawing(canvas) {
     // Get saved data from sessionStorage
 
 
-    var url = '/addkee';
+    var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);
     var data = 'kee[image]='+savedEncoded;
