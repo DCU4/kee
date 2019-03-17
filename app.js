@@ -43,15 +43,15 @@ var newUser = new User ({
     // }]
 })
 
-newUser.save(function(err, user){
-    if(err){
-        console.log('uhoh');
-        console.log(err);
-    } else {
-        console.log('saved');
-        console.log(user);
-    }
-});
+// newUser.save(function(err, user){
+//     if(err){
+//         console.log('uhoh');
+//         console.log(err);
+//     } else {
+//         console.log('saved');
+//         console.log(user);
+//     }
+// });
 
 // // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 // var db;
@@ -76,9 +76,9 @@ newUser.save(function(err, user){
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 app.get('/', function(req, res, next){
@@ -88,15 +88,17 @@ app.get('/', function(req, res, next){
 });
 
 app.get('/saved', function(req, res, next){
-   //Get all kees from DB -- find.({}) means ALL kees
-   Kee.find({},function(err,allUsers){
-       if(err) {
-           console.log(err);
-       } else {
-           res.render('saved',{users: allUsers});
-           console.log(allUsers);
-       }
-   });
+    //Get all kees from DB -- find.({}) means ALL kees
+    Kee.find({},function(err,allUsers){
+        if(err) {
+            console.log(err);
+        } else {
+            // res.render('saved',{users: allUsers});
+            // console.log(allUsers);
+            res.render('saved',{kees: allKees});
+            console.log(allKees);
+        }
+    });
     
 });
 
@@ -105,13 +107,13 @@ app.post('/saved', function(req, res, next){
     //Create a new kee and save to DB
     // console.log(req.body);
     console.log(req.body);
-    Kee.create(req.body.user, function(err, user){
+    Kee.create(req.body.kee, function(err, kee){
         if(err) {
             //later this should be front end error message
             console.log(err);
         } else {
             res.redirect('/saved');
-            console.log(user);
+            console.log(kee);
             // console.log(req.body._id);
         }
     });
