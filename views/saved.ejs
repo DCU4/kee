@@ -30,7 +30,7 @@
                 <% kees.forEach(function(kee){
                     var d = kee.created.getDate();
                     var m = kee.created.getMonth();
-                    var y = kee.date.getFullYear();
+                    var y = kee.created.getFullYear();
 
                 %>
                     <p><%= `${d} ${m} ${y}` %></p>
