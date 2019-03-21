@@ -28,7 +28,7 @@
                 </nav>
             <div class="kee-container" >
                 <% kees.forEach(function(kee){  %>
-                    <p><%= kee.date %></p>
+                    <p><%= kee.created %></p>
                 <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" id="mySavedImg<%= kee._id %>"/>
 
             <% }); %>
