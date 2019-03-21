@@ -28,12 +28,12 @@
                 </nav>
             <div class="kee-container" >
                 <% kees.forEach(function(kee){
-                    var d = kee.created.getDate();
-                    var m = kee.created.getMonth();
-                    var y = kee.created.getFullYear();
+                    // var d = kee.created.getDate();
+                    // var m = kee.created.getMonth();
+                    // var y = kee.created.getFullYear();
 
                 %>
-                    <p><%= `${d} ${m} ${y}` %></p>
+
                 <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" id="mySavedImg<%= kee._id %>"/>
 
             <% }); %>
