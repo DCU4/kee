@@ -16,20 +16,32 @@
     }
     .kee-container {
         display: flex;
-        flex-wrap: wrap;
+        // flex-wrap: wrap;
         // overflow-x:scroll;
         padding-top: 20px;
-
-        img {
-            // height: 100%;
-            height:auto;
-            width: 30%;
-            background: #fff;
-            margin: 5px auto;
+        flex-direction: column;
+        align-items: flex-start;
+        .date {
+            font-size: 14px;
         }
-        // remove any bad images coming through
-        #mySavedImg5c8ea4bc1f1ab8000434e9b0 {
-            display: none;
+        .notes {
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0px auto;
+            img {
+                // height: 100%;
+                height:auto;
+                width: 30%;
+                background: #fff;
+                margin: 5px auto;
+            }
+            // remove any bad images coming through
+            #mySavedImg5c8ea4bc1f1ab8000434e9b0 {
+                display: none;
+            }
         }
     }
     .container {

@@ -51,15 +51,25 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     opacity: 0.1; }
   .saved .kee-container {
     display: flex;
-    flex-wrap: wrap;
-    padding-top: 20px; }
-    .saved .kee-container img {
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: flex-start; }
+    .saved .kee-container .date {
+      font-size: 14px; }
+    .saved .kee-container .notes {
+      display: flex;
+      flex-wrap: wrap;
       height: auto;
-      width: 30%;
-      background: #fff;
-      margin: 5px auto; }
-    .saved .kee-container #mySavedImg5c8ea4bc1f1ab8000434e9b0 {
-      display: none; }
+      justify-content: space-between;
+      width: 100%;
+      margin: 0px auto; }
+      .saved .kee-container .notes img {
+        height: auto;
+        width: 30%;
+        background: #fff;
+        margin: 5px auto; }
+      .saved .kee-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0 {
+        display: none; }
   .saved .container {
     position: relative;
     width: 100%;

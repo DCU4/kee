@@ -33,13 +33,10 @@
                 <div class="kee-container" >
 
                     <%
-
                     var date = [];
-                    // console.log(kees[0].created)
                     kees.forEach(function(kee){
                         date.push(kee.created.toDateString());
                     });
-
 
                     var days = [...new Set(date)];
                         // return days;
@@ -49,9 +46,9 @@
 
 
                     %>
-                    <div class="date">
-                        <p><%= days[d] %></p>
 
+                        <p class="date" ><%= days[d] %></p>
+                        <div class="notes">
                     <%
 
                     kees.forEach(function(kee, i){
