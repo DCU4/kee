@@ -64,7 +64,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       width: 100%;
       margin: 0px auto; }
       .saved .kee-container .notes img {
-        height: auto;
+        height: 100%;
         width: 30%;
         background: #fff;
         margin: 5px auto; }
