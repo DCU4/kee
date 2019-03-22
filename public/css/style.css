@@ -62,7 +62,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       display: flex;
       flex-wrap: wrap;
       height: auto;
-      justify-content: space-between;
       width: 100%;
       margin: 5px; }
       .saved .kee-container .notes img {
