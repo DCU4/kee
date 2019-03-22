@@ -228,6 +228,22 @@ body {
     position: relative;
     width: 100%;
     margin: 0 auto; }
+    .kee .container .saved-response {
+      opacity: 0;
+      transition: all .5s; }
+      .kee .container .saved-response.response {
+        position: absolute;
+        opacity: 1;
+        height: 100%;
+        width: 100%;
+        background: white;
+        z-index: 99999999;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        transition: opacity .5s; }
+      .kee .container .saved-response p {
+        font-size: 12px; }
     .kee .container canvas {
       position: absolute; }
     .kee .container #sketchpad {
