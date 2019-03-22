@@ -54,7 +54,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     flex-wrap: wrap;
     padding-top: 20px; }
     .saved .kee-container img {
-      height: 100%;
+      height: auto;
       width: 30%;
       background: #fff;
       margin: 5px auto; }
