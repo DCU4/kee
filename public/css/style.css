@@ -181,6 +181,46 @@ nav {
       nav .menu .menu-line.line-2-x {
         transform: rotate(-45deg) translate(4px, -7px); }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0; }
+  .login-form h1 {
+    font-weight: lighter;
+    padding-bottom: 50px; }
+  .login-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .login-form form h3 {
+      padding-bottom: 10px;
+      font-weight: bold; }
+    .login-form form input {
+      margin-bottom: 25px;
+      background: #B4B4B4;
+      padding: 7px;
+      border: none; }
+      .login-form form input::placeholder {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 100; }
+    .login-form form button {
+      background: black;
+      color: white;
+      padding: 7px;
+      border-radius: 20px;
+      width: 50%;
+      margin: 0 auto 20px;
+      font-size: 12px;
+      font-weight: 100; }
+  .login-form p {
+    text-align: center; }
+    .login-form p a {
+      color: black; }
+
 * {
   margin: 0;
   padding: 0;
@@ -372,42 +412,3 @@ body {
       border: 1px solid black;
       padding: 7px;
       margin-top: 10px; }
-  .kee .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: 50px 0; }
-    .kee .login-form h1 {
-      font-weight: lighter;
-      padding-bottom: 50px; }
-    .kee .login-form form {
-      display: flex;
-      flex-direction: column;
-      justify-content: center; }
-      .kee .login-form form h3 {
-        padding-bottom: 10px;
-        font-weight: bold; }
-      .kee .login-form form input {
-        margin-bottom: 25px;
-        background: #B4B4B4;
-        padding: 7px;
-        border: none; }
-        .kee .login-form form input::placeholder {
-          color: #ffffff;
-          font-size: 12px;
-          font-weight: 100; }
-      .kee .login-form form button {
-        background: black;
-        color: white;
-        padding: 7px;
-        border-radius: 20px;
-        width: 50%;
-        margin: 0 auto 20px;
-        font-size: 12px;
-        font-weight: 100; }
-    .kee .login-form p {
-      text-align: center; }
-      .kee .login-form p a {
-        color: black; }
