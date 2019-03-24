@@ -76,7 +76,8 @@ input[type=range]:focus::-webkit-slider-runnable-track {
         width: 30%;
         background: #fff;
         margin: 5px; }
-      .saved .kee-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0 {
+      .saved .kee-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+      .saved .kee-container .notes #mySavedImg5c97d55383b8f4000495c1b5 {
         display: none; }
   .saved .container {
     position: relative;
