@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,16 +19,20 @@
   "homepage": "https://github.com/DCU4/kee#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "mongoose": "^5.4.3",
-    "gulp": "latest",
-    "gulp-util": "latest",
-    "gulp-sass": "latest",
+    "express-session": "^1.15.6",
+    "gulp": "^4.0.0",
     "gulp-coffee": "latest",
-    "gulp-uglify": "latest",
     "gulp-concat": "latest",
     "gulp-connect": "latest",
-    "gulp-notify": "~3.2.0"
+    "gulp-sass": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "mongoose": "^5.4.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
   }
 }

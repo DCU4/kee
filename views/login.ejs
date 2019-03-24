@@ -1,0 +1,18 @@
+<% include partials/header %>
+
+<div class="login-form">
+    <h1>Hi again,</h1>
+
+    <form action="/login" method="POST">
+        <h3>Username</h3>
+        <input type="text" name="username" placeholder="username">
+        <h3>Password</h3>
+        <input type="password" name="password" placeholder="password">
+        <button>Sign In</button>
+    </form>
+    
+    <p>Don’t have an account yet? <a href="/register">Join us!</a></p>
+</div>
+
+
+<% include partials/footer %>

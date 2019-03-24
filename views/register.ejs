@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<div class="login-form">
+    <h1>Welcome,</h1>
+<form action="/register" method="POST">
+     <h3>Username</h3>
+    <input type="text" name="username" placeholder="username">
+    <h3>Password</h3>
+    <input type="password" name="password" placeholder="password">
+    <button>Create an account</button>
+    <p>Already have an account?<a href="/login">Sign in</a> </p>
+</form>
+</div>
+<% include partials/footer %>

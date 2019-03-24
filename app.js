@@ -1,124 +1,200 @@
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
-    mongoose = require('mongoose');
-    // cors = require('cors');
+    mongoose = require('mongoose'),
+    // cors = require('cors'),
+    User = require("./models/user"),
+    LocalStrategy = require('passport-local'),
+    passportLocalMongoose = require("passport-local-mongoose"),
+    passport = require('passport');
 
 
 // mongoose.connect('mongodb://localhost:3000/kee',{ useNewUrlParser: true });
 mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
+
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 // app.use(cors());
 
+
+
+
 var keeSchema = new mongoose.Schema({
     image: String,
     description: String,
-    created: {type: Date, default: Date.now}
+    created: {type: Date, default: Date.now},
+    user: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
 });
+
 var Kee = mongoose.model('Kee', keeSchema);
 
+app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.json());
 
-// var newKee = new Kee ({
-//     image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEYCAYAAADmlsvOAAAIGElEQVR4Xu3UAQkAAAwCwdm/9HI83BLIOdw5AgQIRAQWySkmAQIEzmB5AgIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiDwPA4BGUnP4vYAAAAASUVORK5CYII=',
-//     description: 'test'
-// });
-// var userSchema = new mongoose.Schema({
-//     email: String,
-//     name: String,
-//     kees: [{
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Kee"
-//     }]
-// });
-// var User = mongoose.model('User', userSchema);
+app.use(require("express-session")({
+    secret: "cadbury",
+    resave:false,
+    saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//reads session and encodes or decodes it
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+
 
 // var newUser = new User ({
 //     email: "dylanjconnor4@gmail.com",
-//     name: 'Dylan'
+//     password: 'Dylan'
 //     // kees: [{
 //     //     type: mongoose.Schema.Types.ObjectId,
 //     //     ref: "Kee"
 //     // }]
 // })
 
-// newUser.save(function(err, user){
+// var newKee = new Kee ({
+//     image: 'data:image/png;base64,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',
+//     description: 'test'
+// });
+
+// newKee.save(function(err, kee){
 //     if(err){
 //         console.log('uhoh');
-//         console.log(err);
 //     } else {
 //         console.log('saved');
-//         console.log(user);
+//         console.log(kee);
 //     }
 // });
 
-// // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
-// var db;
 
-// // Connect to the database before starting the application server.
-// mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/test", function (err, client) {
-//     if (err) {
-//         console.log(err);
-//         process.exit(1);
-//     }
 
-//     // Save database object from the callback for reuse.
-//     db = client.db();
-//     console.log("Database connection ready");
-//     // Initialize the app.
-//     var server = app.listen(process.env.PORT || 8080, function () {
-//         var port = server.address().port;
-//         console.log("App now running on port", port);
-//     });
-// });
-
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
-app.get('/', function(req, res, next){
+app.get('/', isLoggedIn, function(req, res, next){
     res.render('index');
     
     // OR res.redirect to the index page
 });
 
-app.get('/saved', function(req, res, next){
-    //Get all kees from DB -- find.({}) means ALL kees
-    Kee.find({},function(err,allKees){
-        if(err) {
-            console.log(err);
-        } else {
-            // res.render('saved',{users: allUsers});
-            // console.log(allUsers);
-            res.render('saved',{kees: allKees});
-            console.log(allKees);
-        }
-    });
+app.get('/saved', isLoggedIn, function(req, res, next){
+   //Get all kees from DB -- find.({}) means ALL kees
+    //  var user = {
+    //     id: req.user._id,
+    //      username:req.user.username
+    // }
+   Kee.find({'user.username':req.user.username},function(err,allKees){
+       if(err) {
+           console.log(err);
+       } else {
+            res.render('saved',{kees: allKees });
+            // console.log(allKees[42].user.username);
+            // console.log(req.user.username);
+                   
+       }
+   });
     
 });
 
 
-app.post('/saved', function(req, res, next){
+app.post('/saved', isLoggedIn, function(req, res, next){
     //Create a new kee and save to DB
     // console.log(req.body);
-    console.log(req.body);
-    Kee.create(req.body.kee, function(err, kee){
+    // console.log(req.body);
+    // console.log(req.user);
+    var user = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    // var note = req.body
+    // console.log(note)
+    
+    // console.log(req);
+    var newNote = {image:req.body.image,user:user }
+    // console.log(newNote)
+    Kee.create(newNote, function(err, newlyCreated){
         if(err) {
             //later this should be front end error message
             console.log(err);
         } else {
             res.redirect('/saved');
-            console.log(kee);
+            // console.log(newlyCreated);
             // console.log(req.body._id);
         }
     });
 });
 
+
+
+
+// auth routes 
+
+app.get("/register", function(req,res){
+    res.render('register'); 
+});
+
+app.post('/register', function(req,res){
+    var newUser = new User({ username: req.body.username });
+    User.register(newUser, req.body.password, function(err,user){
+        if(err){
+            console.log(err);
+            res.render('register');
+        } else {
+            passport.authenticate('local')(req,res,function(){
+                res.redirect('/');
+                console.log(user);
+            });
+        }
+    });
+});
+
+// Login routes
+app.get('/login', function(req,res){
+    res.render('login');
+});
+
+//login logic
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect:'/login'
+}), function(req,res){
+    
+    
+});
+
+
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/login');
+});
+
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()){
+        return next();
+    } 
+    res.redirect('/login');
+}
+
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log('Server started');
+});
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server started');
