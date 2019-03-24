@@ -24,6 +24,7 @@ var changeContainer = document.getElementById('changeContainer');
 var savedContainer = document.getElementById('savedContainer');
 var slider = document.getElementById('slider');
 var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
+
 // var inputs = document.querySelectorAll('input');
 
 menuBtn.addEventListener('click', function(){
@@ -326,6 +327,11 @@ function saveDrawing(canvas) {
     // Get saved data from sessionStorage
 
 
+    let savedResponse = document.getElementById('saved-response');
+    savedResponse.classList.add('response');
+    setTimeout(function() {
+        savedResponse.classList.remove('response');
+    }, 2000);
     var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);

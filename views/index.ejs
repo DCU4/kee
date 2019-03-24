@@ -3,6 +3,7 @@
             <div id="saveBtn" class="save">Save Drawing</div>
             
             <div id="container" class="container">
+                <div id="saved-response" class="saved-response"><p>Saved!</p></div>
                 <canvas id="sketchpad"></canvas>
             </div>
 
@@ -14,14 +15,14 @@
                     <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
 
-                
-                
+
+
                 <div class="slider-wrap">
                     <div class="which-container-wrapper">
                             <div id="changeContainer" class="which-container this-container"></div>
                             <div id="savedContainer" class="which-container"></div>
                     </div>
-                    
+
                     <div class="slider" id="slider">
                         <div class="change-saved-colors-container" id="changeSavedColorsContainer">
                             <!-- Item one -->
@@ -60,10 +61,10 @@
                         </div>
                     </div>
                 </div>
-                
-                
-                
-                
+
+
+
+
 
                 <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
                     Clear Canvas

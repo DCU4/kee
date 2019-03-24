@@ -65,7 +65,26 @@ body {
         position: relative;
         width: 100%;
         margin: 0 auto; // height: 420px;
+        .saved-response {
+            opacity:0;
+            transition: all .5s;
+            &.response{
+                position: absolute;
+                opacity:1;
+                height: 100%;
+                width: 100%;
+                background: white;
+                z-index: 99999999;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                transition: opacity .5s;
+            }
 
+            p {
+                font-size: $font-p;
+            }
+        }
         canvas {
             position: absolute;
         }

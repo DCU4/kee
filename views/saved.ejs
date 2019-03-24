@@ -26,17 +26,59 @@
                         </div>
                     </div>
                 </nav>
-            <div class="kee-container" >
-                <% kees.forEach(function(kee){
+
+
+
+
+                <div class="kee-container" >
+
+                    <%
+                    var date = [];
+                    kees.forEach(function(kee){
+                        date.push(kee.created.toDateString());
+                    });
+
+                    var days = [...new Set(date)];
+                        // return days;
+                        console.log(days);
+
+                        days.forEach(function(day,d) {
+
+
+                    %>
+
+                        <p class="date" ><%= days[d] %></p>
+                        <div class="notes">
+                    <%
+
+                    kees.forEach(function(kee, i){
                     // var d = kee.created.getDate();
-                    // var m = kee.created.getMonth();
-                    // var y = kee.created.getFullYear();
+                    var m = kee.created.getMonth();
+                    var y = kee.created.getFullYear();
 
-                %>
+                    // var weekday = [];
+                    // weekday[0] = "Sunday";
+                    // weekday[1] = "Monday";
+                    // weekday[2] = "Tuesday";
+                    // weekday[3] = "Wednesday";
+                    // weekday[4] = "Thursday";
+                    // weekday[5] = "Friday";
+                    // weekday[6] = "Saturday";
 
-                <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" id="mySavedImg<%= kee._id %>"/>
+                    // var day = weekday[kee.created.getDay()];
 
-            <% }); %>
+                     //for each day in days, display all of the notes for that day
+                    if (kee.created.toDateString() === days[d]) {
+                            //  console.log(days[d],kee.created.toDateString(),d);
+
+                    %>
+
+                        <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" id="mySavedImg<%= kee._id %>"/>
+
+                    <% }  });   %>
+                    </div>
+                <% });   %>
+
             </div>
 
 
