@@ -227,6 +227,13 @@ body {
   height: 100%; }
   .kee.menu-open {
     opacity: 0.1; }
+  .kee .save {
+    background-color: #000;
+    color: #fff;
+    padding: 7px 27px;
+    font-size: 12px;
+    font-weight: 300;
+    border: 1px solid #000; }
   .kee .container {
     position: relative;
     width: 100%;

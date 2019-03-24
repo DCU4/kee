@@ -335,7 +335,7 @@ function saveDrawing(canvas) {
     var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);
-    var data = 'kee[image]='+savedEncoded;
+    var data = 'image='+savedEncoded;
     // let data = 'kee[image]='+savedEncoded+'&kee[description]=hello';
 
     fetch(url, {
