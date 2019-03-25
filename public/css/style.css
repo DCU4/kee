@@ -151,7 +151,7 @@ nav {
           text-decoration: none; }
       nav .menu .menu-list.menu-list-open {
         animation: fade-in-right ease .5s forwards;
-        z-index: 99999;
+        z-index: 999999999999999;
         width: 100%;
         top: 0px;
         bottom: 0;
@@ -176,7 +176,7 @@ nav {
       background-color: #000;
       color: #000;
       transform: none;
-      transition: transform .3s; }
+      transition: all .3s; }
       nav .menu .menu-line.line-1-x {
         transform: rotate(45deg) translate(3px, 4px); }
       nav .menu .menu-line.line-2-x {
@@ -242,6 +242,14 @@ nav {
   to {
     opacity: 0;
     transform: translateX(-15px); } }
+
+@keyframes menu-appear {
+  0% {
+    width: 40px; }
+  50% {
+    width: 0; }
+  100% {
+    width: 40px; } }
 
 html,
 body {

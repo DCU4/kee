@@ -32,7 +32,7 @@ nav {
 
             &.menu-list-open {
                 animation: fade-in-right ease .5s forwards;
-                z-index: 99999;
+                z-index: 999999999999999;
                 width: 100%;
                 top: 0px;
                 bottom: 0;
@@ -63,17 +63,22 @@ nav {
             background-color: #000;
             color: #000;
             transform: none;
-            transition: transform .3s;
+            transition: all .3s;
+            // animation: menu-appear ease .5s forwards;
 
             &.line-1-x {
                 transform: rotate(45deg) translate(3px, 4px);
+                // animation: menu-appear ease .5s forwards;
+                // transition: all .3s;
             }
 
             &.line-2-x {
                 transform: rotate(-45deg) translate(4px, -7px);
+                // animation: menu-appear ease .5s forwards;
+                // transition: all .3s;
             }
         }
     }
 
-    
+
 }
