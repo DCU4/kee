@@ -93,6 +93,8 @@ app.get('/', isLoggedIn, function(req, res, next){
     // OR res.redirect to the index page
 });
 
+
+// saved routes
 app.get('/saved', isLoggedIn, function(req, res, next){
    //Get all kees from DB -- find.({}) means ALL kees
     //  var user = {
@@ -111,7 +113,6 @@ app.get('/saved', isLoggedIn, function(req, res, next){
    });
     
 });
-
 
 app.post('/saved', isLoggedIn, function(req, res, next){
     //Create a new kee and save to DB
@@ -141,6 +142,12 @@ app.post('/saved', isLoggedIn, function(req, res, next){
 });
 
 
+
+
+// contact routes
+app.get('/contact', isLoggedIn, function(req, res, next){
+    res.render('contact');
+});
 
 
 // auth routes 
