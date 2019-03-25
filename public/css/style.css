@@ -284,6 +284,15 @@ body {
     margin: 0 auto; }
     .kee .container .saved-response {
       opacity: 0;
+      height: 0;
+      position: absolute;
+      background: transparent;
+      width: 100%;
+      display: flex;
+      padding: 100px;
+      justify-content: center;
+      align-content: center;
+      z-index: 99999999;
       transition: all .5s; }
       .kee .container .saved-response.response {
         position: absolute;
@@ -292,10 +301,7 @@ body {
         width: 100%;
         background: white;
         z-index: 99999999;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        transition: opacity .5s; }
+        transition: all .5s; }
       .kee .container .saved-response p {
         font-size: 12px; }
     .kee .container canvas {

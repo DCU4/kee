@@ -32,6 +32,19 @@
     }
 }
 
+
+// @keyframes fade-out-up {
+//     from {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+
+//     to {
+//         opacity: 0;
+//         transform: translateY(-15px);
+//     }
+// }
+
 html,
 body {
     /*overflow: hidden;*/
@@ -43,7 +56,7 @@ body {
         margin: 0 auto;
     }
 
-    
+
 }
 
 .kee {
@@ -81,6 +94,15 @@ body {
         margin: 0 auto; // height: 420px;
         .saved-response {
             opacity:0;
+            height: 0;
+            position: absolute;
+            background: transparent;
+            width: 100%;
+            display: flex;
+            padding: 100px;
+            justify-content: center;
+            align-content: center;
+            z-index: 99999999;
             transition: all .5s;
             &.response{
                 position: absolute;
@@ -89,10 +111,7 @@ body {
                 width: 100%;
                 background: white;
                 z-index: 99999999;
-                display: flex;
-                justify-content: center;
-                align-content: center;
-                transition: opacity .5s;
+                transition: all .5s;
             }
 
             p {
