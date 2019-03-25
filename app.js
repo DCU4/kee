@@ -19,9 +19,6 @@ app.use(express.static('public'));
 // app.use(cors());
 
 
-
-
-
 app.use(bodyParser.urlencoded({extended:true}));
 // app.use(bodyParser.json());
 
@@ -46,6 +43,7 @@ app.use(function(req, res, next) {
     next();
 });
 
+//draw page route
 app.get('/', isLoggedIn, function(req, res, next){
     res.render('index');
 });
@@ -90,11 +88,11 @@ app.post('/saved', isLoggedIn, function(req, res, next){
 
 
 
-
 // contact routes
 app.get('/contact', isLoggedIn, function(req, res, next){
     res.render('contact');
 });
+
 
 
 // auth routes 
