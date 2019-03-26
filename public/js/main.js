@@ -48,7 +48,7 @@ menuBtn.addEventListener('click', function(){
 // Define some variables to keep track of the touch position
     var touchX,touchY,touchDown;
 
-    function sketchpad_touchStart() {
+    function sketchpad_touchStart(event) {
         touchDown = 1;
         getTouchPos();
         if(touchDown == 1){
@@ -72,7 +72,7 @@ menuBtn.addEventListener('click', function(){
         console.log(points);
     }
 
-    function sketchpad_touchMove(e) {
+    function sketchpad_touchMove(e,event) {
         // Update the touch co-ordinates
         getTouchPos(e);
 
