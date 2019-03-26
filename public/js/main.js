@@ -72,7 +72,7 @@ menuBtn.addEventListener('click', function(){
         console.log(points);
     }
 
-    function sketchpad_touchMove(e,event) {
+    function sketchpad_touchMove(e) {
         // Update the touch co-ordinates
         getTouchPos(e);
 
@@ -82,7 +82,7 @@ menuBtn.addEventListener('click', function(){
 
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
-        event.preventDefault();
+        e.preventDefault();
 
     }
 

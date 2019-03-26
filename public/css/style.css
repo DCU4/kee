@@ -297,7 +297,6 @@ body {
       background: transparent;
       width: 100%;
       display: flex;
-      padding: 100px;
       justify-content: center;
       align-content: center;
       z-index: 99999999;
@@ -305,6 +304,7 @@ body {
       .kee .container .saved-response.response {
         position: absolute;
         opacity: 1;
+        padding: 100px;
         height: 100%;
         width: 100%;
         background: white;
