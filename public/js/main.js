@@ -82,7 +82,7 @@ menuBtn.addEventListener('click', function(){
 
         }
         // Prevent a scrolling action as a result of this touchmove triggering.
-        event.preventDefault();
+        e.preventDefault();
 
     }
 
