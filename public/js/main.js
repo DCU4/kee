@@ -230,6 +230,19 @@ function cUndo(canvas,ctx) {
     }
 }
 
+// var gradientColor = 0;
+// var gradientColor = document.getElementById('gradientColor');
+// gradientColor.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
+// function useGradientColor () {
+//     gradientColor = 1;
+//     savedColor = 0;
+//     colorDisplay.style.backgroundImage = this.style.backgroundImage;
+
+// }
+
+// console.log(useGradientColor);
+// gradientColor.addEventListener('click', useGradientColor, true);
+
 var savedColors = [];
     function saveColor() {
         savedColors.push(colorDisplay.style.background);
@@ -258,6 +271,13 @@ function drawLine(ctx,x,y,size) {
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     var lineColor = "hsl("+h+","+s+"%,"+l+"%)";
 
+    // var color1 = '#e66465';
+    // var color2 = '#9198e5';
+    // var gradient = ctx.createLinearGradient(20,0, 250,0);
+
+    // gradient.addColorStop(0, color1);
+    // gradient.addColorStop(1, color2);
+
     //checks whether its a saved color
     if (savedColor===1){
         ctx.strokeStyle = colorDisplay.style.background;
@@ -265,6 +285,15 @@ function drawLine(ctx,x,y,size) {
         ctx.strokeStyle = lineColor;
         colorDisplay.style.background = lineColor;
     }
+
+    // if (savedColor===1){
+    //     ctx.strokeStyle = colorDisplay.style.background;
+    // } else if (gradientColor===1){
+    //     ctx.strokeStyle = gradient;
+    // } else {
+    //     ctx.strokeStyle = lineColor;
+    //     colorDisplay.style.background = lineColor;
+    // }
 
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {
