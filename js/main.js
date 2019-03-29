@@ -222,67 +222,6 @@ function cUndo(canvas,ctx) {
     }
 }
 
-var isGradientColor = 0;
-var mood = document.getElementById('mood');
-var sunset = document.getElementById('sunset');
-var mintTea = document.getElementById('mint-tea');
-var summertime = document.getElementById('summertime');
-var rainySeason = document.getElementById('rainy-season');
-
-mood.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
-sunset.style.backgroundImage = 'linear-gradient(#C02425,#F0CB35)';
-mintTea.style.backgroundImage = 'linear-gradient(#1D976C,#93F9B9)';
-summertime.style.backgroundImage = 'linear-gradient(#1D976C,#64b3f4)';
-rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
-var color1;
-var color2;
-
-
-mood.addEventListener('click', function(){
-    useGradientColor();
-    colorDisplay.style.backgroundImage = this.style.backgroundImage;
-    color1 = '#e66465';
-    color2 = '#9198e5';
-
-}, true);
-
-sunset.addEventListener('click', function(){
-    useGradientColor();
-    colorDisplay.style.backgroundImage = this.style.backgroundImage;
-    color1 = '#C02425';
-    color2 = '#F0CB35';
-
-}, true);
-
-mintTea.addEventListener('click', function(){
-    useGradientColor();
-    colorDisplay.style.backgroundImage = this.style.backgroundImage;
-    color1 = '#1D976C';
-    color2 = '#93F9B9';
-
-}, true);
-
-summertime.addEventListener('click', function(){
-    useGradientColor();
-    colorDisplay.style.backgroundImage = this.style.backgroundImage;
-    color1 = '#c2e59c';
-    color2 = '#64b3f4';
-
-}, true);
-
-rainySeason.addEventListener('click', function(){
-    useGradientColor();
-    colorDisplay.style.backgroundImage = this.style.backgroundImage;
-    color1 = '#757F9A';
-    color2 = '#D7DDE8';
-
-}, true);
-
-function useGradientColor () {
-    isGradientColor = 1;
-    savedColor = 0;
-}
-
 var savedColors = [];
     function saveColor() {
         var savedColorDisplay = document.getElementsByClassName('saved-color-display');
@@ -390,7 +329,7 @@ function saveDrawing(canvas) {
     // Get saved data from sessionStorage
 
 
-    let savedResponse = document.getElementById('saved-response');
+    var savedResponse = document.getElementById('saved-response');
     savedResponse.classList.add('response');
     setTimeout(function() {
         savedResponse.classList.remove('response');
@@ -409,9 +348,9 @@ function saveDrawing(canvas) {
         }
 
     })
-    .then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
+    // .then(res => res.json())
+    // .then(response => console.log('Success:', JSON.stringify(response)))
+    // .catch(error => console.error('Error:', error));
 
 }
 
@@ -431,6 +370,8 @@ function resizeCanvas(canvas){
 
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
+
+    // import {gradient} from './gradient';
 
     // Get the specific canvas element from the HTML document
     canvas = document.getElementById('sketchpad');
@@ -521,5 +462,14 @@ function init() {
     undoBtn.addEventListener('touchstart', preventZoom);
 
     saveColorBtn.addEventListener('click', saveColor);
+
+
+    //gradients in here because it was causing errors on history page in gradient.js file
+    mood.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
+    sunset.style.backgroundImage = 'linear-gradient(#C02425,#F0CB35)';
+    mintTea.style.backgroundImage = 'linear-gradient(#1D976C,#93F9B9)';
+    summertime.style.backgroundImage = 'linear-gradient(#c2e59c,#64b3f4)';
+    rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
+
 
 }

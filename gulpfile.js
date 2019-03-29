@@ -18,7 +18,7 @@ done();
 });
 
 gulp.task('js', function(done) {
-gulp.src('js/main.js')
+gulp.src('js/*.js')
 .pipe(uglify().on('error', function(e){
     console.log(e);
     }))
@@ -28,7 +28,7 @@ done();
 });
 
 gulp.task('watch', function(done) {
-gulp.watch('js/main.js', gulp.series('js'));
+gulp.watch('js/*.js', gulp.series('js'));
 gulp.watch('sass/**/*.scss', gulp.series('sass'));
 done();
 });
