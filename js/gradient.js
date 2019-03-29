@@ -9,7 +9,7 @@ var rainySeason = document.getElementById('rainy-season');
 var color1;
 var color2;
 
-// if (init()){
+if (mood){
 
 
     mood.addEventListener('click', function(){
@@ -59,4 +59,4 @@ var color2;
         savedColor = 0;
     }
 
-// }
+}
