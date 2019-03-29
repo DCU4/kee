@@ -436,16 +436,6 @@ body {
               margin: 10px;
               border: 3px solid #fff;
               border-radius: 50%; }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container #mood {
-              background: linear-gradient(#e66465, #9198e5); }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container #sunset {
-              background: linear-gradient(#C02425, #F0CB35); }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container #rainy-season {
-              background: linear-gradient(#757F9A, #D7DDE8); }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container #summertime {
-              background: linear-gradient(#c2e59c, #64b3f4); }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container #mint-tea {
-              background: linear-gradient(#1D976C, #93F9B9); }
     .kee .inputs .clear-canvas {
       border: 1px solid black;
       padding: 7px;
