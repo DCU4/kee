@@ -16,7 +16,6 @@ var menuLine1 = document.getElementById('menu-line-1');
 var menuLine2 = document.getElementById('menu-line-2');
 var menu = document.getElementById('menu-list');
 var saveColorBtn = document.getElementById('saveColor');
-var savedColorDisplay = document.getElementsByClassName('saved-color-display');
 var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
@@ -230,21 +229,70 @@ function cUndo(canvas,ctx) {
     }
 }
 
-// var gradientColor = 0;
-// var gradientColor = document.getElementById('gradientColor');
-// gradientColor.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
-// function useGradientColor () {
-//     gradientColor = 1;
-//     savedColor = 0;
-//     colorDisplay.style.backgroundImage = this.style.backgroundImage;
+var isGradientColor = 0;
+var mood = document.getElementById('mood');
+var sunset = document.getElementById('sunset');
+var mintTea = document.getElementById('mint-tea');
+var summertime = document.getElementById('summertime');
+var rainySeason = document.getElementById('rainy-season');
 
-// }
+mood.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
+sunset.style.backgroundImage = 'linear-gradient(#C02425,#F0CB35)';
+mintTea.style.backgroundImage = 'linear-gradient(#1D976C,#93F9B9)';
+summertime.style.backgroundImage = 'linear-gradient(#1D976C,#64b3f4)';
+rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
+var color1;
+var color2;
 
-// console.log(useGradientColor);
-// gradientColor.addEventListener('click', useGradientColor, true);
+
+mood.addEventListener('click', function(){
+    useGradientColor();
+    colorDisplay.style.backgroundImage = this.style.backgroundImage;
+    color1 = '#e66465';
+    color2 = '#9198e5';
+    
+}, true);
+
+sunset.addEventListener('click', function(){
+    useGradientColor();
+    colorDisplay.style.backgroundImage = this.style.backgroundImage;
+    color1 = '#C02425';
+    color2 = '#F0CB35';
+    
+}, true);
+
+mintTea.addEventListener('click', function(){
+    useGradientColor();
+    colorDisplay.style.backgroundImage = this.style.backgroundImage;
+    color1 = '#1D976C';
+    color2 = '#93F9B9';
+    
+}, true);
+
+summertime.addEventListener('click', function(){
+    useGradientColor();
+    colorDisplay.style.backgroundImage = this.style.backgroundImage;
+    color1 = '#c2e59c';
+    color2 = '#64b3f4';
+    
+}, true);
+
+rainySeason.addEventListener('click', function(){
+    useGradientColor();
+    colorDisplay.style.backgroundImage = this.style.backgroundImage;
+    color1 = '#757F9A';
+    color2 = '#D7DDE8';
+    
+}, true);
+
+function useGradientColor () {
+    isGradientColor = 1;
+    savedColor = 0;
+}
 
 var savedColors = [];
     function saveColor() {
+        var savedColorDisplay = document.getElementsByClassName('saved-color-display');
         savedColors.push(colorDisplay.style.background);
         for(var j=0; j < savedColorDisplay.length; j++){
             for(var i=0; i < savedColors.length; i++){
@@ -266,34 +314,25 @@ function useSavedColor(){
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
+
 function drawLine(ctx,x,y,size) {
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     var lineColor = "hsl("+h+","+s+"%,"+l+"%)";
-
-    // var color1 = '#e66465';
-    // var color2 = '#9198e5';
-    // var gradient = ctx.createLinearGradient(20,0, 250,0);
-
-    // gradient.addColorStop(0, color1);
-    // gradient.addColorStop(1, color2);
-
-    //checks whether its a saved color
+    
+    var gradient = ctx.createLinearGradient(20,0, 250,0);
+    
+    //checks whether its a saved color or gradient
     if (savedColor===1){
         ctx.strokeStyle = colorDisplay.style.background;
+    } else if (isGradientColor===1){
+        gradient.addColorStop(0, color1);
+        gradient.addColorStop(1, color2);
+        ctx.strokeStyle = gradient;
     } else {
         ctx.strokeStyle = lineColor;
         colorDisplay.style.background = lineColor;
     }
-
-    // if (savedColor===1){
-    //     ctx.strokeStyle = colorDisplay.style.background;
-    // } else if (gradientColor===1){
-    //     ctx.strokeStyle = gradient;
-    // } else {
-    //     ctx.strokeStyle = lineColor;
-    //     colorDisplay.style.background = lineColor;
-    // }
 
     // If lastX is not set, set lastX and lastY to the current position
     if (lastX==-1) {

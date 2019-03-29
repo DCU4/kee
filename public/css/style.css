@@ -421,7 +421,8 @@ body {
             height: 175px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
               margin: 20px 0; }
-            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display {
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display,
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display {
               width: 40px;
               height: 40px;
               margin: 10px;
