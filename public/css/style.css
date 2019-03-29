@@ -1,3 +1,9 @@
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 .kee .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
@@ -188,10 +194,10 @@ nav {
   justify-content: center;
   width: 80%;
   margin: 0 auto;
-  padding: 50px 0; }
+  padding: 25px 0; }
   .login-form h1 {
     font-weight: lighter;
-    padding-bottom: 50px; }
+    padding-bottom: 25px; }
   .login-form form {
     display: flex;
     flex-direction: column;
@@ -227,22 +233,6 @@ nav {
   padding: 0;
   box-sizing: border-box; }
 
-@keyframes fade-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(-15px); }
-  to {
-    opacity: 1;
-    transform: translateX(0); } }
-
-@keyframes fade-out-left {
-  from {
-    opacity: 1;
-    transform: translateX(0); }
-  to {
-    opacity: 0;
-    transform: translateX(-15px); } }
-
 @keyframes menu-appear {
   0% {
     width: 40px; }
@@ -255,7 +245,8 @@ html,
 body {
   /*overflow: hidden;*/
   background: #F5F5F5;
-  font-family: "Noto Sans KR", sans-serif; }
+  font-family: "Noto Sans KR", sans-serif;
+  animation: fade-in .8s ease-in; }
   @media (min-width: 720px) {
     html,
     body {

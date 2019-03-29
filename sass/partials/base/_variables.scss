@@ -21,3 +21,13 @@ $font-h1: 40px;
 $font-h2: 28px;
 $font-h3: 20px;
 $font-p: 12px;
+
+//animations
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

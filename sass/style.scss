@@ -8,30 +8,6 @@
     box-sizing: border-box;
 }
 
-@keyframes fade-in-right {
-    from {
-        opacity: 0;
-        transform: translateX(-15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fade-out-left {
-    from {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateX(-15px);
-    }
-}
-
 
 @keyframes menu-appear {
     0% {
@@ -52,6 +28,7 @@ body {
     /*overflow: hidden;*/
     background: $light-gray;
     font-family: $font;
+    animation: fade-in .8s ease-in;
 
     @media(min-width:720px){
         width: 400px;
