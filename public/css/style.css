@@ -4,6 +4,22 @@
   to {
     opacity: 1; } }
 
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-15px); }
+  to {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes fade-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0); }
+  to {
+    opacity: 0;
+    transform: translateX(-15px); } }
+
 .kee .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
