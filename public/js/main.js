@@ -19,12 +19,9 @@ var saveColorBtn = document.getElementById('saveColor');
 var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
-var changeContainer = document.getElementById('changeContainer');
-var savedContainer = document.getElementById('savedContainer');
-var slider = document.getElementById('slider');
+var sizeValue = document.getElementById('sizeValue');
 var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
 
-// var inputs = document.querySelectorAll('input');
 
 menuBtn.addEventListener('click', function(){
     menuLine1.classList.toggle('line-1-x');
@@ -164,33 +161,29 @@ var isNotInViewport = function (elem) {
     );
 };
 
+var changeContainer = document.getElementById('changeContainer');
+var savedContainer = document.getElementById('savedContainer');
+var slider = document.getElementById('slider');
+
 function animateSlider (a){
     //check if container is in the view port and if the target is a color change slider
-    if (isNotInViewport(savedColorContainer) && !(a.target == myColor) && !(a.target == myLight) && !(a.target == mySaturation) && !(a.target == mySize)) {
+    if (isNotInViewport(savedColorContainer)) {
         changeSavedColorsContainer.classList.add('animate');
-    } else {
-        changeSavedColorsContainer.classList.remove('animate');
-    }
-
-}
-
-function stopSlider(b){
-    if (isNotInViewport(savedColorContainer) && !(b.target == myColor) && !(b.target == myLight) && !(b.target == mySaturation) && !(b.target == mySize)) {
         changeContainer.classList.remove('this-container');
         savedContainer.classList.add('this-container');
     } else {
+        changeSavedColorsContainer.classList.remove('animate');
         changeContainer.classList.add('this-container');
         savedContainer.classList.remove('this-container');
     }
 }
 
-
 function changeColor(c) {
     var displayColor = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
     colorDisplay.style.background = displayColor;
     savedColor = 0;
+    isGradientColor = 0;
 }
-var sizeValue = document.getElementById('sizeValue');
 
 
 function preventZoom(e) {
@@ -250,7 +243,7 @@ mood.addEventListener('click', function(){
     colorDisplay.style.backgroundImage = this.style.backgroundImage;
     color1 = '#e66465';
     color2 = '#9198e5';
-    
+
 }, true);
 
 sunset.addEventListener('click', function(){
@@ -258,7 +251,7 @@ sunset.addEventListener('click', function(){
     colorDisplay.style.backgroundImage = this.style.backgroundImage;
     color1 = '#C02425';
     color2 = '#F0CB35';
-    
+
 }, true);
 
 mintTea.addEventListener('click', function(){
@@ -266,7 +259,7 @@ mintTea.addEventListener('click', function(){
     colorDisplay.style.backgroundImage = this.style.backgroundImage;
     color1 = '#1D976C';
     color2 = '#93F9B9';
-    
+
 }, true);
 
 summertime.addEventListener('click', function(){
@@ -274,7 +267,7 @@ summertime.addEventListener('click', function(){
     colorDisplay.style.backgroundImage = this.style.backgroundImage;
     color1 = '#c2e59c';
     color2 = '#64b3f4';
-    
+
 }, true);
 
 rainySeason.addEventListener('click', function(){
@@ -282,7 +275,7 @@ rainySeason.addEventListener('click', function(){
     colorDisplay.style.backgroundImage = this.style.backgroundImage;
     color1 = '#757F9A';
     color2 = '#D7DDE8';
-    
+
 }, true);
 
 function useGradientColor () {
@@ -308,6 +301,7 @@ var savedColors = [];
 
 function useSavedColor(){
     savedColor = 1;
+    isGradientColor = 0;
     animateSlider();
     colorDisplay.style.background = this.style.background;
 }
@@ -319,9 +313,9 @@ function drawLine(ctx,x,y,size) {
     // Select a fill style
     var h=myColor.value,  l=myLight.value, s=mySaturation.value;
     var lineColor = "hsl("+h+","+s+"%,"+l+"%)";
-    
+
     var gradient = ctx.createLinearGradient(20,0, 250,0);
-    
+
     //checks whether its a saved color or gradient
     if (savedColor===1){
         ctx.strokeStyle = colorDisplay.style.background;
@@ -443,7 +437,7 @@ function init() {
 
     // styling for slider
     savedColorContainer.style.width = window.innerWidth -20+"px";
-    console.log(savedColorContainer.style.width);
+    // console.log(savedColorContainer.style.width);
     changeColorContainer.style.width = window.innerWidth -20+"px";
     //first color to display
     colorDisplay.style.background = "hsl("+myColor.value+","+mySaturation.value+"%,"+myLight.value+"%)";
@@ -517,8 +511,8 @@ function init() {
         sizeValue.innerHTML = (mySize.value/2);
     });
 
-    slider.addEventListener('touchmove', animateSlider, false);
-    slider.addEventListener('touchend', stopSlider, false);
+    changeContainer.addEventListener('click', animateSlider, false);
+    savedContainer.addEventListener('click', animateSlider, false);
 
     save.addEventListener('click', function(){
         saveDrawing(canvas);

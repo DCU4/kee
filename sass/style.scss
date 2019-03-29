@@ -197,20 +197,22 @@ body {
             display:flex;
             flex-direction: column;
             align-items: center;
-            height: 175px;
-            padding-top: 15px;
             .which-container-wrapper {
                 display: flex;
-                margin: 3px 10px;
+                justify-content: center;
+                margin: 10px 10px 16px;
                 .which-container {
-                    // width: 11px;
-                    // height:11px;
-                    @include square(11px);
-                    background: #D1D1D1;
-                    margin: 0 5px;
-                    border-radius: 50%;
+                    padding: 15px 15px 7px;
+                    display: flex;
+                    align-items: center;
+                    width: 150px;
+                    justify-content: center;
+                    color:$dark-gray;
+                    border-bottom: 3px solid $dark-gray;
+
                     &.this-container {
-                        background:#5F5F5F;
+                        color: $black;
+                        border-bottom: 3px $black solid
                     }
                 }
             }
@@ -226,7 +228,7 @@ body {
                     align-content: center;
                     width: 200%;
                     transform: translateX(0) ;
-                    transition: transform .5s ease-out .2s;
+                    transition: transform .5s ease-out ;
                     &.animate {
                         transform: translateX(-50%) ;
 
@@ -271,8 +273,7 @@ body {
                         display: flex;
                         flex-wrap: wrap;
                         justify-content: space-between;
-                        align-content: center;
-                        font-size: $font-p;
+                        align-content: flex-start;
                         height: 175px;
                         p {
                             margin: 20px 0;
