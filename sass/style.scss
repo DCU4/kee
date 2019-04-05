@@ -184,13 +184,11 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding-bottom: 10px;
-               
-                // &.open {
-                //     width: 100%;
-                // }
+
                 p {
                     margin: 0 7px;
+                    font-size: 18px;
+
                 }
                 .my-size {
                     margin: 10px 0;
@@ -198,11 +196,12 @@ body {
                     opacity:0;
                     transition: all .3s;
                     position: absolute;
-                    top: 20px;
-                    left: 112px;
+                    top: 37%;
+                    left: 50px;
                     &.open {
-                        animation: reveal .3s ease-in;
-                        width: 55%;
+                        // animation: reveal .3s ease-in;
+                        left: 112px;
+                        width: 200px;
                         opacity: 1;
                     }
                 }
