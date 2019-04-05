@@ -186,21 +186,22 @@ body {
                 justify-content: space-between;
 
                 p {
-                    margin: 0 7px;
+                    margin: 0;
                     font-size: 18px;
+                    width: 50px;
 
                 }
                 .my-size {
-                    margin: 10px 0;
+                    margin: 10px 45px;
                     width: 0%;
                     opacity:0;
                     transition: all .3s;
                     position: absolute;
                     top: 37%;
-                    left: 50px;
+                    // left: 50px;
                     &.open {
                         // animation: reveal .3s ease-in;
-                        left: 20%;
+                        // left: 20%;
                         width: 200px;
                         opacity: 1;
                     }
