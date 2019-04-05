@@ -20,7 +20,15 @@
     opacity: 0;
     transform: translateX(-15px); } }
 
-.kee .inputs #displayBox .save-color, .kee .inputs #displayBox .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+@keyframes reveal {
+  from {
+    opacity: 0;
+    width: 0; }
+  to {
+    opacity: 1;
+    width: 55%; } }
+
+.kee .inputs #displayBox .not-mySize .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -338,35 +346,65 @@ body {
     align-items: center; }
     .kee .inputs #displayBox {
       padding: 10px 60px 10px 0;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
       background: #fff;
       box-shadow: 0px 2px 6px 0.1px #B4B4B4; }
-      .kee .inputs #displayBox .save-color {
-        margin-right: 20px;
-        width: 31px;
-        height: 50px;
-        background-image: url("../imgs/round-highlight_off-24px.svg");
-        border: none;
-        position: relative;
-        transform: rotate(45deg); }
-      .kee .inputs #displayBox .color-display {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%; }
-      .kee .inputs #displayBox .divider {
-        width: 2px;
-        height: 40px;
-        background-color: #B4B4B4;
-        margin: 0 30px; }
-      .kee .inputs #displayBox .undo {
-        width: 31px;
-        height: 50px;
-        background-image: url("../imgs/Undo-black_x1.png");
-        border: none;
-        position: relative; }
+      .kee .inputs #displayBox .not-mySize {
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        transition: all .3s; }
+        .kee .inputs #displayBox .not-mySize.closed {
+          opacity: 0; }
+        .kee .inputs #displayBox .not-mySize .save-color {
+          margin-right: 20px;
+          width: 31px;
+          height: 50px;
+          background-image: url("../imgs/round-highlight_off-24px.svg");
+          border: none;
+          position: relative;
+          transform: rotate(45deg); }
+        .kee .inputs #displayBox .not-mySize .color-display {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%; }
+        .kee .inputs #displayBox .not-mySize .divider {
+          width: 2px;
+          height: 40px;
+          background-color: #B4B4B4;
+          margin: 0 30px; }
+        .kee .inputs #displayBox .not-mySize .undo {
+          width: 31px;
+          height: 50px;
+          background-image: url("../imgs/Undo-black_x1.png");
+          border: none;
+          position: relative; }
+      .kee .inputs #displayBox .input-container-size {
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 10px; }
+        .kee .inputs #displayBox .input-container-size p {
+          margin: 0 7px; }
+        .kee .inputs #displayBox .input-container-size .my-size {
+          margin: 10px 0;
+          width: 0%;
+          opacity: 0;
+          transition: all .3s;
+          position: absolute;
+          top: 20px;
+          left: 112px; }
+          .kee .inputs #displayBox .input-container-size .my-size.open {
+            animation: reveal .3s ease-in;
+            width: 55%;
+            opacity: 1; }
     .kee .inputs .slider-wrap {
       display: flex;
       flex-direction: column;
@@ -414,8 +452,6 @@ body {
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
                   background-image: url("../imgs/saturation_x1.png"); }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
-                  background-image: url("../imgs/shade_x1.png"); }
-                .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.size-icon {
                   background-image: url("../imgs/shade_x1.png"); }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container p {
                 margin: 0 7px; }

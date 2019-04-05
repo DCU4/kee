@@ -36,10 +36,17 @@
 
             <div class="inputs">
                 <div id="displayBox">
-                    <div id="saveColor" class="save-color"></div>
-                    <div id="colorDisplay" class="color-display"></div>
-                    <span class="divider"></span>
-                    <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
+                    <div id="sizeInputContainer" class="input-container-size">
+                        <p id="sizeValue"></p>
+                        <input type="range" min="1" max="25" value="12" step="1" class="my-size" id="mySize">
+                    </div>
+                    <div id="notMySize" class="not-mySize">
+                        <div id="saveColor" class="save-color"></div>
+                        <div id="colorDisplay" class="color-display"></div>
+                        <span class="divider"></span>
+                        <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
+                    </div>
+                    
                 </div>
 
                 <div class="slider-wrap">
@@ -64,10 +71,7 @@
                                     <div class="shade-icon icon"></div>
                                     <input type="range" min="0" max="100" value="50"  id="myLight">
                                 </div>
-                                <div id="sizeInputContainer" class="input-container">
-                                        <p id="sizeValue"></p>
-                                        <input type="range" min="1" max="25" value="12" step="1"  id="mySize">
-                                    </div>
+                                
                             </div>
                             <!-- item two -->
                             <div class="saved-colors-container" id="savedColorsContainer">

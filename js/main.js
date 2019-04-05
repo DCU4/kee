@@ -148,7 +148,20 @@ function getMousePos(e) {
 // DRAW ___________________________
 var savedColor = 0;
 
-// var sizeInputContainer = document.getElementById('sizeInputContainer');
+var sizeInputContainer = document.getElementById('sizeInputContainer');
+var notMySize = document.getElementById('notMySize');
+sizeValue.addEventListener('click', function(){
+    // mySize.classList.add('open');
+
+    if (mySize.classList.contains('open')) {
+        mySize.classList.remove('open');
+        notMySize.classList.remove('closed');
+    } else {
+        mySize.classList.add('open');
+        notMySize.classList.add('closed');
+    }
+    
+});
 
 var isNotInViewport = function (elem) {
     var bounding = elem.getBoundingClientRect();

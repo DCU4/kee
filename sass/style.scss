@@ -127,46 +127,88 @@ body {
 
         #displayBox {
             padding: 10px 60px 10px 0;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
             width:100%;
             background: #fff;
             box-shadow: 0px 2px 6px 0.1px $dark-gray;
+            .not-mySize {
+                z-index: 1;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                opacity: 1;
+                transition: all .3s;
+                &.closed {
+                    opacity: 0;
+                }
 
-            .save-color {
-                margin-right: 20px;
-                width: 31px;
-                height: 50px;
-                background-image: url('../imgs/round-highlight_off-24px.svg');
-                @extend %icon;
-                border: none;
-                position: relative;
-                transform: rotate(45deg);
+                .save-color {
+                    margin-right: 20px;
+                    width: 31px;
+                    height: 50px;
+                    background-image: url('../imgs/round-highlight_off-24px.svg');
+                    @extend %icon;
+                    border: none;
+                    position: relative;
+                    transform: rotate(45deg);
+                }
+    
+                .color-display {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%
+                }
+    
+                .divider {
+                    width: 2px;
+                    height: 40px;
+                    background-color: $dark-gray;
+                    margin: 0 30px;
+                }
+    
+                .undo {
+                    @extend %icon;
+                    width: 31px;
+                    height: 50px;
+                    background-image: url('../imgs/Undo-black_x1.png');
+                    border: none;
+                    position: relative;
+    
+                }
+            }
+            .input-container-size {
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+               
+                // &.open {
+                //     width: 100%;
+                // }
+                p {
+                    margin: 0 7px;
+                }
+                .my-size {
+                    margin: 10px 0;
+                    width: 0%;
+                    opacity:0;
+                    transition: all .3s;
+                    position: absolute;
+                    top: 20px;
+                    left: 112px;
+                    &.open {
+                        animation: reveal .3s ease-in;
+                        width: 55%;
+                        opacity: 1;
+                    }
+                }
             }
 
-            .color-display {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%
-            }
-
-            .divider {
-                width: 2px;
-                height: 40px;
-                background-color: $dark-gray;
-                margin: 0 30px;
-            }
-
-            .undo {
-                @extend %icon;
-                width: 31px;
-                height: 50px;
-                background-image: url('../imgs/Undo-black_x1.png');
-                border: none;
-                position: relative;
-
-            }
+            
         }
 
 
@@ -230,9 +272,6 @@ body {
                                     background-image: url('../imgs/saturation_x1.png');
                                 }
                                 &.shade-icon {
-                                    background-image: url('../imgs/shade_x1.png');
-                                }
-                                &.size-icon {
                                     background-image: url('../imgs/shade_x1.png');
                                 }
 
