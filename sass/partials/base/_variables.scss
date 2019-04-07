@@ -17,10 +17,10 @@ $desktop: 1080px;
 $font: 'Noto Sans KR', sans-serif;
 
 //font sizes
-$font-h1: 40px;
-$font-h2: 28px;
-$font-h3: 20px;
-$font-p: 12px;
+$h1: 40px;
+$h2: 28px;
+$h3: 20px;
+$p: 12px;
 
 //animations
 @keyframes fade-in {
@@ -66,3 +66,18 @@ $font-p: 12px;
         width:55%;
     }
 }
+
+// @keyframes menu-appear{
+//     0% {
+//         width: 35px;
+//         // transform: none;
+//     }
+//     50% {
+//         width: 0;
+//         // transform: none;
+//     }
+//     100% {
+//         width: 35px;
+//         // transform: rotate(45deg) translate(3px, 4px);
+//     }
+// }

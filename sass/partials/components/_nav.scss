@@ -1,7 +1,5 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 3% 0;
+    margin: 20px 7% 0;
 
     .menu {
         width: 150px;
@@ -19,7 +17,7 @@ nav {
 
             .menu-items {
                 list-style-type: none;
-                font-size: $font-h3;
+                font-size: h3;
                 padding-bottom: 21px;
                 font-weight: bold;
                 line-height: 30px;
@@ -57,24 +55,32 @@ nav {
         }
 
         .menu-line {
-            width: 40px;
+            width: 35px;
             height: 2px;
             margin: 5px 0;
             background-color: #000;
             color: #000;
             transform: none;
             transition: all .3s;
-            // animation: menu-appear ease .5s forwards;
+
+            // &.close {
+            //     animation: menu-appear reverse ease .5s backwards;
+            // }
+            // &.open {
+            //     animation: menu-appear ease .5s forwards;
+            // }
 
             &.line-1-x {
-                transform: rotate(45deg) translate(3px, 4px);
                 // animation: menu-appear ease .5s forwards;
+                transform: rotate(45deg) translate(3px, 4px);
+                
                 // transition: all .3s;
             }
 
             &.line-2-x {
-                transform: rotate(-45deg) translate(4px, -7px);
                 // animation: menu-appear ease .5s forwards;
+                transform: rotate(-45deg) translate(4px, -7px);
+                
                 // transition: all .3s;
             }
         }

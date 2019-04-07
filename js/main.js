@@ -24,6 +24,17 @@ var changeSavedColorsContainer = document.getElementById('changeSavedColorsConta
 
 
 menuBtn.addEventListener('click', function(){
+    // var lines = document.getElementsByClassName('menu-line');
+    // for (var i = 0; i < lines.length; i++) {
+    //     if(lines[i].classList.contains('open')) {
+    //         lines[i].classList.remove('open');
+    //         lines[i].classList.add('close');
+    
+    //     } else {
+    //         lines[i].classList.add('open');
+    //         lines[i].classList.remove('close');
+    //     }
+    // }
     menuLine1.classList.toggle('line-1-x');
     menuLine2.classList.toggle('line-2-x');
 

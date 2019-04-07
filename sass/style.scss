@@ -62,7 +62,7 @@ body {
         &:active {
             background-image: url('../imgs/Save state 2.svg');
         }
-        margin: -25px 3% 0 auto;
+        margin: -40px 3% 0 auto;
 
     }
     .container {
@@ -92,7 +92,7 @@ body {
             }
 
             p {
-                font-size: $font-p;
+                font-size: p;
             }
         }
         canvas {
@@ -104,18 +104,11 @@ body {
             // left: 2.5%;
             z-index: 999;
             background: #fff;
-            box-shadow: 0px 3px 7px 0.1px $dark-gray;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
             touch-action:none
 
         }
 
-        #face {
-            top: 3%;
-            // left: 2.5%;
-            z-index: 99;
-            background: #fff;
-            box-shadow: 0px 3px 7px 0.1px $dark-gray;
-        }
     }
 
     .inputs {
@@ -131,7 +124,7 @@ body {
             align-items: center;
             width:100%;
             background: #fff;
-            box-shadow: 0px 2px 6px 0.1px $dark-gray;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
             .not-mySize {
                 z-index: 1;
                 display:flex;
@@ -232,6 +225,9 @@ body {
                     justify-content: center;
                     color:$dark-gray;
                     border-bottom: 3px solid $dark-gray;
+                    p {
+                        font-size: $p;
+                    }
 
                     &.this-container {
                         color: $black;

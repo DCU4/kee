@@ -34,10 +34,10 @@
 
 h1 {
   color: #000;
-  font-size: 40px; }
+  font-size: h1; }
 
 h3 {
-  font-size: 20px; }
+  font-size: h3; }
 
 /*slider*/
 input[type=range] {
@@ -54,12 +54,12 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: 1px solid #000;
-  height: 20px;
-  width: 20px;
+  height: 14px;
+  width: 14px;
   border-radius: 50%;
   background: #000;
   cursor: pointer;
-  margin-top: -10px; }
+  margin-top: -7px; }
 
 input[type=range]::-webkit-slider-runnable-track {
   width: 80%;
@@ -148,15 +148,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin: 0 auto; }
     .page button a {
       color: #fff;
-      font-size: 12px;
+      font-size: p;
       font-weight: lighter;
       text-decoration: none;
       font-weight: 300; }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 3% 0; }
+  margin: 20px 7% 0; }
   nav .menu {
     width: 150px;
     display: flex;
@@ -171,7 +169,7 @@ nav {
       transition: all .5s; }
       nav .menu .menu-list .menu-items {
         list-style-type: none;
-        font-size: 20px;
+        font-size: h3;
         padding-bottom: 21px;
         font-weight: bold;
         line-height: 30px;
@@ -200,7 +198,7 @@ nav {
         right: 0;
         background-color: rgba(255, 255, 255, 0); }
     nav .menu .menu-line {
-      width: 40px;
+      width: 35px;
       height: 2px;
       margin: 5px 0;
       background-color: #000;
@@ -236,7 +234,7 @@ nav {
       border: none; }
       .login-form form input::placeholder {
         color: #ffffff;
-        font-size: 12px;
+        font-size: p;
         font-weight: 100; }
     .login-form form button {
       background: black;
@@ -295,7 +293,7 @@ body {
     width: 53px;
     height: 53px;
     background-image: url("../imgs/Save state 1.svg");
-    margin: -25px 3% 0 auto; }
+    margin: -40px 3% 0 auto; }
     .kee .save:active {
       background-image: url("../imgs/Save state 2.svg"); }
   .kee .container {
@@ -323,20 +321,15 @@ body {
         z-index: 99999999;
         transition: all .5s; }
       .kee .container .saved-response p {
-        font-size: 12px; }
+        font-size: p; }
     .kee .container canvas {
       position: absolute; }
     .kee .container #sketchpad {
       top: 3%;
       z-index: 999;
       background: #fff;
-      box-shadow: 0px 3px 7px 0.1px #B4B4B4;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       touch-action: none; }
-    .kee .container #face {
-      top: 3%;
-      z-index: 99;
-      background: #fff;
-      box-shadow: 0px 3px 7px 0.1px #B4B4B4; }
   .kee .inputs {
     display: flex;
     flex-direction: column;
@@ -349,7 +342,7 @@ body {
       align-items: center;
       width: 100%;
       background: #fff;
-      box-shadow: 0px 2px 6px 0.1px #B4B4B4; }
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04); }
       .kee .inputs #displayBox .not-mySize {
         z-index: 1;
         display: flex;
@@ -421,6 +414,8 @@ body {
           justify-content: center;
           color: #B4B4B4;
           border-bottom: 3px solid #B4B4B4; }
+          .kee .inputs .slider-wrap .which-container-wrapper .which-container p {
+            font-size: 12px; }
           .kee .inputs .slider-wrap .which-container-wrapper .which-container.this-container {
             color: #000000;
             border-bottom: 3px #000000 solid; }
