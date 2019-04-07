@@ -56,14 +56,12 @@ body {
         opacity: 0.1;
     }
     .save {
-        @include square(50px);
+        @include square(53px);
         @extend %icon;
         background-image: url('../imgs/Save state 1.svg');
         &:active {
             background-image: url('../imgs/Save state 2.svg');
         }
-        background-color: transparent;
-        border: none;
         margin: -25px 3% 0 auto;
 
     }
@@ -126,10 +124,10 @@ body {
         align-items: center;
 
         #displayBox {
-            padding: 10px 20px;
+            padding: 10px 14px 10px 35px;
             position: relative;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             width:100%;
             background: #fff;
@@ -147,7 +145,7 @@ body {
                 }
 
                 .save-color {
-                    margin-right: 50px;
+                    margin-right: 35px;
                     width: 31px;
                     height: 35px;
                     background-image: url('../imgs/Add color state 1.svg');

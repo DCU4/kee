@@ -292,11 +292,9 @@ body {
   .kee.menu-open {
     opacity: 0.1; }
   .kee .save {
-    width: 50px;
-    height: 50px;
+    width: 53px;
+    height: 53px;
     background-image: url("../imgs/Save state 1.svg");
-    background-color: transparent;
-    border: none;
     margin: -25px 3% 0 auto; }
     .kee .save:active {
       background-image: url("../imgs/Save state 2.svg"); }
@@ -344,10 +342,10 @@ body {
     flex-direction: column;
     align-items: center; }
     .kee .inputs #displayBox {
-      padding: 10px 20px;
+      padding: 10px 14px 10px 35px;
       position: relative;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       width: 100%;
       background: #fff;
@@ -363,7 +361,7 @@ body {
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
         .kee .inputs #displayBox .not-mySize .save-color {
-          margin-right: 50px;
+          margin-right: 35px;
           width: 31px;
           height: 35px;
           background-image: url("../imgs/Add color state 1.svg");
