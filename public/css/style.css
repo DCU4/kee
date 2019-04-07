@@ -296,7 +296,8 @@ body {
     height: 50px;
     background-image: url("../imgs/Save state 1.svg");
     background-color: transparent;
-    border: none; }
+    border: none;
+    margin: -25px 3% 0 auto; }
     .kee .save:active {
       background-image: url("../imgs/Save state 2.svg"); }
   .kee .container {
