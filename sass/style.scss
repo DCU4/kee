@@ -26,6 +26,7 @@
 html,
 body {
     /*overflow: hidden;*/
+    // background: $mint;
     background: $light-gray;
     font-family: $font;
     animation: fade-in .8s ease-in;
@@ -130,11 +131,16 @@ body {
                 display:flex;
                 justify-content: space-between;
                 align-items: center;
-                width: 170px;
                 opacity: 1;
                 transition: all .3s;
                 &.closed {
                     opacity: 0;
+                }
+                .clear-canvas {
+                    border: none;
+                    background: transparent;
+                    padding: 10px;
+                    margin-right: 10px;
                 }
 
                 .save-color {
@@ -225,6 +231,7 @@ body {
                     justify-content: center;
                     color:$dark-gray;
                     border-bottom: 3px solid $dark-gray;
+
                     p {
                         font-size: $p;
                     }
@@ -305,11 +312,6 @@ body {
                     }
                 }
             }
-        }
-        .clear-canvas {
-            border: 1px solid black;
-            padding: 7px;
-            margin-top: 10px;
         }
 
     }

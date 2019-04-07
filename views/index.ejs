@@ -15,8 +15,12 @@
                     <input type="range" min="1" max="25" value="12" step="1" class="my-size" id="mySize">
                 </div>
                 <div id="notMySize" class="not-mySize">
+                    
                     <div id="colorDisplay" class="color-display"></div>
                     <div id="saveColor" class="save-color"></div>
+                    <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+                        Erase
+                    </button>
                     <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
                 </div>
             </div>
@@ -67,9 +71,7 @@
 
 
 
-                <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
-                    Clear Canvas
-                </button>
+                
 
 
                     <!-- <button class="scale">Scale Down</button> -->
