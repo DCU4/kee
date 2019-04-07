@@ -180,11 +180,12 @@ var slider = document.getElementById('slider');
 
 function animateSlider (a){
     //check if container is in the view port and if the target is a color change slider
-    if (isNotInViewport(savedColorContainer)) {
+    if (isNotInViewport(savedColorContainer) || !changeSavedColorsContainer.classList.contains('animate')) {
         changeSavedColorsContainer.classList.add('animate');
         changeContainer.classList.remove('this-container');
         savedContainer.classList.add('this-container');
     } else {
+        // console.log('no')
         changeSavedColorsContainer.classList.remove('animate');
         changeContainer.classList.add('this-container');
         savedContainer.classList.remove('this-container');
@@ -376,8 +377,8 @@ function resizeCanvas(canvas){
         canvas.height = (window.innerWidth -40);
     } else {
         container.style.height = 400 - 25 + "px";
-        canvas.width = (400 -20);
-        canvas.height = (400 -40);
+        canvas.width = (400 );
+        canvas.height = (400 -45);
     }
 }
 

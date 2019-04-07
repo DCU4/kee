@@ -56,15 +56,14 @@ body {
         opacity: 0.1;
     }
     .save {
-        background-color: #000;
-        color:#fff;
-        padding: 7px 27px;
-        font-size: 12px;
-        font-weight: 300;
-        border: 1px solid #000;
-        width: 40%;
-        margin: 0 auto;
-        text-align: center;
+        @include square(50px);
+        @extend %icon;
+        background-image: url('../imgs/Save state 1.svg');
+        &:active {
+            background-image: url('../imgs/Save state 2.svg');
+        }
+        background-color: transparent;
+        border: none;
 
     }
     .container {
@@ -149,12 +148,15 @@ body {
                 .save-color {
                     margin-right: 50px;
                     width: 31px;
-                    height: 50px;
-                    background-image: url('../imgs/round-highlight_off-24px.svg');
+                    height: 35px;
+                    background-image: url('../imgs/Add color state 1.svg');
                     @extend %icon;
                     border: none;
                     position: relative;
-                    transform: rotate(45deg);
+                    
+                    &:active {
+                        background-image: url('../imgs/Add color state 2.svg');
+                    }
                 }
     
                 .color-display {
@@ -172,11 +174,13 @@ body {
     
                 .undo {
                     @extend %icon;
-                    width: 31px;
-                    height: 50px;
-                    background-image: url('../imgs/Undo-black_x1.png');
+                    @include square(50px);
+                    background-image: url('../imgs/Undo state 1.svg');
                     border: none;
                     position: relative;
+                    &:active {
+                        background-image: url('../imgs/Undo state 2.svg');
+                    }
     
                 }
             }
@@ -267,13 +271,13 @@ body {
                                 @extend %icon;
 
                                 &.color-icon {
-                                    background-image: url('../imgs/color_x1.png');
+                                    background-image: url('../imgs/Color Icon.svg');
                                 }
                                 &.saturation-icon {
-                                    background-image: url('../imgs/saturation_x1.png');
+                                    background-image: url('../imgs/Saturation Icon.svg');
                                 }
                                 &.shade-icon {
-                                    background-image: url('../imgs/shade_x1.png');
+                                    background-image: url('../imgs/Light Icon.svg');
                                 }
 
                             }

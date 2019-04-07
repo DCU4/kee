@@ -28,7 +28,7 @@
     opacity: 1;
     width: 55%; } }
 
-.kee .inputs #displayBox .not-mySize .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+.kee .save, .kee .inputs #displayBox .not-mySize .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -292,15 +292,13 @@ body {
   .kee.menu-open {
     opacity: 0.1; }
   .kee .save {
-    background-color: #000;
-    color: #fff;
-    padding: 7px 27px;
-    font-size: 12px;
-    font-weight: 300;
-    border: 1px solid #000;
-    width: 40%;
-    margin: 0 auto;
-    text-align: center; }
+    width: 50px;
+    height: 50px;
+    background-image: url("../imgs/Save state 1.svg");
+    background-color: transparent;
+    border: none; }
+    .kee .save:active {
+      background-image: url("../imgs/Save state 2.svg"); }
   .kee .container {
     position: relative;
     width: 100%;
@@ -366,11 +364,12 @@ body {
         .kee .inputs #displayBox .not-mySize .save-color {
           margin-right: 50px;
           width: 31px;
-          height: 50px;
-          background-image: url("../imgs/round-highlight_off-24px.svg");
+          height: 35px;
+          background-image: url("../imgs/Add color state 1.svg");
           border: none;
-          position: relative;
-          transform: rotate(45deg); }
+          position: relative; }
+          .kee .inputs #displayBox .not-mySize .save-color:active {
+            background-image: url("../imgs/Add color state 2.svg"); }
         .kee .inputs #displayBox .not-mySize .color-display {
           width: 40px;
           height: 40px;
@@ -381,11 +380,13 @@ body {
           background-color: #B4B4B4;
           margin: 0 30px; }
         .kee .inputs #displayBox .not-mySize .undo {
-          width: 31px;
+          width: 50px;
           height: 50px;
-          background-image: url("../imgs/Undo-black_x1.png");
+          background-image: url("../imgs/Undo state 1.svg");
           border: none;
           position: relative; }
+          .kee .inputs #displayBox .not-mySize .undo:active {
+            background-image: url("../imgs/Undo state 2.svg"); }
       .kee .inputs #displayBox .input-container-size {
         z-index: 2;
         display: flex;
@@ -445,11 +446,11 @@ body {
               width: 36px;
               height: 30px; }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.color-icon {
-                background-image: url("../imgs/color_x1.png"); }
+                background-image: url("../imgs/Color Icon.svg"); }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.saturation-icon {
-                background-image: url("../imgs/saturation_x1.png"); }
+                background-image: url("../imgs/Saturation Icon.svg"); }
               .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon.shade-icon {
-                background-image: url("../imgs/shade_x1.png"); }
+                background-image: url("../imgs/Light Icon.svg"); }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container p {
               margin: 0 7px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
