@@ -93,7 +93,10 @@ app.get('/contact', isLoggedIn, function(req, res, next){
     res.render('contact');
 });
 
-
+// history rouetes 
+app.get('/history', isLoggedIn, function(req, res, next){
+    res.render('history');
+});
 
 // auth routes 
 
