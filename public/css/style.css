@@ -266,7 +266,7 @@ nav {
 html,
 body {
   /*overflow: hidden;*/
-  background: #F5F5F5;
+  background: #f2fff3;
   font-family: "Noto Sans KR", sans-serif;
   animation: fade-in .8s ease-in; }
   @media (min-width: 720px) {
@@ -356,7 +356,7 @@ body {
           border: none;
           background: transparent;
           padding: 10px;
-          margin-right: 10px; }
+          margin-right: 15px; }
         .kee .inputs #displayBox .not-mySize .save-color {
           margin-right: 35px;
           width: 31px;

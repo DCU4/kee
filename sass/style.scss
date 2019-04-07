@@ -26,8 +26,8 @@
 html,
 body {
     /*overflow: hidden;*/
-    // background: $mint;
-    background: $light-gray;
+    background: $mint;
+    // background: $light-gray;
     font-family: $font;
     animation: fade-in .8s ease-in;
 
@@ -140,7 +140,7 @@ body {
                     border: none;
                     background: transparent;
                     padding: 10px;
-                    margin-right: 10px;
+                    margin-right: 15px;
                 }
 
                 .save-color {
