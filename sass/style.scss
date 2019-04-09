@@ -26,8 +26,8 @@
 html,
 body {
     /*overflow: hidden;*/
-    background: $mint;
-    // background: $light-gray;
+    // background: $mint;
+    background: $light-gray;
     font-family: $font;
     animation: fade-in .8s ease-in;
 
@@ -151,25 +151,25 @@ body {
                     @extend %icon;
                     border: none;
                     position: relative;
-                    
+
                     &:active {
                         background-image: url('../imgs/Add color state 2.svg');
                     }
                 }
-    
+
                 .color-display {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%
                 }
-    
+
                 .divider {
                     width: 2px;
                     height: 40px;
                     background-color: $dark-gray;
                     margin: 0 30px;
                 }
-    
+
                 .undo {
                     @extend %icon;
                     @include square(50px);
@@ -179,7 +179,7 @@ body {
                     &:active {
                         background-image: url('../imgs/Undo state 2.svg');
                     }
-    
+
                 }
             }
             .input-container-size {
@@ -211,7 +211,7 @@ body {
                 }
             }
 
-            
+
         }
 
 
