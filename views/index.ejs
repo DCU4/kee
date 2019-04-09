@@ -1,27 +1,30 @@
 <% include partials/header %>
 
 <div class="kee">
-            
+
 <div id="saveBtn" class="save"></div>
             <div id="container" class="container">
                 <div id="saved-response" class="saved-response"><p>Saved!</p></div>
                 <canvas id="sketchpad"></canvas>
             </div>
 
-            <div class="inputs">
+        <div class="inputs">
             <div id="displayBox">
                 <div id="sizeInputContainer" class="input-container-size">
                     <p id="sizeValue"></p>
                     <input type="range" min="1" max="25" value="12" step="1" class="my-size" id="mySize">
                 </div>
+
                 <div id="notMySize" class="not-mySize">
-                    
-                    <div id="colorDisplay" class="color-display"></div>
-                    <div id="saveColor" class="save-color"></div>
-                    <button class="clear-canvas" type="submit" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
-                        Erase
-                    </button>
-                    <button id="undo" class="undo" type="submit" value="Undo" onclick="cUndo();"></button>
+                <div class="written-note-container">
+                    <textarea name="description" placeholder="How are you feeling?"></textarea>
+                </div>
+                    <div class="color-display-save">
+                        <div id="colorDisplay" class="color-display"></div>
+                        <div id="saveColor" class="save-color"></div>
+                    </div>
+
+                    <div id="undo" class="undo" value="Undo" onclick="cUndo();"></div>
                 </div>
             </div>
 
@@ -70,8 +73,10 @@
 
 
 
+<div class="clear-canvas" value="Clear Sketchpad" onclick="clearCanvas(canvas,ctx);">
+                        Erase
+                    </div>
 
-                
 
 
                     <!-- <button class="scale">Scale Down</button> -->
