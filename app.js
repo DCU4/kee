@@ -61,7 +61,7 @@ app.get('/saved', isLoggedIn, function(req, res, next){
                 // console.log(req.user.username);
         }
     });
-    
+
 });
 
 app.post('/saved', isLoggedIn, function(req, res, next){
@@ -87,21 +87,33 @@ app.post('/saved', isLoggedIn, function(req, res, next){
 });
 
 
+app.get('/saved/:id', function(req,res){
+    // find note with correct id, render the template
+    Kee.findById(req.params.id, function(err, foundNote){
+        if(err) {
+            console.log(err);
+        } else {
+            res.render('single',{kee:foundNote});
+        }
+    });
+
+});
+
 
 // contact routes
 app.get('/contact', isLoggedIn, function(req, res, next){
     res.render('contact');
 });
 
-// history rouetes 
+// history rouetes
 app.get('/history', isLoggedIn, function(req, res, next){
     res.render('history');
 });
 
-// auth routes 
+// auth routes
 
 app.get("/register", function(req,res){
-    res.render('register'); 
+    res.render('register');
 });
 
 app.post('/register', function(req,res){
@@ -129,8 +141,8 @@ app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect:'/login'
 }), function(req,res){
-    
-    
+
+
 });
 
 
@@ -143,7 +155,7 @@ app.get('/logout', function(req, res){
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
         return next();
-    } 
+    }
     res.redirect('/login');
 }
 

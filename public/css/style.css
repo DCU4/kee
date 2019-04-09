@@ -94,18 +94,19 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin: 0 3%; }
     .saved .kee-container .date {
       font-size: 16px;
-      padding: 20px 0 5px; }
+      padding: 20px 5px 5px; }
     .saved .kee-container .notes {
       display: flex;
       flex-wrap: wrap;
       height: auto;
-      width: 100%;
-      margin: 5px; }
-      .saved .kee-container .notes img {
-        height: 100%;
+      width: 100%; }
+      .saved .kee-container .notes a {
         width: 30%;
-        background: #fff;
         margin: 5px; }
+        .saved .kee-container .notes a img {
+          height: auto;
+          width: 100%;
+          background: #fff; }
       .saved .kee-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0,
       .saved .kee-container .notes #mySavedImg5c97d55383b8f4000495c1b5 {
         display: none; }
