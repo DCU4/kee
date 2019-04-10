@@ -1,9 +1,15 @@
 <% include partials/header %>
 
-<% console.log('single page')%>
+<div class="saved">
 
-<img src="<%= kee.image%>">
+<div class="kee-container">
+    <div class="notes">
+        <img class="single-note" src="<%= kee.image%>">
+    </div>
+
 
 <p class="date" ><%= kee.created.toDateString() %></p>
+</div>
+</div>
 
 <% include partials/footer %>
