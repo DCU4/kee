@@ -267,7 +267,7 @@ nav {
 html,
 body {
   /*overflow: hidden;*/
-  background: #F5F5F5;
+  background: #ffffff;
   font-family: "Noto Sans KR", sans-serif;
   animation: fade-in .8s ease-in; }
   @media (min-width: 720px) {
