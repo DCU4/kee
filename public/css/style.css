@@ -101,7 +101,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       height: auto;
       width: 100%; }
       .saved .notes-container .notes .single-note {
-        height: auto;
+        height: 100%;
         width: 100%;
         background: #fff; }
       .saved .notes-container .notes a {
