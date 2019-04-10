@@ -30,7 +30,7 @@
 
 
 
-                <div class="kee-container" >
+                <div class="notes-container" >
 
 
                     <%
@@ -56,27 +56,17 @@
                     var months = [];
                     kees.forEach(function(kee){
                         date.push(kee.created.toDateString());
-                        // console.log(kee.created.getMonth());
-                        // users.push(kee.user.username)
-                        // console.log(kee.user.username);
-                        // console.log(req.user)
-                        // console.log(kee.created.getMonth());
                         months.push(month[kee.created.getMonth()]);
 
-
                     });
-                    // console.log(months);
+
                     var mons = [...new Set(months)];
 
                     var days = [...new Set(date)];
-                        // return days;
-                        console.log(days);
+
 
                         // days.forEach(function(day,d) {
                         mons.forEach(function(mon,m){
-
-
-
 
                     %>
 
@@ -106,6 +96,7 @@
                     // var day = weekday[kee.created.getDay()];
 
                      //for each day in days, display all of the notes for that day
+
                     //   if (kee.created.toDateString() === days[d]) {
                     console.log(mon,month[kee.created.getMonth()],kee.created.getMonth(),m);
                     if(month[kee.created.getMonth()] == mons[m]) {

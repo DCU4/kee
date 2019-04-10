@@ -86,33 +86,33 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   height: 100%; }
   .saved.menu-open {
     opacity: 0.1; }
-  .saved .kee-container {
+  .saved .notes-container {
     display: flex;
     padding-top: 20px;
     flex-direction: column;
     align-items: flex-start;
     margin: 0 3%; }
-    .saved .kee-container .date {
+    .saved .notes-container .date {
       font-size: 16px;
       padding: 20px 5px 5px; }
-    .saved .kee-container .notes {
+    .saved .notes-container .notes {
       display: flex;
       flex-wrap: wrap;
       height: auto;
       width: 100%; }
-      .saved .kee-container .notes .single-note {
+      .saved .notes-container .notes .single-note {
         height: auto;
         width: 100%;
         background: #fff; }
-      .saved .kee-container .notes a {
+      .saved .notes-container .notes a {
         width: 30%;
         margin: 5px; }
-        .saved .kee-container .notes a img {
+        .saved .notes-container .notes a img {
           height: auto;
           width: 100%;
           background: #fff; }
-        .saved .kee-container .notes a #mySavedImg5c8ea4bc1f1ab8000434e9b0,
-        .saved .kee-container .notes a #mySavedImg5c97d55383b8f4000495c1b5 {
+        .saved .notes-container .notes a #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+        .saved .notes-container .notes a #mySavedImg5c97d55383b8f4000495c1b5 {
           display: none; }
   .saved .container {
     position: relative;
