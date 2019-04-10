@@ -100,6 +100,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       flex-wrap: wrap;
       height: auto;
       width: 100%; }
+      .saved .kee-container .notes .single-note {
+        height: auto;
+        width: 100%;
+        background: #fff; }
       .saved .kee-container .notes a {
         width: 30%;
         margin: 5px; }
@@ -107,9 +111,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
           height: auto;
           width: 100%;
           background: #fff; }
-      .saved .kee-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0,
-      .saved .kee-container .notes #mySavedImg5c97d55383b8f4000495c1b5 {
-        display: none; }
+        .saved .kee-container .notes a #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+        .saved .kee-container .notes a #mySavedImg5c97d55383b8f4000495c1b5 {
+          display: none; }
   .saved .container {
     position: relative;
     width: 100%;

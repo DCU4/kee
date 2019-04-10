@@ -31,22 +31,24 @@
             flex-wrap: wrap;
             height: auto;
             width: 100%;
-            // margin: 5px;
+            .single-note {
+                height:auto;
+                width: 100%;
+                background: #fff;
+            }
             a {
                 width: 30%;
                 margin: 5px;
                 img {
-                    // height: 100%;
                     height:auto;
                     width: 100%;
                     background: #fff;
-
                 }
-            }
-            // remove any bad images coming through
-            #mySavedImg5c8ea4bc1f1ab8000434e9b0,
-            #mySavedImg5c97d55383b8f4000495c1b5 {
-                display: none;
+                // remove any bad images coming through
+                #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+                #mySavedImg5c97d55383b8f4000495c1b5 {
+                    display: none;
+                }
             }
 
         }
