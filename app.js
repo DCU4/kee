@@ -72,7 +72,7 @@ app.post('/saved', isLoggedIn, function(req, res, next){
         username: req.user.username
     }
 
-    var newNote = {image:req.body.image,user:user }
+    var newNote = {image:req.body.image, description:req.body.description, user:user }
     // console.log(newNote)
     Kee.create(newNote, function(err, newlyCreated){
         if(err) {

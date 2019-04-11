@@ -119,19 +119,19 @@ body {
                 align-items: center;
                 opacity: 1;
                 transition: all .3s;
-                width: 60%;
+                // width: 60%;
                 &.closed {
                     opacity: 0;
                 }
-                .written-note-container {
-                    display: none;
-                }
+                // .written-note-container {
+
+                // }
                 .color-display-save {
                     display:flex;
                     align-items: center;
                     margin: 0 15px;
                     .save-color {
-                        margin: 0 15px;
+                        // margin: 0 15px;
                         width: 35px;
                         height: 35px;
                         background-image: url('../imgs/Add color state 1.svg');

@@ -344,11 +344,11 @@ function saveDrawing(canvas) {
     if(saved.length > 1){
         saved.shift();
     }
-    console.log(saved);
+    // console.log(saved);
     // Save data to sessionStorage for testing purposes
     sessionStorage.setItem('src', saved[0]);
     // sessionStorage.setItem('faceSrc',savedFace[0]);
-    console.log(sessionStorage);
+    // console.log(sessionStorage);
     // Get saved data from sessionStorage
 
 
@@ -357,10 +357,12 @@ function saveDrawing(canvas) {
     setTimeout(function() {
         savedResponse.classList.remove('response');
     }, 2000);
+
+    var note = document.getElementById('written-note');
     var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);
-    var data = 'image='+savedEncoded;
+    var data = 'image='+savedEncoded+'&description='+note.value;
     // let data = 'kee[image]='+savedEncoded+'&kee[description]=hello';
 
     fetch(url, {

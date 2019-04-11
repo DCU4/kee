@@ -99,7 +99,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     flex-direction: column;
     align-items: flex-start;
     margin: 0 3%; }
-    .saved .notes-container .date {
+    .saved .notes-container .date, .saved .notes-container .written-note {
       font-size: 16px;
       padding: 20px 5px 5px; }
     .saved .notes-container .notes {
@@ -353,18 +353,14 @@ body {
         justify-content: space-between;
         align-items: center;
         opacity: 1;
-        transition: all .3s;
-        width: 60%; }
+        transition: all .3s; }
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
-        .kee .inputs #displayBox .not-mySize .written-note-container {
-          display: none; }
         .kee .inputs #displayBox .not-mySize .color-display-save {
           display: flex;
           align-items: center;
           margin: 0 15px; }
           .kee .inputs #displayBox .not-mySize .color-display-save .save-color {
-            margin: 0 15px;
             width: 35px;
             height: 35px;
             background-image: url("../imgs/Add color state 1.svg");
