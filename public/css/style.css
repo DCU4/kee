@@ -111,9 +111,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
           height: auto;
           width: 100%;
           background: #fff; }
-        .saved .notes-container .notes a #mySavedImg5c8ea4bc1f1ab8000434e9b0,
-        .saved .notes-container .notes a #mySavedImg5c97d55383b8f4000495c1b5 {
-          display: none; }
+      .saved .notes-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+      .saved .notes-container .notes #mySavedImg5c97d55383b8f4000495c1b5 {
+        display: none; }
   .saved .container {
     position: relative;
     width: 100%;

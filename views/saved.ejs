@@ -104,8 +104,8 @@
 
                     %>
 
-                        <a href="/saved/<%= kee._id %>">
-                            <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" id="mySavedImg<%= kee._id %>"/>
+                        <a id="mySavedImg<%= kee._id %>" href="/saved/<%= kee._id %>">
+                            <img crossorigin="anonymous" class="saved-image" src="<%= kee.image %>" />
                         </a>
 
                     <%  }  });   %>

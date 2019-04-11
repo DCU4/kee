@@ -44,13 +44,13 @@
                     width: 100%;
                     background: #fff;
                 }
-                // remove any bad images coming through
-                #mySavedImg5c8ea4bc1f1ab8000434e9b0,
-                #mySavedImg5c97d55383b8f4000495c1b5 {
-                    display: none;
-                }
-            }
 
+            }
+            // remove any bad images coming through
+            #mySavedImg5c8ea4bc1f1ab8000434e9b0,
+            #mySavedImg5c97d55383b8f4000495c1b5 {
+                display: none;
+            }
         }
     }
     .container {
