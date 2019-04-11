@@ -1,7 +1,5 @@
 var mySize = document.getElementById("mySize");
-var color = document.getElementById('colorPick');
 var lastX,lastY=-1;
-var scale =document.querySelector('.scale');
 var myColor = document.getElementById("myColor");
 var myLight = document.getElementById("myLight");
 var colorDisplay = document.getElementById("colorDisplay");
@@ -10,17 +8,13 @@ var mySaturation = document.getElementById('mySaturation');
 var save = document.getElementById('saveBtn');
 var points = [];
 var saved = [];
-var savedFace = [];
 var menuBtn = document.getElementById('menu');
-var menuLine1 = document.getElementById('menu-line-1');
-var menuLine2 = document.getElementById('menu-line-2');
-var menu = document.getElementById('menu-list');
 var saveColorBtn = document.getElementById('saveColor');
 var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
 var sizeValue = document.getElementById('sizeValue');
-var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
+
 
 
 menuBtn.addEventListener('click', function(){
@@ -29,12 +23,15 @@ menuBtn.addEventListener('click', function(){
     //     if(lines[i].classList.contains('open')) {
     //         lines[i].classList.remove('open');
     //         lines[i].classList.add('close');
-    
+
     //     } else {
     //         lines[i].classList.add('open');
     //         lines[i].classList.remove('close');
     //     }
     // }
+    var menu = document.getElementById('menu-list');
+    var menuLine1 = document.getElementById('menu-line-1');
+    var menuLine2 = document.getElementById('menu-line-2');
     menuLine1.classList.toggle('line-1-x');
     menuLine2.classList.toggle('line-2-x');
 
@@ -160,10 +157,10 @@ function getMousePos(e) {
 var savedColor = 0;
 
 var sizeInputContainer = document.getElementById('sizeInputContainer');
-var notMySize = document.getElementById('notMySize');
+
 sizeValue.addEventListener('click', function(){
     // mySize.classList.add('open');
-
+    var notMySize = document.getElementById('notMySize');
     if (mySize.classList.contains('open')) {
         mySize.classList.remove('open');
         notMySize.classList.remove('closed');
@@ -171,7 +168,7 @@ sizeValue.addEventListener('click', function(){
         mySize.classList.add('open');
         notMySize.classList.add('closed');
     }
-    
+
 });
 
 var isNotInViewport = function (elem) {
@@ -190,6 +187,7 @@ var savedContainer = document.getElementById('savedContainer');
 var slider = document.getElementById('slider');
 
 function animateSlider (a){
+    var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
     //check if container is in the view port and if the target is a color change slider
     if (isNotInViewport(savedColorContainer) || !changeSavedColorsContainer.classList.contains('animate')) {
         changeSavedColorsContainer.classList.add('animate');
