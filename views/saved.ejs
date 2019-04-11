@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <meta charset="utf-8">
-            <link rel="stylesheet" type="text/css" href="css/style.css">
-            <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700" rel="stylesheet">
-            <title>Kee</title>
-
-    </head>
-
-    <!--<body onload="savedInit()">-->
-
-    <body>
+<% include partials/header %>
         <div class="saved">
-                <nav>
-                    <div id="menu" class="menu">
-                        <span id="menu-line-1" class="menu-line"></span>
-                        <span id="menu-line-2" class="menu-line"></span>
-                        <div id="menu-list" class="menu-list">
-                                <span class="menu-line line-1-x"></span>
-                                <span class="menu-line line-2-x"></span>
-                            <li class="menu-items"><a href="/">Draw</a></li>
-                            <li class="menu-items"><a href="">About</a></li>
-                            <li class="menu-items"><a href="/saved">History</a></li>
-                        </div>
-                    </div>
-                </nav>
-
-
-
-
                 <div class="notes-container" >
-
 
                     <%
                     var date = [];
@@ -117,4 +86,4 @@
 
         </div>
 
-  <% include partials/footer %>
+<% include partials/footer %>
