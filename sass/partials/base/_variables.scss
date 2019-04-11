@@ -68,7 +68,19 @@ $p: 12px;
         width:55%;
     }
 }
-
+@keyframes menu-appear {
+    0% {
+        width: 40px;
+        // transform:none;
+    }
+    50% {
+        width:0;
+    }
+    100% {
+        width: 40px;
+        // transform: translateY(-15px);
+    }
+}
 // @keyframes menu-appear{
 //     0% {
 //         width: 35px;
