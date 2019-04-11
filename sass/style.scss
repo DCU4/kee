@@ -123,9 +123,9 @@ body {
                 &.closed {
                     opacity: 0;
                 }
-                // .written-note-container {
-
-                // }
+                .written-note-container {
+                    display:none;
+                }
                 .color-display-save {
                     display:flex;
                     align-items: center;
