@@ -356,6 +356,8 @@ body {
         transition: all .3s; }
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
+        .kee .inputs #displayBox .not-mySize .written-note-container {
+          display: none; }
         .kee .inputs #displayBox .not-mySize .color-display-save {
           display: flex;
           align-items: center;
