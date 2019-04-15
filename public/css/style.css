@@ -413,7 +413,6 @@ body {
           .kee .inputs #displayBox .not-mySize .undo:active {
             background-image: url("../imgs/Undo state 2.svg"); }
       .kee .inputs #displayBox .input-container-size {
-        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -430,6 +429,7 @@ body {
           position: absolute;
           top: 37%; }
           .kee .inputs #displayBox .input-container-size .my-size.open {
+            z-index: 2;
             width: 225px;
             opacity: 1; }
     .kee .inputs .slider-wrap {

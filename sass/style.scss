@@ -220,7 +220,7 @@ body {
                 }
             }
             .input-container-size {
-                z-index: 1;
+
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -243,6 +243,7 @@ body {
                     &.open {
                         // animation: reveal .3s ease-in;
                         // left: 20%;
+                        z-index: 2;
                         width: 225px;
                         opacity: 1;
                     }
