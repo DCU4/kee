@@ -119,11 +119,12 @@ body {
                 align-items: center;
                 opacity: 1;
                 transition: all .3s;
-                width: 100%;
+                width: 60%;
                 &.closed {
                     opacity: 0;
                 }
                 .written-note-icon {
+                    display:none;
                     background-image: url('../imgs/w-note.svg');
                     @extend %icon;
                     width: 30px;

@@ -354,10 +354,11 @@ body {
         align-items: center;
         opacity: 1;
         transition: all .3s;
-        width: 100%; }
+        width: 60%; }
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
         .kee .inputs #displayBox .not-mySize .written-note-icon {
+          display: none;
           background-image: url("../imgs/w-note.svg");
           width: 30px;
           height: 24px; }
