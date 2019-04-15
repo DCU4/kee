@@ -36,7 +36,7 @@
   100% {
     width: 40px; } }
 
-.kee .save, .kee .inputs #displayBox .not-mySize .color-display-save .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+.kee .save, .kee .inputs #displayBox .not-mySize .written-note-icon, .kee .inputs #displayBox .not-mySize .color-display-save .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -270,7 +270,7 @@ nav {
 html,
 body {
   /*overflow: hidden;*/
-  background: #ffffff;
+  background: #F5F5F5;
   font-family: "Noto Sans KR", sans-serif;
   animation: fade-in .8s ease-in; }
   @media (min-width: 720px) {
@@ -354,11 +354,22 @@ body {
         align-items: center;
         opacity: 1;
         transition: all .3s;
-        width: 65%; }
+        width: 100%; }
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
-        .kee .inputs #displayBox .not-mySize .written-note-container {
-          display: none; }
+        .kee .inputs #displayBox .not-mySize .written-note-icon {
+          background-image: url("../imgs/w-note.svg");
+          width: 30px;
+          height: 24px; }
+          .kee .inputs #displayBox .not-mySize .written-note-icon .written-note {
+            display: none; }
+            .kee .inputs #displayBox .not-mySize .written-note-icon .written-note.open {
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%; }
         .kee .inputs #displayBox .not-mySize .color-display-save {
           display: flex;
           align-items: center;
@@ -389,13 +400,13 @@ body {
           .kee .inputs #displayBox .not-mySize .undo:active {
             background-image: url("../imgs/Undo state 2.svg"); }
       .kee .inputs #displayBox .input-container-size {
-        z-index: 2;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: space-between; }
         .kee .inputs #displayBox .input-container-size p {
           margin: 0;
-          font-size: 18px;
+          font-size: 20px;
           width: 50px; }
         .kee .inputs #displayBox .input-container-size .my-size {
           margin: 10px 45px;

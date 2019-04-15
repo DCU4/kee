@@ -47,6 +47,15 @@ menuBtn.addEventListener('click', function(){
 });
 
 
+var writtenNoteContainer = document.getElementById('writtenNoteIcon');
+
+writtenNoteContainer.addEventListener('click',function(){
+    var writtenNote = document.getElementById('writtenNote');
+    writtenNote.classList.add('open')
+});
+
+
+
 // TOUCH ___________________________
 
 // Define some variables to keep track of the touch position
