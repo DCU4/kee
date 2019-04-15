@@ -47,18 +47,17 @@ menuBtn.addEventListener('click', function(){
 });
 
 
-var writtenNoteContainer = document.getElementById('writtenNoteIcon');
+var writtenNoteIcon = document.getElementById('writtenNoteIcon');
 
-
-writtenNoteContainer.addEventListener('click',function(y){
-    var writtenNote = document.getElementById('writtenNote');
+writtenNoteIcon.addEventListener('click',function(y){
+    var writtenNoteContainer = document.getElementById('writtenNoteContainer');
     var closeNote = document.getElementById('close-note');
     // console.log(this, y);
 
-    if (y.target == closeNote && writtenNote.classList.contains('open')) {
-        writtenNote.classList.remove('open');
+    if (y.target == closeNote && writtenNoteContainer.classList.contains('open')) {
+        writtenNoteContainer.classList.remove('open');
     } else {
-        writtenNote.classList.add('open');
+        writtenNoteContainer.classList.add('open');
     }
 });
 
@@ -375,7 +374,7 @@ function saveDrawing(canvas) {
         savedResponse.classList.remove('response');
     }, 2000);
 
-    var note = document.getElementById('written-note');
+    var note = document.getElementById('writtenNote');
     var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);
