@@ -36,7 +36,7 @@
   100% {
     width: 40px; } }
 
-.kee .save, .kee .inputs #displayBox .not-mySize .written-note-icon, .kee .inputs #displayBox .not-mySize .color-display-save .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
+.kee .save, .kee .inputs #displayBox .not-mySize .written-note-icon, .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container #close-note, .kee .inputs #displayBox .not-mySize .color-display-save .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -330,17 +330,17 @@ body {
       position: absolute; }
     .kee .container #sketchpad {
       top: 3%;
-      z-index: 999;
+      z-index: 1;
       background: #fff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       touch-action: none; }
   .kee .inputs {
     display: flex;
     flex-direction: column;
-    align-items: center; }
+    align-items: center;
+    position: relative; }
     .kee .inputs #displayBox {
       padding: 10px 14px 10px 35px;
-      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -361,15 +361,28 @@ body {
           background-image: url("../imgs/w-note.svg");
           width: 30px;
           height: 24px; }
-          .kee .inputs #displayBox .not-mySize .written-note-icon .written-note {
+          .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container {
             display: none; }
-            .kee .inputs #displayBox .not-mySize .written-note-icon .written-note.open {
+            .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container.open {
               display: block;
               position: absolute;
               top: 0;
               left: 0;
               width: 100%;
-              height: 100%; }
+              height: 50%;
+              z-index: 4;
+              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+              background: white;
+              padding: 20px; }
+            .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container .written-note {
+              width: 100%;
+              height: 50%;
+              padding: 10px; }
+            .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container #close-note {
+              background-image: url("../imgs/x.svg");
+              width: 20px;
+              height: 20px;
+              margin: 0 0 0 auto; }
         .kee .inputs #displayBox .not-mySize .color-display-save {
           display: flex;
           align-items: center;
@@ -403,7 +416,8 @@ body {
         z-index: 1;
         display: flex;
         align-items: center;
-        justify-content: space-between; }
+        justify-content: space-between;
+        position: relative; }
         .kee .inputs #displayBox .input-container-size p {
           margin: 0;
           font-size: 20px;

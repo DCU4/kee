@@ -49,9 +49,17 @@ menuBtn.addEventListener('click', function(){
 
 var writtenNoteContainer = document.getElementById('writtenNoteIcon');
 
-writtenNoteContainer.addEventListener('click',function(){
+
+writtenNoteContainer.addEventListener('click',function(y){
     var writtenNote = document.getElementById('writtenNote');
-    writtenNote.classList.add('open')
+    var closeNote = document.getElementById('close-note');
+    // console.log(this, y);
+
+    if (y.target == closeNote && writtenNote.classList.contains('open')) {
+        writtenNote.classList.remove('open');
+    } else {
+        writtenNote.classList.add('open');
+    }
 });
 
 
