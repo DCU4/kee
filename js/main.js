@@ -263,11 +263,12 @@ function cUndo(canvas,ctx) {
 
 var savedColors = [];
     function saveColor() {
-        var savedColorDisplay = document.getElementsByClassName('saved-color-display');
+        var savedColorDisplay = document.getElementsByClassName('saved-color');
         savedColors.push(colorDisplay.style.background);
         for(var j=0; j < savedColorDisplay.length; j++){
             for(var i=0; i < savedColors.length; i++){
                 if(j==i){
+                    savedColorDisplay[j].classList.add('bloop');
                     savedColorDisplay[j].style.background = savedColors[i];
                 }
                 savedColorDisplay[i].addEventListener('click', useSavedColor);

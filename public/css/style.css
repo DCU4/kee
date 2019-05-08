@@ -497,4 +497,19 @@ body {
               height: 40px;
               margin: 10px;
               border: 3px solid #fff;
-              border-radius: 50%; }
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center; }
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display .saved-color,
+              .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display .saved-color {
+                width: 1px;
+                height: 1px;
+                margin: 0 auto;
+                border-radius: 50%;
+                transition: all 0.3s;
+                opacity: 0; }
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display .saved-color.bloop,
+                .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display .saved-color.bloop {
+                  opacity: 1;
+                  transform: scale(34); }
