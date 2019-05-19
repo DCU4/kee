@@ -47,11 +47,18 @@ menuBtn.addEventListener('click', function(){
 });
 
 
-var writtenNoteContainer = document.getElementById('writtenNoteIcon');
+var writtenNoteIcon = document.getElementById('writtenNoteIcon');
 
-writtenNoteContainer.addEventListener('click',function(){
-    var writtenNote = document.getElementById('writtenNote');
-    writtenNote.classList.add('open')
+writtenNoteIcon.addEventListener('click',function(y){
+    var writtenNoteContainer = document.getElementById('writtenNoteContainer');
+    var closeNote = document.getElementById('close-note');
+    // console.log(this, y);
+
+    if (y.target == closeNote && writtenNoteContainer.classList.contains('open')) {
+        writtenNoteContainer.classList.remove('open');
+    } else {
+        writtenNoteContainer.classList.add('open');
+    }
 });
 
 
@@ -256,11 +263,12 @@ function cUndo(canvas,ctx) {
 
 var savedColors = [];
     function saveColor() {
-        var savedColorDisplay = document.getElementsByClassName('saved-color-display');
+        var savedColorDisplay = document.getElementsByClassName('saved-color');
         savedColors.push(colorDisplay.style.background);
         for(var j=0; j < savedColorDisplay.length; j++){
             for(var i=0; i < savedColors.length; i++){
                 if(j==i){
+                    savedColorDisplay[j].classList.add('bloop');
                     savedColorDisplay[j].style.background = savedColors[i];
                 }
                 savedColorDisplay[i].addEventListener('click', useSavedColor);
@@ -367,7 +375,7 @@ function saveDrawing(canvas) {
         savedResponse.classList.remove('response');
     }, 2000);
 
-    var note = document.getElementById('written-note');
+    var note = document.getElementById('writtenNote');
     var url = '/saved';
     //holy shit this works
     var savedEncoded = encodeURIComponent(saved[0]);
