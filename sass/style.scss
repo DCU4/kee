@@ -358,6 +358,7 @@ body {
                                 opacity:0;
                                 &.bloop {
                                     opacity: 1;
+                                    border-radius: 50%;
                                     transform: scale(34);
                                 }
                             }
