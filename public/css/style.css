@@ -507,7 +507,7 @@ body {
                 height: 1px;
                 margin: 0 auto;
                 border-radius: 50%;
-                transition: all 0.3s;
+                transition: all 0.2s;
                 opacity: 0; }
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display .saved-color.bloop,
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display .saved-color.bloop {
