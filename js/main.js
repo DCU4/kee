@@ -390,7 +390,7 @@ function saveDrawing(canvas) {
         }
 
     })
-    .then(function(response){ setTimeout(function() { window.location.href = response.url}, 2500)})
+    .then(function(response){ setTimeout(function() { window.location.href = response.url}, 1000)})
     .then(function(response){console.log('Success:', response.url, window.location )})
     .catch(function(error){console.error('Error:', error)});
 
