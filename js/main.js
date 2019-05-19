@@ -382,9 +382,9 @@ function saveDrawing(canvas) {
         }
 
     })
-    // .then(res => res.json())
-    // .then(response => console.log('Success:', JSON.stringify(response)))
-    // .catch(error => console.error('Error:', error));
+    .then(function(response){ setTimeout(function() { window.location.href = response.url}, 2500)})
+    .then(function(response){console.log('Success:', response.url, window.location )})
+    .catch(function(error){console.error('Error:', error)});
 
 }
 

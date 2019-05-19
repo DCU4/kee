@@ -48,22 +48,6 @@ app.get('/', isLoggedIn, function(req, res, next){
     res.render('index');
 });
 
-
-// saved routes
-app.get('/saved', isLoggedIn, function(req, res, next){
-    // get all kees from db by username that is currently logged in
-    Kee.find({'user.username':req.user.username},function(err,allKees){
-        if(err) {
-            console.log(err);
-        } else {
-                res.render('saved',{kees: allKees });
-                // console.log(allKees[42].user.username);
-                // console.log(req.user.username);
-        }
-    });
-
-});
-
 app.post('/saved', isLoggedIn, function(req, res, next){
     //Create a new kee and save to DB
     // console.log(req.user);
@@ -85,6 +69,22 @@ app.post('/saved', isLoggedIn, function(req, res, next){
         }
     });
 });
+
+// saved routes
+app.get('/saved', isLoggedIn, function(req, res, next){
+    // get all kees from db by username that is currently logged in
+    Kee.find({'user.username':req.user.username},function(err,allKees){
+        if(err) {
+            console.log(err);
+        } else {
+                res.render('saved',{kees: allKees });
+                // console.log(allKees[42].user.username);
+                // console.log(req.user.username);
+        }
+    });
+
+});
+
 
 
 app.get('/saved/:id', function(req,res){
