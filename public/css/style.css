@@ -512,4 +512,5 @@ body {
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display .saved-color.bloop,
                 .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display .saved-color.bloop {
                   opacity: 1;
+                  border-radius: 50%;
                   transform: scale(34); }
