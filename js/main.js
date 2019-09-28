@@ -1,3 +1,10 @@
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then(console.log)
+      .catch(console.error);
+  }
+
 var mySize = document.getElementById("mySize");
 var lastX,lastY=-1;
 var myColor = document.getElementById("myColor");

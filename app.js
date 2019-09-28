@@ -10,8 +10,8 @@ var express = require("express"),
     passport = require('passport');
 
 
-// mongoose.connect('mongodb://localhost:3000/kee',{ useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
 
 app.set('view engine', 'ejs');
@@ -61,7 +61,7 @@ app.post('/saved', isLoggedIn, function(req, res, next){
     Kee.create(newNote, function(err, newlyCreated){
         if(err) {
             //later this should be front end error message!!!!!!!!
-            console.log(err);
+            console.log(err, 'error error error');
         } else {
             res.redirect('/saved');
             // console.log(newlyCreated);
@@ -110,14 +110,15 @@ app.get('/history', isLoggedIn, function(req, res, next){
     res.render('history');
 });
 
-// auth routes
 
+// auth routes
 app.get("/register", function(req,res){
     res.render('register');
 });
 
 app.post('/register', function(req,res){
     var newUser = new User({ username: req.body.username });
+    console.log(newUser);
     User.register(newUser, req.body.password, function(err,user){
         if(err){
             console.log(err);
@@ -142,7 +143,7 @@ app.post('/login', passport.authenticate('local', {
     failureRedirect:'/login'
 }), function(req,res){
 
-
+console.log(res);
 });
 
 
