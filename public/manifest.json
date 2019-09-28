@@ -5,5 +5,17 @@
   "background_color": "#3367D6",
   "display": "fullscreen",
   "scope": "/",
-  "theme_color": "#3367D6"
+  "theme_color": "#3367D6",
+  "icons": [
+    {
+      "src": "/images/face-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/face.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
