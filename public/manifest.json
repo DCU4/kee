@@ -2,10 +2,10 @@
   "short_name": "Avnoe",
   "name": "Avnoe",
   "start_url": "/",
-  "background_color": "#3367D6",
+  "background_color": "#FFFFFF",
   "display": "fullscreen",
   "scope": "/",
-  "theme_color": "#3367D6",
+  "theme_color": "#FFFFFF",
   "icons": [
     {
       "src": "/imgs/face-192.png",
