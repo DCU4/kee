@@ -3,6 +3,8 @@ if ("serviceWorker" in navigator) {
       .register("sw.js")
       .then(console.log)
       .catch(console.error);
+  } else {
+    console.log('no');
   }
 
 var mySize = document.getElementById("mySize");
