@@ -12,22 +12,32 @@
 
     <body id="body" onload="init()">
 
+      <nav id="nav" class="<%= savedBtn ? '' : 'fixed' %>">
+          <div id="menu" class="menu">
+              <span id="menu-line-1" class="menu-line"></span>
+              <span id="menu-line-2" class="menu-line"></span>
+              <div id="menu-list" class="menu-list">
+                <span class="menu-line line-1-x"></span>
+                <span class="menu-line line-2-x"></span>
+                <li class="menu-items"><a href="/">Draw</a></li>
+                <li class="menu-items"><a href="/saved">Your Notes</a></li>
+                <li class="menu-items"><a href="/history">Avnoe, A History</a></li>
+                <li class="menu-items"><a href="/contact">Contact</a></li>
+                <li class="menu-items"><a href="/login">Sign in</a></li>
+                <li class="menu-items"><a href="/register">Create an Account</a></li>
+                <li class="menu-items"><a href="/logout">Logout</a></li>
+              </div>
+          </div>
 
-        
-            <nav>
-                <div id="menu" class="menu">
-                    <span id="menu-line-1" class="menu-line"></span>
-                    <span id="menu-line-2" class="menu-line"></span>
-                    <div id="menu-list" class="menu-list">
-                            <span class="menu-line line-1-x"></span>
-                            <span class="menu-line line-2-x"></span>
-                            <li class="menu-items"><a href="/">Draw</a></li>
-                            <li class="menu-items"><a href="/saved">Your Notes</a></li>
-                            <li class="menu-items"><a href="/history">Avnoe, A History</a></li>
-                            <li class="menu-items"><a href="/contact">Contact</a></li>
-                            <li class="menu-items"><a href="/login">Sign in</a></li>
-                            <li class="menu-items"><a href="/register">Create an Account</a></li>
-                            <li class="menu-items"><a href="/logout">Logout</a></li>
-                    </div>
-                </div>
-            </nav>
+          <% 
+          // kees.forEach(function(k){ 
+            if(savedBtn){ 
+
+              %>
+              <div id="saveBtn" class="save"></div>
+          <% 
+          }  
+          // }); 
+          %>
+
+      </nav>

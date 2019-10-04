@@ -42,16 +42,7 @@ body {
     &.menu-open {
         opacity: 0.1;
     }
-    .save {
-        @include square(53px);
-        @extend %icon;
-        background-image: url('../imgs/Save state 1.svg');
-        &:active {
-            background-image: url('../imgs/Save state 2.svg');
-        }
-        margin: -40px 3% 0 auto;
-
-    }
+    
     .container {
         position: relative;
         width: 100%;

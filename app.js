@@ -10,8 +10,8 @@ var express = require("express"),
     passport = require('passport');
 
 
-// mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
 
 app.set('view engine', 'ejs');
@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 
 //draw page route
 app.get('/', isLoggedIn, function(req, res, next){
-    res.render('index');
+    res.render('index', {savedBtn: true });
 });
 
 app.post('/saved', isLoggedIn, function(req, res, next){
