@@ -10,8 +10,8 @@ var express = require("express"),
     passport = require('passport');
 
 
-// mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 
 
 app.set('view engine', 'ejs');
@@ -45,7 +45,19 @@ app.use(function(req, res, next) {
 
 //draw page route
 app.get('/', isLoggedIn, function(req, res, next){
-    res.render('index', {savedBtn: true });
+    
+
+    User.findById(req.user.id,function(err,user){
+      if(err) {
+          console.log(err);
+      } else {
+              console.log(user.savedColors);
+              // console.log(allKees[42].user.username);
+              // console.log(req.user.username);
+              res.render('index', {savedBtn: true, user:user});
+      }
+  });
+
 });
 
 app.post('/saved', isLoggedIn, function(req, res, next){
@@ -99,6 +111,41 @@ app.get('/saved/:id', function(req,res){
 
 });
 
+//save color routes
+app.post('/save-color', function(req,res){
+
+  var savedColor = {$push : {savedColors: req.body.savedColors}}
+  // console.log(savedColor);
+
+    User.findByIdAndUpdate(req.user.id, savedColor, function(err, savedColor){
+      if(err) {
+          //later this should be front end error message!!!!!!!!
+          console.log(err, 'error error error');
+      } else {
+          // res.redirect('/saved');
+          // res.send({ savedColors: savedColor });
+          // console.log(savedColor);
+          console.log(req.user);
+      }
+  });
+});
+
+// app.put('/save-color', function(req,res){
+
+//   var savedColor = {savedColors: req.user.savedColors}
+//   console.log(savedColor);
+
+//   User.findByIdAndUpdate(req.user.id, savedColor, function (err, savedColor) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         // res.render('single',{notes:foundNote});
+//         res.send({ savedColors: savedColor });
+//         console.log(req.user);
+//         console.log(savedColor);
+//     }
+//   });
+// });
 
 // contact routes
 app.get('/contact', isLoggedIn, function(req, res, next){
