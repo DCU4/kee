@@ -204,19 +204,40 @@ var changeContainer = document.getElementById('changeContainer');
 var savedContainer = document.getElementById('savedContainer');
 var slider = document.getElementById('slider');
 
-function animateSlider(a) {
-	var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
+function animateSlider() {
+  var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
+  var savedColorDisplay = document.querySelectorAll('.saved-color');
+
+    
 	//check if container is in the view port and if the target is a color change slider
 	if (isNotInViewport(savedColorContainer) || !changeSavedColorsContainer.classList.contains('animate')) {
 		changeSavedColorsContainer.classList.add('animate');
 		changeContainer.classList.remove('this-container');
-		savedContainer.classList.add('this-container');
+    savedContainer.classList.add('this-container');
+
+    savedColorDisplay.forEach(function(color,c) {
+      if(color.style.background != ''){
+        setTimeout(function(){
+          color.classList.add('bloop');
+        }, (25*c)+25);
+      }
+    });
+
 	} else {
 		// console.log('no')
 		changeSavedColorsContainer.classList.remove('animate');
 		changeContainer.classList.add('this-container');
-		savedContainer.classList.remove('this-container');
-	}
+    savedContainer.classList.remove('this-container');
+    savedColorDisplay.forEach(function(color,c) {
+      if(color.style.background != ''){
+        setTimeout(function(){
+          color.classList.remove('bloop');
+        }, (25*c)+25);
+      }
+    });
+  }
+  
+
 }
 
 function changeColor(c) {
@@ -265,19 +286,36 @@ function cUndo(canvas, ctx) {
 
 var savedColors = [];
 function saveColor() {
-	var savedColorDisplay = document.getElementsByClassName('saved-color');
+	
+  // fetch push to savedColors array
+  var url = '/save-color';
+  var data = 'savedColors=' + colorDisplay.style.background;
+  console.log(data);
+  fetch(url, {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    }
+
+  })
+    .then(function (response) { console.log(response, 'post') })
+    .then(function (response) { console.log('Success:') })
+    .catch(function (error) { console.error('Error:', error) });
+
+
+var savedColorDisplay = document.getElementsByClassName('saved-color');
 	savedColors.push(colorDisplay.style.background);
 	for (var j = 0; j < savedColorDisplay.length; j++) {
 		for (var i = 0; i < savedColors.length; i++) {
 			if (j == i) {
 				savedColorDisplay[j].classList.add('bloop');
-				savedColorDisplay[j].style.background = savedColors[i];
+				savedColorDisplay[j].style.background = savedColors[i]; 
 			}
 			savedColorDisplay[i].addEventListener('click', useSavedColor);
 		}
-	}
+  }
 }
-
 
 
 function useSavedColor() {
@@ -416,7 +454,6 @@ function resizeCanvas(canvas) {
 function init() {
 
 	
-
 	// Get the specific canvas element from the HTML document
   canvas = document.getElementById('sketchpad');
   
