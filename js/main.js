@@ -299,22 +299,29 @@ function saveColor() {
     }
 
   })
-    .then(function (response) { console.log(response, 'post') })
-    .then(function (response) { console.log('Success:') })
-    .catch(function (error) { console.error('Error:', error) });
+  .then(function (response) { console.log(response) })
+  .catch(function (error) { console.error('Error:', error) })
 
 
-var savedColorDisplay = document.getElementsByClassName('saved-color');
-	savedColors.push(colorDisplay.style.background);
-	for (var j = 0; j < savedColorDisplay.length; j++) {
-		for (var i = 0; i < savedColors.length; i++) {
-			if (j == i) {
-				savedColorDisplay[j].classList.add('bloop');
-				savedColorDisplay[j].style.background = savedColors[i]; 
-			}
-			savedColorDisplay[i].addEventListener('click', useSavedColor);
-		}
-  }
+  // fetch(url, {
+  //   method: "GET"
+  // })
+  // .then(function(res){console.log(res)})
+  // .catch(function (error) { console.error('Error:', error) })
+
+
+// var savedColorDisplay = document.getElementsByClassName('saved-color');
+// 	savedColors.push(colorDisplay.style.background);
+// 	for (var j = 0; j < savedColorDisplay.length; j++) {
+// 		for (var i = 0; i < savedColors.length; i++) {
+// 			if (j == i) {
+// 				savedColorDisplay[j].classList.add('bloop');
+// 				savedColorDisplay[j].style.background = savedColors[i]; 
+// 			}
+// 			savedColorDisplay[i].addEventListener('click', useSavedColor);
+// 		}
+//   }
+
 }
 
 
