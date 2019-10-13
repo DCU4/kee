@@ -208,7 +208,7 @@ function animateSlider() {
   var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
   var savedColorDisplay = document.querySelectorAll('.saved-color');
 
-    
+
 	//check if container is in the view port and if the target is a color change slider
 	if (isNotInViewport(savedColorContainer) || !changeSavedColorsContainer.classList.contains('animate')) {
 		changeSavedColorsContainer.classList.add('animate');
@@ -236,7 +236,7 @@ function animateSlider() {
       }
     });
   }
-  
+
 
 }
 
@@ -286,7 +286,7 @@ function cUndo(canvas, ctx) {
 
 var savedColors = [];
 function saveColor() {
-	
+
   // fetch push to savedColors array
   var url = '/save-color';
   var data = 'savedColors=' + colorDisplay.style.background;
@@ -299,16 +299,17 @@ function saveColor() {
     }
 
   })
-  .then(function (response) { console.log(response) })
+  .then(function (response) {
+    fetch('/')
+    .then(function(res){console.log(res)})
+    .catch(function (error) { console.error('Error:', error) })
+  })
   .catch(function (error) { console.error('Error:', error) })
 
 
-  // fetch(url, {
-  //   method: "GET"
-  // })
-  // .then(function(res){console.log(res)})
-  // .catch(function (error) { console.error('Error:', error) })
 
+
+  // if you click save, create a new element
 
 // var savedColorDisplay = document.getElementsByClassName('saved-color');
 // 	savedColors.push(colorDisplay.style.background);
@@ -316,7 +317,7 @@ function saveColor() {
 // 		for (var i = 0; i < savedColors.length; i++) {
 // 			if (j == i) {
 // 				savedColorDisplay[j].classList.add('bloop');
-// 				savedColorDisplay[j].style.background = savedColors[i]; 
+// 				savedColorDisplay[j].style.background = savedColors[i];
 // 			}
 // 			savedColorDisplay[i].addEventListener('click', useSavedColor);
 // 		}
@@ -460,10 +461,10 @@ function resizeCanvas(canvas) {
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
 
-	
+
 	// Get the specific canvas element from the HTML document
   canvas = document.getElementById('sketchpad');
-  
+
   // show save button on draw page
 	// if (canvas) {
 	// 	var nav = document.getElementById('nav');
@@ -547,7 +548,7 @@ function init() {
 
 	changeContainer.addEventListener('click', animateSlider, false);
   savedContainer.addEventListener('click', animateSlider, false);
-  
+
   var save = document.getElementById('saveBtn');
 	save.addEventListener('click', function () {
 		saveDrawing(canvas);
