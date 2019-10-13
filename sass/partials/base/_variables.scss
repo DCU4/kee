@@ -81,17 +81,11 @@ $p: 12px;
         // transform: translateY(-15px);
     }
 }
-// @keyframes menu-appear{
-//     0% {
-//         width: 35px;
-//         // transform: none;
-//     }
-//     50% {
-//         width: 0;
-//         // transform: none;
-//     }
-//     100% {
-//         width: 35px;
-//         // transform: rotate(45deg) translate(3px, 4px);
-//     }
-// }
+@keyframes fixed-nav {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

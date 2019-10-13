@@ -26,11 +26,13 @@ var changeColorContainer = document.getElementById('changeColorsContainer');
 var sizeValue = document.getElementById('sizeValue');
 
 
+// window.onscroll = () => {
+//   let nav = document.getElementById('nav');
+//   nav.classList.add('fixed');
+// };
 
 var menuBtn = document.getElementById('menu');
 menuBtn.addEventListener('click', function () {
-
-  console.log('click');
 	var menu = document.getElementById('menu-list');
 	var menuLine1 = document.getElementById('menu-line-1');
 	var menuLine2 = document.getElementById('menu-line-2');
@@ -40,11 +42,9 @@ menuBtn.addEventListener('click', function () {
 	// menu.classList.toggle('menu-list-open');
 	if (menu.classList.contains('menu-list-open')) {
 		menu.classList.remove('menu-list-open');
-		menu.classList.add('menu-list-close');
 
 	} else {
 		menu.classList.add('menu-list-open');
-		menu.classList.remove('menu-list-close');
 	}
 });
 

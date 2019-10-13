@@ -19,18 +19,25 @@
         }
         input {
             margin-bottom:25px;
-            background:$dark-gray;
+            background-color:$dark-gray;
             padding: 7px;
             border: none;
             &::placeholder {
                 color: $white;
                 font-size: p;
                 font-weight:100;
-
+            }
+            &:focus {
+              background:$light-gray;
+              &::placeholder {
+                color: $black;
+            }
             }
         }
         button {
-            background: black;
+            background: $black;
+            cursor: pointer;
+            border: none;
             color: white;
             padding: 7px;
             border-radius: 20px;
@@ -45,7 +52,7 @@
     p {
         text-align:center;
         a {
-            color: black;
+            color: $black;
         }
     }
 }

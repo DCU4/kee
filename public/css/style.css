@@ -36,6 +36,12 @@
   100% {
     width: 40px; } }
 
+@keyframes fixed-nav {
+  from {
+    transform: translateY(-50px); }
+  to {
+    transform: translateY(0px); } }
+
 nav .save, .kee .inputs #displayBox .not-mySize .written-note-icon, .kee .inputs #displayBox .not-mySize .written-note-icon .written-note-container #close-note, .kee .inputs #displayBox .not-mySize .color-display-save .save-color, .kee .inputs #displayBox .not-mySize .undo, .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container .icon {
   background-repeat: no-repeat;
   background-position: center; }
@@ -95,7 +101,6 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     opacity: 0.1; }
   .saved .notes-container {
     display: flex;
-    padding-top: 20px;
     flex-direction: column;
     align-items: flex-start;
     margin: 0 3%; }
@@ -171,6 +176,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   transition: .3s; }
+  nav.fixed {
+    animation: fixed-nav .3s linear .3s forwards;
+    background: #F5F5F5;
+    z-index: 99; }
   nav .menu {
     width: 150px;
     display: flex;
@@ -218,8 +227,7 @@ nav {
     nav .menu .menu-line {
       width: 30px;
       height: 2px;
-      position: absolute;
-      left: 7%;
+      left: 8%;
       margin: 5px 0;
       background-color: #000;
       color: #000;
@@ -227,15 +235,15 @@ nav {
       transform: none;
       transition: all 0.3s; }
       nav .menu .menu-line#menu-line-1 {
-        top: 10px; }
+        top: 25px; }
       nav .menu .menu-line#menu-line-2 {
-        top: 20px; }
+        top: 35px; }
       nav .menu .menu-line.line-1-x {
         transform: rotate(45deg) translate(3px, 4px);
         z-index: 5; }
       nav .menu .menu-line.line-2-x {
         z-index: 5;
-        transform: rotate(-45deg) translate(3px, -5px); }
+        transform: rotate(-45deg) translate(4px, -6px); }
   nav .save {
     width: 53px;
     height: 53px;
@@ -262,15 +270,21 @@ nav {
       font-weight: bold; }
     .login-form form input {
       margin-bottom: 25px;
-      background: #B4B4B4;
+      background-color: #B4B4B4;
       padding: 7px;
       border: none; }
       .login-form form input::placeholder {
         color: #ffffff;
         font-size: p;
         font-weight: 100; }
+      .login-form form input:focus {
+        background: #F5F5F5; }
+        .login-form form input:focus::placeholder {
+          color: #000000; }
     .login-form form button {
-      background: black;
+      background: #000000;
+      cursor: pointer;
+      border: none;
       color: white;
       padding: 7px;
       border-radius: 20px;
@@ -281,7 +295,7 @@ nav {
   .login-form p {
     text-align: center; }
     .login-form p a {
-      color: black; }
+      color: #000000; }
 
 * {
   margin: 0;
@@ -502,7 +516,9 @@ body {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-content: flex-start; }
+            align-content: flex-start;
+            overflow-y: scroll;
+            height: 100px; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
               margin: 20px 0; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display,

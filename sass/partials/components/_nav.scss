@@ -4,13 +4,14 @@ nav {
   align-items: center;
   justify-content: space-between;
   transition: .3s;
-  // &.fixed {
-  //   position:sticky;
-  //   background: $light-gray;
-  //   top: 5px;
-  //   z-index: 99;
-  //   // box-shadow: 0 0 3px 0.1px #B4B4B4;
-  // }
+  &.fixed {
+    // position:sticky;
+    animation: fixed-nav .3s linear .3s forwards ;
+    background: $light-gray;
+    // top: 5px;
+    z-index: 99;
+    // box-shadow: 0 0 3px 0.1px #B4B4B4;
+  }
   .menu {
     width: 150px;
     display: flex;
@@ -46,7 +47,6 @@ nav {
         opacity:1;
         width: 50%;
         margin: 0 auto;
-        // transition: all .1s;
 
         a {
           color: #000;
@@ -70,8 +70,8 @@ nav {
     .menu-line {
       width: 30px;
       height: 2px;
-      position: absolute;
-      left:7%;
+      // position: absolute;
+      left:8%;
       margin: 5px 0;
       background-color: #000;
       color: #000;
@@ -80,10 +80,10 @@ nav {
       transition: all 0.3s;
 
       &#menu-line-1 {
-        top: 10px;
+        top: 25px;
       }
       &#menu-line-2 {
-        top: 20px;
+        top: 35px;
       }
 
       &.line-1-x {
@@ -93,7 +93,7 @@ nav {
 
       &.line-2-x {
         z-index: 5;
-        transform: rotate(-45deg) translate(3px, -5px);
+        transform: rotate(-45deg) translate(4px, -6px);
       }
     }
   }

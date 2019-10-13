@@ -5,6 +5,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync').create();
     var reload      = browserSync.reload;
+    const babel = require('gulp-babel');
+
 
 gulp.task('log', function(done) {
     gutil.log('== My Log Task ==');
@@ -33,7 +35,10 @@ gulp.task('sass', function(done) {
 
 gulp.task('js', function(done) {
     gulp.src('js/*.js')
-    .pipe(uglify().on('error', function(e){
+  //   .pipe(babel({
+  //     presets: ['@babel/env']
+  // }))
+    .pipe(uglify({ compress: true }).on('error', function(e){
         console.log(e);
         }))
     .pipe(concat('script.js'))

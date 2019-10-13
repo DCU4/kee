@@ -326,6 +326,8 @@ body {
                         flex-wrap: wrap;
                         justify-content: space-between;
                         align-content: flex-start;
+                        overflow-y: scroll;
+                        height: 100px;
                         // height: 175px;
                         p {
                             margin: 20px 0;
