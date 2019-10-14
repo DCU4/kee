@@ -10,8 +10,8 @@ var express = require("express"),
     passport = require('passport');
 
 
-mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 app.set('view engine', 'ejs');
