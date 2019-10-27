@@ -7,6 +7,14 @@
 //     console.log('no');
 //   }
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('#splash').addEventListener('transitionend', (event) => {
+    event.target.remove();
+  });
+  requestAnimationFrame(() => {
+    document.querySelector('#splash').classList.add('animate');
+  });
+});
 
 var mySize = document.getElementById("mySize");
 var lastX, lastY = -1;

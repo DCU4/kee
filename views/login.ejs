@@ -1,43 +1,4 @@
-<style>
 
-  #splash {
-    background-color: #FFF;
-    position: fixed;
-    top: 0;
-    left:0;
-    height: 100vh;
-    width: 100%;
-    z-index: 10;
-    transition-property: top;
-    transition-duration: 300ms;
-    transition-delay: 1000ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-  }
-
-  #eyes {
-    background-image: url('../imgs/Blinking-Avnoe-01.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 50%;
-    margin: 0 auto;
-    height: 100vh;
-  }
-
-  #splash.animate {
-    top: -100vh;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#splash').addEventListener('transitionend', (event) => {
-      event.target.remove();
-    });
-    requestAnimationFrame(() => {
-      document.querySelector('#splash').classList.add('animate');
-    });
-  });
-</script>
 
 <div id="splash"><div id="eyes"></div></div>
 <%- include('partials/header',{savedBtn:false}) %>
