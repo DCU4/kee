@@ -6,6 +6,7 @@
 //   } else {
 //     console.log('no');
 //   }
+
 if(document.querySelector('#splash')){
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#splash').addEventListener('transitionend', function(event) {
@@ -471,7 +472,7 @@ function resizeCanvas(canvas) {
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
 
-  var canvas = document.getElementById('sketchpad');
+  canvas = document.getElementById('sketchpad');
   // Get the specific canvas element from the HTML document
   
 
@@ -582,45 +583,3 @@ function init() {
 
 
 }
-document.addEventListener('onload', function() {
-if (document.getElementById('sketchpad')){
-  init();
-}
-});
-
-var deferredPrompt;
-console.log(deferredPrompt);
-window.addEventListener('beforeinstallprompt', function(event) {
-  // Stash the event so it can be triggered later.
-  console.log(e);
-  e.preventDefault();
-  deferredPrompt = e;
-  // e.prompt();
-  // showInstallPromotion();
-  // ...
-  // 
-});
-
-
-
-// function showInstallPromotion(){
-//   deferredPrompt.prompt()
-// };
-// do we auto show prompt or have user decide?
-
-// btnAdd.addEventListener('click', function(e) {
-//   // hide our user interface that shows our A2HS button
-//   // btnAdd.style.display = 'none';
-//   // Show the prompt
-//   deferredPrompt.prompt();
-//   // Wait for the user to respond to the prompt
-//   deferredPrompt.userChoice
-//     .then(function(choiceResult)  {
-//       if (choiceResult.outcome === 'accepted') {
-//         console.log('User accepted the A2HS prompt');
-//       } else {
-//         console.log('User dismissed the A2HS prompt');
-//       }
-//       deferredPrompt = null;
-//     });
-// });
