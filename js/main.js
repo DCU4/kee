@@ -31,7 +31,7 @@ var saveColorBtn = document.getElementById('saveColor');
 var undoBtn = document.getElementById('undo');
 var savedColorContainer = document.getElementById('savedColorsContainer');
 var changeColorContainer = document.getElementById('changeColorsContainer');
-var sizeValue = document.getElementById('sizeValue');
+
 
 
 // window.onscroll = () => {
@@ -58,7 +58,7 @@ menuBtn.addEventListener('click', function () {
 
 
 var writtenNoteIcon = document.getElementById('writtenNoteIcon');
-
+if (writtenNoteIcon){
 writtenNoteIcon.addEventListener('click', function (y) {
 	var writtenNoteContainer = document.getElementById('writtenNoteContainer');
 	var closeNote = document.getElementById('close-note');
@@ -71,7 +71,7 @@ writtenNoteIcon.addEventListener('click', function (y) {
 	}
 });
 
-
+}
 
 // TOUCH ___________________________
 
@@ -184,6 +184,8 @@ var savedColor = 0;
 
 var sizeInputContainer = document.getElementById('sizeInputContainer');
 
+var sizeValue = document.getElementById('sizeValue');
+if (sizeValue){
 sizeValue.addEventListener('click', function () {
 	// mySize.classList.add('open');
 	var notMySize = document.getElementById('notMySize');
@@ -196,7 +198,7 @@ sizeValue.addEventListener('click', function () {
 	}
 
 });
-
+}
 var isNotInViewport = function (elem) {
 	var bounding = elem.getBoundingClientRect();
 	return (
@@ -470,21 +472,25 @@ function resizeCanvas(canvas) {
 function init() {
 
 
-	// Get the specific canvas element from the HTML document
-  canvas = document.getElementById('sketchpad');
+  // Get the specific canvas element from the HTML document
+  
 
   // show save button on draw page
 	// if (canvas) {
 	// 	var nav = document.getElementById('nav');
 	// 	nav.innerHTML += '<div id="saveBtn" class="save"></div>';
 	// }
-	// styling for slider
-	savedColorContainer.style.width = window.innerWidth - 20 + "px";
-	// console.log(savedColorContainer.style.width);
-	changeColorContainer.style.width = window.innerWidth - 20 + "px";
-	//first color to display
+  // styling for slider
+  if (savedColorContainer || changeColorContainer || colorDisplay){
+    savedColorContainer.style.width = window.innerWidth - 20 + "px";
+
+    changeColorContainer.style.width = window.innerWidth - 20 + "px";
+    //first color to display
 	colorDisplay.style.background = "hsl(" + myColor.value + "," + mySaturation.value + "%," + myLight.value + "%)";
 
+  }
+
+	
 	// If the browser supports the canvas tag, get the 2d drawing context for this canvas
 	if (canvas.getContext) {
 		ctx = canvas.getContext('2d');
@@ -575,4 +581,8 @@ function init() {
 	rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
 
 
+}
+
+if (document.getElementById('sketchpad')){
+  init();
 }
