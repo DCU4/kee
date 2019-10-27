@@ -36,17 +36,20 @@
 
                     var days = [...new Set(date)];
 
-
+                      mons.reverse();
+                      days.reverse();
+                      // days.reverese
                         // days.forEach(function(day,d) {
                         mons.forEach(function(mon,m){
 
                     %>
 
-                        <p class="date" ><%= //days[d]
-                        mons[m] %></p>
+                        <p class="date" ><%= mons[m] %></p>
 
                         <div class="notes">
-                    <% // users.forEach(function(user,u) {
+                    <% 
+                    // users.forEach(function(user,u) {
+                    kees.reverse();
                     kees.forEach(function(kee, i){
                     // var d = kee.created.getDate();
                     // var m = kee.created.getMonth();
