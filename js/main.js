@@ -586,3 +586,13 @@ function init() {
 if (document.getElementById('sketchpad')){
   init();
 }
+
+var deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  // Stash the event so it can be triggered later.
+  console.log(e);
+  deferredPrompt = e;
+  deferredPrompt.prompt();
+  // ...
+});
