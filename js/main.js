@@ -1,11 +1,11 @@
-// if ("serviceWorker" in navigator) {
-//     navigator.serviceWorker
-//       .register("sw.js")
-//       .then(console.log)
-//       .catch(console.error);
-//   } else {
-//     console.log('no');
-//   }
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then(console.log)
+      .catch(console.error);
+  } else {
+    console.log('no');
+  }
 
 
 var mySize = document.getElementById("mySize");
