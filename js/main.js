@@ -7,11 +7,11 @@
 //     console.log('no');
 //   }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('#splash').addEventListener('transitionend', function(event) {
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('#splash').addEventListener('transitionend', (event) => {
     event.target.remove();
   });
-  requestAnimationFrame(function() {
+  requestAnimationFrame(() => {
     document.querySelector('#splash').classList.add('animate');
   });
 });
