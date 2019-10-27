@@ -1,7 +1,7 @@
 {
   "short_name": "Avnoe",
   "name": "Avnoe",
-  "start_url": "/",
+  "start_url": "/login",
   "background_color": "#FFFFFF",
   "display": "fullscreen",
   "scope": "/",

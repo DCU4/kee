@@ -1,9 +1,13 @@
         <script type="text/javascript" src="/scripts/script.js"></script>
         <!--<script type="text/javascript" src="/js/main.js"></script> -->
         <script>
+
+        
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker
-            .register("sw.js")
+            .register("sw.js",{
+              scope: '.'
+            })
             .then(console.log)
             .catch(console.error);
         } else {
