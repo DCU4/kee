@@ -7,7 +7,6 @@
 //     console.log('no');
 //   }
 
-if(document.querySelector('#splash')){
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#splash').addEventListener('transitionend', function(event) {
     event.target.remove();
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#splash').classList.add('animate');
   });
 });
-}
+
 var mySize = document.getElementById("mySize");
 var lastX, lastY = -1;
 var myColor = document.getElementById("myColor");
@@ -472,7 +471,7 @@ function resizeCanvas(canvas) {
 // Set-up the canvas and add our event handlers after the page has loaded
 function init() {
 
-  canvas = document.getElementById('sketchpad');
+
   // Get the specific canvas element from the HTML document
   
 
@@ -582,4 +581,8 @@ function init() {
 	rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
 
 
+}
+
+if (document.getElementById('sketchpad')){
+  init();
 }
