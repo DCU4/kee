@@ -6,15 +6,15 @@
 //   } else {
 //     console.log('no');
 //   }
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('#splash').addEventListener('transitionend', (event) => {
+if(document.querySelector('#splash')){
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelector('#splash').addEventListener('transitionend', function(event) {
     event.target.remove();
   });
-  requestAnimationFrame(() => {
+  requestAnimationFrame(function(){
     document.querySelector('#splash').classList.add('animate');
   });
-});
+});}
 
 var mySize = document.getElementById("mySize");
 var lastX, lastY = -1;
@@ -473,7 +473,7 @@ function init() {
 
 
   // Get the specific canvas element from the HTML document
-  
+  canvas = document.getElementById('sketchpad');
 
   // show save button on draw page
 	// if (canvas) {
@@ -583,6 +583,6 @@ function init() {
 
 }
 
-if (document.getElementById('sketchpad')){
-  init();
-}
+// if (document.getElementById('sketchpad')){
+//   init();
+// }
