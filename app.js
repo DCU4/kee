@@ -243,7 +243,7 @@ app.post('/subscribe', function(req, res){
     res.setHeader('Content-Type', 'application/json');
     const payload = JSON.stringify({title:'Avnoe!'});
 
-    webpush.sendNotification(subscription).catch(function(err){console.error(err)});
+    webpush.sendNotification(subscription,payload).catch(function(err){console.error(err)});
   }
 });
 
