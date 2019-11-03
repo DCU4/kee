@@ -38,9 +38,9 @@ gulp.task('js', function(done) {
   //   .pipe(babel({
   //     presets: ['@babel/env']
   // }))
-    .pipe(uglify({ compress: true }).on('error', function(e){
-        console.log(e);
-        }))
+    // .pipe(uglify({ compress: true }).on('error', function(e){
+    //     console.log(e);
+    //     }))
     .pipe(concat('script.js'))
     .pipe(gulp.dest('public/scripts'));
     done();
