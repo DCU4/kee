@@ -7,20 +7,21 @@ var express = require("express"),
     Kee = require("./models/kee"),
     LocalStrategy = require('passport-local'),
     passportLocalMongoose = require("passport-local-mongoose"),
-    passport = require('passport');
+    passport = require('passport'),
+    webpush = require('web-push');
 
 
-// mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+// mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 // app.use(cors());
 
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-// app.use(bodyParser.json());
+
 
 app.use(require("express-session")({
     secret: "cadbury",
@@ -210,6 +211,43 @@ function isLoggedIn(req, res, next) {
 // app.listen(process.env.PORT, process.env.IP, function(){
 //     console.log('Server started');
 // });
+
+
+
+
+// push notifs!
+const publicVapidKey = 'BAKF9mYAKExogpQu4YNV6Z9cQDx5QcTqczvwxlTH2GuPyzG9U8kv44yq569kK5eH0rRFDT23iVVGJlrA3Pp9aww';
+const privateVapidKey = 'MRb3CsGzz1VCocJVYh_WqCnOheSgd_Uj6EtZS_yDx7g';
+
+webpush.setVapidDetails('mailto:dylanjconnor4@gmail.com', publicVapidKey, privateVapidKey);
+
+app.post('/subscribe', function(req, res){
+  console.log(req.body);
+
+  const subscription = req.body;
+
+  if (!subscription || !req.body.endpoint) {
+    // Not a valid subscription.
+    res.status(400);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+      error: {
+        id: 'no-endpoint',
+        message: 'Subscription must have an endpoint.'
+      }
+    }));
+    return false;
+  } else {
+
+    res.status(201);
+    res.setHeader('Content-Type', 'application/json');
+    const payload = JSON.stringify({title:'Avnoe!'});
+
+    webpush.sendNotification(subscription).catch(function(err){console.error(err)});
+  }
+});
+
+
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server started');
