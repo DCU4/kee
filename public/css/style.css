@@ -446,6 +446,8 @@ body {
             background-image: url("../imgs/Add color state 1.svg");
             border: none;
             position: relative; }
+            .kee .inputs #displayBox .not-mySize .color-display-save .save-color.delete {
+              transform: rotate(45deg); }
             .kee .inputs #displayBox .not-mySize .color-display-save .save-color:active {
               background-image: url("../imgs/Add color state 2.svg"); }
           .kee .inputs #displayBox .not-mySize .color-display-save .color-display {

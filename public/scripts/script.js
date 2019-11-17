@@ -442,6 +442,11 @@ function saveColor() {
 
 }
 
+
+// if current color is apart of the savedcolors array, change the plus to an x
+
+
+
 function createSavedColor() {
 
   let newSavedColor = `
@@ -457,11 +462,6 @@ function createSavedColor() {
   
 }
 
-
-let savedColorDisplay = document.querySelectorAll('.saved-color');
-savedColorDisplay.forEach(function(display,i){
-  display.addEventListener('click', useSavedColor);
-});
 
 function useSavedColor() {
   savedColor = 1;
@@ -614,6 +614,25 @@ function init() {
     changeColorContainer.style.width = window.innerWidth - 20 + "px";
     //first color to display
     colorDisplay.style.background = "hsl(" + myColor.value + "," + mySaturation.value + "%," + myLight.value + "%)";
+
+    let savedColorDisplay = document.querySelectorAll('.saved-color');
+    savedColorDisplay.forEach(function(display,i){
+      display.addEventListener('click', useSavedColor);
+    });
+
+    // logic for checking if color is already saved
+    const checkSavedColors = (color) => color.style.background == colorDisplay.style.background;
+    const savedColorDisplayArr = [].slice.call(savedColorDisplay);
+    const svArr = savedColorDisplayArr.find((color) =>  color.style.background == colorDisplay.style.background );
+    // console.log(, svArr );
+    // check if color is saved
+    const isColorSaved = savedColorDisplayArr.some(checkSavedColors);
+    console.log(isColorSaved, svArr );
+    if (isColorSaved) {
+      saveColorBtn.classList.add('delete');
+    } else {
+      saveColorBtn.classList.remove('delete');
+    }
 
   }
 
