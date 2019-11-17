@@ -49,7 +49,7 @@ self.addEventListener("fetch", function(event) {
 self.addEventListener('push', function(e){
   
   var data = e.data.json();
-  console.log(data);
+  // console.log(data);
   self.registration.showNotification(data.title,{
     // title: 'title',
     body:'notified by sw.js',

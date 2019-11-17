@@ -36,7 +36,7 @@ async function send() {
     userVisibleOnly: true,
     applicationServerKey: convertedPVK
   });
-console.log(JSON.stringify(subscription));
+// console.log(JSON.stringify(subscription));
 
   await fetch('/subscribe', {
     method: 'POST',
@@ -341,13 +341,15 @@ function cUndo(canvas, ctx) {
   }
 }
 
-var savedColors = [];
+
+
+
 function saveColor() {
 
   // fetch push to savedColors array
   var url = '/save-color';
   var data = 'savedColors=' + colorDisplay.style.background;
-  console.log(data);
+  // console.log(data);
   fetch(url, {
     method: "POST",
     body: data,
@@ -356,25 +358,21 @@ function saveColor() {
     }
 
   })
-    .then(function (response) {
-      fetch('/')
-        .then(function (res) { console.log(res) })
-        .catch(function (error) { console.error('Error:', error) })
-    })
-    .catch(function (error) { console.error('Error:', error) })
+  .catch(function (error) { console.error('Error:', error) })
 
-
-
+  
+  createSavedColor();
 
   // if you click save, create a new element
-
+  // let savedColors = [];
   // var savedColorDisplay = document.getElementsByClassName('saved-color');
-  // 	savedColors.push(colorDisplay.style.background);
+  // savedColors.push(colorDisplay.style.background);
   // 	for (var j = 0; j < savedColorDisplay.length; j++) {
   // 		for (var i = 0; i < savedColors.length; i++) {
   // 			if (j == i) {
   // 				savedColorDisplay[j].classList.add('bloop');
-  // 				savedColorDisplay[j].style.background = savedColors[i];
+  //         // savedColorDisplay[j].style.background = savedColors[i];
+  //         // savedColorContainer.innerHTML = newSavedColor;
   // 			}
   // 			savedColorDisplay[i].addEventListener('click', useSavedColor);
   // 		}
@@ -382,6 +380,26 @@ function saveColor() {
 
 }
 
+function createSavedColor() {
+
+  let newSavedColor = `
+  <div class="saved-color-display">
+    <div style="background:${colorDisplay.style.background}" class="saved-color bloop"></div>
+  </div>
+  `;
+  savedColorContainer.innerHTML += newSavedColor;
+  let savedColorDisplay = document.querySelectorAll('.saved-color');
+  savedColorDisplay.forEach(function(display,i){
+    display.addEventListener('click', useSavedColor);
+  });
+  
+}
+
+
+let savedColorDisplay = document.querySelectorAll('.saved-color');
+savedColorDisplay.forEach(function(display,i){
+  display.addEventListener('click', useSavedColor);
+});
 
 function useSavedColor() {
   savedColor = 1;
