@@ -180,6 +180,9 @@ body {
                         @extend %icon;
                         border: none;
                         position: relative;
+                        &.delete {
+                          transform: rotate(45deg);
+                        }
 
                         &:active {
                             background-image: url('../imgs/Add color state 2.svg');
