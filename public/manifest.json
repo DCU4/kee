@@ -3,7 +3,7 @@
   "name": "Avnoe",
   "start_url": "/login",
   "background_color": "#FFFFFF",
-  "display": "fullscreen",
+  "display": "browser",
   "scope": "/",
   "theme_color": "#FFFFFF",
   "icons": [
