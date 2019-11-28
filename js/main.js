@@ -543,8 +543,8 @@ function saveDrawing(canvas) {
     }
 
   })
+    .then(function (response) { window.location.href = response.url })
     .then(function (response) { console.log('Success:', response) })
-    // .then(function (response) { window.location.href = response.url })
     .catch(function (error) { console.error('Error:', error) });
 
 }
