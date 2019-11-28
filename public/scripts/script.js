@@ -125,6 +125,36 @@ if (document.querySelector('#splash')) {
   });
 }
 
+// checks if an element is in the viewport
+// control when it is called with n
+function isElementInView(el, n) {
+  const rect = el.getBoundingClientRect();
+  const elemTop = rect.top
+  const elemBottom = rect.bottom
+  console.log(elemBottom)
+  const isVisible = (elemTop >= 0) && ((elemBottom/n) <= ((window.innerHeight) || (document.documentElement.clientHeight)));
+  return isVisible
+}
+
+lazyLoadImages = () =>{
+  var images = document.querySelectorAll('.saved-image');
+  images.forEach(function (image, i) {
+      if (isElementInView(image, 1)) {
+        let lazySrc = image.getAttribute('data-lazy');
+        image.src = lazySrc;
+        setTimeout(function(){
+          image.classList.add('revealed');
+        }, (i*50)+100);
+      }
+  });
+}
+
+window.addEventListener('scroll', lazyLoadImages, false);
+window.addEventListener('load', lazyLoadImages, false);
+
+
+
+
 var mySize = document.getElementById("mySize");
 var lastX, lastY = -1;
 var myColor = document.getElementById("myColor");
