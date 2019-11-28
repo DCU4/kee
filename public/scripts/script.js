@@ -80,7 +80,7 @@ const convertedPVK = urlBase64ToUint8Array(publicVapidKey);
 
 if ("serviceWorker" in navigator) {
 
-  send().catch(function (err) { console.error(err) })
+  // send().catch(function (err) { console.error(err) })
 
 } else {
   console.log('no');
