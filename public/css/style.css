@@ -122,7 +122,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
         .saved .notes-container .notes a img {
           height: auto;
           width: 100%;
-          background: #fff; }
+          background: #fff;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: .5s ease-in; }
+          .saved .notes-container .notes a img.revealed {
+            transform: translateY(0);
+            opacity: 1; }
       .saved .notes-container .notes #mySavedImg5c8ea4bc1f1ab8000434e9b0,
       .saved .notes-container .notes #mySavedImg5c97d55383b8f4000495c1b5 {
         display: none; }

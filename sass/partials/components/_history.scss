@@ -41,6 +41,13 @@
                     height:auto;
                     width: 100%;
                     background: #fff;
+                    opacity: 0;
+                    transform: translateY(10px);
+                    transition: .5s ease-in;
+                    &.revealed {
+                      transform: translateY(0);
+                      opacity: 1;
+                    }
                 }
 
             }
