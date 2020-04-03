@@ -35,16 +35,15 @@
 
                     var years = [...new Set(yearCreated)];
 
-                   
+                    var mons = [...new Set(months)];
 
                     var days = [...new Set(date)];
                       years.reverse();
-                      
+                      mons.reverse();
                       days.reverse();
                       // days.reverese
                         years.forEach(function(year,y) { 
-                    // var mons = [...new Set(months)];
-                    months.reverse();
+
                           // console.log(year,y);
                           %>
                         
@@ -52,7 +51,7 @@
                         
                         <%
                           
-                        months.forEach(function(mon,m){
+                        mons.forEach(function(mon,m){
              
                    console.log(year.toString(), mon,days[m].substring(11));
                   //  check if images actually exist in month of year
