@@ -42,17 +42,23 @@
                       mons.reverse();
                       days.reverse();
                       // days.reverese
-                        years.forEach(function(year,y) {%>
+                        years.forEach(function(year,y) { 
+
+                          // console.log(year,y);
+                          %>
                         
                         <p class="year"><%= year %></p>
                         
                         <%
                           
                         mons.forEach(function(mon,m){
-// console.log(mons[m],year,y);
+             
+                  //  console.log(year.toString(), mon,days[m].substring(11));
+                  //  check if images actually exist in month of year
+                   if(year.toString() == days[m].substring(11)) {
                     %>
 
-                        <p class="date" ><%= mons[m] %> </p>
+                        <p class="date" ><%= mon %> </p>
 
                         <div class="notes">
                     <% 
@@ -66,7 +72,7 @@
 
 
                     // var m = month[kee.created.getMonth()]
-                    // console.log(kee.created.toDateString())
+                    // console.log(days, kee.created) 
                     // console.log(m);
                     // var weekday = [];
                     // weekday[0] = "Sunday";
@@ -83,7 +89,7 @@
 
                     //   if (kee.created.toDateString() === days[d]) {
                     // console.log(mon,month[kee.created.getMonth()],kee.created.getMonth(),m);
-                    if(month[kee.created.getMonth()] == mons[m] && year == kee.created.getFullYear() ) {
+                    if(month[kee.created.getMonth()] == mon && year == kee.created.getFullYear() ) {
                             //  console.log(days[d],kee.created.toDateString(),d);
                       // if(kee.image){
                         // console.log
@@ -95,7 +101,7 @@
 
                     <%  }  });   %>
                     </div>
-                <% });  }); %>
+                <% }  });  }); %>
 
             </div>
 
