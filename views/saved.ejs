@@ -10,7 +10,7 @@
                     // var users = []
                     // console.log(kees)
                     // console.log(users)
-
+                    var yearCreated = [];
 
                     var month = [];
                     month[0] = "January";
@@ -29,26 +29,35 @@
                     kees.forEach(function(kee){
                         date.push(kee.created.toDateString());
                         months.push(month[kee.created.getMonth()]);
-
+                        // console.log(kee.created.getFullYear());
+                        yearCreated.push(kee.created.getFullYear());
                     });
+
+                    var years = [...new Set(yearCreated)];
 
                     var mons = [...new Set(months)];
 
                     var days = [...new Set(date)];
-
+                      years.reverse();
                       mons.reverse();
                       days.reverse();
                       // days.reverese
-                        // days.forEach(function(day,d) {
+                        years.forEach(function(year,y) {%>
+                        
+                        <p class="year"><%= year %></p>
+                        
+                        <%
+                          
                         mons.forEach(function(mon,m){
-
+// console.log(mons[m],year,y);
                     %>
 
-                        <p class="date" ><%= mons[m] %></p>
+                        <p class="date" ><%= mons[m] %> </p>
 
                         <div class="notes">
                     <% 
                     // users.forEach(function(user,u) {
+                           
                     kees.reverse();
                     kees.forEach(function(kee, i){
                     // var d = kee.created.getDate();
@@ -74,9 +83,10 @@
 
                     //   if (kee.created.toDateString() === days[d]) {
                     // console.log(mon,month[kee.created.getMonth()],kee.created.getMonth(),m);
-                    if(month[kee.created.getMonth()] == mons[m]) {
+                    if(month[kee.created.getMonth()] == mons[m] && year == kee.created.getFullYear() ) {
                             //  console.log(days[d],kee.created.toDateString(),d);
-
+                      // if(kee.image){
+                        // console.log
                     %>
 
                         <a id="mySavedImg<%= kee._id %>" href="/saved/<%= kee._id %>">
@@ -85,7 +95,7 @@
 
                     <%  }  });   %>
                     </div>
-                <% });   %>
+                <% });  }); %>
 
             </div>
 
