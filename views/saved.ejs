@@ -42,7 +42,7 @@
                       mons.reverse();
                       days.reverse();
                       // days.reverese
-                        years.forEach(function(year,y) { 
+                        // years.forEach(function(year,y) { 
 
                           // console.log(year,y);
                           %>
@@ -53,7 +53,7 @@
                           
                         mons.forEach(function(mon,m){
              
-                   console.log(year.toString(), mon,days[m].substring(11));
+                  //  console.log(year.toString(), mon,days[m].substring(11));
                   //  check if images actually exist in month of year
                   //  if(year.toString() == days[m].substring(11)) {
                     %>
@@ -89,7 +89,8 @@
 
                     //   if (kee.created.toDateString() === days[d]) {
                     // console.log(mon,month[kee.created.getMonth()],kee.created.getMonth(),m);
-                    if(month[kee.created.getMonth()] == mon && year == kee.created.getFullYear() ) {
+                    // && year == kee.created.getFullYear()
+                    if(month[kee.created.getMonth()] == mon  ) {
                             //  console.log(days[d],kee.created.toDateString(),d);
                       // if(kee.image){
                         // console.log
@@ -101,7 +102,7 @@
 
                     <%  }  });   %>
                     </div>
-                <%   });  }); %>
+                <%   });  %>
 
             </div>
 
