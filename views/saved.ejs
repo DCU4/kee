@@ -6,12 +6,8 @@
                 <div class="notes-container" >
 
                     <%
-                    var date = [];
-                    // var users = []
-                    // console.log(kees)
-                    // console.log(users)
+                    var dateCreated = [];
                     var yearCreated = [];
-
                     var month = [];
                     month[0] = "January";
                     month[1] = "February";
@@ -26,60 +22,60 @@
                     month[10] = "November";
                     month[11] = "December";
                     var months = [];
-                    // kees.forEach(function(kee){
-                    //     date.push(kee.created.toDateString());
-                    //     months.push(month[kee.created.getMonth()]);
-                    //     // console.log(kee.created);
-                    //     yearCreated.push(kee.created.getFullYear());
-                    // });
-                    // // console.log(months)
-
-                    // var years = [...new Set(yearCreated)];
-
+                    kees.forEach(function(kee){
+                        dateCreated.push(kee.created);
+                        yearCreated.push(kee.created.getFullYear());
+                        months.push(month[kee.created.getMonth()]);
+                        
+                        // console.log(kee.created);
+                        
+                    });
+                    var years = [...new Set(yearCreated)];
                     // var mons = [...new Set(months)];
-
                     // var days = [...new Set(date)];
-                    //   years.reverse();
-                    //   mons.reverse();
-                    //   days.reverse();
-                    //   console.log(days)
-                        // years.forEach(function(year,y) { 
+                    years.reverse();
+                    
+                    // days.reverse();
 
-                          // console.log(year,y);
+                    years.forEach(function(year,y) { 
+
+                      // if created month is in year, create new Set
+
+                      var mons = [...new Set(months)];
+                    mons.reverse();
+                    console.log('months:',mons);
+                   
+                      
                           %>
                         
-                        <p class="year"></p>
+                        <p class="year"><%= year %></p>
                         
-                        <%
-                          
-                        // mons.forEach(function(mon,m){
-             
-                  //  console.log(year.toString(), mon,days[m].substring(11));
-                  //  check if images actually exist in month of year
-                  //  if(year.toString() == days[m].substring(11)) {
-                    // if (kee.created.getFullYear())
-                    %>
 
-                        <p class="date" > </p>
+                      <% 
+
+                      mons.forEach(function(m,i){
+                          console.log(m);
+                          // if (m){
+                      %>
+                        <p class="date"> <%= m %> </p>
 
                   <div class="notes">
                     <% 
-                           
+                          
                     kees.reverse();
                     kees.forEach(function(kee, i){
-                      date.push(kee.created.toDateString());
-                      months.push(month[kee.created.getMonth()]);
-                      // console.log(kee.created);
-                      yearCreated.push(kee.created.getFullYear());
+                    // date.push(kee.created.toDateString());
+                    // months.push(month[kee.created.getMonth()]);
+                    // // console.log(kee.created);
+                    // yearCreated.push(kee.created.getFullYear());
 
-                      var years = [...new Set(yearCreated)];
-
-                    var mons = [...new Set(months)];
-
-                    var days = [...new Set(date)];
+                    // var years = [...new Set(yearCreated)];
 
                     
-  
+                    // var days = [...new Set(date)];
+                    // console.log(kee.created.getFullYear());
+                    // let year = kee.created.getFullYear();
+                    // console.log(year);
                     // years.forEach(function(year,y){
                       
                       // if (year == kee.created.getFullYear()) { 
@@ -92,40 +88,23 @@
                         //   if (check) {
                         // console.log(mons);
                         // console.log(years,i)
-                        years.forEach(function(year,y) {
+                        // years.forEach(function(year,y) {
+                          console.log(m,kee.created.getMonth());
 
-                       if(year == kee.created.getFullYear()) {
+                       if(year == kee.created.getFullYear() && m == month[kee.created.getMonth()]) {
+                        
                         %>
-                    <p> <%= year %></p>
+                    <p> </p>
 
                     <% 
-                    
-                    // var d = kee.created.getDate();
-                    // var m = kee.created.getMonth();
-                    // var y = kee.created.getFullYear();
-
-
-                    // var m = month[kee.created.getMonth()]
-                    // console.log(days, kee.created) 
-                    // console.log(m);
-                    // var weekday = [];
-                    // weekday[0] = "Sunday";
-                    // weekday[1] = "Monday";
-                    // weekday[2] = "Tuesday";
-                    // weekday[3] = "Wednesday";
-                    // weekday[4] = "Thursday";
-                    // weekday[5] = "Friday";
-                    // weekday[6] = "Saturday";
-
-                    // var day = weekday[kee.created.getDay()];
-
+                  
                      //for each day in days, display all of the notes for that day
 
                     //   if (kee.created.toDateString() === days[d]) {
                     // console.log(mon,month[kee.created.getMonth()],kee.created.getMonth(),m);
                     // && year == kee.created.getFullYear()
                     // if(month[kee.created.getMonth()] == mon  ) {
-                            //  console.log(days[d],kee.created.toDateString(),d);
+                  //  console.log(days[d],kee.created.toDateString(),d);
                       // if(kee.image){
                         // console.log
                     %>
@@ -134,10 +113,10 @@
                             <img data-lazy="<%= kee.image %>" crossorigin="anonymous" class="saved-image" src="" />
                         </a>
 
-                    <% } });  });   %>
+                    <% } });  %>
                     </div>
                 <%   
-                // }); 
+                }); });
                 
                 %>
 
