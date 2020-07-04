@@ -337,7 +337,7 @@ body {
   /*overflow: hidden;*/
   background: #F5F5F5;
   font-family: "Noto Sans KR", sans-serif;
-  animation: fade-in .8s ease-in; }
+  animation: fade-in 0.8s ease-in; }
   @media (min-width: 720px) {
     html,
     body {
@@ -372,7 +372,7 @@ body {
       justify-content: center;
       align-content: center;
       z-index: 99999999;
-      transition: all .5s; }
+      transition: all 0.5s; }
       .kee .container .saved-response.response {
         position: absolute;
         opacity: 1;
@@ -381,7 +381,7 @@ body {
         width: 100%;
         background: white;
         z-index: 99999999;
-        transition: all .5s; }
+        transition: all 0.5s; }
       .kee .container .saved-response p {
         font-size: p; }
     .kee .container canvas {
@@ -411,7 +411,7 @@ body {
         justify-content: space-between;
         align-items: center;
         opacity: 1;
-        transition: all .3s;
+        transition: all 0.3s;
         width: 60%; }
         .kee .inputs #displayBox .not-mySize.closed {
           opacity: 0; }
@@ -486,7 +486,7 @@ body {
           margin: 10px 45px;
           width: 0%;
           opacity: 0;
-          transition: all .3s;
+          transition: all 0.3s;
           position: absolute;
           top: 37%; }
           .kee .inputs #displayBox .input-container-size .my-size.open {
@@ -523,7 +523,7 @@ body {
           align-content: center;
           width: 200%;
           transform: translateX(0);
-          transition: transform .5s ease-out; }
+          transition: transform 0.5s ease-out; }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container.animate {
             transform: translateX(-50%); }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container {
@@ -545,19 +545,31 @@ body {
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .change-colors-container .input-container input {
               margin: 10px 0; }
           .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-content: flex-start;
+            display: grid;
+            grid-template-columns: repeat(5, 40px);
+            justify-content: space-around;
+            place-content: space-between;
+            gap: 10px;
             overflow-y: scroll;
-            height: 100px; }
+            position: relative; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container::after {
+              content: '';
+              position: fixed;
+              bottom: -2px;
+              left: 0;
+              width: 100%;
+              height: 40px;
+              opacity: 1;
+              background: linear-gradient(0deg, #F5F5F5, rgba(0, 0, 0, 0));
+              transition: all .2s ease; }
+            .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container.scrolling::after {
+              opacity: 0; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container p {
               margin: 20px 0; }
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .saved-color-display,
             .kee .inputs .slider-wrap .slider .change-saved-colors-container .saved-colors-container .gradient-color-display {
               width: 40px;
               height: 40px;
-              margin: 10px;
               border: 3px solid #fff;
               border-radius: 50%;
               display: flex;

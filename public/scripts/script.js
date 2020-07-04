@@ -60,57 +60,57 @@ if (mood){
     }
 
 }
-function urlBase64ToUint8Array(base64String) {
-  const padding = '='.repeat((4 - base64String.length % 4) % 4);
-  const base64 = (base64String + padding)
-    .replace(/-/g, '+')
-    .replace(/_/g, '/');
 
-  const rawData = window.atob(base64);
-  const outputArray = new Uint8Array(rawData.length);
+// function urlBase64ToUint8Array(base64String) {
+//   const padding = '='.repeat((4 - base64String.length % 4) % 4);
+//   const base64 = (base64String + padding)
+//     .replace(/-/g, '+')
+//     .replace(/_/g, '/');
 
-  for (let i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i);
-  }
-  return outputArray;
-}
+//   const rawData = window.atob(base64);
+//   const outputArray = new Uint8Array(rawData.length);
 
-const publicVapidKey = 'BAKF9mYAKExogpQu4YNV6Z9cQDx5QcTqczvwxlTH2GuPyzG9U8kv44yq569kK5eH0rRFDT23iVVGJlrA3Pp9aww';
-const convertedPVK = urlBase64ToUint8Array(publicVapidKey);
+//   for (let i = 0; i < rawData.length; ++i) {
+//     outputArray[i] = rawData.charCodeAt(i);
+//   }
+//   return outputArray;
+// }
 
-if ("serviceWorker" in navigator) {
+// const publicVapidKey = 'BAKF9mYAKExogpQu4YNV6Z9cQDx5QcTqczvwxlTH2GuPyzG9U8kv44yq569kK5eH0rRFDT23iVVGJlrA3Pp9aww';
+// const convertedPVK = urlBase64ToUint8Array(publicVapidKey);
 
-  // send().catch(function (err) { console.error(err) })
+// if ("serviceWorker" in navigator) {
 
-} else {
-  console.log('no');
-}
+//   // send().catch(function (err) { console.error(err) })
 
-
-async function send() {
-  const register = await navigator.serviceWorker
-    .register("sw.js")
-    // .then(console.log)
-    .catch(console.error);
+// } else {
+//   console.log('no');
+// }
 
 
-  const subscription = await register.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: convertedPVK
-  });
-// console.log(JSON.stringify(subscription));
+// async function send() {
+//   const register = await navigator.serviceWorker
+//     .register("sw.js")
+//     // .then(console.log)
+//     .catch(console.error);
 
-  await fetch('/subscribe', {
-    method: 'POST',
-    body: JSON.stringify(subscription),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(function (res) { console.log(res) })
-  .catch(function (err) { console.error(err) });
-}
 
+//   const subscription = await register.pushManager.subscribe({
+//     userVisibleOnly: true,
+//     applicationServerKey: convertedPVK
+//   });
+// // console.log(JSON.stringify(subscription));
+
+//   await fetch('/subscribe', {
+//     method: 'POST',
+//     body: JSON.stringify(subscription),
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   .then(function (res) { console.log(res) })
+//   .catch(function (err) { console.error(err) });
+// }
 
 
 
@@ -131,7 +131,6 @@ function isElementInView(el, n) {
   const rect = el.getBoundingClientRect();
   const elemTop = rect.top
   const elemBottom = rect.bottom
-  console.log(elemBottom)
   const isVisible = (elemTop >= 0) && ((elemBottom/n) <= ((window.innerHeight) || (document.documentElement.clientHeight)));
   return isVisible
 }
@@ -155,21 +154,18 @@ window.addEventListener('load', lazyLoadImages, false);
 
 
 
+// size, postition, and colors of line
 var mySize = document.getElementById("mySize");
 var lastX, lastY = -1;
 var myColor = document.getElementById("myColor");
 var myLight = document.getElementById("myLight");
-var colorDisplay = document.getElementById("colorDisplay");
-var container = document.getElementById('container');
 var mySaturation = document.getElementById('mySaturation');
+var colorDisplay = document.getElementById("colorDisplay");
 
 var points = [];
-var saved = [];
 
 var saveColorBtn = document.getElementById('saveColor');
 var undoBtn = document.getElementById('undo');
-var savedColorContainer = document.getElementById('savedColorsContainer');
-var changeColorContainer = document.getElementById('changeColorsContainer');
 
 
 
@@ -238,7 +234,6 @@ function sketchpad_touchStop() {
 
   // get image data!
   points.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-  console.log(points);
 }
 
 function sketchpad_touchMove(e) {
@@ -320,10 +315,9 @@ function getMousePos(e) {
 
 // DRAW ___________________________
 var savedColor = 0;
-
 var sizeInputContainer = document.getElementById('sizeInputContainer');
-
 var sizeValue = document.getElementById('sizeValue');
+
 if (sizeValue) {
   sizeValue.addEventListener('click', function () {
     // mySize.classList.add('open');
@@ -355,16 +349,17 @@ var slider = document.getElementById('slider');
 
 function animateSlider() {
   var changeSavedColorsContainer = document.getElementById('changeSavedColorsContainer');
-  var savedColorDisplay = document.querySelectorAll('.saved-color');
+  let savedColorDisplay = document.querySelectorAll('.saved-color-display');
+  var savedColor = document.querySelectorAll('.saved-color');
 
 
   //check if container is in the view port and if the target is a color change slider
-  if (isNotInViewport(savedColorContainer) || !changeSavedColorsContainer.classList.contains('animate')) {
+  if (!changeSavedColorsContainer.classList.contains('animate')) {
     changeSavedColorsContainer.classList.add('animate');
     changeContainer.classList.remove('this-container');
     savedContainer.classList.add('this-container');
 
-    savedColorDisplay.forEach(function (color, c) {
+    savedColor.forEach(function (color, c) {
       if (color.style.background != '') {
         setTimeout(function () {
           color.classList.add('bloop');
@@ -373,17 +368,21 @@ function animateSlider() {
     });
 
   } else {
-    // console.log('no')
     changeSavedColorsContainer.classList.remove('animate');
     changeContainer.classList.add('this-container');
     savedContainer.classList.remove('this-container');
-    savedColorDisplay.forEach(function (color, c) {
+    savedColor.forEach(function (color, c) {
       if (color.style.background != '') {
         setTimeout(function () {
           color.classList.remove('bloop');
         }, (25 * c) + 25);
       }
     });
+  }
+
+  if (savedColorDisplay.length > 10) {
+    var savedColorContainer = document.getElementById('savedColorsContainer');
+    savedColorContainer.style.height = '120px';
   }
 
 
@@ -420,8 +419,6 @@ function cUndo(canvas, ctx) {
     // first set of points is the face, we dont want to undo that!
     if (points.length > 1) {
       points.pop();
-      console.log(points);
-      console.log(points.length);
       //clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
@@ -452,41 +449,20 @@ function saveColor() {
   })
   .catch(function (error) { console.error('Error:', error) })
 
-  
   createSavedColor();
-
-  // if you click save, create a new element
-  // let savedColors = [];
-  // var savedColorDisplay = document.getElementsByClassName('saved-color');
-  // savedColors.push(colorDisplay.style.background);
-  // 	for (var j = 0; j < savedColorDisplay.length; j++) {
-  // 		for (var i = 0; i < savedColors.length; i++) {
-  // 			if (j == i) {
-  // 				savedColorDisplay[j].classList.add('bloop');
-  //         // savedColorDisplay[j].style.background = savedColors[i];
-  //         // savedColorContainer.innerHTML = newSavedColor;
-  // 			}
-  // 			savedColorDisplay[i].addEventListener('click', useSavedColor);
-  // 		}
-  //   }
-
 }
 
-
-// if current color is apart of the savedcolors array, change the plus to an x
-
-
-
 function createSavedColor() {
-
+  var savedColorContainer = document.getElementById('savedColorsContainer');
   let newSavedColor = `
   <div class="saved-color-display">
     <div style="background:${colorDisplay.style.background}" class="saved-color bloop"></div>
   </div>
   `;
   savedColorContainer.innerHTML += newSavedColor;
-  let savedColorDisplay = document.querySelectorAll('.saved-color');
-  savedColorDisplay.forEach(function(display,i){
+
+  let savedColor = document.querySelectorAll('.saved-color');
+  savedColor.forEach(function(display,i){
     display.addEventListener('click', useSavedColor);
   });
   
@@ -502,7 +478,6 @@ function useSavedColor() {
 
 // Draws a dot at a specific position on the supplied canvas name
 // Parameters are: A canvas context, the x position, the y position
-
 function drawLine(ctx, x, y, size) {
   // Select a fill style
   var h = myColor.value, l = myLight.value, s = mySaturation.value;
@@ -563,26 +538,15 @@ function clearCanvas(canvas, ctx) {
 }
 
 //save drawing
+var saved = [];
 function saveDrawing(canvas) {
 
-  // var cavnasData = canvas.toDataURL();
   saved.push(canvas.toDataURL());
-  // savedFace.push(face.toDataURL('image/png',1));
-
-  // console.log(saved);
-  // console.log(savedFace);
 
   //if saved is less than one, push, else, shift!!
   if (saved.length > 1) {
     saved.shift();
   }
-  // console.log(saved);
-  // Save data to sessionStorage for testing purposes
-  sessionStorage.setItem('src', saved[0]);
-  // sessionStorage.setItem('faceSrc',savedFace[0]);
-  // console.log(sessionStorage);
-  // Get saved data from sessionStorage
-
 
   var savedResponse = document.getElementById('saved-response');
   savedResponse.classList.add('response');
@@ -605,15 +569,15 @@ function saveDrawing(canvas) {
     }
 
   })
-    .then(function (response) { window.location.href = response.url })
-    .then(function (response) { console.log('Success:', response) })
-    .catch(function (error) { console.error('Error:', error) });
+  .then(function (response) { window.location.href = response.url })
+  .then(function (response) { console.log('Success:', response) })
+  .catch(function (error) { console.error('Error:', error) });
 
 }
 
 
 function resizeCanvas(canvas) {
-
+  var container = document.getElementById('container');
   if (window.innerWidth < 720) {
     container.style.height = window.innerWidth - 15 + "px";
     canvas.width = (window.innerWidth);
@@ -626,21 +590,13 @@ function resizeCanvas(canvas) {
 }
 
 // Set-up the canvas and add our event handlers after the page has loaded
+var canvas = document.getElementById('sketchpad');
 function init() {
-
-  // Get the specific canvas element from the HTML document
-
-  canvas = document.getElementById('sketchpad');
-
-  // show save button on draw page
-  // if (canvas) {
-  // 	var nav = document.getElementById('nav');
-  // 	nav.innerHTML += '<div id="saveBtn" class="save"></div>';
-  // }
+  var savedColorContainer = document.getElementById('savedColorsContainer');
+  var changeColorContainer = document.getElementById('changeColorsContainer');
   // styling for slider
-  if (savedColorContainer || changeColorContainer || colorDisplay) {
+  if (savedColorContainer && changeColorContainer && colorDisplay) {
     savedColorContainer.style.width = window.innerWidth - 20 + "px";
-
     changeColorContainer.style.width = window.innerWidth - 20 + "px";
     //first color to display
     colorDisplay.style.background = "hsl(" + myColor.value + "," + mySaturation.value + "%," + myLight.value + "%)";
@@ -650,19 +606,29 @@ function init() {
       display.addEventListener('click', useSavedColor);
     });
 
+    // var isScrolling;
+    // savedColorContainer.addEventListener('scroll', ()=> {
+    //   // Clear our timeout throughout the scroll
+    //   window.clearTimeout( isScrolling );
+
+    //   // Set a timeout to run after scrolling ends
+    //   isScrolling = setTimeout(function() {
+
+    //     // Run the callback
+    //     console.log( 'Scrolling has stopped.' );
+    //     savedColorContainer.classList.remove('scrolling');
+    //   }, 66);
+
+    //   savedColorContainer.classList.add('scrolling');
+    // }, false);
+
     // logic for checking if color is already saved
-    const checkSavedColors = (color) => color.style.background == colorDisplay.style.background;
-    const savedColorDisplayArr = [].slice.call(savedColorDisplay);
-    const svArr = savedColorDisplayArr.find((color) =>  color.style.background == colorDisplay.style.background );
-    // console.log(, svArr );
-    // check if color is saved
-    const isColorSaved = savedColorDisplayArr.some(checkSavedColors);
-    console.log(isColorSaved, svArr );
-    if (isColorSaved) {
-      saveColorBtn.classList.add('delete');
-    } else {
-      saveColorBtn.classList.remove('delete');
-    }
+    // const checkSavedColors = (color) => color.style.background == colorDisplay.style.background;
+    // const savedColorDisplayArr = [].slice.call(savedColorDisplay);
+    // const svArr = savedColorDisplayArr.find((color) =>  color.style.background == colorDisplay.style.background );
+    // // console.log(, svArr );
+    // // check if color is saved
+    // const isColorSaved = savedColorDisplayArr.some(checkSavedColors);
 
   }
 
@@ -693,7 +659,6 @@ function init() {
     if (window.innerWidth < 720) {
       ctx.beginPath();
       ctx.arc(window.innerWidth / 2, window.innerWidth / 2.25, window.innerWidth / 2.5, 0, Math.PI * 2, true);
-      console.log(window.innerWidth);
       ctx.closePath();
       ctx.stroke();
       //eyes
@@ -709,7 +674,6 @@ function init() {
     } else {
       ctx.beginPath();
       ctx.arc(400 / 2, 400 / 2.25, 400 / 2.5, 0, Math.PI * 2, true);
-      console.log(400);
       ctx.closePath();
       ctx.stroke();
       //eyes
@@ -750,11 +714,14 @@ function init() {
 
 
   //gradients in here because it was causing errors on history page in gradient.js file
-  mood.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
-  sunset.style.backgroundImage = 'linear-gradient(#C02425,#F0CB35)';
-  mintTea.style.backgroundImage = 'linear-gradient(#1D976C,#93F9B9)';
-  summertime.style.backgroundImage = 'linear-gradient(#c2e59c,#64b3f4)';
-  rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
+  // mood.style.backgroundImage = 'linear-gradient(#e66465,#9198e5)';
+  // sunset.style.backgroundImage = 'linear-gradient(#C02425,#F0CB35)';
+  // mintTea.style.backgroundImage = 'linear-gradient(#1D976C,#93F9B9)';
+  // summertime.style.backgroundImage = 'linear-gradient(#c2e59c,#64b3f4)';
+  // rainySeason.style.backgroundImage = 'linear-gradient(#757F9A,#D7DDE8)';
 
 
+}
+if (canvas){
+  init();
 }
