@@ -60,7 +60,34 @@ if (document.querySelector('#splash')) {
       document.querySelector('#splash').classList.add('animate');
     });
   });
+
+  let logInBtn = document.querySelector('#login-show-btn');
+  let registerBtn = document.querySelector('#register-show-btn');
+
+  logInBtn.addEventListener('click', () => {
+    let logInForm = document.querySelector('#login');
+    if (logInForm.classList.contains('open')) {
+      logInForm.classList.remove('open');
+      logInForm.style.height = '0px';
+    } else {
+      logInForm.classList.add('open');
+      logInForm.style.height = logInForm.scrollHeight+"px";
+    }
+  });
+  registerBtn.addEventListener('click', () => {
+    let registerForm = document.querySelector('#register');
+    if (registerForm.classList.contains('open')) {
+      registerForm.classList.remove('open');
+      registerForm.style.height = '0px';
+    } else {
+      registerForm.classList.add('open');
+      registerForm.style.height = registerForm.scrollHeight+"px";
+    }
+  });
 }
+
+
+
 
 // checks if an element is in the viewport
 // control when it is called with n
