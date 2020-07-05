@@ -160,9 +160,9 @@ app.get('/history', isLoggedIn, function(req, res, next){
 
 
 // auth routes
-app.get("/register", function(req,res){
-    res.render('register');
-});
+// app.get("/register", function(req,res){
+//     res.render('register');
+// });
 
 app.post('/register', function(req,res){
     var newUser = new User({ username: req.body.username });
