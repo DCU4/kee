@@ -16,10 +16,10 @@ body {
   font-family: $font;
   animation: fade-in 0.8s ease-in;
 
-  @media (min-width: 720px) {
-    width: 400px;
-    margin: 0 auto;
-  }
+  // @media (min-width: 720px) {
+  //   width: 400px;
+  //   margin: 0 auto;
+  // }
 }
 
 .kee {

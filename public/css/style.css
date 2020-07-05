@@ -259,52 +259,112 @@ nav {
 
 .login-form {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
   margin: 0 auto;
-  padding: 25px 0; }
-  .login-form h1 {
-    font-weight: lighter;
-    padding-bottom: 25px; }
-  .login-form form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-    .login-form form h3 {
-      padding-bottom: 10px;
-      font-weight: bold; }
-    .login-form form input {
-      margin-bottom: 25px;
-      background-color: #B4B4B4;
-      padding: 7px;
-      border: none; }
-      .login-form form input::placeholder {
-        color: #ffffff;
-        font-size: p;
+  padding: 125px 0 0; }
+  .login-form .logo h1 {
+    padding-bottom: 10px;
+    font-size: 64px;
+    font-weight: 500;
+    letter-spacing: 13px;
+    opacity: 0;
+    animation: fade-in .5s ease 1.5s forwards; }
+  .login-form .logo .logo-full {
+    position: relative; }
+    .login-form .logo .logo-full span.logo-bit {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 15px;
+      position: absolute;
+      opacity: 0;
+      animation: fade-in .3s ease forwards; }
+      .login-form .logo .logo-full span.logo-bit#isual {
+        background-image: url("../imgs/isual.svg");
+        right: 167px;
+        height: 130px;
+        animation-delay: 1.7s; }
+      .login-form .logo .logo-full span.logo-bit#ote {
+        background-image: url("../imgs/ote.svg");
+        right: 120px;
+        height: 80px;
+        animation-delay: 1.8s; }
+      .login-form .logo .logo-full span.logo-bit#f {
+        background-image: url("../imgs/f.svg");
+        right: 73px;
+        height: 10px;
+        animation-delay: 1.9s; }
+      .login-form .logo .logo-full span.logo-bit#motion {
+        background-image: url("../imgs/motion.svg");
+        right: 23px;
+        height: 170px;
+        animation-delay: 2s; }
+  .login-form .line {
+    width: 1px;
+    height: 20px;
+    background: #000000;
+    margin: 0 5%;
+    opacity: 0;
+    animation: fade-in .3s ease 2.1s forwards; }
+  .login-form .forms {
+    position: relative;
+    width: 45%;
+    opacity: 0;
+    animation: fade-in .3s ease 2.1s forwards; }
+    .login-form .forms .form-title {
+      margin-top: 60px;
+      transition: all 0.3s ease;
+      cursor: pointer; }
+    .login-form .forms form {
+      padding: 0px;
+      visibility: hidden;
+      opacity: 0;
+      overflow: hidden;
+      width: 0%;
+      height: 0;
+      display: flex;
+      flex-direction: column;
+      transition: all .3s ease; }
+      .login-form .forms form.open {
+        visibility: visible;
+        opacity: 1;
+        width: 100%;
+        padding: 30px 0; }
+      .login-form .forms form h3 {
+        padding-bottom: 10px; }
+      .login-form .forms form input {
+        margin-bottom: 25px;
+        background-color: #B4B4B4;
+        padding: 7px;
+        border: none; }
+        .login-form .forms form input::placeholder {
+          color: #ffffff;
+          font-size: p;
+          font-weight: 100; }
+        .login-form .forms form input:focus {
+          background: #F5F5F5; }
+          .login-form .forms form input:focus::placeholder {
+            color: #000000; }
+      .login-form .forms form button {
+        background: #000000;
+        cursor: pointer;
+        border: none;
+        color: white;
+        padding: 7px;
+        border-radius: 20px;
+        width: 50%;
+        margin: 0 auto 20px;
+        font-size: 12px;
         font-weight: 100; }
-      .login-form form input:focus {
-        background: #F5F5F5; }
-        .login-form form input:focus::placeholder {
-          color: #000000; }
-    .login-form form button {
-      background: #000000;
-      cursor: pointer;
-      border: none;
-      color: white;
-      padding: 7px;
-      border-radius: 20px;
-      width: 50%;
-      margin: 0 auto 20px;
-      font-size: 12px;
-      font-weight: 100; }
   .login-form p {
     text-align: center; }
     .login-form p a {
       color: #000000; }
 
 #splash {
-  background-color: #FFF;
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -336,13 +396,8 @@ html,
 body {
   /*overflow: hidden;*/
   background: #F5F5F5;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Arimo", sans-serif;
   animation: fade-in 0.8s ease-in; }
-  @media (min-width: 720px) {
-    html,
-    body {
-      width: 400px;
-      margin: 0 auto; } }
 
 .kee {
   -webkit-touch-callout: none;

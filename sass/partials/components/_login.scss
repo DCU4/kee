@@ -1,67 +1,143 @@
 .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    margin:0 auto;
-    padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  margin: 0 auto;
+  padding: 125px 0 0;
+  
+  .logo {
     h1 {
-        font-weight: lighter;
-        padding-bottom: 25px;
+      padding-bottom: 10px;
+      font-size: 64px;
+      font-weight: 500;
+      letter-spacing: 13px;
+      opacity: 0;
+      animation: fade-in .5s ease 1.5s forwards;
+    }
+    .logo-full  {
+      position: relative;
+      
+      span.logo-bit {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 15px;
+        position: absolute;
+        opacity: 0;
+        animation: fade-in .3s ease forwards;
+        &#isual {
+          background-image: url('../imgs/isual.svg');
+          right: 167px;
+          height: 130px;
+          animation-delay: 1.7s;
+        }
+        &#ote {
+          background-image: url('../imgs/ote.svg');
+          right: 120px;
+          height: 80px;
+          animation-delay: 1.8s;
+        }
+        &#f {
+          background-image: url('../imgs/f.svg');
+          right: 73px;
+          height: 10px;
+          animation-delay: 1.9s;
+        }
+        &#motion {
+          background-image: url('../imgs/motion.svg');
+          right: 23px;
+          height: 170px;
+          animation-delay: 2s;
+        }
+      }
+    }
+  }
+
+  .line {
+    width: 1px;
+    height: 20px;
+    background: $black;
+    margin: 0 5%; 
+    opacity: 0;
+    animation: fade-in .3s ease 2.1s forwards;
+  }
+
+
+  .forms {
+    position: relative;
+    width: 45%;
+    opacity: 0;
+    animation: fade-in .3s ease 2.1s forwards;
+    .form-title {
+      margin-top: 60px;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
     form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        h3 {
-            padding-bottom: 10px;
-            font-weight: bold;
+      padding:  0px; 
+      visibility: hidden;
+      opacity: 0;
+      overflow: hidden;
+      width: 0%;
+      height: 0;
+      display: flex;
+      flex-direction: column;
+      transition: all .3s ease;
+      &.open {
+        visibility: visible;
+        opacity: 1;
+        width: 100%;
+        padding: 30px 0; 
+      }
+      h3 {
+        padding-bottom: 10px;
+      }
+      input {
+        margin-bottom: 25px;
+        background-color: $dark-gray;
+        padding: 7px;
+        border: none;
+        &::placeholder {
+          color: $white;
+          font-size: p;
+          font-weight: 100;
         }
-        input {
-            margin-bottom:25px;
-            background-color:$dark-gray;
-            padding: 7px;
-            border: none;
-            &::placeholder {
-                color: $white;
-                font-size: p;
-                font-weight:100;
-            }
-            &:focus {
-              background:$light-gray;
-              &::placeholder {
-                color: $black;
-            }
-            }
-        }
-        button {
-            background: $black;
-            cursor: pointer;
-            border: none;
-            color: white;
-            padding: 7px;
-            border-radius: 20px;
-            width: 50%;
-            margin: 0 auto 20px;
-            font-size: 12px;
-            font-weight: 100;
-        }
-
-
-    }
-    p {
-        text-align:center;
-        a {
+        &:focus {
+          background: $light-gray;
+          &::placeholder {
             color: $black;
+          }
         }
+      }
+      button {
+        background: $black;
+        cursor: pointer;
+        border: none;
+        color: white;
+        padding: 7px;
+        border-radius: 20px;
+        width: 50%;
+        margin: 0 auto 20px;
+        font-size: 12px;
+        font-weight: 100;
+      }
     }
+  }
+
+  p {
+    text-align: center;
+    a {
+      color: $black;
+    }
+  }
 }
 
 #splash {
-  background-color: #FFF;
+  background-color: #fff;
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   height: 100vh;
   width: 100%;
   z-index: 10;
@@ -72,7 +148,7 @@
 }
 
 #eyes {
-  background-image: url('../imgs/Blinking-Avnoe-01.png');
+  background-image: url("../imgs/Blinking-Avnoe-01.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 50%;
