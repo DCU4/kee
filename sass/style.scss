@@ -8,13 +8,14 @@
   box-sizing: border-box;
 }
 
-html,
+// html,
 body {
   /*overflow: hidden;*/
   // background: $mint;
   background: $light-gray;
   font-family: $font;
-  animation: fade-in 0.8s ease-in;
+  opacity: 0;
+  animation: fade-in 0.3s ease-in forwards;
 
   // @media (min-width: 720px) {
   //   width: 400px;
@@ -36,6 +37,12 @@ body {
   height: 100%;
   // margin: 15px 5% 0;
   // width:100%;
+  @media all and (min-width:720px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
   &.menu-open {
     opacity: 0.1;
   }
@@ -44,6 +51,9 @@ body {
     position: relative;
     width: 100%;
     margin: 0 auto; // height: 420px;
+    @media all and (min-width:720px) {
+      width: auto;
+    }
     .saved-response {
       opacity: 0;
       height: 0;
@@ -72,6 +82,9 @@ body {
     }
     canvas {
       position: absolute;
+      @media all and (min-width:720px) {
+        position: relative;
+      }
     }
 
     #sketchpad {
@@ -89,7 +102,15 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-
+    .save {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+      background: #000;
+      border-radius: 3px;
+      color: #FFF;
+      margin-bottom: 5px;
+    }
     #displayBox {
       padding: 10px 14px 10px 35px;
       display: flex;
@@ -97,6 +118,7 @@ body {
       align-items: center;
       width: 100%;
       background: #fff;
+      border-radius: 3px;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       .not-mySize {
         z-index: 1;
@@ -217,6 +239,8 @@ body {
           margin: 0;
           font-size: 20px;
           width: 50px;
+          height: 50px;
+          border-radius: 50%;
         }
         .my-size {
           margin: 10px 45px;
