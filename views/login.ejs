@@ -20,19 +20,19 @@
   <section class="forms">
     <h2 id="login-show-btn" class="form-title">Sign In</h2>
     <form id="login" action="/login" method="POST">
-        <h3>Username</h3>
-        <input type="text" name="username" placeholder="username">
-        <h3>Password</h3>
-        <input type="password" name="password" placeholder="password">
+        <label for="">Username</label>
+        <input id="username" type="text" name="username">
+        <label for="">Password</label>
+        <input id="password" type="password" name="password">
         <button>Sign In</button>
     </form>
 
     <h2 id="register-show-btn" class="form-title">New Account</h2>
     <form id="register" action="/register" method="POST">
-      <h3>Username</h3>
-      <input type="text" name="username" placeholder="username">
-      <h3>Password</h3>
-      <input type="password" name="password" placeholder="password">
+      <label for="newUsername">Username</label>
+      <input id="newUsername" type="text" name="username">
+      <label for="newPassword">Password</label>
+      <input id="newPassword" type="password" name="password">
       <button>Create an account</button>
     </form>
     
