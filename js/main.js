@@ -66,12 +66,17 @@ if (document.querySelector('#splash')) {
 
   logInBtn.addEventListener('click', () => {
     let logInForm = document.querySelector('#login');
+
     if (logInForm.classList.contains('open')) {
       logInForm.classList.remove('open');
       logInForm.style.height = '0px';
+      logInBtn.classList.remove('open');
+      registerBtn.classList.remove('hide');
     } else {
       logInForm.classList.add('open');
       logInForm.style.height = logInForm.scrollHeight+"px";
+      logInBtn.classList.add('open');
+      registerBtn.classList.add('hide');
     }
   });
   registerBtn.addEventListener('click', () => {
@@ -79,9 +84,13 @@ if (document.querySelector('#splash')) {
     if (registerForm.classList.contains('open')) {
       registerForm.classList.remove('open');
       registerForm.style.height = '0px';
+      registerBtn.classList.remove('open');
+      logInBtn.classList.remove('hide');
     } else {
       registerForm.classList.add('open');
       registerForm.style.height = registerForm.scrollHeight+"px";
+      registerBtn.classList.add('open');
+      logInBtn.classList.add('hide');
     }
   });
 }
@@ -659,9 +668,14 @@ function init() {
   myLight.addEventListener('input', changeColor, true);
   mySaturation.addEventListener('input', changeColor, true);
 
-  sizeValue.innerHTML = (mySize.value / 2);
+  // sizeValue.innerHTML = (mySize.value / 2);
+  sizeValue.style.background = "hsl(" + myColor.value + "," + mySaturation.value + "%," + myLight.value + "%)";
+  sizeValue.style.width = (mySize.value)+'px';
+  sizeValue.style.height = (mySize.value)+'px';
   mySize.addEventListener('input', function () {
-    sizeValue.innerHTML = (mySize.value / 2);
+    sizeValue.style.width = (mySize.value)+'px';
+    sizeValue.style.height = (mySize.value)+'px';
+    sizeValue.style.background = "hsl(" + myColor.value + "," + mySaturation.value + "%," + myLight.value + "%)";
   });
 
   changeContainer.addEventListener('click', animateSlider, false);
