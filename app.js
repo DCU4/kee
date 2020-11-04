@@ -11,8 +11,7 @@ var express = require("express"),
     webpush = require('web-push');
 
 
-
-mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
 mongoose.connect('mongodb+srv://heroku_q5n4mxlv:VamosCadbury4!@cluster-q5n4mxlv.xkzff.mongodb.net/heroku_q5n4mxlv?retryWrites=true&w=majority',{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
