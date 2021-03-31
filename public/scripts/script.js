@@ -368,16 +368,16 @@ if (sizeValue) {
 
   });
 }
-var isNotInViewport = function (elem) {
-  var bounding = elem.getBoundingClientRect();
-  return (
-    // numbers are the slider position, might need to change this
-    bounding.top >= bounding.top &&
-    bounding.left >= 300 &&
-    bounding.bottom <= bounding.bottom &&
-    bounding.right <= 700
-  );
-};
+// var isNotInViewport = function (elem) {
+//   var bounding = elem.getBoundingClientRect();
+//   return (
+//     // numbers are the slider position, might need to change this
+//     bounding.top >= bounding.top &&
+//     bounding.left >= 300 &&
+//     bounding.bottom <= bounding.bottom &&
+//     bounding.right <= 700
+//   );
+// };
 
 var changeContainer = document.getElementById('changeContainer');
 var savedContainer = document.getElementById('savedContainer');
