@@ -1,9 +1,8 @@
 nav {
-  padding: 10px 7%;
   display:flex;
   align-items: center;
   justify-content: space-between;
-  transition: .3s;
+  padding: 1em;
   &.fixed {
     // position:sticky;
     animation: fixed-nav .3s linear .3s forwards ;

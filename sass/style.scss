@@ -2,20 +2,12 @@
 @import "partials/global";
 @import "partials/components";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 // html,
 body {
   /*overflow: hidden;*/
   // background: $mint;
-  background: $light-gray;
-  font-family: $font;
-  opacity: 0;
-  animation: fade-in 0.3s ease-in forwards;
 
   // @media (min-width: 720px) {
   //   width: 400px;
@@ -57,6 +49,7 @@ body {
     .saved-response {
       opacity: 0;
       height: 0;
+      z-index: -1;
       position: absolute;
       background: transparent;
       width: 100%;
@@ -72,7 +65,7 @@ body {
         height: 100%;
         width: 100%;
         background: white;
-        z-index: 99999999;
+        z-index: 100;
         transition: all 0.5s;
       }
 
@@ -82,18 +75,16 @@ body {
     }
     canvas {
       position: absolute;
-      @media all and (min-width:720px) {
-        position: relative;
-      }
-    }
-
-    #sketchpad {
-      top: 3%;
-      // left: 2.5%;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1;
       background: #fff;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
       touch-action: none;
+      @media all and (min-width:720px) {
+        position: relative;
+        transform: translateX(0);
+      }
     }
   }
 
