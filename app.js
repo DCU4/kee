@@ -12,7 +12,7 @@ var express = require("express"),
 
 
 // mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-mongoose.connect('mongodb+srv://heroku_q5n4mxlv:VamosCadbury4!@cluster-q5n4mxlv.xkzff.mongodb.net/heroku_q5n4mxlv?retryWrites=true&w=majority',{ useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://${process.env.db_name}:${process.env.db_pass}@cluster-q5n4mxlv.xkzff.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`,{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 
