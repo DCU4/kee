@@ -13,3 +13,4 @@ Currently in beta. Sign up to test!
  - Work on designs/branding
  - Update history
  - Account pages
+ - Reminder functionality
