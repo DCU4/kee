@@ -127,7 +127,7 @@ if (document.querySelector('#splash')) {
   let logInBtn = document.querySelector('#login-show-btn');
   let registerBtn = document.querySelector('#register-show-btn');
 
-  logInBtn && logInBtn.addEventListener('click', () => {
+  logInBtn.addEventListener('click', () => {
     let logInForm = document.querySelector('#login');
 
     if (logInForm.classList.contains('open')) {
@@ -142,7 +142,7 @@ if (document.querySelector('#splash')) {
       registerBtn.classList.add('hide');
     }
   });
-  registerBtn && registerBtn.addEventListener('click', () => {
+  registerBtn.addEventListener('click', () => {
     let registerForm = document.querySelector('#register');
     if (registerForm.classList.contains('open')) {
       registerForm.classList.remove('open');
@@ -368,16 +368,16 @@ if (sizeValue) {
 
   });
 }
-// var isNotInViewport = function (elem) {
-//   var bounding = elem.getBoundingClientRect();
-//   return (
-//     // numbers are the slider position, might need to change this
-//     bounding.top >= bounding.top &&
-//     bounding.left >= 300 &&
-//     bounding.bottom <= bounding.bottom &&
-//     bounding.right <= 700
-//   );
-// };
+var isNotInViewport = function (elem) {
+  var bounding = elem.getBoundingClientRect();
+  return (
+    // numbers are the slider position, might need to change this
+    bounding.top >= bounding.top &&
+    bounding.left >= 300 &&
+    bounding.bottom <= bounding.bottom &&
+    bounding.right <= 700
+  );
+};
 
 var changeContainer = document.getElementById('changeContainer');
 var savedContainer = document.getElementById('savedContainer');
@@ -615,11 +615,11 @@ function saveDrawing(canvas) {
 function resizeCanvas(canvas) {
   var container = document.getElementById('container');
   if (window.innerWidth < 720) {
-    container.style.height = window.innerWidth - 40 + "px";
+    container.style.height = window.innerWidth - 15 + "px";
     canvas.width = (window.innerWidth);
     canvas.height = (window.innerWidth - 40);
   } else {
-    container.style.height = 400 - 60 + "px";
+    container.style.height = 400 - 25 + "px";
     canvas.width = (400);
     canvas.height = (400 - 45);
   }

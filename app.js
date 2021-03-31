@@ -57,7 +57,7 @@ app.get('/', isLoggedIn, function(req, res, next){
               console.log(user.savedColors);
               // console.log(allKees[42].user.username);
               // console.log(req.user.username);
-              res.render('index', {savedBtn: true, user:user, page: 'index'});
+              res.render('index', {savedBtn: true, user:user});
       }
   });
 
@@ -162,9 +162,9 @@ app.get('/history', isLoggedIn, function(req, res, next){
 
 
 // auth routes
-app.get("/register", function(req,res){
-    res.render('register');
-});
+// app.get("/register", function(req,res){
+//     res.render('register');
+// });
 
 app.post('/register', function(req,res){
     var newUser = new User({ username: req.body.username });

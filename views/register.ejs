@@ -1,16 +1,14 @@
 <%- include('partials/header',{savedBtn:false}) %>
 
-<section class="login-form">
- <div class="form-wrapper">
-      <h1 id="login-show-btn" class="form-title">New Account</h1>
-      <form id="login" action="/register" method="POST">
-          <label for="username">Username</label>
-          <input id="username" type="text" name="username">
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password">
-          <button>Create</button>
-      </form>
-    <p><a href="/login">Sign in</a> </p>
-  </div>
-</section>
+<div class="login-form">
+    <h1>Welcome,</h1>
+<form action="/register" method="POST">
+     <h3>Username</h3>
+    <input type="text" name="username" placeholder="username">
+    <h3>Password</h3>
+    <input type="password" name="password" placeholder="password">
+    <button>Create an account</button>
+    <p>Already have an account?<a href="/login">Sign in</a> </p>
+</form>
+</div>
 <% include partials/footer %>
