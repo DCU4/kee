@@ -1,43 +1,44 @@
-
-
-
 <%- include('partials/header',{savedBtn:false}) %>
-<div id="splash"><div id="eyes"></div></div>
-<div class="login-form">
+  <div id="splash">
+    <div id="eyes"></div>
+  </div>
+  <div class="login-form">
 
-  <section class="logo">
-    <h1>Avnoe</h1>
-    <div class="logo-full">
-      <span id="isual" class="logo-bit"></span>
-      <span id="ote" class="logo-bit"></span>
-      <span id="f" class="logo-bit"></span>
-      <span id="motion" class="logo-bit"></span>
-    </div>
-  </section>
-
-  <span class="line"></span>
-
-  <section class="forms">
-    <h2 id="login-show-btn" class="form-title">Sign In</h2>
-    <form id="login" action="/login" method="POST">
-        <label for="">Username</label>
-        <input id="username" type="text" name="username">
-        <label for="">Password</label>
-        <input id="password" type="password" name="password">
-        <button>Sign In</button>
-    </form>
-
-    <h2 id="register-show-btn" class="form-title">New Account</h2>
-    <form id="register" action="/register" method="POST">
-      <label for="newUsername">Username</label>
-      <input id="newUsername" type="text" name="username">
-      <label for="newPassword">Password</label>
-      <input id="newPassword" type="password" name="password">
-      <button>Create an account</button>
-    </form>
-    
+    <section class="logo">
+      <h1>Avnoe</h1>
+      <div class="logo-full">
+        <span id="isual" class="logo-bit"></span>
+        <span id="ote" class="logo-bit"></span>
+        <span id="f" class="logo-bit"></span>
+        <span id="motion" class="logo-bit"></span>
+      </div>
     </section>
-</div>
+
+    <span class="line"></span>
+
+    <section class="forms">
+      <div class="form-wrapper">
+        <h2 id="login-show-btn" class="form-title">Sign In</h2>
+        <form id="login" action="/login" method="POST">
+          <label for="username">Username</label>
+          <input id="username" type="text" name="username">
+          <label for="password">Password</label>
+          <input id="password" type="password" name="password">
+          <button>Sign In</button>
+        </form>
+      </div>
+      <div class="form-wrapper">
+        <h2 id="register-show-btn" class="form-title">New Account</h2>
+        <form id="register" action="/register" method="POST">
+          <label for="newUsername">Username</label>
+          <input id="newUsername" type="text" name="username">
+          <label for="newPassword">Password</label>
+          <input id="newPassword" type="password" name="password">
+          <button>Create an account</button>
+        </form>
+      </div>
+    </section>
+  </div>
 
 
-<% include partials/footer %>
+  <% include partials/footer %>
