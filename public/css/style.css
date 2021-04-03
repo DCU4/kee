@@ -217,7 +217,7 @@ nav {
         font-weight: bold;
         line-height: 30px;
         opacity: 1;
-        width: 50%;
+        width: 84%;
         margin: 0 auto; }
         nav .menu .menu-list .menu-items a {
           color: #000;
@@ -426,6 +426,18 @@ nav {
     height: 100vh; }
   #splash.animate {
     top: -100vh; } }
+
+main.account-settings {
+  padding: 0 1em; }
+  main.account-settings .account-info-list {
+    padding: 1em 0; }
+    main.account-settings .account-info-list .account-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 1em;
+      margin: 0 0  1em;
+      border-bottom: 1px solid #B4B4B4; }
 
 * {
   margin: 0;
