@@ -11,30 +11,28 @@
 
     </head>
     <body id="body" >
-      <nav id="nav" class="<%= savedBtn ? 'draw' : '' %>">
+      <nav id="nav" class="<%= user ? 'draw' : '' %>">
           <div id="menu" class="menu">
               <span id="menu-line-1" class="menu-line"></span>
               <span id="menu-line-2" class="menu-line"></span>
               <div id="menu-list" class="menu-list">
+              <% 
+              console.log(user)
+              if (user) { %>
                 <li class="menu-items"><a href="/">Draw</a></li>
                 <li class="menu-items"><a href="/saved">Your Notes</a></li>
                 <li class="menu-items"><a href="/history">Avnoe, A History</a></li>
                 <li class="menu-items"><a href="/contact">Contact</a></li>
+                <li class="menu-items"><a href="/account">My Account</a></li>
+                <li class="menu-items"><a href="/register">Create a new Account</a></li>
+                <li class="menu-items"><a href="/logout">Logout</a></li>
+              <% } else { %>
                 <li class="menu-items"><a href="/login">Sign in</a></li>
                 <li class="menu-items"><a href="/register">Create an Account</a></li>
-                <li class="menu-items"><a href="/logout">Logout</a></li>
+                <li class="menu-items"><a href="/history">Avnoe, A History</a></li>
+                <li class="menu-items"><a href="/contact">Contact</a></li>
+                <% } %>
               </div>
           </div>
-
-          <% 
-          // kees.forEach(function(k){ 
-            if(savedBtn){ 
-
-              %>
-              <!-- <div id="saveBtn" class="save"></div> -->
-          <% 
-          }  
-          // }); 
-          %>
 
       </nav>
