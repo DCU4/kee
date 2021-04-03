@@ -10,9 +10,13 @@ var express = require("express"),
     passport = require('passport'),
     webpush = require('web-push');
 
+// let credentials = require('./credentials.json')
+let db_name = process.env.db_name ? process.env.db_name : credentials.db_name;
+let db_pass = process.env.db_pass ? process.env.db_pass : credentials.db_pass;
+
 
 // mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
-mongoose.connect(`mongodb+srv://${process.env.db_name}:${process.env.db_pass}@cluster-q5n4mxlv.xkzff.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`,{ useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://${db_name}:${db_pass}@cluster-q5n4mxlv.xkzff.mongodb.net/${db_name}?retryWrites=true&w=majority`,{ useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 
@@ -54,10 +58,10 @@ app.get('/', isLoggedIn, function(req, res, next){
       if(err) {
           console.log(err);
       } else {
-              console.log(user.savedColors);
+              // console.log(user.savedColors);
               // console.log(allKees[42].user.username);
               // console.log(req.user.username);
-              res.render('index', {savedBtn: true, user:user});
+              res.render('index', {user:user});
       }
   });
 
@@ -92,7 +96,7 @@ app.get('/saved', isLoggedIn, function(req, res, next){
         if(err) {
             console.log(err);
         } else {
-                res.render('saved',{kees: allKees });
+                res.render('saved',{kees: allKees, user: req.user });
                 // console.log(allKees[42].user.username);
                 // console.log(req.user.username);
         }
@@ -108,7 +112,8 @@ app.get('/saved/:id', function(req,res){
         if(err) {
             console.log(err);
         } else {
-            res.render('single',{kee:foundNote});
+          // console.log(foundNote)
+            res.render('single',{kee:foundNote, user: foundNote.user });
         }
     });
 
@@ -151,13 +156,34 @@ app.post('/save-color', function(req,res){
 // });
 
 // contact routes
-app.get('/contact', isLoggedIn, function(req, res, next){
-    res.render('contact');
+app.get('/contact', function(req, res, next){
+  if (isLoggedIn && req.user) {
+    User.findById(req.user.id,function(err,user){
+      if(err) {
+          console.log(err);
+          res.redirect('/login');
+      } else {
+          res.render('contact', {user:user});
+      }
+    });
+  } else {
+    res.render('contact', {user: null});
+  }
 });
 
 // history rouetes
-app.get('/history', isLoggedIn, function(req, res, next){
-    res.render('history');
+app.get('/history', function(req, res, next){
+  if (isLoggedIn && req.user) {
+    User.findById(req.user.id,function(err,user){
+      if(err) {
+          console.log(err);
+      } else {
+          res.render('history', {user:user});
+      }
+    });
+  } else {
+    res.render('history', {user: null});
+  }
 });
 
 
@@ -200,6 +226,18 @@ console.log(res);
 app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/login');
+});
+
+app.get('/account', isLoggedIn, function(req, res, next){
+
+  User.findById(req.user.id,function(err,user){
+    if(err) {
+        console.log(err);
+    } else {
+        res.render('account', {user:user});
+    }
+  });
+
 });
 
 
