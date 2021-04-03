@@ -1,0 +1,19 @@
+
+<%- include('partials/header', {user: user}) %>
+
+<main class="account-settings">
+  <h1>Account Settings</h1>
+  <section class="account-info-list">
+    <div class="account-info">
+      <p>Username</p>
+      <p><%- user.username %></p>
+    </div>
+    <div class="account-info">
+      <p>Created</p>
+      <p><%- user.created ? user.created.toDateString() : "April 2018" %></p>
+    </div>
+  </section>
+  <% console.log(user); %>
+</main>
+
+<%- include('partials/footer') %>
