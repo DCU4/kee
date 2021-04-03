@@ -1,0 +1,14 @@
+main.account-settings {
+  padding: 0 1em;
+  .account-info-list {
+    padding: 1em 0;
+    .account-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 1em;
+      margin: 0 0  1em;
+      border-bottom: 1px solid $dark-gray;
+    }
+  }
+}

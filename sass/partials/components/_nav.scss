@@ -5,12 +5,9 @@ nav {
   justify-content: space-between;
   transition: .3s;
   &.fixed {
-    // position:sticky;
     animation: fixed-nav .3s linear .3s forwards ;
     background: $light-gray;
-    // top: 5px;
     z-index: 99;
-    // box-shadow: 0 0 3px 0.1px #B4B4B4;
   }
   .menu {
     width: 150px;
@@ -45,7 +42,7 @@ nav {
         font-weight: bold;
         line-height: 30px;
         opacity:1;
-        width: 50%;
+        width: 84%;
         margin: 0 auto;
 
         a {
@@ -62,7 +59,6 @@ nav {
         background-color: rgba(255, 255, 255, 0.99);
         .menu-items {
           opacity:1;
-
         }
       }
     }
