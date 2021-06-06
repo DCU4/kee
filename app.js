@@ -11,8 +11,8 @@ var express = require("express"),
     webpush = require('web-push');
 
 // let credentials = require('./credentials.json')
-let db_name = process.env.db_name ? process.env.db_name : credentials.db_name;
-let db_pass = process.env.db_pass ? process.env.db_pass : credentials.db_pass;
+const db_name = process.env.db_name ? process.env.db_name : credentials.db_name;
+const db_pass = process.env.db_pass ? process.env.db_pass : credentials.db_pass;
 
 
 // mongoose.connect('mongodb://localhost/kee',{ useNewUrlParser: true });
